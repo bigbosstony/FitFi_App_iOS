@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrackingSViewController" customModule="FitfiApp" customModuleProvider="target">
+            <connections>
+                <outlet property="exerciseLabel" destination="F5w-rw-KVG" id="1Mn-ab-SLf"/>
+                <outlet property="mainCounter" destination="Jbs-2k-fDw" id="AzT-9v-hTV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="EZP-Rk-3SE"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmj-FT-SGI">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                    <subviews>
+                        <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-0n-GUc">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3aa-94-OSi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuV-GT-tNE">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbs-2k-fDw">
+                                                <rect key="frame" x="315.5" y="2" width="46.5" height="86"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="86" id="Say-ic-Usk"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="72"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5w-rw-KVG">
+                                                <rect key="frame" x="16" y="16" width="75" height="23"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="23" id="kpm-QT-jBV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 lb Dumbbell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvm-qK-P2h">
+                                                <rect key="frame" x="236" y="90" width="122" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="Fw5-h9-c3k"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="F5w-rw-KVG" firstAttribute="top" secondItem="MuV-GT-tNE" secondAttribute="top" constant="16" id="27v-mu-XHa"/>
+                                            <constraint firstItem="F5w-rw-KVG" firstAttribute="leading" secondItem="MuV-GT-tNE" secondAttribute="leading" constant="16" id="XZz-L4-SEV"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rvm-qK-P2h" secondAttribute="trailing" constant="17" id="eqt-pu-ddy"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jbs-2k-fDw" secondAttribute="trailing" constant="13" id="g36-CZ-OFp"/>
+                                            <constraint firstItem="Jbs-2k-fDw" firstAttribute="top" secondItem="MuV-GT-tNE" secondAttribute="top" constant="2" id="hRg-MW-Ydg"/>
+                                            <constraint firstItem="Rvm-qK-P2h" firstAttribute="top" secondItem="MuV-GT-tNE" secondAttribute="top" constant="90" id="lMc-Wi-zAZ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="MuV-GT-tNE" firstAttribute="leading" secondItem="3aa-94-OSi" secondAttribute="leading" id="3pK-fw-aKP"/>
+                                    <constraint firstAttribute="bottom" secondItem="MuV-GT-tNE" secondAttribute="bottom" id="gnE-Il-Z8f"/>
+                                    <constraint firstAttribute="trailing" secondItem="MuV-GT-tNE" secondAttribute="trailing" id="rAQ-8c-0oC"/>
+                                    <constraint firstItem="MuV-GT-tNE" firstAttribute="top" secondItem="3aa-94-OSi" secondAttribute="top" id="wuH-He-7vq"/>
+                                </constraints>
+                            </view>
+                            <blurEffect style="extraLight"/>
+                        </visualEffectView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="HBx-0n-GUc" firstAttribute="top" secondItem="rmj-FT-SGI" secondAttribute="top" id="W1i-rP-PDc"/>
+                        <constraint firstAttribute="bottom" secondItem="HBx-0n-GUc" secondAttribute="bottom" id="g3R-Xf-mte"/>
+                        <constraint firstAttribute="trailing" secondItem="HBx-0n-GUc" secondAttribute="trailing" id="gKU-2k-6VP"/>
+                        <constraint firstItem="HBx-0n-GUc" firstAttribute="leading" secondItem="rmj-FT-SGI" secondAttribute="leading" id="sdj-rb-P26"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="rmj-FT-SGI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0KE-UR-cbo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rmj-FT-SGI" secondAttribute="trailing" id="2bR-DH-QGY"/>
+                <constraint firstItem="rmj-FT-SGI" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Uun-bc-7oQ"/>
+                <constraint firstItem="rmj-FT-SGI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="siP-iF-vG7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                    <integer key="value" value="6"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                    <real key="value" value="0.10000000000000001"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                    <size key="value" width="0.0" height="-1"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="-73.5" y="-48"/>
+        </view>
+    </objects>
+</document>

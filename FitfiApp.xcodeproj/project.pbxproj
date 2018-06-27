@@ -1,0 +1,806 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EA3090E720C6DA4000E09DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090E620C6DA4000E09DDF /* AppDelegate.swift */; };
+		EA3090E920C6DA4000E09DDF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090E820C6DA4000E09DDF /* HomeViewController.swift */; };
+		EA3090EC20C6DA4000E09DDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3090EA20C6DA4000E09DDF /* Main.storyboard */; };
+		EA3090EF20C6DA4000E09DDF /* FitfiApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA3090ED20C6DA4000E09DDF /* FitfiApp.xcdatamodeld */; };
+		EA3090F120C6DA4300E09DDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA3090F020C6DA4300E09DDF /* Assets.xcassets */; };
+		EA3090F420C6DA4300E09DDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3090F220C6DA4300E09DDF /* LaunchScreen.storyboard */; };
+		EA3090FF20C6DA4300E09DDF /* FitfiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090FE20C6DA4300E09DDF /* FitfiAppTests.swift */; };
+		EA30910A20C6DA4300E09DDF /* FitfiAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30910920C6DA4300E09DDF /* FitfiAppUITests.swift */; };
+		EA30911820C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30911720C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift */; };
+		EA30911920C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30911720C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift */; };
+		EA30911A20C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30911720C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift */; };
+		EA30911C20C7199D00E09DDF /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30911B20C7199D00E09DDF /* Data.swift */; };
+		EA30911D20C7199D00E09DDF /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30911B20C7199D00E09DDF /* Data.swift */; };
+		EA30911E20C7199D00E09DDF /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30911B20C7199D00E09DDF /* Data.swift */; };
+		EA61DE7920C8913300075FCE /* RoutinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */; };
+		EA84FCAE20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
+		EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
+		EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
+		EA84FCB120E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA84FCAD20E2DB05007E4487 /* AboutImageTableViewCell.xib */; };
+		EA84FCB220E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA84FCAD20E2DB05007E4487 /* AboutImageTableViewCell.xib */; };
+		EA84FCB320E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA84FCAD20E2DB05007E4487 /* AboutImageTableViewCell.xib */; };
+		EA84FCBE20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCBC20E2E241007E4487 /* AboutInstructionTableViewCell.swift */; };
+		EA84FCBF20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCBC20E2E241007E4487 /* AboutInstructionTableViewCell.swift */; };
+		EA84FCC020E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCBC20E2E241007E4487 /* AboutInstructionTableViewCell.swift */; };
+		EA84FCC120E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA84FCBD20E2E241007E4487 /* AboutInstructionTableViewCell.xib */; };
+		EA84FCC220E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA84FCBD20E2E241007E4487 /* AboutInstructionTableViewCell.xib */; };
+		EA84FCC320E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA84FCBD20E2E241007E4487 /* AboutInstructionTableViewCell.xib */; };
+		EA8C64A120D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */; };
+		EA8C64A220D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */; };
+		EA8C64A320D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */; };
+		EA8C64A520D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */; };
+		EA8C64A620D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */; };
+		EA8C64A720D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */; };
+		EA97D95620E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97D95420E1728E00BE4C60 /* ExerciseHistoryViewController.swift */; };
+		EA97D95720E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97D95420E1728E00BE4C60 /* ExerciseHistoryViewController.swift */; };
+		EA97D95820E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97D95420E1728E00BE4C60 /* ExerciseHistoryViewController.swift */; };
+		EA97D95E20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97D95C20E1733000BE4C60 /* ExerciseProgressViewController.swift */; };
+		EA97D95F20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97D95C20E1733000BE4C60 /* ExerciseProgressViewController.swift */; };
+		EA97D96020E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97D95C20E1733000BE4C60 /* ExerciseProgressViewController.swift */; };
+		EA99105920D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
+		EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
+		EA99105B20D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
+		EAABE9E320CB05EF0024B222 /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABE9E120CB05EF0024B222 /* TodayCollectionViewCell.swift */; };
+		EAABE9E620CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAABE9E220CB05EF0024B222 /* TodayCollectionViewCell.xib */; };
+		EAABE9E720CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAABE9E220CB05EF0024B222 /* TodayCollectionViewCell.xib */; };
+		EAABE9E820CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAABE9E220CB05EF0024B222 /* TodayCollectionViewCell.xib */; };
+		EAABE9EA20CB16EC0024B222 /* RoutineDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABE9E920CB16EC0024B222 /* RoutineDetailsTableViewController.swift */; };
+		EAABE9F620CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABE9F520CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift */; };
+		EAABEA3E20D032F30024B222 /* TrackingSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */; };
+		EAABEA3F20D032F30024B222 /* TrackingSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */; };
+		EAABEA4020D032F30024B222 /* TrackingSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */; };
+		EAABEA4120D032F30024B222 /* TrackingSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAABEA3D20D032F30024B222 /* TrackingSViewController.xib */; };
+		EAABEA4220D032F30024B222 /* TrackingSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAABEA3D20D032F30024B222 /* TrackingSViewController.xib */; };
+		EAABEA4320D032F30024B222 /* TrackingSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAABEA3D20D032F30024B222 /* TrackingSViewController.xib */; };
+		EAB0A70320C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB0A70220C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift */; };
+		EAB3B0B620C73B4A0077503F /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3B0B520C73B4A0077503F /* RoutineCollectionViewCell.swift */; };
+		EAC0DD4520D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4420D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift */; };
+		EAC0DD4E20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
+		EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
+		EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
+		EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA3090FB20C6DA4300E09DDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA3090DB20C6DA3F00E09DDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA3090E220C6DA4000E09DDF;
+			remoteInfo = FitfiApp;
+		};
+		EA30910620C6DA4300E09DDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA3090DB20C6DA3F00E09DDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA3090E220C6DA4000E09DDF;
+			remoteInfo = FitfiApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EA3090E320C6DA4000E09DDF /* FitfiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitfiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA3090E620C6DA4000E09DDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EA3090E820C6DA4000E09DDF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EA3090EB20C6DA4000E09DDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EA3090EE20C6DA4000E09DDF /* FitfiApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitfiApp.xcdatamodel; sourceTree = "<group>"; };
+		EA3090F020C6DA4300E09DDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EA3090F320C6DA4300E09DDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EA3090F520C6DA4300E09DDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA3090FA20C6DA4300E09DDF /* FitfiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitfiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA3090FE20C6DA4300E09DDF /* FitfiAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitfiAppTests.swift; sourceTree = "<group>"; };
+		EA30910020C6DA4300E09DDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA30910520C6DA4300E09DDF /* FitfiAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitfiAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA30910920C6DA4300E09DDF /* FitfiAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitfiAppUITests.swift; sourceTree = "<group>"; };
+		EA30910B20C6DA4300E09DDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA30911720C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorkoutCollectionViewCell.swift; sourceTree = "<group>"; };
+		EA30911B20C7199D00E09DDF /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewCell.swift; sourceTree = "<group>"; };
+		EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutImageTableViewCell.swift; sourceTree = "<group>"; };
+		EA84FCAD20E2DB05007E4487 /* AboutImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutImageTableViewCell.xib; sourceTree = "<group>"; };
+		EA84FCBC20E2E241007E4487 /* AboutInstructionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutInstructionTableViewCell.swift; sourceTree = "<group>"; };
+		EA84FCBD20E2E241007E4487 /* AboutInstructionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutInstructionTableViewCell.xib; sourceTree = "<group>"; };
+		EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewController.swift; sourceTree = "<group>"; };
+		EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
+		EA97D95420E1728E00BE4C60 /* ExerciseHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistoryViewController.swift; sourceTree = "<group>"; };
+		EA97D95C20E1733000BE4C60 /* ExerciseProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseProgressViewController.swift; sourceTree = "<group>"; };
+		EA99105820D85DA4003D6D6E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		EAABE9E120CB05EF0024B222 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
+		EAABE9E220CB05EF0024B222 /* TodayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayCollectionViewCell.xib; sourceTree = "<group>"; };
+		EAABE9E920CB16EC0024B222 /* RoutineDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineDetailsTableViewController.swift; sourceTree = "<group>"; };
+		EAABE9F520CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllRoutinesTableViewCell.swift; sourceTree = "<group>"; };
+		EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSViewController.swift; sourceTree = "<group>"; };
+		EAABEA3D20D032F30024B222 /* TrackingSViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingSViewController.xib; sourceTree = "<group>"; };
+		EAB0A70220C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorkoutDetailsTableViewController.swift; sourceTree = "<group>"; };
+		EAB3B0B520C73B4A0077503F /* RoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCollectionViewCell.swift; sourceTree = "<group>"; };
+		EAC0DD4420D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllExercisesTableViewCell.swift; sourceTree = "<group>"; };
+		EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewController.swift; sourceTree = "<group>"; };
+		EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA3090E020C6DA4000E09DDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA3090F720C6DA4300E09DDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA30910220C6DA4300E09DDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EA0706FF20E1D9CB004866C5 /* ExerciseDetailsTab */ = {
+			isa = PBXGroup;
+			children = (
+				EA84FCA320E2A4E0007E4487 /* About */,
+				EA97D95420E1728E00BE4C60 /* ExerciseHistoryViewController.swift */,
+				EA97D95C20E1733000BE4C60 /* ExerciseProgressViewController.swift */,
+			);
+			path = ExerciseDetailsTab;
+			sourceTree = "<group>";
+		};
+		EA3008C320D1ACFD001E7743 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EA3090E820C6DA4000E09DDF /* HomeViewController.swift */,
+				EAB0A70220C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift */,
+				EA30911720C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift */,
+				EAABE9E120CB05EF0024B222 /* TodayCollectionViewCell.swift */,
+				EAABE9E220CB05EF0024B222 /* TodayCollectionViewCell.xib */,
+				EAABE9F520CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift */,
+				EAB3B0B520C73B4A0077503F /* RoutineCollectionViewCell.swift */,
+				EAC0DD4420D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EA3008C420D1ADAA001E7743 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */,
+				EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */,
+				EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */,
+				EA0706FF20E1D9CB004866C5 /* ExerciseDetailsTab */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		EA3090DA20C6DA3F00E09DDF = {
+			isa = PBXGroup;
+			children = (
+				EA3090E520C6DA4000E09DDF /* FitfiApp */,
+				EA3090FD20C6DA4300E09DDF /* FitfiAppTests */,
+				EA30910820C6DA4300E09DDF /* FitfiAppUITests */,
+				EA3090E420C6DA4000E09DDF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EA3090E420C6DA4000E09DDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA3090E320C6DA4000E09DDF /* FitfiApp.app */,
+				EA3090FA20C6DA4300E09DDF /* FitfiAppTests.xctest */,
+				EA30910520C6DA4300E09DDF /* FitfiAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA3090E520C6DA4000E09DDF /* FitfiApp */ = {
+			isa = PBXGroup;
+			children = (
+				EA3090E620C6DA4000E09DDF /* AppDelegate.swift */,
+				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
+				EA99105820D85DA4003D6D6E /* TabBarViewController.swift */,
+				EA30911B20C7199D00E09DDF /* Data.swift */,
+				EA3008C320D1ACFD001E7743 /* Home */,
+				EAC0DD4820D3106500AC7A1E /* Routine */,
+				EA3008C420D1ADAA001E7743 /* Exercise */,
+				EAC0DD5120D4045300AC7A1E /* Tracking */,
+				EA3090F020C6DA4300E09DDF /* Assets.xcassets */,
+				EA3090F220C6DA4300E09DDF /* LaunchScreen.storyboard */,
+				EA3090F520C6DA4300E09DDF /* Info.plist */,
+				EA3090ED20C6DA4000E09DDF /* FitfiApp.xcdatamodeld */,
+			);
+			path = FitfiApp;
+			sourceTree = "<group>";
+		};
+		EA3090FD20C6DA4300E09DDF /* FitfiAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA3090FE20C6DA4300E09DDF /* FitfiAppTests.swift */,
+				EA30910020C6DA4300E09DDF /* Info.plist */,
+			);
+			path = FitfiAppTests;
+			sourceTree = "<group>";
+		};
+		EA30910820C6DA4300E09DDF /* FitfiAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EA30910920C6DA4300E09DDF /* FitfiAppUITests.swift */,
+				EA30910B20C6DA4300E09DDF /* Info.plist */,
+			);
+			path = FitfiAppUITests;
+			sourceTree = "<group>";
+		};
+		EA84FCA320E2A4E0007E4487 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */,
+				EA84FCAD20E2DB05007E4487 /* AboutImageTableViewCell.xib */,
+				EA84FCBC20E2E241007E4487 /* AboutInstructionTableViewCell.swift */,
+				EA84FCBD20E2E241007E4487 /* AboutInstructionTableViewCell.xib */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		EAC0DD4820D3106500AC7A1E /* Routine */ = {
+			isa = PBXGroup;
+			children = (
+				EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */,
+				EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */,
+				EAABE9E920CB16EC0024B222 /* RoutineDetailsTableViewController.swift */,
+			);
+			path = Routine;
+			sourceTree = "<group>";
+		};
+		EAC0DD5120D4045300AC7A1E /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */,
+				EAABEA3D20D032F30024B222 /* TrackingSViewController.xib */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA3090E220C6DA4000E09DDF /* FitfiApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA30910E20C6DA4300E09DDF /* Build configuration list for PBXNativeTarget "FitfiApp" */;
+			buildPhases = (
+				EA3090DF20C6DA4000E09DDF /* Sources */,
+				EA3090E020C6DA4000E09DDF /* Frameworks */,
+				EA3090E120C6DA4000E09DDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FitfiApp;
+			productName = FitfiApp;
+			productReference = EA3090E320C6DA4000E09DDF /* FitfiApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EA3090F920C6DA4300E09DDF /* FitfiAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA30911120C6DA4300E09DDF /* Build configuration list for PBXNativeTarget "FitfiAppTests" */;
+			buildPhases = (
+				EA3090F620C6DA4300E09DDF /* Sources */,
+				EA3090F720C6DA4300E09DDF /* Frameworks */,
+				EA3090F820C6DA4300E09DDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA3090FC20C6DA4300E09DDF /* PBXTargetDependency */,
+			);
+			name = FitfiAppTests;
+			productName = FitfiAppTests;
+			productReference = EA3090FA20C6DA4300E09DDF /* FitfiAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EA30910420C6DA4300E09DDF /* FitfiAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA30911420C6DA4300E09DDF /* Build configuration list for PBXNativeTarget "FitfiAppUITests" */;
+			buildPhases = (
+				EA30910120C6DA4300E09DDF /* Sources */,
+				EA30910220C6DA4300E09DDF /* Frameworks */,
+				EA30910320C6DA4300E09DDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA30910720C6DA4300E09DDF /* PBXTargetDependency */,
+			);
+			name = FitfiAppUITests;
+			productName = FitfiAppUITests;
+			productReference = EA30910520C6DA4300E09DDF /* FitfiAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA3090DB20C6DA3F00E09DDF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = Fitfi;
+				TargetAttributes = {
+					EA3090E220C6DA4000E09DDF = {
+						CreatedOnToolsVersion = 9.4;
+					};
+					EA3090F920C6DA4300E09DDF = {
+						CreatedOnToolsVersion = 9.4;
+						TestTargetID = EA3090E220C6DA4000E09DDF;
+					};
+					EA30910420C6DA4300E09DDF = {
+						CreatedOnToolsVersion = 9.4;
+						TestTargetID = EA3090E220C6DA4000E09DDF;
+					};
+				};
+			};
+			buildConfigurationList = EA3090DE20C6DA3F00E09DDF /* Build configuration list for PBXProject "FitfiApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EA3090DA20C6DA3F00E09DDF;
+			productRefGroup = EA3090E420C6DA4000E09DDF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA3090E220C6DA4000E09DDF /* FitfiApp */,
+				EA3090F920C6DA4300E09DDF /* FitfiAppTests */,
+				EA30910420C6DA4300E09DDF /* FitfiAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA3090E120C6DA4000E09DDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA84FCC120E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
+				EAABE9E620CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
+				EAABEA4120D032F30024B222 /* TrackingSViewController.xib in Resources */,
+				EA3090F420C6DA4300E09DDF /* LaunchScreen.storyboard in Resources */,
+				EA3090F120C6DA4300E09DDF /* Assets.xcassets in Resources */,
+				EA3090EC20C6DA4000E09DDF /* Main.storyboard in Resources */,
+				EA84FCB120E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA3090F820C6DA4300E09DDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAABE9E720CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
+				EAABEA4220D032F30024B222 /* TrackingSViewController.xib in Resources */,
+				EA84FCC220E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
+				EA84FCB220E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA30910320C6DA4300E09DDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAABE9E820CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
+				EAABEA4320D032F30024B222 /* TrackingSViewController.xib in Resources */,
+				EA84FCC320E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
+				EA84FCB320E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA3090DF20C6DA4000E09DDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAABEA3E20D032F30024B222 /* TrackingSViewController.swift in Sources */,
+				EAB0A70320C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift in Sources */,
+				EA97D95620E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
+				EAB3B0B620C73B4A0077503F /* RoutineCollectionViewCell.swift in Sources */,
+				EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */,
+				EA97D95E20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
+				EA99105920D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
+				EA3090EF20C6DA4000E09DDF /* FitfiApp.xcdatamodeld in Sources */,
+				EAABE9EA20CB16EC0024B222 /* RoutineDetailsTableViewController.swift in Sources */,
+				EA61DE7920C8913300075FCE /* RoutinesTableViewCell.swift in Sources */,
+				EA84FCAE20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
+				EAC0DD4520D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift in Sources */,
+				EA8C64A520D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
+				EAABE9E320CB05EF0024B222 /* TodayCollectionViewCell.swift in Sources */,
+				EA30911C20C7199D00E09DDF /* Data.swift in Sources */,
+				EA8C64A120D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
+				EAC0DD4E20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
+				EAABE9F620CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift in Sources */,
+				EA84FCBE20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
+				EA3090E920C6DA4000E09DDF /* HomeViewController.swift in Sources */,
+				EA3090E720C6DA4000E09DDF /* AppDelegate.swift in Sources */,
+				EA30911820C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA3090F620C6DA4300E09DDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA8C64A620D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
+				EA3090FF20C6DA4300E09DDF /* FitfiAppTests.swift in Sources */,
+				EA97D95F20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
+				EAABEA3F20D032F30024B222 /* TrackingSViewController.swift in Sources */,
+				EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
+				EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
+				EA84FCBF20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
+				EA8C64A220D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
+				EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
+				EA30911D20C7199D00E09DDF /* Data.swift in Sources */,
+				EA97D95720E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
+				EA30911920C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA30910120C6DA4300E09DDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA8C64A720D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
+				EA30910A20C6DA4300E09DDF /* FitfiAppUITests.swift in Sources */,
+				EA97D96020E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
+				EAABEA4020D032F30024B222 /* TrackingSViewController.swift in Sources */,
+				EA99105B20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
+				EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
+				EA84FCC020E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
+				EA8C64A320D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
+				EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
+				EA30911E20C7199D00E09DDF /* Data.swift in Sources */,
+				EA97D95820E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
+				EA30911A20C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA3090FC20C6DA4300E09DDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA3090E220C6DA4000E09DDF /* FitfiApp */;
+			targetProxy = EA3090FB20C6DA4300E09DDF /* PBXContainerItemProxy */;
+		};
+		EA30910720C6DA4300E09DDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA3090E220C6DA4000E09DDF /* FitfiApp */;
+			targetProxy = EA30910620C6DA4300E09DDF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EA3090EA20C6DA4000E09DDF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA3090EB20C6DA4000E09DDF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EA3090F220C6DA4300E09DDF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA3090F320C6DA4300E09DDF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EA30910C20C6DA4300E09DDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EA30910D20C6DA4300E09DDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EA30910F20C6DA4300E09DDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W238KMYFQL;
+				INFOPLIST_FILE = FitfiApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		EA30911020C6DA4300E09DDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W238KMYFQL;
+				INFOPLIST_FILE = FitfiApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		EA30911220C6DA4300E09DDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W238KMYFQL;
+				INFOPLIST_FILE = FitfiAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitfiApp.app/FitfiApp";
+			};
+			name = Debug;
+		};
+		EA30911320C6DA4300E09DDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W238KMYFQL;
+				INFOPLIST_FILE = FitfiAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitfiApp.app/FitfiApp";
+			};
+			name = Release;
+		};
+		EA30911520C6DA4300E09DDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W238KMYFQL;
+				INFOPLIST_FILE = FitfiAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FitfiApp;
+			};
+			name = Debug;
+		};
+		EA30911620C6DA4300E09DDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W238KMYFQL;
+				INFOPLIST_FILE = FitfiAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FitfiApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA3090DE20C6DA3F00E09DDF /* Build configuration list for PBXProject "FitfiApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA30910C20C6DA4300E09DDF /* Debug */,
+				EA30910D20C6DA4300E09DDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA30910E20C6DA4300E09DDF /* Build configuration list for PBXNativeTarget "FitfiApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA30910F20C6DA4300E09DDF /* Debug */,
+				EA30911020C6DA4300E09DDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA30911120C6DA4300E09DDF /* Build configuration list for PBXNativeTarget "FitfiAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA30911220C6DA4300E09DDF /* Debug */,
+				EA30911320C6DA4300E09DDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA30911420C6DA4300E09DDF /* Build configuration list for PBXNativeTarget "FitfiAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA30911520C6DA4300E09DDF /* Debug */,
+				EA30911620C6DA4300E09DDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EA3090ED20C6DA4000E09DDF /* FitfiApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EA3090EE20C6DA4000E09DDF /* FitfiApp.xcdatamodel */,
+			);
+			currentVersion = EA3090EE20C6DA4000E09DDF /* FitfiApp.xcdatamodel */;
+			path = FitfiApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EA3090DB20C6DA3F00E09DDF /* Project object */;
+}
