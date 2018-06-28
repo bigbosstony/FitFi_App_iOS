@@ -27,11 +27,13 @@ class RoutinesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    //TODO:
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
+    //TODO:
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 20
@@ -49,7 +51,23 @@ class RoutinesTableViewController: UITableViewController {
         performSegue(withIdentifier: "goToRoutineDetailsTableview", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    //Section Title
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
+    }
 
+    //Header view
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont.systemFont(ofSize: 19, weight: .semibold)
+    }
+    
+    //Height for Header
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 56
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

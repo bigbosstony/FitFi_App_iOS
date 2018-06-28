@@ -109,9 +109,9 @@ extension ExerciseDetailsViewController: UITableViewDelegate, UITableViewDataSou
         if tableView == aboutTableView {
             if indexPath.row == 0 {
                 let cell = Bundle.main.loadNibNamed("AboutImageTableViewCell", owner: self, options: nil)?.first as! AboutImageTableViewCell
-                if let image = selectedExercise?.image {
-                    cell.imageView1.image = UIImage(imageLiteralResourceName: image)
-                }
+//                if let image = selectedExercise?.image {
+//                    cell.imageView1.image = UIImage(imageLiteralResourceName: image)
+//                }
                 return cell
             }
             else {

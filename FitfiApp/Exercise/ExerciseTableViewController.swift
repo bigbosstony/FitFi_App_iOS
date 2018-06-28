@@ -8,18 +8,25 @@
 
 
 import UIKit
-//  For Core Data: Add Entity and Attribute to .xcdatamodeld file, import CoreData
 import CoreData
 
+//  For Core Data: Add Entity and Attribute to .xcdatamodeld file, import CoreData
+import RealmSwift
+
 class ExerciseTableViewController: UITableViewController {
+    
+    let realm = try! Realm()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     
+    
     var exerciseList = [[Exercise]]()
     let searchController = UISearchController(searchResultsController: nil)
 
+    var tn = [Exercise]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(dataFilePath)
@@ -101,12 +108,21 @@ class ExerciseTableViewController: UITableViewController {
     }
     
     //MARK: Data Manipulation Methods
+    func saveExercises() {
+        do {
+            try context.save()
+        } catch {
+            print("\(error)")
+        }
+        tableView.reloadData()
+    }
+    
     func loadExercises() {
         let allExercisesRequest: NSFetchRequest<Exercise> = Exercise.fetchRequest()
         let favoriteExercisesRequest: NSFetchRequest<Exercise> = Exercise.fetchRequest()
         let favoriteExercisesPredicate = NSPredicate(format: "favorite == YES")
         favoriteExercisesRequest.predicate = favoriteExercisesPredicate
-        
+
         do {
             exerciseList = [try context.fetch(favoriteExercisesRequest)]
             exerciseList.append(try context.fetch(allExercisesRequest))
@@ -116,51 +132,33 @@ class ExerciseTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    // ◣◥◣◥◣◥◣◥◣◥◣◥◣◥ Add Action ◣◥◣◥◣◥◣◥◣◥◣◥◣◥◣◥ \\
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        var textField = UITextField()
+
+        let alert = UIAlertController(title: "Add New Exercise", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+
+            let newExercise = Exercise()
+            newExercise.name = textField.text
+            newExercise.favorite = false
+            newExercise.image = nil
+
+            self.saveExercises()
+            self.loadExercises()
+        }
+
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create New Exercise"
+            textField = alertTextField
+        }
+
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+
+}
+
+extension ExerciseTableViewController {
     
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -110,7 +110,7 @@ extension TrackingSViewController: CBCentralManagerDelegate {
     
     //MARK: Did Disconnect Peripheral
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        view.isHidden = true
+        view.isHidden = false
         print("disconnected")
         smallViewCounterTappedToClear()
         
@@ -279,80 +279,5 @@ extension TrackingSViewController {
         accelerometerYArray.removeAll()
         accelerometerZArray.removeAll()
     }
-//        if accelerometerDataArray.count > 100 {
-//            accelerometerDataArray.removeAll()
-//        }
-//        if xyzData[0] != 0 {
-//            accelerometerDataArray.append(xyzData)
-//            print(accelerometerDataArray)
-            
-//            max = accelerometerDataArray.map({ $0[2]}).max()!
-//            min = accelerometerDataArray.map({ $0[2]}).min()!
-            
-//            if max - min > 1000 {
-//                accelerometerDataArray.removeAll()
-////                print(accelerometerDataArray)
-//                counter += 1
-//                if counter >= 3 {
-//                    counter = 0
-//                    repsCounter += 1
-//                    mainCounter.text = String(repsCounter)
-//                }
-//
-////                print(max, min)
-//            }
-//        }
-        
-        //        let indexOfMax = accelerometerDataArray.indices.filter{ accelerometerDataArray[$0][0] == max }
-        
-        
-//        print(xArray)
-//        print(accelerometerDataArray)
 
-    
-    
-    // Z Array
-    //            if accelerometerArray.count > 0 {
-    //                print("Z Array: \(accelerometerZArray)")
-    // ➢➢➢➢➢
-    //                let indexOfMinValue = accelerometerZArray.index(of: accelerometerZArray.min()!)
-    //                let indexOfMaxValue = accelerometerZArray.index(of: accelerometerZArray.max()!)
-    //                let firstHalfCos = accelerometerZArray[..<indexOfMinValue!], secondHalfCos = accelerometerZArray[(indexOfMinValue! + 1)...]
-    //                let firstHalfSin = accelerometerZArray[..<indexOfMaxValue!], secondHalfSin = accelerometerZArray[(indexOfMaxValue! + 1)...]
-    
-    // ➢➢➢➢➢ Checking Z Cos Value
-    //                if firstHalfCos.count > 5 && secondHalfCos.count > 5 {
-    //                    // For Biceps
-    //                    let firstHalfMax = firstHalfCos.max(), secondHalfMax = secondHalfCos.max(), minimalInArray = accelerometerZArray[indexOfMinValue!]
-    //                    let differenceCos = (firstHalfMax! + secondHalfMax!) / 2 - minimalInArray
-    //                    let dividedCos = (firstHalfMax! + minimalInArray) / (secondHalfMax! + minimalInArray)
-    //
-    //                    // Matching Z Value
-    //                    if 1 ... 2 ~= dividedCos && differenceCos > 1200 {
-    //                        print("Min Value Index: \(String(describing: indexOfMinValue))" + "\(accelerometerZArray[indexOfMinValue!])")
-    //                        updateTrackingExercise(with: "Biceps")
-    //                        accelerometerZArray.removeAll()
-    //
-    //                    } else { print("Find no action") }
-    //                }
-    
-    //  ➢➢➢➢➢ Checking Z Sin Value
-    //                else if firstHalfSin.count > 5 && secondHalfSin.count > 5 {
-    //                    // For Front Raise
-    //                    let firstHalfMinimal = firstHalfSin.min(), secondHalfMinimal = secondHalfSin.min(), maxInArray = accelerometerZArray[indexOfMaxValue!]
-    //                    let differenceSin = maxInArray - (firstHalfMinimal! + secondHalfMinimal!) / 2
-    //                    let dividedSin = (firstHalfMinimal! + maxInArray) / (secondHalfMinimal! + maxInArray)
-    //
-    //                    if 1 ... 2 ~= dividedSin && differenceSin > 700 {
-    //
-    //                        updateTrackingExercise(with: "Front Raise")
-    //                        accelerometerZArray.removeAll()
-    //                    }
-    //                }
-    
-    //                else { print("Nothing")}
-    
-    //            } else if accelerometerArray.count > 200 {
-    //                accelerometerArray.removeAll()
-    //            }
 }

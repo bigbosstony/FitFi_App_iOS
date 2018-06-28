@@ -12,7 +12,8 @@ let workout = ["LEG AND GLUTES", "AFTERNOON WORKOUT", "BACK"]
 
 //let workout = [String]()
 
-let sections = ["Favorite", "All"]
+let sections = ["Favorite", "Discover"]
+
 
 let items = [
     [

@@ -23,7 +23,7 @@ class TabBarViewController: UITabBarController {
         trackingVC = TrackingSViewController.init(nibName: "TrackingSViewController", bundle: nil)
         trackingVC.view.frame = CGRect(x: 0, y: 497.5, width: 375, height: 120)
         view.addSubview(trackingVC.view!)
-        trackingVC.view.isHidden = true
+        trackingVC.view.isHidden = false
         
         // Do any additional setup after loading the view.
 //        window = UIApplication.shared.keyWindow!

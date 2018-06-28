@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0870EBECF6BAD5025D92631F /* Pods_FitfiApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0B6B476A06215E802BC885 /* Pods_FitfiApp.framework */; };
+		1A5AB8F4F111A992A7420387 /* Pods_FitfiAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D59CA11B7464E4FB1D87E7 /* Pods_FitfiAppTests.framework */; };
+		A1A8F3156B63F363C32DE17D /* Pods_FitfiAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABEDEACA1BCF5FDD757C7D1 /* Pods_FitfiAppUITests.framework */; };
 		EA3090E720C6DA4000E09DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090E620C6DA4000E09DDF /* AppDelegate.swift */; };
 		EA3090E920C6DA4000E09DDF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090E820C6DA4000E09DDF /* HomeViewController.swift */; };
 		EA3090EC20C6DA4000E09DDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3090EA20C6DA4000E09DDF /* Main.storyboard */; };
-		EA3090EF20C6DA4000E09DDF /* FitfiApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA3090ED20C6DA4000E09DDF /* FitfiApp.xcdatamodeld */; };
 		EA3090F120C6DA4300E09DDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA3090F020C6DA4300E09DDF /* Assets.xcassets */; };
 		EA3090F420C6DA4300E09DDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3090F220C6DA4300E09DDF /* LaunchScreen.storyboard */; };
 		EA3090FF20C6DA4300E09DDF /* FitfiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090FE20C6DA4300E09DDF /* FitfiAppTests.swift */; };
@@ -22,6 +24,34 @@
 		EA30911D20C7199D00E09DDF /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30911B20C7199D00E09DDF /* Data.swift */; };
 		EA30911E20C7199D00E09DDF /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30911B20C7199D00E09DDF /* Data.swift */; };
 		EA61DE7920C8913300075FCE /* RoutinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */; };
+		EA77603020E4357C0052774F /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA77602F20E4357C0052774F /* RealmData.swift */; };
+		EA77603620E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */; };
+		EA77603720E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */; };
+		EA77603820E43CA80052774F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090E620C6DA4000E09DDF /* AppDelegate.swift */; };
+		EA77603920E43CA90052774F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090E620C6DA4000E09DDF /* AppDelegate.swift */; };
+		EA77603A20E43CAC0052774F /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA77602F20E4357C0052774F /* RealmData.swift */; };
+		EA77603B20E43CAD0052774F /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA77602F20E4357C0052774F /* RealmData.swift */; };
+		EA77603C20E43CBE0052774F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090E820C6DA4000E09DDF /* HomeViewController.swift */; };
+		EA77603D20E43CBF0052774F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090E820C6DA4000E09DDF /* HomeViewController.swift */; };
+		EA77603E20E43CC20052774F /* RecentWorkoutDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB0A70220C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift */; };
+		EA77603F20E43CC30052774F /* RecentWorkoutDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB0A70220C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift */; };
+		EA77604020E43D1F0052774F /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABE9E120CB05EF0024B222 /* TodayCollectionViewCell.swift */; };
+		EA77604120E43D1F0052774F /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABE9E120CB05EF0024B222 /* TodayCollectionViewCell.swift */; };
+		EA77604220E43D250052774F /* ShowAllRoutinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABE9F520CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift */; };
+		EA77604320E43D260052774F /* ShowAllRoutinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABE9F520CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift */; };
+		EA77604420E43D280052774F /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3B0B520C73B4A0077503F /* RoutineCollectionViewCell.swift */; };
+		EA77604520E43D290052774F /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3B0B520C73B4A0077503F /* RoutineCollectionViewCell.swift */; };
+		EA77604620E43D2D0052774F /* ShowAllExercisesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4420D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift */; };
+		EA77604720E43D2E0052774F /* ShowAllExercisesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4420D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift */; };
+		EA77604820E43D320052774F /* RoutinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */; };
+		EA77604920E43D330052774F /* RoutinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */; };
+		EA77604A20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABE9E920CB16EC0024B222 /* RoutineDetailsTableViewController.swift */; };
+		EA77604B20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABE9E920CB16EC0024B222 /* RoutineDetailsTableViewController.swift */; };
+		EA77604E20E4498A0052774F /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA77604C20E4498A0052774F /* Data.xcdatamodeld */; };
+		EA77604F20E4498A0052774F /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA77604C20E4498A0052774F /* Data.xcdatamodeld */; };
+		EA77605020E4498A0052774F /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA77604C20E4498A0052774F /* Data.xcdatamodeld */; };
+		EA77605120E450B10052774F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3090EA20C6DA4000E09DDF /* Main.storyboard */; };
+		EA77605220E450B20052774F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3090EA20C6DA4000E09DDF /* Main.storyboard */; };
 		EA84FCAE20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
 		EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
 		EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
@@ -88,11 +118,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C75D6B3290CE355717421F1 /* Pods-FitfiApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitfiApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp.debug.xcconfig"; sourceTree = "<group>"; };
+		1EDF95080968543494831C23 /* Pods-FitfiAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitfiAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		311122BBEBFC2096788E75AC /* Pods-FitfiAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitfiAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		64D59CA11B7464E4FB1D87E7 /* Pods_FitfiAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitfiAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ABEDEACA1BCF5FDD757C7D1 /* Pods_FitfiAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitfiAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83342D9E268E7A45D91AACB3 /* Pods-FitfiApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitfiApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp.release.xcconfig"; sourceTree = "<group>"; };
+		BF0B6B476A06215E802BC885 /* Pods_FitfiApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitfiApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC618C8D97E112A720E6B778 /* Pods-FitfiAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitfiAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1D32F56D53B1B595E7925EE /* Pods-FitfiAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitfiAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EA3090E320C6DA4000E09DDF /* FitfiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitfiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3090E620C6DA4000E09DDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA3090E820C6DA4000E09DDF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EA3090EB20C6DA4000E09DDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EA3090EE20C6DA4000E09DDF /* FitfiApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitfiApp.xcdatamodel; sourceTree = "<group>"; };
 		EA3090F020C6DA4300E09DDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA3090F320C6DA4300E09DDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA3090F520C6DA4300E09DDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,6 +143,8 @@
 		EA30911720C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorkoutCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA30911B20C7199D00E09DDF /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewCell.swift; sourceTree = "<group>"; };
+		EA77602F20E4357C0052774F /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
+		EA77604D20E4498A0052774F /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
 		EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutImageTableViewCell.swift; sourceTree = "<group>"; };
 		EA84FCAD20E2DB05007E4487 /* AboutImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutImageTableViewCell.xib; sourceTree = "<group>"; };
 		EA84FCBC20E2E241007E4487 /* AboutInstructionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutInstructionTableViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0870EBECF6BAD5025D92631F /* Pods_FitfiApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A5AB8F4F111A992A7420387 /* Pods_FitfiAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,12 +188,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1A8F3156B63F363C32DE17D /* Pods_FitfiAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30A57B781C9F29259FE53A34 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0C75D6B3290CE355717421F1 /* Pods-FitfiApp.debug.xcconfig */,
+				83342D9E268E7A45D91AACB3 /* Pods-FitfiApp.release.xcconfig */,
+				311122BBEBFC2096788E75AC /* Pods-FitfiAppTests.debug.xcconfig */,
+				1EDF95080968543494831C23 /* Pods-FitfiAppTests.release.xcconfig */,
+				DC618C8D97E112A720E6B778 /* Pods-FitfiAppUITests.debug.xcconfig */,
+				E1D32F56D53B1B595E7925EE /* Pods-FitfiAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		626CFB44802E07D10B063B1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF0B6B476A06215E802BC885 /* Pods_FitfiApp.framework */,
+				64D59CA11B7464E4FB1D87E7 /* Pods_FitfiAppTests.framework */,
+				6ABEDEACA1BCF5FDD757C7D1 /* Pods_FitfiAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EA0706FF20E1D9CB004866C5 /* ExerciseDetailsTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +261,8 @@
 				EA3090FD20C6DA4300E09DDF /* FitfiAppTests */,
 				EA30910820C6DA4300E09DDF /* FitfiAppUITests */,
 				EA3090E420C6DA4000E09DDF /* Products */,
+				30A57B781C9F29259FE53A34 /* Pods */,
+				626CFB44802E07D10B063B1A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,17 +280,18 @@
 			isa = PBXGroup;
 			children = (
 				EA3090E620C6DA4000E09DDF /* AppDelegate.swift */,
+				EA77602F20E4357C0052774F /* RealmData.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
 				EA99105820D85DA4003D6D6E /* TabBarViewController.swift */,
 				EA30911B20C7199D00E09DDF /* Data.swift */,
+				EAC0DD5120D4045300AC7A1E /* Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
 				EAC0DD4820D3106500AC7A1E /* Routine */,
 				EA3008C420D1ADAA001E7743 /* Exercise */,
-				EAC0DD5120D4045300AC7A1E /* Tracking */,
+				EA77603120E436EE0052774F /* Data Module */,
 				EA3090F020C6DA4300E09DDF /* Assets.xcassets */,
 				EA3090F220C6DA4300E09DDF /* LaunchScreen.storyboard */,
 				EA3090F520C6DA4300E09DDF /* Info.plist */,
-				EA3090ED20C6DA4000E09DDF /* FitfiApp.xcdatamodeld */,
 			);
 			path = FitfiApp;
 			sourceTree = "<group>";
@@ -243,6 +312,14 @@
 				EA30910B20C6DA4300E09DDF /* Info.plist */,
 			);
 			path = FitfiAppUITests;
+			sourceTree = "<group>";
+		};
+		EA77603120E436EE0052774F /* Data Module */ = {
+			isa = PBXGroup;
+			children = (
+				EA77604C20E4498A0052774F /* Data.xcdatamodeld */,
+			);
+			path = "Data Module";
 			sourceTree = "<group>";
 		};
 		EA84FCA320E2A4E0007E4487 /* About */ = {
@@ -282,9 +359,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA30910E20C6DA4300E09DDF /* Build configuration list for PBXNativeTarget "FitfiApp" */;
 			buildPhases = (
+				D51D5B9312FC9CDBC22FA99A /* [CP] Check Pods Manifest.lock */,
 				EA3090DF20C6DA4000E09DDF /* Sources */,
 				EA3090E020C6DA4000E09DDF /* Frameworks */,
 				EA3090E120C6DA4000E09DDF /* Resources */,
+				76F379204572D64C93AFEC75 /* [CP] Embed Pods Frameworks */,
+				D396AFDE169CA20E2AAEDE4A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -299,9 +379,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA30911120C6DA4300E09DDF /* Build configuration list for PBXNativeTarget "FitfiAppTests" */;
 			buildPhases = (
+				738843B12BDA48AD21D21D96 /* [CP] Check Pods Manifest.lock */,
 				EA3090F620C6DA4300E09DDF /* Sources */,
 				EA3090F720C6DA4300E09DDF /* Frameworks */,
 				EA3090F820C6DA4300E09DDF /* Resources */,
+				2540082263FC16880BBF52DE /* [CP] Embed Pods Frameworks */,
+				B9DE31E284406936DBF20B91 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -317,9 +400,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA30911420C6DA4300E09DDF /* Build configuration list for PBXNativeTarget "FitfiAppUITests" */;
 			buildPhases = (
+				9551F3A102BE62D6B68D4535 /* [CP] Check Pods Manifest.lock */,
 				EA30910120C6DA4300E09DDF /* Sources */,
 				EA30910220C6DA4300E09DDF /* Frameworks */,
 				EA30910320C6DA4300E09DDF /* Resources */,
+				21464F5FEBF40A930ADE793A /* [CP] Embed Pods Frameworks */,
+				27C43E84FCDE225975C94D5A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -394,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAABE9E720CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
+				EA77605120E450B10052774F /* Main.storyboard in Resources */,
 				EAABEA4220D032F30024B222 /* TrackingSViewController.xib in Resources */,
 				EA84FCC220E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
 				EA84FCB220E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
@@ -405,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAABE9E820CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
+				EA77605220E450B20052774F /* Main.storyboard in Resources */,
 				EAABEA4320D032F30024B222 /* TrackingSViewController.xib in Resources */,
 				EA84FCC320E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
 				EA84FCB320E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
@@ -412,6 +500,158 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21464F5FEBF40A930ADE793A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2540082263FC16880BBF52DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		27C43E84FCDE225975C94D5A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		738843B12BDA48AD21D21D96 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FitfiAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76F379204572D64C93AFEC75 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9551F3A102BE62D6B68D4535 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FitfiAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9DE31E284406936DBF20B91 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D396AFDE169CA20E2AAEDE4A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D51D5B9312FC9CDBC22FA99A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FitfiApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EA3090DF20C6DA4000E09DDF /* Sources */ = {
@@ -425,7 +665,6 @@
 				EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */,
 				EA97D95E20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
 				EA99105920D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
-				EA3090EF20C6DA4000E09DDF /* FitfiApp.xcdatamodeld in Sources */,
 				EAABE9EA20CB16EC0024B222 /* RoutineDetailsTableViewController.swift in Sources */,
 				EA61DE7920C8913300075FCE /* RoutinesTableViewCell.swift in Sources */,
 				EA84FCAE20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
@@ -437,9 +676,11 @@
 				EAC0DD4E20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EAABE9F620CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift in Sources */,
 				EA84FCBE20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
+				EA77604E20E4498A0052774F /* Data.xcdatamodeld in Sources */,
 				EA3090E920C6DA4000E09DDF /* HomeViewController.swift in Sources */,
 				EA3090E720C6DA4000E09DDF /* AppDelegate.swift in Sources */,
 				EA30911820C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */,
+				EA77603020E4357C0052774F /* RealmData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,13 +690,25 @@
 			files = (
 				EA8C64A620D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
 				EA3090FF20C6DA4300E09DDF /* FitfiAppTests.swift in Sources */,
+				EA77604F20E4498A0052774F /* Data.xcdatamodeld in Sources */,
 				EA97D95F20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
+				EA77603620E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
+				EA77604020E43D1F0052774F /* TodayCollectionViewCell.swift in Sources */,
 				EAABEA3F20D032F30024B222 /* TrackingSViewController.swift in Sources */,
+				EA77604220E43D250052774F /* ShowAllRoutinesTableViewCell.swift in Sources */,
+				EA77603C20E43CBE0052774F /* HomeViewController.swift in Sources */,
+				EA77603E20E43CC20052774F /* RecentWorkoutDetailsTableViewController.swift in Sources */,
 				EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
+				EA77604820E43D320052774F /* RoutinesTableViewCell.swift in Sources */,
+				EA77604A20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
+				EA77603820E43CA80052774F /* AppDelegate.swift in Sources */,
 				EA84FCBF20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
+				EA77603A20E43CAC0052774F /* RealmData.swift in Sources */,
 				EA8C64A220D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
+				EA77604420E43D280052774F /* RoutineCollectionViewCell.swift in Sources */,
 				EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
+				EA77604620E43D2D0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA30911D20C7199D00E09DDF /* Data.swift in Sources */,
 				EA97D95720E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
 				EA30911920C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */,
@@ -468,13 +721,25 @@
 			files = (
 				EA8C64A720D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
 				EA30910A20C6DA4300E09DDF /* FitfiAppUITests.swift in Sources */,
+				EA77605020E4498A0052774F /* Data.xcdatamodeld in Sources */,
 				EA97D96020E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
+				EA77603720E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
+				EA77604120E43D1F0052774F /* TodayCollectionViewCell.swift in Sources */,
 				EAABEA4020D032F30024B222 /* TrackingSViewController.swift in Sources */,
+				EA77604320E43D260052774F /* ShowAllRoutinesTableViewCell.swift in Sources */,
+				EA77603D20E43CBF0052774F /* HomeViewController.swift in Sources */,
+				EA77603F20E43CC30052774F /* RecentWorkoutDetailsTableViewController.swift in Sources */,
 				EA99105B20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
+				EA77604920E43D330052774F /* RoutinesTableViewCell.swift in Sources */,
+				EA77604B20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
+				EA77603920E43CA90052774F /* AppDelegate.swift in Sources */,
 				EA84FCC020E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
+				EA77603B20E43CAD0052774F /* RealmData.swift in Sources */,
 				EA8C64A320D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
+				EA77604520E43D290052774F /* RoutineCollectionViewCell.swift in Sources */,
 				EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
+				EA77604720E43D2E0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA30911E20C7199D00E09DDF /* Data.swift in Sources */,
 				EA97D95820E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
 				EA30911A20C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */,
@@ -632,6 +897,7 @@
 		};
 		EA30910F20C6DA4300E09DDF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C75D6B3290CE355717421F1 /* Pods-FitfiApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -650,6 +916,7 @@
 		};
 		EA30911020C6DA4300E09DDF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83342D9E268E7A45D91AACB3 /* Pods-FitfiApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -668,6 +935,7 @@
 		};
 		EA30911220C6DA4300E09DDF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 311122BBEBFC2096788E75AC /* Pods-FitfiAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -689,6 +957,7 @@
 		};
 		EA30911320C6DA4300E09DDF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EDF95080968543494831C23 /* Pods-FitfiAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -710,6 +979,7 @@
 		};
 		EA30911520C6DA4300E09DDF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC618C8D97E112A720E6B778 /* Pods-FitfiAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -730,6 +1000,7 @@
 		};
 		EA30911620C6DA4300E09DDF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1D32F56D53B1B595E7925EE /* Pods-FitfiAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -790,13 +1061,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EA3090ED20C6DA4000E09DDF /* FitfiApp.xcdatamodeld */ = {
+		EA77604C20E4498A0052774F /* Data.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EA3090EE20C6DA4000E09DDF /* FitfiApp.xcdatamodel */,
+				EA77604D20E4498A0052774F /* Data.xcdatamodel */,
 			);
-			currentVersion = EA3090EE20C6DA4000E09DDF /* FitfiApp.xcdatamodel */;
-			path = FitfiApp.xcdatamodeld;
+			currentVersion = EA77604D20E4498A0052774F /* Data.xcdatamodel */;
+			path = Data.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
