@@ -132,13 +132,13 @@ class ExerciseTableViewController: UITableViewController {
         var textField = UITextField()
 
         let alert = UIAlertController(title: "New Exercise", message: "Add a New Exercise to your library", preferredStyle: .alert)
-       
+        
         alert.addTextField { (alertTextField) in
             textField = alertTextField
 //            print("Name: ",textField.text!)
         }
         
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Add", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The \"OK\" alert occured.")
 //            print("Name from action: ", textField.text!)
             let newExercise = Exercise(context: self.context)
