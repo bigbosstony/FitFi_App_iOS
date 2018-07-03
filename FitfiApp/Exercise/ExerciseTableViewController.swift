@@ -154,15 +154,12 @@ class ExerciseTableViewController: UITableViewController {
         
         self.present(alert, animated: true, completion: nil)
         
+        //Ignore the following
 //            let entity = NSEntityDescription.entity(forEntityName: "Exercise", in: self.context)
 //            let newExercise = NSManagedObject(entity: entity!, insertInto: self.context)
 //            newExercise.setValue(textField.text, forKey: "name")
 //            newExercise.setValue(nil, forKey: "favorite")
 //            newExercise.setValue(nil, forKey: "image")
     }
-
 }
 
-extension ExerciseTableViewController {
-    
-}
