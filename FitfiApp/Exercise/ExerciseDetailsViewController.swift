@@ -14,9 +14,7 @@ class ExerciseDetailsViewController: UIViewController {
     // Data
     @IBOutlet weak var favButton: UIBarButtonItem!
     @IBOutlet weak var viewContainer: UIView!
-    
     @IBOutlet var aboutTableView: UITableView!
-    
     var views: [UIView]!
     
     @IBOutlet var aboutView: UIView!
@@ -25,9 +23,9 @@ class ExerciseDetailsViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
+    // Get Data from Exercise Tableview VC
     var selectedExercise: Exercise? {
         didSet {
-            print("⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎")
             print(selectedExercise!)
         }
     }
@@ -37,9 +35,10 @@ class ExerciseDetailsViewController: UIViewController {
         
         aboutTableView.delegate = self
         aboutTableView.dataSource = self
-        
+        // Register Customized cell for aboutTableView
         aboutTableView.register(UINib(nibName: "AboutInstructionTableViewCell", bundle: nil), forCellReuseIdentifier: "aboutInstructionCell")
 
+        // Add three views to viewContainer
         views = [UIView]()
         
         views.append(aboutView)
@@ -49,6 +48,7 @@ class ExerciseDetailsViewController: UIViewController {
         for view in views {
             viewContainer.addSubview(view)
         }
+        // Bring the first one to front as default
         viewContainer.bringSubview(toFront: views[0])
     }
     
@@ -72,12 +72,10 @@ class ExerciseDetailsViewController: UIViewController {
     
     @IBAction func favButtonPressed(_ sender: UIBarButtonItem) {
         selectedExercise?.favorite = !(selectedExercise?.favorite)!
-        
         favButton.image = (selectedExercise?.favorite)! ? UIImage(named: "Glyphs/Favorited") : UIImage(named: "Glyphs/Favorite")
         saveExercise()
     }
     
-
     func saveExercise() {
         do {
             try context.save()
@@ -93,7 +91,7 @@ class ExerciseDetailsViewController: UIViewController {
     }
 }
 
-//TableView
+//MARK: - TableView DataSource
 extension ExerciseDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,13 +114,15 @@ extension ExerciseDetailsViewController: UITableViewDelegate, UITableViewDataSou
             }
             else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "aboutInstructionCell", for: indexPath) as! AboutInstructionTableViewCell
-                
                 cell.instructionLabel.text = instructions[indexPath.row - 1]
                 return cell
             }
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "aboutInstructionCell", for: indexPath) as! AboutInstructionTableViewCell
+            //Remove the style
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+
             return cell
         }
     }

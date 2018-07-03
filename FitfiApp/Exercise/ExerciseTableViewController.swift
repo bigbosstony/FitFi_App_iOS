@@ -11,29 +11,18 @@ import UIKit
 import CoreData
 
 //  For Core Data: Add Entity and Attribute to .xcdatamodeld file, import CoreData
-import RealmSwift
+//import RealmSwift
 
 class ExerciseTableViewController: UITableViewController {
-    
-    let realm = try! Realm()
-    
+    //
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-    
-    
     var exerciseList = [[Exercise]]()
     let searchController = UISearchController(searchResultsController: nil)
 
-    var tn = [Exercise]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(dataFilePath)
-
-//        setupNavBar()
-
-//        loadExercises()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -68,6 +57,7 @@ class ExerciseTableViewController: UITableViewController {
         return exerciseList.count
     }
     
+    //Customize Header of Section
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.font = UIFont.systemFont(ofSize: 19, weight: .semibold)
@@ -77,27 +67,30 @@ class ExerciseTableViewController: UITableViewController {
         return 56
     }
 
+    //⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎
+    //Number of Exercise in different section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        //⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎
         return exerciseList[section].count
     }
 
+    //⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎
+    //Create Cell for Section
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell", for: indexPath) as! ExerciseTableViewCell
 
-        //⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎
         cell.textLabel?.text = exerciseList[indexPath.section][indexPath.row].name
         cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         return cell
     }
     
+    //⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎
+    //MARK: Prepare Segue and Send to Exercise Details VC
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎
         performSegue(withIdentifier: "goToExerciseDetailsVC", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToExerciseDetailsVC" {
             let destinationVC = segue.destination as! ExerciseDetailsViewController
@@ -107,16 +100,18 @@ class ExerciseTableViewController: UITableViewController {
         }
     }
     
-    //MARK: Data Manipulation Methods
+    // MARK: - Data Manipulation Methods
+    // MARK: Save New Exercise to Database
     func saveExercises() {
         do {
             try context.save()
         } catch {
             print("\(error)")
         }
-        tableView.reloadData()
+        loadExercises()
     }
     
+    // MARK: Load Exercise
     func loadExercises() {
         let allExercisesRequest: NSFetchRequest<Exercise> = Exercise.fetchRequest()
         let favoriteExercisesRequest: NSFetchRequest<Exercise> = Exercise.fetchRequest()
@@ -132,29 +127,38 @@ class ExerciseTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    // ◣◥◣◥◣◥◣◥◣◥◣◥◣◥ Add Action ◣◥◣◥◣◥◣◥◣◥◣◥◣◥◣◥ \\
+    //MARK:  Add Exercise UIAlert Action
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
 
-        let alert = UIAlertController(title: "Add New Exercise", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-
-            let newExercise = Exercise()
-            newExercise.name = textField.text
+        let alert = UIAlertController(title: "New Exercise", message: "Add a New Exercise to your library", preferredStyle: .alert)
+       
+        alert.addTextField { (alertTextField) in
+            textField = alertTextField
+//            print("Name: ",textField.text!)
+        }
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+//            print("Name from action: ", textField.text!)
+            let newExercise = Exercise(context: self.context)
+            newExercise.name = textField.text!
             newExercise.favorite = false
-            newExercise.image = nil
 
             self.saveExercises()
-            self.loadExercises()
-        }
-
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Create New Exercise"
-            textField = alertTextField
-        }
-
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { (_) in
+            print("Cancel button tapped")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+//            let entity = NSEntityDescription.entity(forEntityName: "Exercise", in: self.context)
+//            let newExercise = NSManagedObject(entity: entity!, insertInto: self.context)
+//            newExercise.setValue(textField.text, forKey: "name")
+//            newExercise.setValue(nil, forKey: "favorite")
+//            newExercise.setValue(nil, forKey: "image")
     }
 
 }

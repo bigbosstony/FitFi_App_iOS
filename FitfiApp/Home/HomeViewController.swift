@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    //Data and Outlet
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var recentWorkoutView: UIView!
     @IBOutlet weak var recentWorkoutCollectionView: UICollectionView!
@@ -27,13 +28,14 @@ class HomeViewController: UIViewController {
         
         print("Home View Loaded")
         
-        //MARK: window and trackingVC
+//// Ignore This Mark   MARK: window and trackingVC
 //        trackingVC = TrackingSViewController.init(nibName: "TrackingSViewController", bundle: nil)
 //        trackingVC.view.frame = CGRect(x: 0, y: 497.5, width: 375, height: 120)
 //        window = UIApplication.shared.keyWindow!
 //        window.addSubview(trackingVC.view!)
 //        trackingVC.view.isHidden = true
         
+        //Register Customized Cell for Today Collection View
         todayCollectionView.register(UINib.init(nibName: "TodayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TodayCollectionViewCell")
         if let flowLayout = todayCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = CGSize(width: 1,height: 1)
@@ -66,7 +68,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-
+// MARK: Collection View Data Source
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -117,7 +119,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
-
+//MARK: Table View Data Source
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == showAllRoutinesTableView {

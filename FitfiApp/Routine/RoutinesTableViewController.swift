@@ -26,14 +26,13 @@ class RoutinesTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    //TODO:
+    //TODO: Section of Routine
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 2
     }
 
-    //TODO:
+    //TODO: Number of Row in Each Section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 20

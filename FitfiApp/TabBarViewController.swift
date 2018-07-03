@@ -20,8 +20,10 @@ class TabBarViewController: UITabBarController {
         
 //        subView.frame = CGRect(x: 0, y: 497.5, width: 375, height: 120)
 //        subView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        trackingVC = TrackingSViewController.init(nibName: "TrackingSViewController", bundle: nil)
-        trackingVC.view.frame = CGRect(x: 0, y: 497.5, width: 375, height: 120)
+        trackingVC = TrackingSViewController()
+//            .init(nibName: "TrackingSViewController", bundle: nil)
+        trackingVC.view.frame = CGRect(x: 0, y: 497.5, width: 375, height: 119)
+        
         view.addSubview(trackingVC.view!)
         trackingVC.view.isHidden = false
         
