@@ -406,7 +406,6 @@ extension TrackingSViewController {
                     clearAccelerometerDataArray()
                 }
                 
-                
 //                else if 600 ... 1200 ~= differenceValueFromMaxToMinZ {  //&& -1 ... 1 ~= symmetricValueOfZArray {
 //                    print(symmetricValueOfZArray)
 //                    frontRaiseCounter += 1
@@ -422,5 +421,4 @@ extension TrackingSViewController {
         accelerometerYArray.removeAll()
         accelerometerZArray.removeAll()
     }
-
 }
