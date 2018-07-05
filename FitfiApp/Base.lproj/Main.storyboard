@@ -599,7 +599,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Routine" id="vdd-tH-qdD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SXb-o5-aXG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SXb-o5-aXG">
+                            <connections>
+                                <segue destination="nt2-rs-tkB" kind="presentation" id="1FK-Km-TBm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="Nge-bI-Zan" kind="show" identifier="goToRoutineDetailsTableview" id="wYH-sO-g9Q"/>
@@ -608,6 +612,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbk-al-Gt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2806" y="517"/>
+        </scene>
+        <!--New Routine-->
+        <scene sceneID="IpC-0N-UPN">
+            <objects>
+                <tableViewController id="nt2-rs-tkB" customClass="NewRoutineTableViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kuv-xv-nxO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.24313725489999999" green="0.51372549020000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="7Ae-1I-A69">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.46666666670000001" green="0.10980392160000001" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="826-FJ-H8K">
+                            <rect key="frame" x="0.0" y="116" width="375" height="75"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reuseIdentifier" id="4oh-Zf-hfg">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4oh-Zf-hfg" id="GhB-Z0-fi2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nt2-rs-tkB" id="GW6-Dz-ulc"/>
+                            <outlet property="delegate" destination="nt2-rs-tkB" id="QRL-xA-URN"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New Routine" id="nlj-3l-XN8"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kjF-du-4fE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3670" y="517"/>
         </scene>
         <!--Recent Workout Details Table View Controller-->
         <scene sceneID="vJI-8y-vNl">
@@ -826,7 +869,63 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFp-iI-gIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5207.1999999999998" y="-16.641679160419791"/>
+            <point key="canvasLocation" x="6146.3999999999996" y="-16.641679160419791"/>
+        </scene>
+        <!--Create New Account View Controller-->
+        <scene sceneID="Zb6-ie-sav">
+            <objects>
+                <viewController storyboardIdentifier="CreateNewAccountVC" id="k5r-Hn-Saw" customClass="CreateNewAccountViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fPc-FU-Uc9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cY-8B-lzQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73M-ye-WJX">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eDZ-xs-1Uc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8D-27-0JE">
+                                                    <rect key="frame" x="122" y="288" width="130" height="70"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.69019607839999997" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                    <state key="normal" title="Login"/>
+                                                    <connections>
+                                                        <action selector="loginPressed:" destination="k5r-Hn-Saw" eventType="touchUpInside" id="Dby-IF-gGz"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                        <blurEffect style="dark"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="73M-ye-WJX" secondAttribute="bottom" id="FG2-y3-Li1"/>
+                                    <constraint firstItem="73M-ye-WJX" firstAttribute="top" secondItem="1cY-8B-lzQ" secondAttribute="top" id="LA7-cO-8YQ"/>
+                                    <constraint firstItem="73M-ye-WJX" firstAttribute="leading" secondItem="1cY-8B-lzQ" secondAttribute="leading" id="Rjm-nA-H0f"/>
+                                    <constraint firstAttribute="trailing" secondItem="73M-ye-WJX" secondAttribute="trailing" id="XRe-iE-6Os"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ndv-Ui-uj1" firstAttribute="trailing" secondItem="1cY-8B-lzQ" secondAttribute="trailing" id="BLa-XQ-yhb"/>
+                            <constraint firstItem="1cY-8B-lzQ" firstAttribute="top" secondItem="ndv-Ui-uj1" secondAttribute="top" id="Nik-rK-CDx"/>
+                            <constraint firstItem="1cY-8B-lzQ" firstAttribute="leading" secondItem="ndv-Ui-uj1" secondAttribute="leading" id="nsg-mt-Zk5"/>
+                            <constraint firstItem="ndv-Ui-uj1" firstAttribute="bottom" secondItem="1cY-8B-lzQ" secondAttribute="bottom" id="q2G-Xb-x6I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ndv-Ui-uj1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f6E-n4-dBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5626.3999999999996" y="1228.3358320839582"/>
         </scene>
         <!--Social-->
         <scene sceneID="LgK-xf-Gfp">
@@ -855,7 +954,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzW-dP-9hF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6016.8000000000002" y="-16.641679160419791"/>
+            <point key="canvasLocation" x="6956" y="-16.641679160419791"/>
         </scene>
         <!--Profile-->
         <scene sceneID="r1N-aC-mt4">
@@ -871,12 +970,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICn-7A-eig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6776.8000000000002" y="-17.541229385307346"/>
+            <point key="canvasLocation" x="7716" y="-17.541229385307346"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="WCA-ws-lCx">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="w9c-bV-UAk" customClass="TabBarViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarVC" automaticallyAdjustsScrollViewInsets="NO" id="w9c-bV-UAk" customClass="TabBarViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="DEQ-er-yD0">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

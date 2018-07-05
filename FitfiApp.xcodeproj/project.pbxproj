@@ -23,6 +23,9 @@
 		EA30911C20C7199D00E09DDF /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30911B20C7199D00E09DDF /* Data.swift */; };
 		EA30911D20C7199D00E09DDF /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30911B20C7199D00E09DDF /* Data.swift */; };
 		EA30911E20C7199D00E09DDF /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30911B20C7199D00E09DDF /* Data.swift */; };
+		EA40F9F620EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */; };
+		EA40F9F720EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */; };
+		EA40F9F820EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */; };
 		EA61DE7920C8913300075FCE /* RoutinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */; };
 		EA77603620E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */; };
 		EA77603720E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */; };
@@ -58,6 +61,9 @@
 		EA77606020E4874C0052774F /* TrackingMaxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA77605C20E4874C0052774F /* TrackingMaxViewController.xib */; };
 		EA77606120E4874C0052774F /* TrackingMaxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA77605C20E4874C0052774F /* TrackingMaxViewController.xib */; };
 		EA77606220E4874C0052774F /* TrackingMaxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA77605C20E4874C0052774F /* TrackingMaxViewController.xib */; };
+		EA78F3D720EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */; };
+		EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */; };
+		EA78F3D920EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */; };
 		EA84FCAE20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
 		EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
 		EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
@@ -145,11 +151,13 @@
 		EA30910B20C6DA4300E09DDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA30911720C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorkoutCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA30911B20C7199D00E09DDF /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
 		EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewCell.swift; sourceTree = "<group>"; };
 		EA77604D20E4498A0052774F /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
 		EA77605720E484410052774F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EA77605B20E4874C0052774F /* TrackingMaxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingMaxViewController.swift; sourceTree = "<group>"; };
 		EA77605C20E4874C0052774F /* TrackingMaxViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingMaxViewController.xib; sourceTree = "<group>"; };
+		EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoutineTableViewController.swift; sourceTree = "<group>"; };
 		EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutImageTableViewCell.swift; sourceTree = "<group>"; };
 		EA84FCAD20E2DB05007E4487 /* AboutImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutImageTableViewCell.xib; sourceTree = "<group>"; };
 		EA84FCBC20E2E241007E4487 /* AboutInstructionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutInstructionTableViewCell.swift; sourceTree = "<group>"; };
@@ -285,6 +293,7 @@
 			children = (
 				EA3090E620C6DA4000E09DDF /* AppDelegate.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
+				EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */,
 				EA77605720E484410052774F /* ProfileViewController.swift */,
 				EA99105820D85DA4003D6D6E /* TabBarViewController.swift */,
 				EAC0DD5120D4045300AC7A1E /* Tracking */,
@@ -342,6 +351,7 @@
 			children = (
 				EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */,
 				EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */,
+				EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */,
 				EAABE9E920CB16EC0024B222 /* RoutineDetailsTableViewController.swift */,
 			);
 			path = Routine;
@@ -666,9 +676,11 @@
 				EAABEA3E20D032F30024B222 /* TrackingSViewController.swift in Sources */,
 				EAB0A70320C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift in Sources */,
 				EA97D95620E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
+				EA40F9F620EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
 				EAB3B0B620C73B4A0077503F /* RoutineCollectionViewCell.swift in Sources */,
 				EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */,
 				EA97D95E20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
+				EA78F3D720EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EA99105920D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EAABE9EA20CB16EC0024B222 /* RoutineDetailsTableViewController.swift in Sources */,
 				EA61DE7920C8913300075FCE /* RoutinesTableViewCell.swift in Sources */,
@@ -707,6 +719,7 @@
 				EA77605920E484410052774F /* ProfileViewController.swift in Sources */,
 				EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EA77604820E43D320052774F /* RoutinesTableViewCell.swift in Sources */,
+				EA40F9F720EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
 				EA77604A20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA77603820E43CA80052774F /* AppDelegate.swift in Sources */,
@@ -715,6 +728,7 @@
 				EA77604420E43D280052774F /* RoutineCollectionViewCell.swift in Sources */,
 				EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EA77604620E43D2D0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
+				EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EA30911D20C7199D00E09DDF /* Data.swift in Sources */,
 				EA97D95720E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
 				EA77605E20E4874C0052774F /* TrackingMaxViewController.swift in Sources */,
@@ -739,6 +753,7 @@
 				EA77605A20E484410052774F /* ProfileViewController.swift in Sources */,
 				EA99105B20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EA77604920E43D330052774F /* RoutinesTableViewCell.swift in Sources */,
+				EA40F9F820EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
 				EA77604B20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA77603920E43CA90052774F /* AppDelegate.swift in Sources */,
@@ -747,6 +762,7 @@
 				EA77604520E43D290052774F /* RoutineCollectionViewCell.swift in Sources */,
 				EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EA77604720E43D2E0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
+				EA78F3D920EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EA30911E20C7199D00E09DDF /* Data.swift in Sources */,
 				EA97D95820E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
 				EA77605F20E4874C0052774F /* TrackingMaxViewController.swift in Sources */,

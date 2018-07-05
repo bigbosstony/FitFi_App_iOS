@@ -100,6 +100,19 @@ class ExerciseTableViewController: UITableViewController {
         }
     }
     
+    // MARK: Delete selected cell
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            context.delete(exerciseList[indexPath.section][indexPath.row])
+            saveExercises()
+
+        }
+    }
+    
     // MARK: - Data Manipulation Methods
     // MARK: Save New Exercise to Database
     func saveExercises() {
