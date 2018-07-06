@@ -100,7 +100,7 @@ class ExerciseTableViewController: UITableViewController {
         }
     }
     
-    // MARK: Delete selected cell
+    // MARK: Swipe to Delete selected cell
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }

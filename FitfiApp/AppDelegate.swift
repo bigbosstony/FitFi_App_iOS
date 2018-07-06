@@ -14,15 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var createNewAccountVC: UIViewController?
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //TODO: Context
 
     var hasLoginKey = true
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
-        print("Context: ", context)
 //        print(Realm.Configuration.defaultConfiguration.fileURL ?? "")
-
 //        do {
 //            let realm = try Realm()
 //        } catch {
