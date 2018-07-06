@@ -35,12 +35,12 @@ class RoutinesTableViewController: UITableViewController {
     //TODO: Number of Row in Each Section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 20
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routinesTableviewCell", for: indexPath) as! RoutinesTableViewCell
-
+        
         // Configure the cell...
 
         return cell
