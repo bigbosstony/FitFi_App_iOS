@@ -61,6 +61,9 @@
 		EA78F3D720EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */; };
 		EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */; };
 		EA78F3D920EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */; };
+		EA7C92CB20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C92CA20F94016006DBFF0 /* ProfileSettingsTableViewController.swift */; };
+		EA7C92CC20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C92CA20F94016006DBFF0 /* ProfileSettingsTableViewController.swift */; };
+		EA7C92CD20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7C92CA20F94016006DBFF0 /* ProfileSettingsTableViewController.swift */; };
 		EA84FCAE20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
 		EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
 		EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */; };
@@ -73,6 +76,18 @@
 		EA84FCC120E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA84FCBD20E2E241007E4487 /* AboutInstructionTableViewCell.xib */; };
 		EA84FCC220E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA84FCBD20E2E241007E4487 /* AboutInstructionTableViewCell.xib */; };
 		EA84FCC320E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA84FCBD20E2E241007E4487 /* AboutInstructionTableViewCell.xib */; };
+		EA855DE120F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DE020F51A6B000D7EA5 /* CalendarTableViewCell.swift */; };
+		EA855DE220F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DE020F51A6B000D7EA5 /* CalendarTableViewCell.swift */; };
+		EA855DE320F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DE020F51A6B000D7EA5 /* CalendarTableViewCell.swift */; };
+		EA855DE520F5438C000D7EA5 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DE420F5438C000D7EA5 /* CalendarViewController.swift */; };
+		EA855DE620F5438C000D7EA5 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DE420F5438C000D7EA5 /* CalendarViewController.swift */; };
+		EA855DE720F5438C000D7EA5 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DE420F5438C000D7EA5 /* CalendarViewController.swift */; };
+		EA855DE920F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DE820F64C50000D7EA5 /* NewRoutineTableViewCell.swift */; };
+		EA855DEA20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DE820F64C50000D7EA5 /* NewRoutineTableViewCell.swift */; };
+		EA855DEB20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DE820F64C50000D7EA5 /* NewRoutineTableViewCell.swift */; };
+		EA855DED20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DEC20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift */; };
+		EA855DEE20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DEC20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift */; };
+		EA855DEF20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA855DEC20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift */; };
 		EA8C64A120D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */; };
 		EA8C64A220D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */; };
 		EA8C64A320D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */; };
@@ -146,10 +161,15 @@
 		EA77605B20E4874C0052774F /* TrackingMaxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingMaxViewController.swift; sourceTree = "<group>"; };
 		EA77605C20E4874C0052774F /* TrackingMaxViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingMaxViewController.xib; sourceTree = "<group>"; };
 		EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoutineTableViewController.swift; sourceTree = "<group>"; };
+		EA7C92CA20F94016006DBFF0 /* ProfileSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsTableViewController.swift; sourceTree = "<group>"; };
 		EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutImageTableViewCell.swift; sourceTree = "<group>"; };
 		EA84FCAD20E2DB05007E4487 /* AboutImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutImageTableViewCell.xib; sourceTree = "<group>"; };
 		EA84FCBC20E2E241007E4487 /* AboutInstructionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutInstructionTableViewCell.swift; sourceTree = "<group>"; };
 		EA84FCBD20E2E241007E4487 /* AboutInstructionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutInstructionTableViewCell.xib; sourceTree = "<group>"; };
+		EA855DE020F51A6B000D7EA5 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		EA855DE420F5438C000D7EA5 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		EA855DE820F64C50000D7EA5 /* NewRoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoutineTableViewCell.swift; sourceTree = "<group>"; };
+		EA855DEC20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewController.swift; sourceTree = "<group>"; };
 		EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		EA97D95420E1728E00BE4C60 /* ExerciseHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistoryViewController.swift; sourceTree = "<group>"; };
@@ -256,10 +276,12 @@
 				EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */,
 				EA77605720E484410052774F /* ProfileViewController.swift */,
 				EA99105820D85DA4003D6D6E /* TabBarViewController.swift */,
+				EA7C92CE20F9401E006DBFF0 /* Profile */,
 				EAC0DD5120D4045300AC7A1E /* Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
 				EAC0DD4820D3106500AC7A1E /* Routine */,
 				EA3008C420D1ADAA001E7743 /* Exercise */,
+				EA855DDF20F5114B000D7EA5 /* Calendar */,
 				EA77603120E436EE0052774F /* Data Module */,
 				EA3090F020C6DA4300E09DDF /* Assets.xcassets */,
 				EA3090F220C6DA4300E09DDF /* LaunchScreen.storyboard */,
@@ -295,6 +317,14 @@
 			path = "Data Module";
 			sourceTree = "<group>";
 		};
+		EA7C92CE20F9401E006DBFF0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EA7C92CA20F94016006DBFF0 /* ProfileSettingsTableViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		EA84FCA320E2A4E0007E4487 /* About */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,13 +336,24 @@
 			path = About;
 			sourceTree = "<group>";
 		};
+		EA855DDF20F5114B000D7EA5 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				EA855DE420F5438C000D7EA5 /* CalendarViewController.swift */,
+				EA855DE020F51A6B000D7EA5 /* CalendarTableViewCell.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		EAC0DD4820D3106500AC7A1E /* Routine */ = {
 			isa = PBXGroup;
 			children = (
 				EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */,
 				EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */,
 				EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */,
+				EA855DE820F64C50000D7EA5 /* NewRoutineTableViewCell.swift */,
 				EAABE9E920CB16EC0024B222 /* RoutineDetailsTableViewController.swift */,
+				EA855DEC20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift */,
 			);
 			path = Routine;
 			sourceTree = "<group>";
@@ -475,6 +516,7 @@
 				EAABEA3E20D032F30024B222 /* TrackingSViewController.swift in Sources */,
 				EAB0A70320C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift in Sources */,
 				EA97D95620E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
+				EA855DE120F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA40F9F620EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
 				EAB3B0B620C73B4A0077503F /* RoutineCollectionViewCell.swift in Sources */,
 				EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */,
@@ -485,7 +527,9 @@
 				EA61DE7920C8913300075FCE /* RoutinesTableViewCell.swift in Sources */,
 				EA84FCAE20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EAC0DD4520D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift in Sources */,
+				EA855DE920F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				EA8C64A520D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
+				EA7C92CB20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
 				EAABE9E320CB05EF0024B222 /* TodayCollectionViewCell.swift in Sources */,
 				EA30911C20C7199D00E09DDF /* Data.swift in Sources */,
 				EA8C64A120D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
@@ -493,7 +537,9 @@
 				EAC0DD4E20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EAABE9F620CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift in Sources */,
 				EA84FCBE20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
+				EA855DE520F5438C000D7EA5 /* CalendarViewController.swift in Sources */,
 				EA77604E20E4498A0052774F /* Data.xcdatamodeld in Sources */,
+				EA855DED20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
 				EA3090E920C6DA4000E09DDF /* HomeViewController.swift in Sources */,
 				EA3090E720C6DA4000E09DDF /* AppDelegate.swift in Sources */,
 				EA77605820E484410052774F /* ProfileViewController.swift in Sources */,
@@ -505,26 +551,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA855DE620F5438C000D7EA5 /* CalendarViewController.swift in Sources */,
 				EA8C64A620D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
 				EA3090FF20C6DA4300E09DDF /* FitfiAppTests.swift in Sources */,
 				EA77604F20E4498A0052774F /* Data.xcdatamodeld in Sources */,
 				EA97D95F20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
+				EA855DEA20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				EA77603620E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
 				EA77604020E43D1F0052774F /* TodayCollectionViewCell.swift in Sources */,
 				EAABEA3F20D032F30024B222 /* TrackingSViewController.swift in Sources */,
 				EA77604220E43D250052774F /* ShowAllRoutinesTableViewCell.swift in Sources */,
 				EA77603C20E43CBE0052774F /* HomeViewController.swift in Sources */,
 				EA77603E20E43CC20052774F /* RecentWorkoutDetailsTableViewController.swift in Sources */,
+				EA7C92CC20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
 				EA77605920E484410052774F /* ProfileViewController.swift in Sources */,
 				EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EA77604820E43D320052774F /* RoutinesTableViewCell.swift in Sources */,
 				EA40F9F720EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
+				EA855DE220F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA77604A20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA77603820E43CA80052774F /* AppDelegate.swift in Sources */,
 				EA84FCBF20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
 				EA8C64A220D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
 				EA77604420E43D280052774F /* RoutineCollectionViewCell.swift in Sources */,
+				EA855DEE20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
 				EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EA77604620E43D2D0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
@@ -539,26 +590,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA855DE720F5438C000D7EA5 /* CalendarViewController.swift in Sources */,
 				EA8C64A720D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
 				EA30910A20C6DA4300E09DDF /* FitfiAppUITests.swift in Sources */,
 				EA77605020E4498A0052774F /* Data.xcdatamodeld in Sources */,
 				EA97D96020E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
+				EA855DEB20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				EA77603720E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
 				EA77604120E43D1F0052774F /* TodayCollectionViewCell.swift in Sources */,
 				EAABEA4020D032F30024B222 /* TrackingSViewController.swift in Sources */,
 				EA77604320E43D260052774F /* ShowAllRoutinesTableViewCell.swift in Sources */,
 				EA77603D20E43CBF0052774F /* HomeViewController.swift in Sources */,
 				EA77603F20E43CC30052774F /* RecentWorkoutDetailsTableViewController.swift in Sources */,
+				EA7C92CD20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
 				EA77605A20E484410052774F /* ProfileViewController.swift in Sources */,
 				EA99105B20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EA77604920E43D330052774F /* RoutinesTableViewCell.swift in Sources */,
 				EA40F9F820EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
+				EA855DE320F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA77604B20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA77603920E43CA90052774F /* AppDelegate.swift in Sources */,
 				EA84FCC020E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
 				EA8C64A320D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
 				EA77604520E43D290052774F /* RoutineCollectionViewCell.swift in Sources */,
+				EA855DEF20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
 				EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EA77604720E43D2E0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA78F3D920EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
@@ -725,7 +781,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -740,7 +799,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -756,7 +818,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -773,7 +839,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -789,7 +859,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -805,7 +879,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

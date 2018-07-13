@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeViewController: UIViewController {
     //Data and Outlet
@@ -22,6 +23,10 @@ class HomeViewController: UIViewController {
     
     var trackingVC: UIViewController!
     var window: UIWindow!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var routineArray = [Routine]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,10 +66,23 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        loadRoutines()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+    }
+}
+
+//
+extension HomeViewController {
+    func loadRoutines(with request: NSFetchRequest<Routine> = Routine.fetchRequest()) {
+        do {
+            routineArray = try context.fetch(request)
+        } catch {
+            print("\(error)")
+        }
+        routinesCollectionView.reloadData()
     }
 }
 
@@ -78,7 +96,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             return workout.count
         } else if collectionView == routinesCollectionView {
-            return 5
+            return routineArray.count
         } else {
             return 1
         }
@@ -90,8 +108,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.workoutNameLabel.text = workout[indexPath.row]
             return cell
             
+            //MARK: Routine Collection View Data Source on HomePage
         } else if collectionView == routinesCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "routineCollectionCell", for: indexPath) as! RoutineCollectionViewCell
+            let numberOfExercise = routineArray[indexPath.row].routineExercises?.count ?? 0
+            cell.routineNameLabel.text = routineArray[indexPath.row].name?.uppercased()
+            cell.routineExerciseCountLabel.text = String(numberOfExercise)
+            cell.estimateTimeLabel.text = "~" + String(numberOfExercise * 20) + "m"
             return cell
             
         } else {
@@ -102,7 +125,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
         
         if collectionView == recentWorkoutCollectionView {
             performSegue(withIdentifier: "goToRecentWorkoutTableview", sender: self)
@@ -115,6 +137,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //            } else {
 //                trackingVC.view.isHidden = true
 //            }
+        }
+    }
+}
+
+extension HomeViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToRoutineDetailsTableview" {
+            let destinationVC = segue.destination as! RoutineDetailsTableViewController
+            if let indexPath = routinesCollectionView.indexPathsForSelectedItems?.first {
+                destinationVC.selectedRoutine = routineArray[indexPath.row]
+            }
         }
     }
 }

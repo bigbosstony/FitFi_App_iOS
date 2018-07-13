@@ -10,19 +10,31 @@ import UIKit
 
 class CreateNewAccountViewController: UIViewController {
 
+    @IBOutlet weak var backGroundView: UIView!
+    let gradient = CAGradientLayer()
+    let camoGreen = UIColor(red: 57.0 / 255.0, green: 40.0 / 255.0, blue: 29.0 / 255.0, alpha: 1.0).cgColor
+    let fadedOrange = UIColor(red: 237.0 / 255.0, green: 146.0 / 255.0, blue: 98.0 / 255.0, alpha: 1.0).cgColor
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        gradient.frame = view.bounds
+        gradient.colors = [camoGreen, fadedOrange]
+        
+        backGroundView.layer.insertSublayer(gradient, at: 0)
+    }
     /*
     // MARK: - Navigation
 
@@ -36,6 +48,7 @@ class CreateNewAccountViewController: UIViewController {
         print("Login Pressed")
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarViewController
-        self.present(newViewController, animated: false, completion: nil)}
-    
+        self.present(newViewController, animated: true, completion: nil)
+        UserDefaults.standard.setValue(true, forKey: "hasLoginKey")
+    }
 }

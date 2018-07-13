@@ -9,5 +9,8 @@
 import UIKit
 
 class RoutineCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var routineNameLabel: UILabel!
+    @IBOutlet weak var estimateTimeLabel: UILabel!
     
+    @IBOutlet weak var routineExerciseCountLabel: UILabel!
 }

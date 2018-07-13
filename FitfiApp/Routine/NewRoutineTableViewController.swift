@@ -9,12 +9,12 @@
 import UIKit
 import CoreData
 
-class NewRoutineTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class NewRoutineTableViewController: UITableViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var exerciseList = [Exercise]()
-    var currentPickedExercise: String?
-    var currentPickedExerciseList = [String]()
+    var currentPickedExercise: [String]?
+    var currentPickedExerciseList = [[String]]()
     
     @IBOutlet weak var routineName: UITextField!
     
@@ -27,12 +27,6 @@ class NewRoutineTableViewController: UITableViewController, UIPickerViewDelegate
         } catch {
             print("Loading Exercises Error: \(error)")
         }
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +35,6 @@ class NewRoutineTableViewController: UITableViewController, UIPickerViewDelegate
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -55,14 +48,26 @@ class NewRoutineTableViewController: UITableViewController, UIPickerViewDelegate
         return currentPickedExerciseList.count
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Current Row: \(indexPath.row)")
+    }
+    
+//    for cell in
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = currentPickedExerciseList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! NewRoutineTableViewCell
+        cell.textLabel?.text = currentPickedExerciseList[indexPath.row][0]
+        cell.setTextField.delegate = self
+        cell.repTextField.delegate = self
+        cell.setTextField.text = currentPickedExerciseList[indexPath.row][1]
+        cell.repTextField.text = currentPickedExerciseList[indexPath.row][2]
+        cell.setTextField?.tag = indexPath.row * 10 //currentPickedExerciseList[indexPath.row]
+        cell.repTextField?.tag = indexPath.row * 10 + 1 //currentPickedExerciseList[indexPath.row]
         // Configure the cell...
-
         return cell
     }
 
+    // MARK: Save to database
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         if currentPickedExerciseList.count == 0 {
             let alertView = UIAlertController(title: "Create Routine Failed",
@@ -78,7 +83,9 @@ class NewRoutineTableViewController: UITableViewController, UIPickerViewDelegate
             save()
             for ex in currentPickedExerciseList {
                 let newRoutineExercise = Routine_Exercise(context: context)
-                newRoutineExercise.name = ex
+                newRoutineExercise.name = ex[0]
+                newRoutineExercise.sets = Int16(ex[1])!
+                newRoutineExercise.reps = Int16(ex[2])!
                 newRoutineExercise.parentRoutine = newRoutine
                 save()
             }
@@ -105,8 +112,6 @@ class NewRoutineTableViewController: UITableViewController, UIPickerViewDelegate
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (_) in
             print("add")
             self.currentPickedExerciseList.append(self.currentPickedExercise!)
-            print("Current Picked Exercise: ", self.currentPickedExercise!)
-            print("Current Exercise List: ", self.currentPickedExerciseList)
             self.tableView.reloadData()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
@@ -123,8 +128,11 @@ class NewRoutineTableViewController: UITableViewController, UIPickerViewDelegate
             print("\(error)")
         }
     }
-    
-    
+}
+
+
+// PickerView
+extension NewRoutineTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     //MARK: Picker View
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -135,55 +143,33 @@ class NewRoutineTableViewController: UITableViewController, UIPickerViewDelegate
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        currentPickedExercise = exerciseList[row].name
+        currentPickedExercise = [exerciseList[row].name, "0", "0"] as? [String]
         print(currentPickedExercise!)
         return exerciseList[row].name
     }
+}
+
+// TextField Delegate
+extension NewRoutineTableViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let row = textField.tag / 10
+        let queue = textField.tag % 10
+        
+        currentPickedExerciseList[row][queue + 1] = textField.text!
+    }
     
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Need Edit TextField Return
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
+//        textField.resignFirstResponder()
+//        return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

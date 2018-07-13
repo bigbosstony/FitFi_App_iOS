@@ -10,7 +10,7 @@
     <entity name="Routine" representedClassName="Routine" syncable="YES" codeGenerationType="class">
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="routineExercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Routine_Exercise" inverseName="parentRoutine" inverseEntity="Routine_Exercise" syncable="YES"/>
+        <relationship name="routineExercises" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Routine_Exercise" inverseName="parentRoutine" inverseEntity="Routine_Exercise" syncable="YES"/>
     </entity>
     <entity name="Routine_Exercise" representedClassName="Routine_Exercise" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,7 +20,7 @@
     </entity>
     <elements>
         <element name="Exercise" positionX="-299" positionY="-201" width="128" height="120"/>
-        <element name="Routine" positionX="-162" positionY="9" width="128" height="88"/>
+        <element name="Routine" positionX="-162" positionY="9" width="128" height="90"/>
         <element name="Routine_Exercise" positionX="63" positionY="-4" width="128" height="103"/>
     </elements>
 </model>

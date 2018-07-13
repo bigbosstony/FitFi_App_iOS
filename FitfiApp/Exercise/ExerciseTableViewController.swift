@@ -45,6 +45,7 @@ class ExerciseTableViewController: UITableViewController {
     func setupNavBar() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        extendedLayoutIncludesOpaqueBars = true         //important
     }
     
     // MARK: - Table view data source
@@ -67,14 +68,12 @@ class ExerciseTableViewController: UITableViewController {
         return 56
     }
 
-    //⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎
     //Number of Exercise in different section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return exerciseList[section].count
     }
 
-    //⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎
     //Create Cell for Section
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell", for: indexPath) as! ExerciseTableViewCell
@@ -84,7 +83,6 @@ class ExerciseTableViewController: UITableViewController {
         return cell
     }
     
-    //⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎⬇︎
     //MARK: Prepare Segue and Send to Exercise Details VC
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToExerciseDetailsVC", sender: self)
@@ -107,9 +105,11 @@ class ExerciseTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
-            context.delete(exerciseList[indexPath.section][indexPath.row])
-            saveExercises()
 
+            context.delete(exerciseList[indexPath.section][indexPath.row])
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+            saveExercises()
+            loadExercises()
         }
     }
     
@@ -121,7 +121,6 @@ class ExerciseTableViewController: UITableViewController {
         } catch {
             print("\(error)")
         }
-        loadExercises()
     }
     
     // MARK: Load Exercise
@@ -159,6 +158,7 @@ class ExerciseTableViewController: UITableViewController {
             newExercise.favorite = false
 
             self.saveExercises()
+            self.loadExercises()
         }))
         
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { (_) in
@@ -173,6 +173,11 @@ class ExerciseTableViewController: UITableViewController {
 //            newExercise.setValue(textField.text, forKey: "name")
 //            newExercise.setValue(nil, forKey: "favorite")
 //            newExercise.setValue(nil, forKey: "image")
+    }
+}
+
+extension ExerciseTableViewController {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     }
 }
 

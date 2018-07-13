@@ -14,8 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var createNewAccountVC: UIViewController?
-
-    var hasLoginKey = true
+    
+    let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
+    let hasLoginKey = UserDefaults.standard.bool(forKey: "hasLoginKey")
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
@@ -25,15 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        } catch {
 //            print("\(error)")
 //        }
-        
-        if hasLoginKey {
-            print("Go To Home Screen")
+        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+
+        print("First Time?", hasLaunchedBefore)
+        if !hasLaunchedBefore {
+            goToLoginScreen()
         } else {
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewController : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "CreateNewAccountVC") as UIViewController
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
+            if !hasLoginKey {
+                goToLoginScreen()
+            } else {
+                print("Go To Home Screen")
+            }
         }
         
 //        createNewAccountVC = CreateNewAccountViewController()
@@ -48,6 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print("Application Did Finish LaunchingWithOptions")
         return true
+    }
+    
+    func goToLoginScreen() {
+        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "CreateNewAccountVC") as UIViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

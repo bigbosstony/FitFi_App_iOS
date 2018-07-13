@@ -22,10 +22,14 @@ class ExerciseDetailsViewController: UIViewController {
     @IBOutlet var progressView: UIView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
+    var instructionIsProvided = false
+    var instructionArray = [String]()
+    
     // Get Data from Exercise Tableview VC
     var selectedExercise: Exercise? {
         didSet {
+            loadInfo()
             print(selectedExercise!)
         }
     }
@@ -54,9 +58,10 @@ class ExerciseDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        title = selectedExercise?.name
+        self.title = selectedExercise?.name
         favButton.image = (selectedExercise?.favorite)! ? UIImage(named: "Glyphs/Favorited") : UIImage(named: "Glyphs/Favorite")
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,6 +70,13 @@ class ExerciseDetailsViewController: UIViewController {
 
     }
 
+    func loadInfo() {
+        if selectedExercise?.instructions != nil {
+            instructionIsProvided = true
+            instructionArray = (selectedExercise?.instructions?.components(separatedBy: "\n"))!
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -96,7 +108,11 @@ extension ExerciseDetailsViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == aboutTableView {
-            return instructions.count + 1
+            if instructionIsProvided == true {
+                return instructionArray.count + 1
+            } else {
+                return 2
+            }
         }
         else {
             return 0
@@ -107,14 +123,18 @@ extension ExerciseDetailsViewController: UITableViewDelegate, UITableViewDataSou
         if tableView == aboutTableView {
             if indexPath.row == 0 {
                 let cell = Bundle.main.loadNibNamed("AboutImageTableViewCell", owner: self, options: nil)?.first as! AboutImageTableViewCell
-//                if let image = selectedExercise?.image {
-//                    cell.imageView1.image = UIImage(imageLiteralResourceName: image)
-//                }
+                if let image = selectedExercise?.image {
+                    cell.imageView1.image = UIImage(imageLiteralResourceName: image)
+                }
                 return cell
             }
             else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "aboutInstructionCell", for: indexPath) as! AboutInstructionTableViewCell
-                cell.instructionLabel.text = instructions[indexPath.row - 1]
+                if instructionIsProvided == true {
+                    cell.instructionLabel.text = instructionArray[indexPath.row - 1]
+                } else {
+                    cell.instructionLabel.text = "No Instructons"
+                }
                 return cell
             }
         }
