@@ -66,17 +66,18 @@ let Exercises = [
         "name" : "Dumbbell Side Bends",
         "instructions" : "1. This exercise works the obliques. Grasp a set of dumbbells. Stand straight up with one dumbbell in each hand, palms facing in. \n2. Keep your feet firmly on the floor with a shoulder width stance. \n3. Keeping your back straight and your eyes facing forwards, bend down to the right as far as you can, then back up again. \n4. Without pausing at the top, bend down to the left. \n5. Repeat for desired reps.",
         "image" : "8"
-    ],
-    [
-        "name" : "Hack Calf Raise",
-        "instructions" : "1. Load the weight you want to use on a hack squat machine. \n2. Stand on the foot plate facing the machine with your chest on the back pad and shoulders under the shoulder pads. \n3. If you have a block available, put it on the foot plate an use it to stand on for extra range of motion. \n4. Push up and take the weight off the rack by releasing the safety. \n5. Keeping your legs straight, slowly raise your heels off the floor as far as possible. \n6. Pause, and then slowly lower back to the starting position without letting your heels fully rest on the foot plate. \n7. Repeat for desired reps.",
-        "image" : "9"
-    ],
-    [
-        "name" : "Pec Dec",
-        "instructions" : "1. The pec dec is a great machine for isolating the chest. Before you start, adjust the seat height so that the bottom of the arm pads are about level with your chest when you're sitting on the machine. \n2. Select the weight you want to use on the stack. \n3. Sit on the machine, grasp the handles and/or place your forearms on the padding. Take the weight off the stack slightly. This is the starting position for the exercise. \n4. Keeping your body fixed, slowly bring the forearm pads or handles together. Don't let them touch. \n5. Squeeze the chest muscles for a count of 1-3, then slowly lower back to the starting position. \n6. Repeat for desired reps.",
-        "image" : "10"
     ]
+//    ,
+//    [
+//        "name" : "Hack Calf Raise",
+//        "instructions" : "1. Load the weight you want to use on a hack squat machine. \n2. Stand on the foot plate facing the machine with your chest on the back pad and shoulders under the shoulder pads. \n3. If you have a block available, put it on the foot plate an use it to stand on for extra range of motion. \n4. Push up and take the weight off the rack by releasing the safety. \n5. Keeping your legs straight, slowly raise your heels off the floor as far as possible. \n6. Pause, and then slowly lower back to the starting position without letting your heels fully rest on the foot plate. \n7. Repeat for desired reps.",
+//        "image" : "9"
+//    ],
+//    [
+//        "name" : "Pec Dec",
+//        "instructions" : "1. The pec dec is a great machine for isolating the chest. Before you start, adjust the seat height so that the bottom of the arm pads are about level with your chest when you're sitting on the machine. \n2. Select the weight you want to use on the stack. \n3. Sit on the machine, grasp the handles and/or place your forearms on the padding. Take the weight off the stack slightly. This is the starting position for the exercise. \n4. Keeping your body fixed, slowly bring the forearm pads or handles together. Don't let them touch. \n5. Squeeze the chest muscles for a count of 1-3, then slowly lower back to the starting position. \n6. Repeat for desired reps.",
+//        "image" : "10"
+//    ]
 ]
 
 

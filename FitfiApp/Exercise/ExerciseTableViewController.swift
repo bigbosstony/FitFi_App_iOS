@@ -44,7 +44,8 @@ class ExerciseTableViewController: UITableViewController {
 
     func setupNavBar() {
         navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+        //TODO: Uncomment next line in the future
+//        navigationItem.hidesSearchBarWhenScrolling = false
         extendedLayoutIncludesOpaqueBars = true         //important
     }
     
