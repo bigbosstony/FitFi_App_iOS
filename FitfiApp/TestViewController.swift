@@ -6,11 +6,7 @@
 //  Copyright © 2018 Fitfi. All rights reserved.
 //
 //Harsh Made changes
-<<<<<<< HEAD
-//directly to the master
-=======
-//New Branch
->>>>>>> origin/master
+
 import UIKit
 
 class TestViewController: UIViewController {
