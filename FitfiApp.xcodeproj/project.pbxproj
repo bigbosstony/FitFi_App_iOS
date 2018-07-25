@@ -52,12 +52,6 @@
 		EA77605820E484410052774F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA77605720E484410052774F /* ProfileViewController.swift */; };
 		EA77605920E484410052774F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA77605720E484410052774F /* ProfileViewController.swift */; };
 		EA77605A20E484410052774F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA77605720E484410052774F /* ProfileViewController.swift */; };
-		EA77605D20E4874C0052774F /* TrackingMaxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA77605B20E4874C0052774F /* TrackingMaxViewController.swift */; };
-		EA77605E20E4874C0052774F /* TrackingMaxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA77605B20E4874C0052774F /* TrackingMaxViewController.swift */; };
-		EA77605F20E4874C0052774F /* TrackingMaxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA77605B20E4874C0052774F /* TrackingMaxViewController.swift */; };
-		EA77606020E4874C0052774F /* TrackingMaxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA77605C20E4874C0052774F /* TrackingMaxViewController.xib */; };
-		EA77606120E4874C0052774F /* TrackingMaxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA77605C20E4874C0052774F /* TrackingMaxViewController.xib */; };
-		EA77606220E4874C0052774F /* TrackingMaxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA77605C20E4874C0052774F /* TrackingMaxViewController.xib */; };
 		EA78F3D720EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */; };
 		EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */; };
 		EA78F3D920EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */; };
@@ -100,6 +94,21 @@
 		EA97D95E20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97D95C20E1733000BE4C60 /* ExerciseProgressViewController.swift */; };
 		EA97D95F20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97D95C20E1733000BE4C60 /* ExerciseProgressViewController.swift */; };
 		EA97D96020E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97D95C20E1733000BE4C60 /* ExerciseProgressViewController.swift */; };
+		EA98E50820FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E50620FD6573002B2A70 /* SmallTrackingViewController.swift */; };
+		EA98E50920FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E50620FD6573002B2A70 /* SmallTrackingViewController.swift */; };
+		EA98E50A20FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E50620FD6573002B2A70 /* SmallTrackingViewController.swift */; };
+		EA98E50B20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA98E50720FD6573002B2A70 /* SmallTrackingViewController.xib */; };
+		EA98E50C20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA98E50720FD6573002B2A70 /* SmallTrackingViewController.xib */; };
+		EA98E50D20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA98E50720FD6573002B2A70 /* SmallTrackingViewController.xib */; };
+		EA98E51120FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E50F20FD9B25002B2A70 /* MaxTrackingViewController.swift */; };
+		EA98E51220FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E50F20FD9B25002B2A70 /* MaxTrackingViewController.swift */; };
+		EA98E51320FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E50F20FD9B25002B2A70 /* MaxTrackingViewController.swift */; };
+		EA98E51420FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA98E51020FD9B25002B2A70 /* MaxTrackingViewController.xib */; };
+		EA98E51520FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA98E51020FD9B25002B2A70 /* MaxTrackingViewController.xib */; };
+		EA98E51620FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA98E51020FD9B25002B2A70 /* MaxTrackingViewController.xib */; };
+		EA98E51C20FE569F002B2A70 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E51B20FE569F002B2A70 /* TestViewController.swift */; };
+		EA98E51D20FE569F002B2A70 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E51B20FE569F002B2A70 /* TestViewController.swift */; };
+		EA98E51E20FE569F002B2A70 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E51B20FE569F002B2A70 /* TestViewController.swift */; };
 		EA99105920D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
 		EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
 		EA99105B20D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
@@ -158,8 +167,6 @@
 		EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewCell.swift; sourceTree = "<group>"; };
 		EA77604D20E4498A0052774F /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
 		EA77605720E484410052774F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		EA77605B20E4874C0052774F /* TrackingMaxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingMaxViewController.swift; sourceTree = "<group>"; };
-		EA77605C20E4874C0052774F /* TrackingMaxViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingMaxViewController.xib; sourceTree = "<group>"; };
 		EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoutineTableViewController.swift; sourceTree = "<group>"; };
 		EA7C92CA20F94016006DBFF0 /* ProfileSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsTableViewController.swift; sourceTree = "<group>"; };
 		EA84FCAC20E2DB05007E4487 /* AboutImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -174,6 +181,11 @@
 		EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		EA97D95420E1728E00BE4C60 /* ExerciseHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistoryViewController.swift; sourceTree = "<group>"; };
 		EA97D95C20E1733000BE4C60 /* ExerciseProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseProgressViewController.swift; sourceTree = "<group>"; };
+		EA98E50620FD6573002B2A70 /* SmallTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTrackingViewController.swift; sourceTree = "<group>"; };
+		EA98E50720FD6573002B2A70 /* SmallTrackingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallTrackingViewController.xib; sourceTree = "<group>"; };
+		EA98E50F20FD9B25002B2A70 /* MaxTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxTrackingViewController.swift; sourceTree = "<group>"; };
+		EA98E51020FD9B25002B2A70 /* MaxTrackingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MaxTrackingViewController.xib; sourceTree = "<group>"; };
+		EA98E51B20FE569F002B2A70 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		EA99105820D85DA4003D6D6E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		EAABE9E120CB05EF0024B222 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
 		EAABE9E220CB05EF0024B222 /* TodayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -272,10 +284,10 @@
 			isa = PBXGroup;
 			children = (
 				EA3090E620C6DA4000E09DDF /* AppDelegate.swift */,
-				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
-				EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */,
-				EA77605720E484410052774F /* ProfileViewController.swift */,
 				EA99105820D85DA4003D6D6E /* TabBarViewController.swift */,
+				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
+				EA98E51B20FE569F002B2A70 /* TestViewController.swift */,
+				EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */,
 				EA7C92CE20F9401E006DBFF0 /* Profile */,
 				EAC0DD5120D4045300AC7A1E /* Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
@@ -320,6 +332,7 @@
 		EA7C92CE20F9401E006DBFF0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				EA77605720E484410052774F /* ProfileViewController.swift */,
 				EA7C92CA20F94016006DBFF0 /* ProfileSettingsTableViewController.swift */,
 			);
 			path = Profile;
@@ -362,8 +375,10 @@
 			isa = PBXGroup;
 			children = (
 				EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */,
-				EA77605B20E4874C0052774F /* TrackingMaxViewController.swift */,
-				EA77605C20E4874C0052774F /* TrackingMaxViewController.xib */,
+				EA98E50620FD6573002B2A70 /* SmallTrackingViewController.swift */,
+				EA98E50720FD6573002B2A70 /* SmallTrackingViewController.xib */,
+				EA98E50F20FD9B25002B2A70 /* MaxTrackingViewController.swift */,
+				EA98E51020FD9B25002B2A70 /* MaxTrackingViewController.xib */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -474,10 +489,11 @@
 			files = (
 				EA84FCC120E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
 				EAABE9E620CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
+				EA98E50B20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */,
 				EA3090F420C6DA4300E09DDF /* LaunchScreen.storyboard in Resources */,
 				EA3090F120C6DA4300E09DDF /* Assets.xcassets in Resources */,
 				EA3090EC20C6DA4000E09DDF /* Main.storyboard in Resources */,
-				EA77606020E4874C0052774F /* TrackingMaxViewController.xib in Resources */,
+				EA98E51420FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */,
 				EA84FCB120E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,8 +504,9 @@
 			files = (
 				EAABE9E720CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
 				EA77605120E450B10052774F /* Main.storyboard in Resources */,
-				EA77606120E4874C0052774F /* TrackingMaxViewController.xib in Resources */,
+				EA98E51520FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */,
 				EA84FCC220E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
+				EA98E50C20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */,
 				EA84FCB220E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,8 +517,9 @@
 			files = (
 				EAABE9E820CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
 				EA77605220E450B20052774F /* Main.storyboard in Resources */,
-				EA77606220E4874C0052774F /* TrackingMaxViewController.xib in Resources */,
+				EA98E51620FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */,
 				EA84FCC320E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
+				EA98E50D20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */,
 				EA84FCB320E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,6 +536,7 @@
 				EA97D95620E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
 				EA855DE120F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA40F9F620EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
+				EA98E50820FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */,
 				EAB3B0B620C73B4A0077503F /* RoutineCollectionViewCell.swift in Sources */,
 				EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */,
 				EA97D95E20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
@@ -525,15 +544,16 @@
 				EA99105920D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EAABE9EA20CB16EC0024B222 /* RoutineDetailsTableViewController.swift in Sources */,
 				EA61DE7920C8913300075FCE /* RoutinesTableViewCell.swift in Sources */,
+				EA98E51C20FE569F002B2A70 /* TestViewController.swift in Sources */,
 				EA84FCAE20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EAC0DD4520D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA855DE920F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				EA8C64A520D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
 				EA7C92CB20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
+				EA98E51120FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
 				EAABE9E320CB05EF0024B222 /* TodayCollectionViewCell.swift in Sources */,
 				EA30911C20C7199D00E09DDF /* Data.swift in Sources */,
 				EA8C64A120D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
-				EA77605D20E4874C0052774F /* TrackingMaxViewController.swift in Sources */,
 				EAC0DD4E20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EAABE9F620CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift in Sources */,
 				EA84FCBE20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
@@ -553,6 +573,7 @@
 			files = (
 				EA855DE620F5438C000D7EA5 /* CalendarViewController.swift in Sources */,
 				EA8C64A620D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
+				EA98E51D20FE569F002B2A70 /* TestViewController.swift in Sources */,
 				EA3090FF20C6DA4300E09DDF /* FitfiAppTests.swift in Sources */,
 				EA77604F20E4498A0052774F /* Data.xcdatamodeld in Sources */,
 				EA97D95F20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
@@ -565,6 +586,7 @@
 				EA77603E20E43CC20052774F /* RecentWorkoutDetailsTableViewController.swift in Sources */,
 				EA7C92CC20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
 				EA77605920E484410052774F /* ProfileViewController.swift in Sources */,
+				EA98E51220FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
 				EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EA77604820E43D320052774F /* RoutinesTableViewCell.swift in Sources */,
 				EA40F9F720EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
@@ -572,6 +594,7 @@
 				EA77604A20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA77603820E43CA80052774F /* AppDelegate.swift in Sources */,
+				EA98E50920FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */,
 				EA84FCBF20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
 				EA8C64A220D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
 				EA77604420E43D280052774F /* RoutineCollectionViewCell.swift in Sources */,
@@ -581,7 +604,6 @@
 				EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EA30911D20C7199D00E09DDF /* Data.swift in Sources */,
 				EA97D95720E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
-				EA77605E20E4874C0052774F /* TrackingMaxViewController.swift in Sources */,
 				EA30911920C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,6 +614,7 @@
 			files = (
 				EA855DE720F5438C000D7EA5 /* CalendarViewController.swift in Sources */,
 				EA8C64A720D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
+				EA98E51E20FE569F002B2A70 /* TestViewController.swift in Sources */,
 				EA30910A20C6DA4300E09DDF /* FitfiAppUITests.swift in Sources */,
 				EA77605020E4498A0052774F /* Data.xcdatamodeld in Sources */,
 				EA97D96020E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
@@ -604,6 +627,7 @@
 				EA77603F20E43CC30052774F /* RecentWorkoutDetailsTableViewController.swift in Sources */,
 				EA7C92CD20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
 				EA77605A20E484410052774F /* ProfileViewController.swift in Sources */,
+				EA98E51320FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
 				EA99105B20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EA77604920E43D330052774F /* RoutinesTableViewCell.swift in Sources */,
 				EA40F9F820EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
@@ -611,6 +635,7 @@
 				EA77604B20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA77603920E43CA90052774F /* AppDelegate.swift in Sources */,
+				EA98E50A20FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */,
 				EA84FCC020E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
 				EA8C64A320D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
 				EA77604520E43D290052774F /* RoutineCollectionViewCell.swift in Sources */,
@@ -620,7 +645,6 @@
 				EA78F3D920EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EA30911E20C7199D00E09DDF /* Data.swift in Sources */,
 				EA97D95820E1728E00BE4C60 /* ExerciseHistoryViewController.swift in Sources */,
-				EA77605F20E4874C0052774F /* TrackingMaxViewController.swift in Sources */,
 				EA30911A20C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

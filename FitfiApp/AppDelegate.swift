@@ -20,15 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
-//        print(Realm.Configuration.defaultConfiguration.fileURL ?? "")
-//        do {
-//            let realm = try Realm()
-//        } catch {
-//            print("\(error)")
-//        }
-        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+        let context = persistentContainer.viewContext
+        print("Context: ", context)
+        print("File Path of SQLite and .plist: " ,FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+//        print(".plist filepath: ", NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
 
-        print("First Time?", hasLaunchedBefore)
         if !hasLaunchedBefore {
             goToLoginScreen()
         } else {
@@ -134,6 +130,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 

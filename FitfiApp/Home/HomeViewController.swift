@@ -20,14 +20,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var noRecentWorkoutView: UIView!
     @IBOutlet weak var showAllRoutinesTableView: UITableView!
     @IBOutlet weak var showAllExercisesTableView: UITableView!
+    @IBOutlet weak var noRoutineView: UIView!
+    @IBOutlet weak var noRoutineLabel: UILabel!
+    
     
     var trackingVC: UIViewController!
     var window: UIWindow!
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var routineArray = [Routine]()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +41,7 @@ class HomeViewController: UIViewController {
 //        window.addSubview(trackingVC.view!)
 //        trackingVC.view.isHidden = true
         
-        //Register Customized Cell for Today Collection View
+        //MARK: Register Customized Cell for Today Collection View
         todayCollectionView.register(UINib.init(nibName: "TodayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TodayCollectionViewCell")
         if let flowLayout = todayCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = CGSize(width: 1,height: 1)
@@ -71,6 +72,18 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        print("HomeView Did Appear")
+        //MARK: Find Top VC
+//        if let topVC = UIApplication.topViewController() {
+//            print(topVC)
+//        }
+        //MARK: Find Child VC
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        if let viewControllers = appDelegate.window?.rootViewController?.childViewControllers
+//        {
+//            // Array of all viewcontroller after push
+//            print(viewControllers)
+//        }
     }
 }
 
@@ -93,9 +106,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == recentWorkoutCollectionView {
             if workout.count == 0 {
                 noRecentWorkoutView.isHidden = false
+            } else {
+                noRecentWorkoutView.isHidden = true
             }
             return workout.count
         } else if collectionView == routinesCollectionView {
+            if routineArray.count == 0 {
+                noRoutineLabel.text = noRoutineText
+                noRoutineView.isHidden = false
+            } else {
+                noRoutineView.isHidden = true
+            }
             return routineArray.count
         } else {
             return 1
@@ -105,7 +126,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == recentWorkoutCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentWorkoutCell", for: indexPath) as! RecentWorkoutCollectionViewCell
-            cell.workoutNameLabel.text = workout[indexPath.row]
+            cell.workoutNameLabel.text = workout[indexPath.row]["name"]
+            cell.dayOfTheWeekLabel.text = workout[indexPath.row]["dayofWeek"]
+            cell.timeDurationLabel.text = workout[indexPath.row]["duration"]
+            cell.dateLabel.text = workout[indexPath.row]["date"]
+            cell.volumeLabel.text = workout[indexPath.row]["volume"]
+            cell.timeLabel.text = workout[indexPath.row]["time"]
+            cell.numberOfExercises.text = workout[indexPath.row]["numberOfExercises"]
+            cell.calorieLabel.text = workout[indexPath.row]["calorie"]
             return cell
             
             //MARK: Routine Collection View Data Source on HomePage
@@ -120,6 +148,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodayCollectionViewCell", for: indexPath) as! TodayCollectionViewCell
             cell.scheduledLabel.text = "NOTHING SCHEDULED"
+            cell.instructionLabel.text = "Drag and Drop from routine to quickly schedule one"
             return cell
         }
     }

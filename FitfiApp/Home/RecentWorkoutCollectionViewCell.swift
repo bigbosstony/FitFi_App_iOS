@@ -16,6 +16,6 @@ class RecentWorkoutCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var calorieLabel: UILabel!
     @IBOutlet weak var volumeLabel: UILabel!
     @IBOutlet weak var timeDurationLabel: UILabel!
-    @IBOutlet weak var setsLabel: UILabel!
+    @IBOutlet weak var numberOfExercises: UILabel!
     
 }

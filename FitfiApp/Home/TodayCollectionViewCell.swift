@@ -12,6 +12,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
     // DATA
     @IBOutlet weak var scheduledLabel: UILabel!
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var instructionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

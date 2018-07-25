@@ -131,7 +131,7 @@ class ExerciseTableViewController: UITableViewController {
         let favoriteExercisesPredicate = NSPredicate(format: "favorite == YES")
         favoriteExercisesRequest.predicate = favoriteExercisesPredicate
 
-        do {
+        do {            
             exerciseList = [try context.fetch(favoriteExercisesRequest)]
             exerciseList.append(try context.fetch(allExercisesRequest))
         } catch {
@@ -168,7 +168,7 @@ class ExerciseTableViewController: UITableViewController {
         
         self.present(alert, animated: true, completion: nil)
         
-        //Ignore the following
+//        Ignore the following
 //            let entity = NSEntityDescription.entity(forEntityName: "Exercise", in: self.context)
 //            let newExercise = NSManagedObject(entity: entity!, insertInto: self.context)
 //            newExercise.setValue(textField.text, forKey: "name")
@@ -177,8 +177,11 @@ class ExerciseTableViewController: UITableViewController {
     }
 }
 
-extension ExerciseTableViewController {
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//MARK: Connection Between CoreData and TableView
+extension ExerciseTableViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
     }
 }
 

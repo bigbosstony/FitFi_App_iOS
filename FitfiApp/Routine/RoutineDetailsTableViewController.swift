@@ -11,11 +11,11 @@ import CoreData
 
 class RoutineDetailsTableViewController: UITableViewController {
 
+    //MARK: Properties
     @IBOutlet weak var favButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var routineExerciseArray = [Routine_Exercise]()
     
     var selectedRoutine: Routine? {
@@ -27,11 +27,17 @@ class RoutineDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadExercises()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.title = selectedRoutine?.name?.capitalized
+        //TODO: Modify and Delete next few lines
+//        for e in (selectedRoutine?.routineExercises)! {
+//            let ex = e as! Routine_Exercise
+//            print(ex.name)
+//        }
         favButton.image = (selectedRoutine?.favorite)! ? UIImage(named: "Glyphs/Favorited") : UIImage(named: "Glyphs/Favorite")
     }
 
@@ -75,6 +81,7 @@ extension RoutineDetailsTableViewController {
     
     func loadExercises(with request: NSFetchRequest<Routine_Exercise> = Routine_Exercise.fetchRequest(), predicate: NSPredicate? = nil) {
         request.predicate = NSPredicate(format: "parentRoutine.name MATCHES %@", selectedRoutine!.name!)
+        
         
         do {
             //save the result into itemArray

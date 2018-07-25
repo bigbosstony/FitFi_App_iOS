@@ -1,18 +1,21 @@
 //
-//  TrackingMaxViewController.swift
+//  TestViewController.swift
 //  FitfiApp
 //
-//  Created by YAN YU on 2018-06-27.
+//  Created by YAN YU on 2018-07-17.
 //  Copyright © 2018 Fitfi. All rights reserved.
 //
 
 import UIKit
 
-class TrackingMaxViewController: UIViewController {
+class TestViewController: UIViewController {
 
+    @IBOutlet weak var containerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        UIApplication.shared.keyWindow?.addSubview(containerView)
         // Do any additional setup after loading the view.
     }
 
@@ -20,6 +23,7 @@ class TrackingMaxViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*

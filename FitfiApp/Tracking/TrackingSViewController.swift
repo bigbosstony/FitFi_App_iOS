@@ -11,6 +11,7 @@ import CoreBluetooth
 
 class TrackingSViewController: UIViewController {
 
+    //MARK: Properties
     var bicepsCounter = 0
     var tricepsCounter = 0
 //    var accelerometerDataArray = [[Int]]()
@@ -46,9 +47,9 @@ class TrackingSViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("TrackingSViewController Loaded")
         
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
 
         self.view.backgroundColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 0.5)
         self.view.layer.shadowOpacity = 0.1
@@ -111,10 +112,10 @@ class TrackingSViewController: UIViewController {
         self.view.addSubview(liveImageView)
         
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
-
         
         // Create Central Manager Delegate
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        
         
         // Add Tap Gesture to the View
         let tap = UITapGestureRecognizer(target: self, action: #selector(expandTrackingSmallView)) //Change This If Needed
@@ -185,7 +186,6 @@ class TrackingSViewController: UIViewController {
             self.liveImageView.alpha = 1
         }
         animator.startAnimation(afterDelay: 0.3)
-
     }
     
 //    @objc func expandTrackingSmallView() {
@@ -199,12 +199,19 @@ class TrackingSViewController: UIViewController {
         exerciseLabel.text = exerciseName
         counterLabel.text = String(counter)
     }
+    
+    func disconnectBLE() {
+        centralManager.cancelPeripheralConnection(blePeripheral)
+    }
 }
+
+
 //MARK: - Search and Connect to BLE Device
 //MARK: Central Manager
 extension TrackingSViewController: CBCentralManagerDelegate {
+    
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        switch central.state {
+        switch central.state {          //TODO: Change View isHidden to true Later
         case .unknown:
             print("central.state is .unknown")
             view.isHidden = true
@@ -213,7 +220,7 @@ extension TrackingSViewController: CBCentralManagerDelegate {
             view.isHidden = true
         case .unsupported:
             print("central.state is .unsupported")
-            view.isHidden = true
+            view.isHidden = false
         case .unauthorized:
             print("central.state is .unauthorized")
             view.isHidden = true
@@ -229,6 +236,7 @@ extension TrackingSViewController: CBCentralManagerDelegate {
     
     //MARK: Did Discover Peipheral
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        print("Did Discover Peripheral")
         
         print("peropheral = \(peripheral)")
         print("advData = \(advertisementData)")
@@ -242,7 +250,7 @@ extension TrackingSViewController: CBCentralManagerDelegate {
     
     //MARK: Did Connect Peripheral
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("connected")
+        print("Did Connect to Peripheral")
         view.isHidden = false
         blePeripheral.discoverServices([bleService1CBUUID]) // CHANGE THIS VALUE
     }
@@ -250,7 +258,7 @@ extension TrackingSViewController: CBCentralManagerDelegate {
     //MARK: Did Disconnect Peripheral
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         view.isHidden = true
-        print("disconnected")
+        print("Did Disconnected Peripheral")
         smallViewCounterTappedToClear()
         
         switch central.state {
@@ -302,6 +310,7 @@ extension TrackingSViewController: CBPeripheralDelegate {
 
 //MARK: Covert XYZ Value In Integer
 extension TrackingSViewController {
+    
     private func getAccelerometerData(from characteristic: CBCharacteristic) -> [Int] {
         guard let characteristicData = characteristic.value else { return [1] }
         let byteArray = [UInt8](characteristicData)
@@ -422,3 +431,8 @@ extension TrackingSViewController {
         accelerometerZArray.removeAll()
     }
 }
+
+
+
+
+
