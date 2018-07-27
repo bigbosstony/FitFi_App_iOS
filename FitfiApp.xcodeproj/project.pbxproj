@@ -112,6 +112,9 @@
 		EA99105920D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
 		EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
 		EA99105B20D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
+		EA9D5D6D210B8472009617C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D5D6C210B8472009617C5 /* Extensions.swift */; };
+		EA9D5D6E210B8472009617C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D5D6C210B8472009617C5 /* Extensions.swift */; };
+		EA9D5D6F210B8472009617C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D5D6C210B8472009617C5 /* Extensions.swift */; };
 		EAABE9E320CB05EF0024B222 /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABE9E120CB05EF0024B222 /* TodayCollectionViewCell.swift */; };
 		EAABE9E620CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAABE9E220CB05EF0024B222 /* TodayCollectionViewCell.xib */; };
 		EAABE9E720CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAABE9E220CB05EF0024B222 /* TodayCollectionViewCell.xib */; };
@@ -187,6 +190,7 @@
 		EA98E51020FD9B25002B2A70 /* MaxTrackingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MaxTrackingViewController.xib; sourceTree = "<group>"; };
 		EA98E51B20FE569F002B2A70 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		EA99105820D85DA4003D6D6E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		EA9D5D6C210B8472009617C5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EAABE9E120CB05EF0024B222 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
 		EAABE9E220CB05EF0024B222 /* TodayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayCollectionViewCell.xib; sourceTree = "<group>"; };
 		EAABE9E920CB16EC0024B222 /* RoutineDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineDetailsTableViewController.swift; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
 				EA98E51B20FE569F002B2A70 /* TestViewController.swift */,
 				EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */,
+				EA9D5D6C210B8472009617C5 /* Extensions.swift */,
 				EA7C92CE20F9401E006DBFF0 /* Profile */,
 				EAC0DD5120D4045300AC7A1E /* Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
@@ -562,6 +567,7 @@
 				EA855DED20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
 				EA3090E920C6DA4000E09DDF /* HomeViewController.swift in Sources */,
 				EA3090E720C6DA4000E09DDF /* AppDelegate.swift in Sources */,
+				EA9D5D6D210B8472009617C5 /* Extensions.swift in Sources */,
 				EA77605820E484410052774F /* ProfileViewController.swift in Sources */,
 				EA30911820C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */,
 			);
@@ -591,6 +597,7 @@
 				EA77604820E43D320052774F /* RoutinesTableViewCell.swift in Sources */,
 				EA40F9F720EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
 				EA855DE220F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
+				EA9D5D6E210B8472009617C5 /* Extensions.swift in Sources */,
 				EA77604A20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA77603820E43CA80052774F /* AppDelegate.swift in Sources */,
@@ -632,6 +639,7 @@
 				EA77604920E43D330052774F /* RoutinesTableViewCell.swift in Sources */,
 				EA40F9F820EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
 				EA855DE320F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
+				EA9D5D6F210B8472009617C5 /* Extensions.swift in Sources */,
 				EA77604B20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA77603920E43CA90052774F /* AppDelegate.swift in Sources */,
