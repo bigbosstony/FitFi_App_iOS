@@ -22,7 +22,7 @@ class TabBarViewController: UITabBarController {
         let tabBarHeight = tabBarController?.tabBar.frame.size.height ?? 49.0
 
         super.viewDidLoad()
-//        print(UIDevice.modelName)
+        print(UIDevice.modelName)
         print("Tab Bar Controller Loaded")
         
         if !hasLaunchedBefore {
