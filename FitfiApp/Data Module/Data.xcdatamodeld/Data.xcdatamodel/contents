@@ -11,8 +11,8 @@
         <attribute name="calorie" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="rep" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="set" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="reps" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="parentRoutineHistory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine_History" inverseName="routineHistory" inverseEntity="Routine_History" syncable="YES"/>
@@ -36,7 +36,7 @@
         <element name="Exercise" positionX="-297" positionY="-153" width="128" height="118"/>
         <element name="Routine" positionX="-315" positionY="45" width="128" height="90"/>
         <element name="Routine_Exercise" positionX="-36" positionY="68" width="128" height="103"/>
-        <element name="Routine_History" positionX="-72" positionY="-141" width="128" height="75"/>
+        <element name="Routine_History" positionX="-81" positionY="-180" width="128" height="75"/>
         <element name="Exercise_History" positionX="135" positionY="-180" width="128" height="165"/>
     </elements>
 </model>

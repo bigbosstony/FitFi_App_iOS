@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
     let hasLoginKey = UserDefaults.standard.bool(forKey: "hasLoginKey")
+    //MARK: Delete Me
+    let date = UserDefaults.standard.data(forKey: "date")
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     

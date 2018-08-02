@@ -81,11 +81,11 @@ class NewRoutineTableViewController: UITableViewController {
             newRoutine.name = routineName.text!
             newRoutine.favorite = false
             save()
-            for ex in currentPickedExerciseList {
+            for exercise in currentPickedExerciseList {
                 let newRoutineExercise = Routine_Exercise(context: context)
-                newRoutineExercise.name = ex[0]
-                newRoutineExercise.sets = Int16(ex[1])!
-                newRoutineExercise.reps = Int16(ex[2])!
+                newRoutineExercise.name = exercise[0]
+                newRoutineExercise.sets = Int16(exercise[1])!
+                newRoutineExercise.reps = Int16(exercise[2])!
                 newRoutineExercise.parentRoutine = newRoutine
                 save()
             }

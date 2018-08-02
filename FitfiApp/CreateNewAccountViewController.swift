@@ -50,5 +50,8 @@ class CreateNewAccountViewController: UIViewController {
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarViewController
         self.present(newViewController, animated: true, completion: nil)
         UserDefaults.standard.setValue(true, forKey: "hasLoginKey")
+        //MARK: Delete
+        UserDefaults.standard.setValue(Date(), forKey: "date")
+        
     }
 }
