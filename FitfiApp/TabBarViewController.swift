@@ -36,8 +36,8 @@ class TabBarViewController: UITabBarController {
         smallTrackingVC = SmallTrackingViewController.init(nibName: "SmallTrackingViewController", bundle: nil)
         smallTrackingVC.view.frame = CGRect(x: 0, y: (height - tabBarHeight - 64 - 0.5), width: width, height: 64)
         
-        //Add to ParentVC
-        add(smallTrackingVC)
+        //MARK: Add to ParentVC
+//        add(smallTrackingVC)
         
 //        let trackingVC = SmallTrackingViewController()
 //  MARK: After Adding frame it become activate
@@ -64,6 +64,7 @@ extension TabBarViewController {
             exercise.name = e["name"]
             exercise.instructions = e["instructions"]
             exercise.image = e["image"]
+            exercise.category = e["category"]
             exercise.favorite = false
             save()
         }

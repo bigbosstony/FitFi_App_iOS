@@ -141,32 +141,33 @@ class ExerciseTableViewController: UITableViewController {
     }
     
     //MARK:  Add Exercise UIAlert Action
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        var textField = UITextField()
-
-        let alert = UIAlertController(title: "New Exercise", message: "Add a New Exercise to your library", preferredStyle: .alert)
-        
-        alert.addTextField { (alertTextField) in
-            textField = alertTextField
-//            print("Name: ",textField.text!)
-        }
-        
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Add", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
-//            print("Name from action: ", textField.text!)
-            let newExercise = Exercise(context: self.context)
-            newExercise.name = textField.text!
-            newExercise.favorite = false
-
-            self.saveExercises()
-            self.loadExercises()
-        }))
-        
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { (_) in
-            print("Cancel button tapped")
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
+//    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+    
+//        var textField = UITextField()
+//
+//        let alert = UIAlertController(title: "New Exercise", message: "Add a New Exercise to your library", preferredStyle: .alert)
+//
+//        alert.addTextField { (alertTextField) in
+//            textField = alertTextField
+////            print("Name: ",textField.text!)
+//        }
+//
+//        alert.addAction(UIAlertAction(title: NSLocalizedString("Add", comment: "Default action"), style: .default, handler: { _ in
+//            NSLog("The \"OK\" alert occured.")
+////            print("Name from action: ", textField.text!)
+//            let newExercise = Exercise(context: self.context)
+//            newExercise.name = textField.text!
+//            newExercise.favorite = false
+//
+//            self.saveExercises()
+//            self.loadExercises()
+//        }))
+//
+//        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .cancel, handler: { (_) in
+//            print("Cancel button tapped")
+//        }))
+//
+//        self.present(alert, animated: true, completion: nil)
         
 //        Ignore the following
 //            let entity = NSEntityDescription.entity(forEntityName: "Exercise", in: self.context)
@@ -174,7 +175,7 @@ class ExerciseTableViewController: UITableViewController {
 //            newExercise.setValue(textField.text, forKey: "name")
 //            newExercise.setValue(nil, forKey: "favorite")
 //            newExercise.setValue(nil, forKey: "image")
-    }
+//    }
 }
 
 //MARK: Connection Between CoreData and TableView

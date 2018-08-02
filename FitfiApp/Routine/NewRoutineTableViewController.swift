@@ -143,6 +143,7 @@ extension NewRoutineTableViewController: UIPickerViewDelegate, UIPickerViewDataS
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        //MARK: Update 0
         currentPickedExercise = [exerciseList[row].name, "0", "0"] as? [String]
         print(currentPickedExercise!)
         return exerciseList[row].name
