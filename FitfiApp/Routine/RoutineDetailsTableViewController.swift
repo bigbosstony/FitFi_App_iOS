@@ -65,6 +65,7 @@ class RoutineDetailsTableViewController: UITableViewController {
             let endDate = dateGenerator(firstDate)
             print(firstDate, endDate)
             newExerciseHistory.name = exercise.name
+            newExerciseHistory.category = exercise.category
             newExerciseHistory.sets = exercise.sets
             newExerciseHistory.reps = exercise.reps
             newExerciseHistory.weight = Int16(arc4random_uniform(42))

@@ -68,7 +68,7 @@ class NewRoutineTableViewController: UITableViewController {
     }
     
 
-    // MARK: Save to database
+    // MARK: Save to database When finished
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         if currentPickedExerciseList.count == 0 {
             let alertView = UIAlertController(title: "Create Routine Failed",
@@ -98,6 +98,7 @@ class NewRoutineTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Add Exercise from PickerView
     @IBAction func addExercisesPressed(_ sender: Any) {
         routineName.resignFirstResponder()
         print("add button pressed")

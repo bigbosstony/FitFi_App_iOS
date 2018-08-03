@@ -1,70 +1,94 @@
 //
-//  ExerciseCategoryTableViewController.swift
+//  NewRoutineExerciseSelectionTVC.swift
 //  FitfiApp
 //
-//  Created by YAN YU on 2018-08-01.
+//  Created by YAN YU on 2018-08-03.
 //  Copyright © 2018 Fitfi. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-protocol ReceiveCategory {
-    func categoryReceived(category name: String)
-}
-
-struct categoryData {
-    var check: Bool
+struct Section {
     var category: String
+    var exerciseArray: [Exercise]
+    var collapsed: Bool
+    
+    init(category: String, exerciseArray: [Exercise], collapsed: Bool = false) {
+        self.category = category
+        self.exerciseArray = exerciseArray
+        self.collapsed = collapsed
+    }
 }
 
-class ExerciseCategoryTableViewController: UITableViewController {
-
+class NewRoutineExerciseSelectionTVC: UITableViewController {
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var delegate: ReceiveCategory?
-    var categoryArray = [categoryData]()
-    var categoryName: String?
-    var index: Int?
+    var addButton = "Add"
+    var numberOfExercises = 0
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var sections = [Section]()
+    var categoryArray = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Category"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: addButton, style: .plain, target: self, action: #selector(addTapped))
+        self.title = "Exercise"
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        setupNavBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise")
         request.resultType = NSFetchRequestResultType.dictionaryResultType
         request.propertiesToFetch = ["category"]
         request.returnsDistinctResults = true
         
-        do {
-            var counter = 0
-            let results = try context.fetch(request)
-            for item in results as! [[String: String]] {
-                if item["category"] == categoryName {
-                    index = counter
-                    let data = categoryData.init(check: true, category: item["category"]!)
-                    categoryArray.append(data)
-                } else {
-                    let data = categoryData.init(check: false, category: item["category"]!)
-                    categoryArray.append(data)
-                }
-                counter += 1
+        do { categoryArray = try context.fetch(request) as! [[String: String]] } catch { print("\(error)") }
+        for category in categoryArray {
+            
+            let category = category["category"]!
+//            print(category)
+            let exerciseRequest: NSFetchRequest<Exercise> = Exercise.fetchRequest()
+            exerciseRequest.predicate = NSPredicate(format: "category MATCHES %@", category)
+            do {
+                let exercises = try context.fetch(exerciseRequest)
+//                print(exercises)
+                let newSection: Section = Section(category: category, exerciseArray: exercises)
+                sections.append(newSection)
+            } catch {}
+        }
+        for i in sections {
+            print(i.category)
+            for i in i.exerciseArray {
+                print(i.name)
             }
-        } catch {
-            print("\(error)")
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @objc func addTapped() {
+        print("Add")
+    }
+    
+    //MARK: Search Bar in Nav bar
+    func setupNavBar() {
+        navigationItem.searchController = searchController
+        //TODO: Uncomment next line in the future
+        navigationItem.hidesSearchBarWhenScrolling = false
+        extendedLayoutIncludesOpaqueBars = true         //important
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -72,46 +96,20 @@ class ExerciseCategoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return categoryArray.count
+        return 3
     }
 
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCategoryTableViewCell", for: indexPath) as! ExerciseCategoryTableViewCell
-        cell.textLabel?.text = categoryArray[indexPath.row].category
-        cell.accessoryType = categoryArray[indexPath.row].check ? .checkmark : .none
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newRoutineExerciseCell", for: indexPath)
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if index == nil {
-            index = indexPath.row
-            categoryArray[indexPath.row].check = true
-            delegate?.categoryReceived(category: categoryArray[indexPath.row].category)
-            
-        } else if index == indexPath.row {
-            categoryArray[indexPath.row].check = false
-            delegate?.categoryReceived(category: "Select")
-            index = nil
-        } else {
-            categoryArray[index!].check = false
-            categoryArray[indexPath.row].check = true
-            delegate?.categoryReceived(category: categoryArray[indexPath.row].category)
-            index = indexPath.row
-        }
-//        print(index!)
-        
-//        let array = categoryArray.map { $0.check == true }
-//        if array.contains(true) {
-//            let index = array.index(of: true)
-//            categoryArray[index!].check = false
-//        }
-        
-        tableView.reloadData()
+        print(indexPath)
     }
+
 
     /*
     // Override to support conditional editing of the table view.
