@@ -52,8 +52,7 @@ class NewRoutineTableViewController: UITableViewController {
         print("Current Row: \(indexPath.row)")
     }
     
-//    for cell in
-    
+//
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! NewRoutineTableViewCell
         cell.textLabel?.text = currentPickedExerciseList[indexPath.row][0]
@@ -63,9 +62,11 @@ class NewRoutineTableViewController: UITableViewController {
         cell.repTextField.text = currentPickedExerciseList[indexPath.row][2]
         cell.setTextField?.tag = indexPath.row * 10 //currentPickedExerciseList[indexPath.row]
         cell.repTextField?.tag = indexPath.row * 10 + 1 //currentPickedExerciseList[indexPath.row]
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         // Configure the cell...
         return cell
     }
+    
 
     // MARK: Save to database
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
@@ -130,6 +131,17 @@ class NewRoutineTableViewController: UITableViewController {
     }
 }
 
+// Move Cell
+//extension NewRoutineTableViewController {
+//    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//
+//    }
+//
+//    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//}
+
 
 // PickerView
 extension NewRoutineTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -144,7 +156,7 @@ extension NewRoutineTableViewController: UIPickerViewDelegate, UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         //MARK: Update 0
-        currentPickedExercise = [exerciseList[row].name, "0", "0"] as? [String]
+        currentPickedExercise = [exerciseList[row].name, "", ""] as? [String]
         print(currentPickedExercise!)
         return exerciseList[row].name
     }
@@ -157,6 +169,13 @@ extension NewRoutineTableViewController: UITextFieldDelegate {
         let queue = textField.tag % 10
         
         currentPickedExerciseList[row][queue + 1] = textField.text!
+    }
+    
+    //MARK: Set Max Length to 2 Digit
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= 2 // Bool
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
