@@ -33,22 +33,10 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: addButton, style: .plain, target: self, action: #selector(addTapped))
         self.title = "Exercise"
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        setupNavBar()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise")
         request.resultType = NSFetchRequestResultType.dictionaryResultType
         request.propertiesToFetch = ["category"]
@@ -58,12 +46,12 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
         for category in categoryArray {
             
             let category = category["category"]!
-//            print(category)
+            //            print(category)
             let exerciseRequest: NSFetchRequest<Exercise> = Exercise.fetchRequest()
             exerciseRequest.predicate = NSPredicate(format: "category MATCHES %@", category)
             do {
                 let exercises = try context.fetch(exerciseRequest)
-//                print(exercises)
+                //                print(exercises)
                 let newSection: Section = Section(category: category, exerciseArray: exercises)
                 sections.append(newSection)
             } catch {}
@@ -71,9 +59,18 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
         for i in sections {
             print(i.category)
             for i in i.exerciseArray {
-                print(i.name)
+                print(i.name!)
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupNavBar()
+        
+//        //MARK: Auto Resize Cell Height, Delete This After Testing
+//        tableView.estimatedRowHeight = 44.0
+//        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     @objc func addTapped() {
@@ -91,23 +88,43 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return sections[section].collapsed ? 0 : sections[section].exerciseArray.count
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
+        header.titleLabel.text = sections[section].category
+        header.arrowLabel.text = "⌃"
+        header.setCollapsed(sections[section].collapsed)
+        header.section = section
+        header.delegate = self
+        
+        return header
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newRoutineExerciseCell", for: indexPath)
-        
+        cell.textLabel?.text = sections[indexPath.section].exerciseArray[indexPath.row].name
         return cell
     }
     
+    //MARK: Delete Me
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 48.0
     }
 
 
@@ -156,4 +173,16 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
     }
     */
 
+}
+
+extension NewRoutineExerciseSelectionTVC: CollapsibleTableViewHeaderDelegate {
+    func toggleSection(_ header: CollapsibleTableViewHeader, section: Int) {
+        let collapsed = !sections[section].collapsed
+        
+        sections[section].collapsed = collapsed
+        header.setCollapsed(collapsed)
+        tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
+    }
+    
+    
 }
