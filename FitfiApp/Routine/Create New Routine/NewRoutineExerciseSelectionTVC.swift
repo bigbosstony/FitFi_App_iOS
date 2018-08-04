@@ -13,11 +13,13 @@ struct Section {
     var category: String
     var exerciseArray: [Exercise]
     var collapsed: Bool
+    var checkedArray: [Bool]
     
-    init(category: String, exerciseArray: [Exercise], collapsed: Bool = false) {
+    init(category: String, exerciseArray: [Exercise], checkedArray: [Bool], collapsed: Bool = false) {
         self.category = category
         self.exerciseArray = exerciseArray
         self.collapsed = collapsed
+        self.checkedArray = checkedArray
     }
 }
 
@@ -30,6 +32,7 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
     
     var sections = [Section]()
     var categoryArray = [[String: String]]()
+    var selectedExercise = [IndexPath]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +45,9 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
         request.propertiesToFetch = ["category"]
         request.returnsDistinctResults = true
         
+        //MARK: Load Category
         do { categoryArray = try context.fetch(request) as! [[String: String]] } catch { print("\(error)") }
+        //MARK: Load Exercise with Category
         for category in categoryArray {
             
             let category = category["category"]!
@@ -51,17 +56,17 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
             exerciseRequest.predicate = NSPredicate(format: "category MATCHES %@", category)
             do {
                 let exercises = try context.fetch(exerciseRequest)
-                //                print(exercises)
-                let newSection: Section = Section(category: category, exerciseArray: exercises)
+                let checkedArray = Array(repeating: false, count: exercises.count)
+                let newSection: Section = Section(category: category, exerciseArray: exercises, checkedArray: checkedArray)
                 sections.append(newSection)
             } catch {}
         }
-        for i in sections {
-            print(i.category)
-            for i in i.exerciseArray {
-                print(i.name!)
-            }
-        }
+//        for i in sections {
+//            print(i.category)
+//            for i in i.exerciseArray {
+//                print(i.name!)
+//            }
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +79,7 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
     }
 
     @objc func addTapped() {
-        print("Add")
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK: Search Bar in Nav bar
@@ -120,7 +125,9 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
 //    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+
+        tableView.deselectRow(at: indexPath, animated: true)
+        print(selectedExercise)
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

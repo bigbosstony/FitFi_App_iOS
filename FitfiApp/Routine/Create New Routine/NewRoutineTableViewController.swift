@@ -94,7 +94,14 @@ class NewRoutineTableViewController: UITableViewController {
         }
     }
     
+    //Delete the Temp Routine
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        
+        var routineArray: [Routine]?
+        do { routineArray = try context.fetch(Routine.fetchRequest()) } catch { print("\(error)") }
+        context.delete((routineArray?.last)!)
+        save()
+        
         dismiss(animated: true, completion: nil)
     }
     

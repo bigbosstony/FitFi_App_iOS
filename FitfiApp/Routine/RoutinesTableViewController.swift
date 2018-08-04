@@ -13,7 +13,6 @@ class RoutinesTableViewController: UITableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var routineList = [[Routine]]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +32,18 @@ class RoutinesTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //Create New Temp Routine and go to new routine page
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        let newRoutine = Routine(context: context)
+        newRoutine.name = "New Routine"
+        newRoutine.favorite = false
+        do { try context.save()} catch { print("\(error)")}
+        
+        performSegue(withIdentifier: "goToNewRoutinePage", sender: self)
+        print("Add New Routine")
+    }
+    
 
     // MARK: - Table view data source
     //TODO: Section of Routine
