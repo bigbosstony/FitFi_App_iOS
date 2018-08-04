@@ -52,8 +52,7 @@ class NewRoutineTableViewController: UITableViewController {
         print("Current Row: \(indexPath.row)")
     }
     
-//    for cell in
-    
+//
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! NewRoutineTableViewCell
         cell.textLabel?.text = currentPickedExerciseList[indexPath.row][0]
@@ -63,11 +62,13 @@ class NewRoutineTableViewController: UITableViewController {
         cell.repTextField.text = currentPickedExerciseList[indexPath.row][2]
         cell.setTextField?.tag = indexPath.row * 10 //currentPickedExerciseList[indexPath.row]
         cell.repTextField?.tag = indexPath.row * 10 + 1 //currentPickedExerciseList[indexPath.row]
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         // Configure the cell...
         return cell
     }
+    
 
-    // MARK: Save to database
+    // MARK: Save to database When finished
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         if currentPickedExerciseList.count == 0 {
             let alertView = UIAlertController(title: "Create Routine Failed",
@@ -81,11 +82,11 @@ class NewRoutineTableViewController: UITableViewController {
             newRoutine.name = routineName.text!
             newRoutine.favorite = false
             save()
-            for ex in currentPickedExerciseList {
+            for exercise in currentPickedExerciseList {
                 let newRoutineExercise = Routine_Exercise(context: context)
-                newRoutineExercise.name = ex[0]
-                newRoutineExercise.sets = Int16(ex[1])!
-                newRoutineExercise.reps = Int16(ex[2])!
+                newRoutineExercise.name = exercise[0]
+                newRoutineExercise.sets = Int16(exercise[1])!
+                newRoutineExercise.reps = Int16(exercise[2])!
                 newRoutineExercise.parentRoutine = newRoutine
                 save()
             }
@@ -93,10 +94,18 @@ class NewRoutineTableViewController: UITableViewController {
         }
     }
     
+    //Delete the Temp Routine
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        
+        var routineArray: [Routine]?
+        do { routineArray = try context.fetch(Routine.fetchRequest()) } catch { print("\(error)") }
+        context.delete((routineArray?.last)!)
+        save()
+        
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Add Exercise from PickerView
     @IBAction func addExercisesPressed(_ sender: Any) {
         routineName.resignFirstResponder()
         print("add button pressed")
@@ -130,6 +139,17 @@ class NewRoutineTableViewController: UITableViewController {
     }
 }
 
+// Move Cell
+//extension NewRoutineTableViewController {
+//    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//
+//    }
+//
+//    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//}
+
 
 // PickerView
 extension NewRoutineTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -144,7 +164,7 @@ extension NewRoutineTableViewController: UIPickerViewDelegate, UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         //MARK: Update 0
-        currentPickedExercise = [exerciseList[row].name, "0", "0"] as? [String]
+        currentPickedExercise = [exerciseList[row].name, "", ""] as? [String]
         print(currentPickedExercise!)
         return exerciseList[row].name
     }
@@ -157,6 +177,13 @@ extension NewRoutineTableViewController: UITextFieldDelegate {
         let queue = textField.tag % 10
         
         currentPickedExerciseList[row][queue + 1] = textField.text!
+    }
+    
+    //MARK: Set Max Length to 2 Digit
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= 2 // Bool
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
