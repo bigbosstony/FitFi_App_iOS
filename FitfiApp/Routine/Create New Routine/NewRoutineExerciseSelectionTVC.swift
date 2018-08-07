@@ -146,17 +146,16 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
         
         sections[indexPath.section].checkedArray[indexPath.row] = !sections[indexPath.section].checkedArray[indexPath.row]
         if sections[indexPath.section].checkedArray[indexPath.row] == true {
-            counter += 1
             selectedExercise.append(sections[indexPath.section].exerciseArray[indexPath.row])
         } else {
-            counter -= 1
-            selectedExercise.remove(at: indexPath.row)
+            let currentNoneExercise = sections[indexPath.section].exerciseArray[indexPath.row]
+            selectedExercise.remove(at: selectedExercise.index(of: currentNoneExercise)!)
         }
         
 //        if counter > 0 {
 //            addButton.title = "Add \((counter))"
 //        }
-
+        print(selectedExercise)
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }

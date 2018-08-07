@@ -34,8 +34,9 @@ class NewRoutineTableViewController: UITableViewController {
         super.viewDidAppear(true)
         do { tempRoutine = try context.fetch(Routine.fetchRequest()).last } catch { print("\(error)") }
         exerciseList = (tempRoutine?.routineExercises)!.allObjects as! [Routine_Exercise]
-        print(exerciseList)
         tableView.reloadData()
+        print(exerciseList)
+
     }
     
     override func didReceiveMemoryWarning() {
