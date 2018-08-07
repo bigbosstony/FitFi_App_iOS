@@ -5,7 +5,7 @@
 //  Created by Yan Yu on 2018-06-08.
 //  Copyright © 2018 Fitfi. All rights reserved.
 //
-// Press Add Button
+
 
 import UIKit
 import CoreData
