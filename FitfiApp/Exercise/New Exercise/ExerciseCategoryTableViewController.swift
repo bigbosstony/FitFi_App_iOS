@@ -102,7 +102,7 @@ class ExerciseCategoryTableViewController: UITableViewController {
             delegate?.categoryReceived(category: categoryArray[indexPath.row].category)
             index = indexPath.row
         }
-        print(index)
+//        print(index!)
         
 //        let array = categoryArray.map { $0.check == true }
 //        if array.contains(true) {

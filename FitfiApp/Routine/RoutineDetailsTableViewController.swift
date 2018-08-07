@@ -5,7 +5,7 @@
 //  Created by Yan Yu on 2018-06-08.
 //  Copyright © 2018 Fitfi. All rights reserved.
 //
-// Data
+
 
 import UIKit
 import CoreData
@@ -66,6 +66,7 @@ class RoutineDetailsTableViewController: UITableViewController {
             let endDate = dateGenerator(firstDate)
             print(firstDate, endDate)
             newExerciseHistory.name = exercise.name
+            newExerciseHistory.category = exercise.category
             newExerciseHistory.sets = exercise.sets
             newExerciseHistory.reps = exercise.reps
             newExerciseHistory.weight = Int16(arc4random_uniform(42))

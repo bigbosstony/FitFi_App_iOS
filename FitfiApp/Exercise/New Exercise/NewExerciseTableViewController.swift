@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class NewExerciseTableViewController: UITableViewController {
 
     var categoryName: String = "Select"
     var newExerciseName: String?
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +51,8 @@ class NewExerciseTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "name", for: indexPath) as! NewExerciseNameTableViewCell
+            cell.newExerciseName.delegate = self
             cell.selectionStyle = UITableViewCellSelectionStyle.none
-            
             
             return cell
         } else {
@@ -69,6 +71,18 @@ class NewExerciseTableViewController: UITableViewController {
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        if newExerciseName != nil && categoryName != "Select" {
+            let newExercise = Exercise(context: context)
+            newExercise.name = newExerciseName
+            newExercise.category = categoryName
+            newExercise.favorite = false
+            do { try context.save()} catch { print("\(error)")}
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension NewExerciseTableViewController: ReceiveCategory {
@@ -85,6 +99,18 @@ extension NewExerciseTableViewController: ReceiveCategory {
             categoryTableVC.delegate = self
         }
         
+    }
+}
+
+//MARK: TextField Delegate
+extension NewExerciseTableViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        newExerciseName = textField.text
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
