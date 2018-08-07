@@ -33,10 +33,10 @@ class RoutinesTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //Create New Temp Routine and go to new routine page
+    //MARK: Create New Temp Routine and go to new routine page
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         let newRoutine = Routine(context: context)
-        newRoutine.name = "New Routine"
+        newRoutine.name = "tempRoutineName"
         newRoutine.favorite = false
         do { try context.save()} catch { print("\(error)")}
         

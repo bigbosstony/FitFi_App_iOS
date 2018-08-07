@@ -26,18 +26,19 @@ struct Section {
 class NewRoutineExerciseSelectionTVC: UITableViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var addButton = "Add"
-    var numberOfExercises = 0
+    var counter = 0
+//    var addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
     let searchController = UISearchController(searchResultsController: nil)
     
     var sections = [Section]()
     var categoryArray = [[String: String]]()
-    var selectedExercise = [IndexPath]()
+    var selectedExercise = [Exercise]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: addButton, style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelTapped))
         self.title = "Exercise"
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise")
@@ -61,12 +62,6 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
                 sections.append(newSection)
             } catch {}
         }
-//        for i in sections {
-//            print(i.category)
-//            for i in i.exerciseArray {
-//                print(i.name!)
-//            }
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +73,28 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
 //        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
+    //MARK: Save selected exercise to temp routine
     @objc func addTapped() {
+        do {
+            let parentRoutine = try context.fetch(Routine.fetchRequest()).last
+            for exercise in selectedExercise {
+                let newRoutineExercise = Routine_Exercise(context: context)
+                newRoutineExercise.name = exercise.name
+                newRoutineExercise.reps = 0
+                newRoutineExercise.sets = 0
+                newRoutineExercise.category = exercise.category
+                newRoutineExercise.parentRoutine = parentRoutine as? Routine
+                do { try context.save()} catch { print("\(error)")}
+            }
+        } catch {
+            print("\(error)")
+        }
+        
+        dismiss(animated: true, completion: nil)
+        print(selectedExercise)
+    }
+    
+    @objc func cancelTapped() {
         dismiss(animated: true, completion: nil)
     }
     
@@ -116,6 +132,8 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newRoutineExerciseCell", for: indexPath)
         cell.textLabel?.text = sections[indexPath.section].exerciseArray[indexPath.row].name
+        cell.accessoryType = sections[indexPath.section].checkedArray[indexPath.row] ? .checkmark : .none
+        
         return cell
     }
     
@@ -125,9 +143,22 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
 //    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        sections[indexPath.section].checkedArray[indexPath.row] = !sections[indexPath.section].checkedArray[indexPath.row]
+        if sections[indexPath.section].checkedArray[indexPath.row] == true {
+            counter += 1
+            selectedExercise.append(sections[indexPath.section].exerciseArray[indexPath.row])
+        } else {
+            counter -= 1
+            selectedExercise.remove(at: indexPath.row)
+        }
+        
+//        if counter > 0 {
+//            addButton.title = "Add \((counter))"
+//        }
 
         tableView.deselectRow(at: indexPath, animated: true)
-        print(selectedExercise)
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
