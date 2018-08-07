@@ -150,13 +150,13 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
             selectedExercise.append(sections[indexPath.section].exerciseArray[indexPath.row])
         } else {
             counter -= 1
-            selectedExercise.remove(at: indexPath.row)
+//            selectedExercise.remove(at: selectedExercise.index(of: <#T##Exercise#>))
         }
         
 //        if counter > 0 {
 //            addButton.title = "Add \((counter))"
 //        }
-
+        print(selectedExercise)
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }
