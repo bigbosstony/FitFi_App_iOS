@@ -101,6 +101,7 @@ class NewRoutineTableViewController: UITableViewController {
                 newRoutineExercise.name = exercise.name
                 newRoutineExercise.sets = Int16(exercise.sets!)!
                 newRoutineExercise.reps = Int16(exercise.reps!)!
+                newRoutineExercise.category = exercise.category
                 newRoutineExercise.parentRoutine = newRoutine
                 save()
             }

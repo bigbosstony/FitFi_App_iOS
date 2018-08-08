@@ -108,7 +108,8 @@ extension SelectExerciseForRoutineVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         header.titleLabel.text = sections[section].category
-        header.arrowLabel.text = "^"
+        //TODO: Add Section Arrow
+        header.arrowLabel.text = ""
         header.setCollapsed(sections[section].collapsed)
         header.section = section
         header.delegate = self

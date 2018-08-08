@@ -53,17 +53,22 @@ class RoutineDetailsTableViewController: UITableViewController {
     
     
     //MARK: Start Workout Button for Testing Only
+    //Delete Me
     @IBAction func startWorkoutButtonPressed(_ sender: UIButton) {
         print(routineExerciseArray)
+        var totalWeight: Int16 = 0, totalCalorie: Int16 = 0
         var firstDate = UserDefaults.standard.object(forKey: "date") as! Date
         UserDefaults.standard.set(yesterday(firstDate), forKey: "date")
         let newRoutineHistory = Routine_History(context: context)
+        
         newRoutineHistory.name = selectedRoutine?.name
-        save()
+        newRoutineHistory.start = firstDate
+        print("First: ", firstDate)
+        
         for exercise in routineExerciseArray {
             let newExerciseHistory = Exercise_History(context: context)
             let endDate = dateGenerator(firstDate)
-            print(firstDate, endDate)
+            print("First and End: ", firstDate, endDate)
             newExerciseHistory.name = exercise.name
             newExerciseHistory.category = exercise.category
             newExerciseHistory.sets = exercise.sets
@@ -73,9 +78,14 @@ class RoutineDetailsTableViewController: UITableViewController {
             newExerciseHistory.parentRoutineHistory = newRoutineHistory
             newExerciseHistory.start = firstDate
             newExerciseHistory.end = endDate
+            totalWeight = totalWeight + newExerciseHistory.weight
+            totalCalorie = totalCalorie + newExerciseHistory.calorie
             firstDate = endDate
-            save()
         }
+        newRoutineHistory.end = firstDate
+        newRoutineHistory.totalCalorie = totalCalorie
+        newRoutineHistory.totalWeight = totalWeight
+        save()
     }
     
     //MARK: Temporary function, Delete me later

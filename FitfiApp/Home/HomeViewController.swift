@@ -28,7 +28,9 @@ class HomeViewController: UIViewController {
     var window: UIWindow!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var routineArray = [Routine]()
-        
+    var routineHistoryArray = [Routine_History]()
+    var dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,7 +69,33 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        print("Home view Will Appear")
+
         loadRoutines()
+        loadRecentWorkout()
+        
+        dateFormatter.dateFormat = "EEEE,MMM dd,HH:mm a"
+        
+        //
+//        let request: NSFetchRequest<Routine_History> = Routine_History.fetchRequest()
+//        do {
+//            let routineArray = try context.fetch(request)
+//
+//
+//            if let lastRoutine = routineArray.last {
+//                if let exerciseHistory = lastRoutine.exerciseHistory as? Set<Exercise_History> {
+//                    print(exerciseHistory)
+//
+//                    for exercise in exerciseHistory {
+//                        print("objectID")
+//                        print(context.object(with: (exercise.parentRoutineHistory?.objectID)!))
+////                        print(exercise.name ?? "")
+////                        print(exercise.parentRoutineHistory?.objectID)
+//                    }
+//                }
+//                print(lastRoutine)
+//            }
+//        } catch { print("\(error)") }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,8 +115,9 @@ class HomeViewController: UIViewController {
     }
 }
 
-//
+//MARK: Load Data
 extension HomeViewController {
+    //Load Routines
     func loadRoutines(with request: NSFetchRequest<Routine> = Routine.fetchRequest()) {
         do {
             routineArray = try context.fetch(request)
@@ -97,6 +126,25 @@ extension HomeViewController {
         }
         routinesCollectionView.reloadData()
     }
+    
+    //Load Recent Workout
+    func loadRecentWorkout() {
+        var rCount = 0
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName:"Routine_History")
+//        let sortDescriptor = NSSortDescriptor(key: "start", ascending: false)
+//        fr.sortDescriptors = [sortDescriptor]
+//        fr.fetchLimit = 5
+        do { rCount = try context.count(for: fr) } catch { print(error) }
+
+        if rCount > 5 {
+            fr.fetchOffset = rCount - 5
+        } else {
+            fr.fetchOffset = rCount
+        }
+        do { routineHistoryArray = try context.fetch(fr) as! [Routine_History] } catch { print(error) }
+        routineHistoryArray = routineHistoryArray.reversed()
+        recentWorkoutCollectionView.reloadData()
+    }
 }
 
 // MARK: Collection View Data Source
@@ -104,12 +152,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == recentWorkoutCollectionView {
-            if workout.count == 0 {
+            if routineHistoryArray.count == 0 {
                 noRecentWorkoutView.isHidden = false
             } else {
                 noRecentWorkoutView.isHidden = true
             }
-            return workout.count
+            return routineHistoryArray.count
         } else if collectionView == routinesCollectionView {
             if routineArray.count == 0 {
                 noRoutineLabel.text = noRoutineText
@@ -124,16 +172,26 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //MARK: Recent Workout From Home Page
         if collectionView == recentWorkoutCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentWorkoutCell", for: indexPath) as! RecentWorkoutCollectionViewCell
-            cell.workoutNameLabel.text = workout[indexPath.row]["name"]
-            cell.dayOfTheWeekLabel.text = workout[indexPath.row]["dayofWeek"]
-            cell.timeDurationLabel.text = workout[indexPath.row]["duration"]
-            cell.dateLabel.text = workout[indexPath.row]["date"]
-            cell.volumeLabel.text = workout[indexPath.row]["volume"]
-            cell.timeLabel.text = workout[indexPath.row]["time"]
-            cell.numberOfExercises.text = workout[indexPath.row]["numberOfExercises"]
-            cell.calorieLabel.text = workout[indexPath.row]["calorie"]
+            let startTime = routineHistoryArray[indexPath.row].start
+            let endTime = routineHistoryArray[indexPath.row].end
+            let duration: Int = Int((endTime?.timeIntervalSince(startTime!))! / 60)
+            let dateString = dateFormatter.string(from: startTime!)
+            let dateStringArray = dateString.components(separatedBy: ",")
+            let dateDictionary = ["DayOfWeek": dateStringArray[0], "Date": dateStringArray[1], "Time": dateStringArray[2]]
+            
+            let numberOfExercise = routineHistoryArray[indexPath.row].exerciseHistory?.count ?? 0
+            
+            cell.workoutNameLabel.text = routineHistoryArray[indexPath.row].name?.uppercased()
+            cell.dayOfTheWeekLabel.text = dateDictionary["DayOfWeek"]?.uppercased()
+            cell.dateLabel.text = dateDictionary["Date"]?.uppercased()
+            cell.timeLabel.text = dateDictionary["Time"]
+            cell.timeDurationLabel.text = String(duration) + "m"
+            cell.volumeLabel.text = String(routineHistoryArray[indexPath.row].totalWeight) + " lb"
+            cell.calorieLabel.text = String(routineHistoryArray[indexPath.row].totalCalorie) + " kcal"
+            cell.numberOfExercises.text = String(numberOfExercise)
             return cell
             
             //MARK: Routine Collection View Data Source on HomePage
@@ -171,6 +229,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension HomeViewController {
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToRoutineDetailsTableview" {
             let destinationVC = segue.destination as! RoutineDetailsTableViewController

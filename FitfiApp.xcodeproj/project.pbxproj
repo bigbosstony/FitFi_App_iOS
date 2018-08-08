@@ -318,10 +318,10 @@
 			children = (
 				EA3090E620C6DA4000E09DDF /* AppDelegate.swift */,
 				EA99105820D85DA4003D6D6E /* TabBarViewController.swift */,
-				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
 				EA98E51B20FE569F002B2A70 /* TestViewController.swift */,
 				EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */,
 				EA64311621135788000EAED5 /* Extensions.swift */,
+				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
 				EA7C92CE20F9401E006DBFF0 /* Profile */,
 				EAC0DD5120D4045300AC7A1E /* Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
