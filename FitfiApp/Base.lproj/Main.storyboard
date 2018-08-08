@@ -595,7 +595,7 @@
                         <segue destination="Nge-bI-Zan" kind="show" identifier="goToRoutineDetailsTableview" id="14h-tr-23b"/>
                         <segue destination="ezU-pn-403" kind="show" identifier="goToRoutinesTableView" id="68g-bc-nfj"/>
                         <segue destination="vwh-bq-tAD" kind="show" identifier="goToExerciseTableView" id="qe0-aM-TW7"/>
-                        <segue destination="Zqf-7B-v7Q" kind="show" identifier="goToRecentWorkoutTableview" id="MUM-dk-kXR"/>
+                        <segue destination="Zqf-7B-v7Q" kind="show" identifier="goToRecentWorkoutDetailsVC" id="MUM-dk-kXR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -611,7 +611,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="routinesTableviewCell" id="ZSL-Be-0bt" customClass="RoutinesTableViewCell" customModule="FitfiApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="routinesTableviewCell" id="ZSL-Be-0bt">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZSL-Be-0bt" id="Uzh-n7-F01">
@@ -2608,6 +2608,6 @@ CgoKA
         <image name="pic" width="250" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="14h-tr-23b"/>
+        <segue reference="wYH-sO-g9Q"/>
     </inferredMetricsTieBreakers>
 </document>

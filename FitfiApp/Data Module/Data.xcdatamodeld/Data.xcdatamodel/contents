@@ -36,7 +36,7 @@
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="totalCalorie" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="totalWeight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="exerciseHistory" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Exercise_History" inverseName="parentRoutineHistory" inverseEntity="Exercise_History" syncable="YES"/>
+        <relationship name="exerciseHistory" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Exercise_History" inverseName="parentRoutineHistory" inverseEntity="Exercise_History" syncable="YES"/>
     </entity>
     <elements>
         <element name="Exercise" positionX="-297" positionY="-153" width="128" height="118"/>

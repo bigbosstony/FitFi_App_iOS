@@ -55,7 +55,7 @@ class RoutinesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "routinesTableviewCell", for: indexPath) as! RoutinesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "routinesTableviewCell", for: indexPath)// as! RoutinesTableViewCell
         
         cell.textLabel?.text = routineList[indexPath.section][indexPath.row].name?.capitalized
         cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)

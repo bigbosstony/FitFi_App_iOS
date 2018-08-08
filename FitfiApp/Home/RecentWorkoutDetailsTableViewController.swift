@@ -7,13 +7,42 @@
 //
 
 import UIKit
+import CoreData
 
 class RecentWorkoutDetailsTableViewController: UITableViewController {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var currentExerciseHistory = [Exercise_History]()
+    
+    var selectedRoutineHistory: Routine_History? {
+        didSet {
+            if let workout = selectedRoutineHistory {
+                print("Workout: ", workout)
+//                if let exercises = workout.exerciseHistory?.objects(at: [0]) {
+                if let exercises = workout.exerciseHistory?.array {
+                    currentExerciseHistory = exercises as! [Exercise_History]
+                    print("Workout Exercises : ", currentExerciseHistory)
+                    for exercise in currentExerciseHistory {
+                        print(exercise.name!)
+                    }
+                }
+            }
+//            let objectID = selectedRoutineHistory?.objectID
+//            do {
+//                let object = try context.existingObject(with: objectID!)
+//                print(object)
+//            } catch {
+//                print(error)
+//            }
 
+//            print("Object: ", context.object(with: (selectedRoutineHistory?.objectID)!))
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Recent Workout Details"
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

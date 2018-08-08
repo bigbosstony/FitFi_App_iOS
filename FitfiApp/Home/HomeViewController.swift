@@ -214,7 +214,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == recentWorkoutCollectionView {
-            performSegue(withIdentifier: "goToRecentWorkoutTableview", sender: self)
+            performSegue(withIdentifier: "goToRecentWorkoutDetailsVC", sender: self)
         } else if collectionView == routinesCollectionView {
             performSegue(withIdentifier: "goToRoutineDetailsTableview", sender: self)
         } else if collectionView == todayCollectionView {
@@ -229,12 +229,17 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension HomeViewController {
-    
+    //MAKR: Prepare Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToRoutineDetailsTableview" {
             let destinationVC = segue.destination as! RoutineDetailsTableViewController
             if let indexPath = routinesCollectionView.indexPathsForSelectedItems?.first {
                 destinationVC.selectedRoutine = routineArray[indexPath.row]
+            }
+        } else if segue.identifier == "goToRecentWorkoutDetailsVC" {
+            let destinationVC = segue.destination as! RecentWorkoutDetailsTableViewController
+            if let indexPath = recentWorkoutCollectionView.indexPathsForSelectedItems?.first {
+                destinationVC.selectedRoutineHistory = routineHistoryArray[indexPath.row]
             }
         }
     }
