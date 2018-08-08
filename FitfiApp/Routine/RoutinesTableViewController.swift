@@ -35,11 +35,7 @@ class RoutinesTableViewController: UITableViewController {
     
     //MARK: Create New Temp Routine and go to new routine page
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        let newRoutine = Routine(context: context)
-        newRoutine.name = "tempRoutineName"
-        newRoutine.favorite = false
-        do { try context.save()} catch { print("\(error)")}
-        
+
         performSegue(withIdentifier: "goToNewRoutinePage", sender: self)
         print("Add New Routine")
     }

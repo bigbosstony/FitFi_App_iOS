@@ -147,6 +147,9 @@
 		EAABEA4020D032F30024B222 /* TrackingSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */; };
 		EAB0A70320C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB0A70220C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift */; };
 		EAB3B0B620C73B4A0077503F /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3B0B520C73B4A0077503F /* RoutineCollectionViewCell.swift */; };
+		EABD59B5211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD59B4211A3A160065F774 /* SelectExerciseForRoutineVC.swift */; };
+		EABD59B6211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD59B4211A3A160065F774 /* SelectExerciseForRoutineVC.swift */; };
+		EABD59B7211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD59B4211A3A160065F774 /* SelectExerciseForRoutineVC.swift */; };
 		EAC0DD4520D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4420D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift */; };
 		EAC0DD4E20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
 		EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
@@ -226,6 +229,7 @@
 		EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSViewController.swift; sourceTree = "<group>"; };
 		EAB0A70220C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorkoutDetailsTableViewController.swift; sourceTree = "<group>"; };
 		EAB3B0B520C73B4A0077503F /* RoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCollectionViewCell.swift; sourceTree = "<group>"; };
+		EABD59B4211A3A160065F774 /* SelectExerciseForRoutineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseForRoutineVC.swift; sourceTree = "<group>"; };
 		EAC0DD4420D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllExercisesTableViewCell.swift; sourceTree = "<group>"; };
 		EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewController.swift; sourceTree = "<group>"; };
 		EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
@@ -371,6 +375,7 @@
 			children = (
 				EA78F3D620EC2B31007825F7 /* NewRoutineTableViewController.swift */,
 				EA855DE820F64C50000D7EA5 /* NewRoutineTableViewCell.swift */,
+				EABD59B4211A3A160065F774 /* SelectExerciseForRoutineVC.swift */,
 				EA64311A2114AE01000EAED5 /* NewRoutineExerciseSelectionTVC.swift */,
 				EA64311F2114F7BE000EAED5 /* CollapsibleTableViewHeader.swift */,
 			);
@@ -617,6 +622,7 @@
 				EA64311B2114AE01000EAED5 /* NewRoutineExerciseSelectionTVC.swift in Sources */,
 				EA64310221120E9B000EAED5 /* NewExerciseTableViewController.swift in Sources */,
 				EAABE9F620CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift in Sources */,
+				EABD59B5211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */,
 				EA84FCBE20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
 				EA855DE520F5438C000D7EA5 /* CalendarViewController.swift in Sources */,
 				EA64310E2112334E000EAED5 /* ExerciseCategoryTableViewController.swift in Sources */,
@@ -672,6 +678,7 @@
 				EA64311C2114AE01000EAED5 /* NewRoutineExerciseSelectionTVC.swift in Sources */,
 				EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EA64310B21121A4F000EAED5 /* NewExerciseCategoryTableViewCell.swift in Sources */,
+				EABD59B6211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */,
 				EA64311821135788000EAED5 /* Extensions.swift in Sources */,
 				EA64310321120E9B000EAED5 /* NewExerciseTableViewController.swift in Sources */,
 				EA30911D20C7199D00E09DDF /* Data.swift in Sources */,
@@ -721,6 +728,7 @@
 				EA64311D2114AE01000EAED5 /* NewRoutineExerciseSelectionTVC.swift in Sources */,
 				EA78F3D920EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EA64310C21121A4F000EAED5 /* NewExerciseCategoryTableViewCell.swift in Sources */,
+				EABD59B7211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */,
 				EA64311921135788000EAED5 /* Extensions.swift in Sources */,
 				EA64310421120E9B000EAED5 /* NewExerciseTableViewController.swift in Sources */,
 				EA30911E20C7199D00E09DDF /* Data.swift in Sources */,

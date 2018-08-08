@@ -9,19 +9,23 @@
 import UIKit
 import CoreData
 
-struct Section {
-    var category: String
-    var exerciseArray: [Exercise]
-    var collapsed: Bool
-    var checkedArray: [Bool]
-    
-    init(category: String, exerciseArray: [Exercise], checkedArray: [Bool], collapsed: Bool = false) {
-        self.category = category
-        self.exerciseArray = exerciseArray
-        self.collapsed = collapsed
-        self.checkedArray = checkedArray
-    }
-}
+//protocol ReceiveRoutineExercises {
+//    func routineExerciseReceived(exercise name: String)
+//}
+
+//struct Section {
+//    var category: String
+//    var exerciseArray: [Exercise]
+//    var collapsed: Bool
+//    var checkedArray: [Bool]
+//
+//    init(category: String, exerciseArray: [Exercise], checkedArray: [Bool], collapsed: Bool = false) {
+//        self.category = category
+//        self.exerciseArray = exerciseArray
+//        self.collapsed = collapsed
+//        self.checkedArray = checkedArray
+//    }
+//}
 
 class NewRoutineExerciseSelectionTVC: UITableViewController {
     
@@ -33,13 +37,18 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
     var sections = [Section]()
     var categoryArray = [[String: String]]()
     var selectedExercise = [Exercise]()
+    var delegate: ReceiveRoutineExercises?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        self.view.addSubview(navBar)
+//        let navItem = UINavigationItem(title: "Exercise")
+//
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelTapped))
         self.title = "Exercise"
+//
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise")
         request.resultType = NSFetchRequestResultType.dictionaryResultType
@@ -90,6 +99,7 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
             print("\(error)")
         }
         
+//        delegate?.routineExerciseReceived(exercise: "New Exercise")
         dismiss(animated: true, completion: nil)
         print(selectedExercise)
     }
@@ -98,6 +108,13 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func done(_ sender: UIButton) {
+//        delegate?.routineExerciseReceived(exercise: "New Exercise")
+        dismiss(animated: true, completion: nil)
+
+    }
+    
+    
     //MARK: Search Bar in Nav bar
     func setupNavBar() {
         navigationItem.searchController = searchController
@@ -105,6 +122,7 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         extendedLayoutIncludesOpaqueBars = true         //important
     }
+    
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -212,14 +230,14 @@ class NewRoutineExerciseSelectionTVC: UITableViewController {
 
 }
 
-extension NewRoutineExerciseSelectionTVC: CollapsibleTableViewHeaderDelegate {
-    func toggleSection(_ header: CollapsibleTableViewHeader, section: Int) {
-        let collapsed = !sections[section].collapsed
-        
-        sections[section].collapsed = collapsed
-        header.setCollapsed(collapsed)
-        tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
-    }
-    
-    
-}
+//extension NewRoutineExerciseSelectionTVC: CollapsibleTableViewHeaderDelegate {
+//    func toggleSection(_ header: CollapsibleTableViewHeader, section: Int) {
+//        let collapsed = !sections[section].collapsed
+//
+//        sections[section].collapsed = collapsed
+//        header.setCollapsed(collapsed)
+//        tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
+//    }
+//
+//
+//}
