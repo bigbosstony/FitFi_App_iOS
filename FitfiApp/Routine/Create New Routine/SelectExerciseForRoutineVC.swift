@@ -108,10 +108,10 @@ extension SelectExerciseForRoutineVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
         header.titleLabel.text = sections[section].category
-        header.arrowLabel.text = "⌃"
+        header.arrowLabel.text = "^"
         header.setCollapsed(sections[section].collapsed)
         header.section = section
-        header.delegate = self as? CollapsibleTableViewHeaderDelegate
+        header.delegate = self
         
         return header
     }
@@ -129,13 +129,13 @@ extension SelectExerciseForRoutineVC: UITableViewDataSource {
     }
 }
 
-extension NewRoutineExerciseSelectionTVC: CollapsibleTableViewHeaderDelegate {
+extension SelectExerciseForRoutineVC: CollapsibleTableViewHeaderDelegate {
     func toggleSection(_ header: CollapsibleTableViewHeader, section: Int) {
         let collapsed = !sections[section].collapsed
         
         sections[section].collapsed = collapsed
         header.setCollapsed(collapsed)
-        tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
+        exerciseTableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
     }
     
     
