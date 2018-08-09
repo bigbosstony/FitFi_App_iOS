@@ -137,12 +137,12 @@ extension HomeViewController {
         do { rCount = try context.count(for: fr) } catch { print(error) }
 
         if rCount > 5 {
-            fr.fetchOffset = rCount - 5
+            fr.fetchOffset = rCount - 4
         } else {
-            fr.fetchOffset = rCount
+            fr.fetchOffset = 0
         }
         do { routineHistoryArray = try context.fetch(fr) as! [Routine_History] } catch { print(error) }
-        routineHistoryArray = routineHistoryArray.reversed()
+//        routineHistoryArray = routineHistoryArray.reversed()
         recentWorkoutCollectionView.reloadData()
     }
 }
@@ -176,8 +176,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == recentWorkoutCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentWorkoutCell", for: indexPath) as! RecentWorkoutCollectionViewCell
             let startTime = routineHistoryArray[indexPath.row].start
-            let endTime = routineHistoryArray[indexPath.row].end
-            let duration: Int = Int((endTime?.timeIntervalSince(startTime!))! / 60)
+//            let endTime = routineHistoryArray[indexPath.row].end
+            let duration = routineHistoryArray[indexPath.row].duration
             let dateString = dateFormatter.string(from: startTime!)
             let dateStringArray = dateString.components(separatedBy: ",")
             let dateDictionary = ["DayOfWeek": dateStringArray[0], "Date": dateStringArray[1], "Time": dateStringArray[2]]

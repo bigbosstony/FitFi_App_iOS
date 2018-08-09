@@ -83,6 +83,7 @@ class RoutineDetailsTableViewController: UITableViewController {
             firstDate = endDate
         }
         newRoutineHistory.end = firstDate
+        newRoutineHistory.duration = Int16((newRoutineHistory.end?.timeIntervalSince(newRoutineHistory.start!))! / 60)
         newRoutineHistory.totalCalorie = totalCalorie
         newRoutineHistory.totalWeight = totalWeight
         save()
