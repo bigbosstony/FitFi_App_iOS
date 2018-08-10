@@ -68,6 +68,8 @@ class NewRoutineTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! NewRoutineTableViewCell
         cell.setTextField.delegate = self
         cell.repTextField.delegate = self
+        cell.setTextField.tag = indexPath.row * 2
+        cell.repTextField.tag = indexPath.row * 2 + 1
         cell.textLabel?.text = routineExercises[indexPath.row].name
         cell.setTextField.text = routineExercises[indexPath.row].sets
         cell.repTextField.text = routineExercises[indexPath.row].reps
@@ -83,6 +85,7 @@ class NewRoutineTableViewController: UITableViewController {
 
     // MARK: Save to database When finished
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        self.view.endEditing(true) //Dismiss keyboard and save content by trigger resignFirstResponder
         if routineExercises.count == 0 {
             let alertView = UIAlertController(title: "Create Routine Failed",
                                               message: "Please Add At Least One Exercise",
@@ -95,7 +98,6 @@ class NewRoutineTableViewController: UITableViewController {
             //Check routine Name, Sets, Reps later
             newRoutine.name = routineName.text!
             newRoutine.favorite = false
-            save()
             for exercise in routineExercises {
                 let newRoutineExercise = Routine_Exercise(context: context)
                 newRoutineExercise.name = exercise.name
@@ -103,8 +105,8 @@ class NewRoutineTableViewController: UITableViewController {
                 newRoutineExercise.reps = Int16(exercise.reps!)!
                 newRoutineExercise.category = exercise.category
                 newRoutineExercise.parentRoutine = newRoutine
-                save()
             }
+            save()
             dismiss(animated: true, completion: nil)
         }
     }
@@ -222,6 +224,7 @@ extension NewRoutineTableViewController: UITextFieldDelegate {
         print(indexPath, textField.tag)
     }
 
+    
     //MARK: Set Max Length to 2 Digit
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
@@ -232,6 +235,7 @@ extension NewRoutineTableViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Need Edit TextField Return
         // Try to find next responder
+        
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
             nextField.becomeFirstResponder()
         } else {
@@ -243,4 +247,6 @@ extension NewRoutineTableViewController: UITextFieldDelegate {
 //        textField.resignFirstResponder()
 //        return true
     }
+    
+    
 }

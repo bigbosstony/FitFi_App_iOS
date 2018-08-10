@@ -76,26 +76,6 @@ class HomeViewController: UIViewController {
         
         dateFormatter.dateFormat = "EEEE,MMM dd,HH:mm a"
         
-        //
-//        let request: NSFetchRequest<Routine_History> = Routine_History.fetchRequest()
-//        do {
-//            let routineArray = try context.fetch(request)
-//
-//
-//            if let lastRoutine = routineArray.last {
-//                if let exerciseHistory = lastRoutine.exerciseHistory as? Set<Exercise_History> {
-//                    print(exerciseHistory)
-//
-//                    for exercise in exerciseHistory {
-//                        print("objectID")
-//                        print(context.object(with: (exercise.parentRoutineHistory?.objectID)!))
-////                        print(exercise.name ?? "")
-////                        print(exercise.parentRoutineHistory?.objectID)
-//                    }
-//                }
-//                print(lastRoutine)
-//            }
-//        } catch { print("\(error)") }
     }
     
     override func viewDidAppear(_ animated: Bool) {

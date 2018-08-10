@@ -78,6 +78,7 @@ class RoutineDetailsTableViewController: UITableViewController {
             newExerciseHistory.parentRoutineHistory = newRoutineHistory
             newExerciseHistory.start = firstDate
             newExerciseHistory.end = endDate
+            newExerciseHistory.equipment = equipments[Int(arc4random_uniform(2))]
             totalWeight = totalWeight + newExerciseHistory.weight
             totalCalorie = totalCalorie + newExerciseHistory.calorie
             firstDate = endDate

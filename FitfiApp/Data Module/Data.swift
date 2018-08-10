@@ -8,40 +8,7 @@
 
 import Foundation
 
-let workout = [
-    [
-        "name" : "LEG AND GLUTES",
-        "dayofWeek" : "TUESDAY",
-        "date" : "MAY 22",
-        "time" : "07:41 AM",
-        "calorie" : "302 kcal",
-        "volume" : "2213 lb",
-        "duration" : "55m",
-        "numberOfExercises" : "5"
-    ],
-    [
-        "name" : "AFTERNOON WORKOUT",
-        "dayofWeek" : "MONDAY",
-        "date" : "MAY 21",
-        "time" : "05:30 PM",
-        "calorie" : "200 kcal",
-        "volume" : "3422 lb",
-        "duration" : "40m",
-        "numberOfExercises" : "3"
-    ],
-    [
-        "name" : "BACK",
-        "dayofWeek" : "SUNDAY",
-        "date" : "MAY 20",
-        "time" : "09:00 AM",
-        "calorie" : "602 kcal",
-        "volume" : "6554 lb",
-        "duration" : "75m",
-        "numberOfExercises" : "7"
-    ],
-]
-
-//let workout = [String]()
+let equipments = ["Barbell", "Dumbbell"]
 
 let sections = ["Favorite", "Discover"]
 
