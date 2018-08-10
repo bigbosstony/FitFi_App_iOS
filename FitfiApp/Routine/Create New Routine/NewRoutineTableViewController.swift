@@ -28,6 +28,7 @@ class NewRoutineTableViewController: UITableViewController {
     @IBOutlet weak var routineName: UITextField!
     
     var routineExercises = [SelectedExercise]()
+    var textFieldTag: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +37,8 @@ class NewRoutineTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        do { tempRoutine = try context.fetch(Routine.fetchRequest()).last } catch { print("\(error)") }
         
 //        exerciseList = (tempRoutine?.routineExercises)!.allObjects as! [Routine_Exercise]
-        
         tableView.reloadData()
         print(routineExercises)
     }
@@ -67,14 +66,25 @@ class NewRoutineTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Current Row: \(indexPath.row)")
     }
-    
 //
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! NewRoutineTableViewCell
+        
+        //Set up Toolbar for Keypad
+        let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 42))
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+        let doneButton = UIBarButtonItem(image: UIImage(named: "Glyphs/Dismiss Keyboard"), style: .plain, target: self, action: #selector(dismissKeyboard))
+        let nextButton = UIBarButtonItem(image: UIImage(named: "Glyphs/Next"), style: .plain, target: self, action: #selector(nextButtonPressed))
+        toolbar.setItems([flexSpace, doneButton, flexSpace, nextButton], animated: true)
+        
         cell.setTextField.delegate = self
         cell.repTextField.delegate = self
-//        cell.setTextField.tag = indexPath.row * 2
-//        cell.repTextField.tag = indexPath.row * 2 + 1
+        cell.repTextField.inputAccessoryView = toolbar
+        cell.setTextField.inputAccessoryView = toolbar
+        cell.setTextField.tag = indexPath.row * 2
+        cell.repTextField.tag = indexPath.row * 2 + 1
         cell.textLabel?.text = routineExercises[indexPath.row].name
         cell.setTextField.text = routineExercises[indexPath.row].sets
         cell.repTextField.text = routineExercises[indexPath.row].reps
@@ -82,6 +92,23 @@ class NewRoutineTableViewController: UITableViewController {
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         // Configure the cell...
         return cell
+    }
+    
+    //Got To Next TextField
+    @objc func nextButtonPressed() {
+        print("next button pressed")
+        if let tag = textFieldTag {
+            if let nextTextField = self.view.viewWithTag(tag + 1) {
+                nextTextField.becomeFirstResponder()
+            } else {
+                self.view.viewWithTag(tag)?.resignFirstResponder()
+            }
+        }
+
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     @IBAction func addExerciseButtonPressed(_ sender: UIButton) {
@@ -217,8 +244,9 @@ extension NewRoutineTableViewController: UITextFieldDelegate {
         let center: CGPoint = textField.center
         let rootViewPoint: CGPoint = textField.superview!.convert(center, to: tableView)
         let indexPath: IndexPath = tableView.indexPathForRow(at: rootViewPoint)! as IndexPath
+        let textFieldTag = textField.tag % 2
         
-        switch textField.tag {
+        switch textFieldTag {
         case 0:
             routineExercises[indexPath.row].sets = textField.text
         case 1:
@@ -229,6 +257,10 @@ extension NewRoutineTableViewController: UITextFieldDelegate {
         print(indexPath, textField.tag)
     }
 
+    //Store textField Tag
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textFieldTag = textField.tag
+    }
     
     //MARK: Set Max Length to 2 Digit
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
