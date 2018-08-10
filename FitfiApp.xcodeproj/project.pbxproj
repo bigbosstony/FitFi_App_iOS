@@ -501,6 +501,7 @@
 				EA3090E020C6DA4000E09DDF /* Frameworks */,
 				EA3090E120C6DA4000E09DDF /* Resources */,
 				FC972BED72C4CED59DFE67E9 /* [CP] Embed Pods Frameworks */,
+				54EDE3AD815308DCC1972A9A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -519,6 +520,8 @@
 				EA3090F620C6DA4300E09DDF /* Sources */,
 				EA3090F720C6DA4300E09DDF /* Frameworks */,
 				EA3090F820C6DA4300E09DDF /* Resources */,
+				168CBF0E59C42FCDF47D5434 /* [CP] Embed Pods Frameworks */,
+				E9CB8A1FA311363FE397CD6A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -538,6 +541,8 @@
 				EA30910120C6DA4300E09DDF /* Sources */,
 				EA30910220C6DA4300E09DDF /* Frameworks */,
 				EA30910320C6DA4300E09DDF /* Resources */,
+				EA8DC5CB3029A66EBF0F6BBE /* [CP] Embed Pods Frameworks */,
+				9D2D2697C3048314C2E1D06C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -637,6 +642,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		168CBF0E59C42FCDF47D5434 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2DD80342EC9D08D51791C25D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -673,6 +693,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		54EDE3AD815308DCC1972A9A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7A02E8E77323562E195CBD06 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -689,6 +724,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D2D2697C3048314C2E1D06C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9CB8A1FA311363FE397CD6A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA8DC5CB3029A66EBF0F6BBE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC972BED72C4CED59DFE67E9 /* [CP] Embed Pods Frameworks */ = {
