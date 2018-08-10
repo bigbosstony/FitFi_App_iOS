@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="18A347e" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="18A353d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Exercise" representedClassName="Exercise" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -11,12 +11,13 @@
         <attribute name="calorie" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="equipment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reps" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="parentRoutineHistory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine_History" inverseName="routineHistory" inverseEntity="Routine_History" syncable="YES"/>
+        <relationship name="parentRoutineHistory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine_History" inverseName="exerciseHistory" inverseEntity="Routine_History" syncable="YES"/>
     </entity>
     <entity name="Routine" representedClassName="Routine" syncable="YES" codeGenerationType="class">
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -31,14 +32,19 @@
         <relationship name="parentRoutine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine" inverseName="routineExercises" inverseEntity="Routine" syncable="YES"/>
     </entity>
     <entity name="Routine_History" representedClassName="Routine_History" syncable="YES" codeGenerationType="class">
+        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="routineHistory" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Exercise_History" inverseName="parentRoutineHistory" inverseEntity="Exercise_History" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="totalCalorie" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="totalWeight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="exerciseHistory" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Exercise_History" inverseName="parentRoutineHistory" inverseEntity="Exercise_History" syncable="YES"/>
     </entity>
     <elements>
         <element name="Exercise" positionX="-297" positionY="-153" width="128" height="118"/>
-        <element name="Exercise_History" positionX="135" positionY="-180" width="128" height="180"/>
+        <element name="Exercise_History" positionX="135" positionY="-180" width="128" height="195"/>
         <element name="Routine" positionX="-315" positionY="45" width="128" height="90"/>
         <element name="Routine_Exercise" positionX="-36" positionY="68" width="128" height="120"/>
-        <element name="Routine_History" positionX="-81" positionY="-180" width="128" height="75"/>
+        <element name="Routine_History" positionX="-81" positionY="-180" width="128" height="150"/>
     </elements>
 </model>

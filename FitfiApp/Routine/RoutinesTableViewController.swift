@@ -35,11 +35,7 @@ class RoutinesTableViewController: UITableViewController {
     
     //MARK: Create New Temp Routine and go to new routine page
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        let newRoutine = Routine(context: context)
-        newRoutine.name = "tempRoutineName"
-        newRoutine.favorite = false
-        do { try context.save()} catch { print("\(error)")}
-        
+
         performSegue(withIdentifier: "goToNewRoutinePage", sender: self)
         print("Add New Routine")
     }
@@ -59,7 +55,7 @@ class RoutinesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "routinesTableviewCell", for: indexPath) as! RoutinesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "routinesTableviewCell", for: indexPath)// as! RoutinesTableViewCell
         
         cell.textLabel?.text = routineList[indexPath.section][indexPath.row].name?.capitalized
         cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular)
