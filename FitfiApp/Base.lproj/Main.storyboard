@@ -610,7 +610,12 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2Yq-GC-2jh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="v5M-D6-7Am">
+                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="routinesTableviewCell" id="ZSL-Be-0bt">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -773,6 +778,11 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </textField>
                                         <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4p1-hI-fYO">
                                             <rect key="frame" x="295" y="6" width="30" height="30"/>
@@ -784,6 +794,11 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXd-QI-5Pb">
                                             <rect key="frame" x="279" y="14.5" width="8" height="14.5"/>
@@ -961,7 +976,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="Oxe-VY-WlT">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Oxe-VY-WlT">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -1029,6 +1044,11 @@
                                 <constraint firstItem="XqL-au-FeI" firstAttribute="centerX" secondItem="Oxe-VY-WlT" secondAttribute="centerX" id="ul7-YZ-6cZ"/>
                                 <constraint firstItem="XqL-au-FeI" firstAttribute="top" secondItem="Oxe-VY-WlT" secondAttribute="top" constant="16" id="xLX-JL-tKc"/>
                             </constraints>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="yiL-NW-740">
+                            <rect key="frame" x="0.0" y="231" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="102" id="fmA-L2-8dG" customClass="RecentWorkoutDetailTVCell" customModule="FitfiApp" customModuleProvider="target">
@@ -1143,7 +1163,9 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="CVd-vu-CkK" secondAttribute="trailing" id="Acg-nZ-vnq"/>
                                         <constraint firstAttribute="bottom" secondItem="CVd-vu-CkK" secondAttribute="bottom" id="BTZ-0i-30O"/>
+                                        <constraint firstItem="4Oh-VO-B4a" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sZD-eS-jdQ" secondAttribute="leading" constant="20" symbolic="YES" id="CQf-5a-PJ4"/>
                                         <constraint firstItem="CVd-vu-CkK" firstAttribute="leading" secondItem="sZD-eS-jdQ" secondAttribute="leading" id="K05-NM-D5d"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="G5P-dj-vby" secondAttribute="trailing" constant="20" symbolic="YES" id="RxQ-Wh-cqA"/>
                                         <constraint firstItem="G5P-dj-vby" firstAttribute="top" secondItem="sZD-eS-jdQ" secondAttribute="top" constant="10" id="SHt-lk-AUN"/>
                                         <constraint firstItem="4Oh-VO-B4a" firstAttribute="centerY" secondItem="G5P-dj-vby" secondAttribute="centerY" id="VvX-Wa-5bs"/>
                                         <constraint firstAttribute="trailing" secondItem="4Oh-VO-B4a" secondAttribute="trailing" constant="19" id="Zdm-a5-1ww"/>
@@ -2762,21 +2784,6 @@ CgoKA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZTp-Cm-aFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="12000.799999999999" y="1571.9640179910045"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="9Wh-gH-dix">
-            <objects>
-                <viewController id="66G-QG-HpB" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZxB-Wz-vcS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Je3-rC-p3v"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qjg-1p-Ndw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5454" y="432"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gel-90-uNO">

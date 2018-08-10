@@ -72,12 +72,12 @@ class NewRoutineTableViewController: UITableViewController {
         
         //Set up Toolbar for Keypad
         let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 42))
-        
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-
-        let doneButton = UIBarButtonItem(image: UIImage(named: "Glyphs/Dismiss Keyboard"), style: .plain, target: self, action: #selector(dismissKeyboard))
-        let nextButton = UIBarButtonItem(image: UIImage(named: "Glyphs/Next"), style: .plain, target: self, action: #selector(nextButtonPressed))
-        toolbar.setItems([flexSpace, doneButton, flexSpace, nextButton], animated: true)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+        let nextButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextButtonPressed))
+//        let doneButton = UIBarButtonItem(image: UIImage(named: "Glyphs/Dismiss Keyboard"), style: .plain, target: self, action: #selector(dismissKeyboard))
+//        let nextButton = UIBarButtonItem(image: UIImage(named: "Glyphs/Next"), style: .plain, target: self, action: #selector(nextButtonPressed))
+        toolbar.setItems([doneButton, flexSpace, nextButton], animated: true)
         
         cell.setTextField.delegate = self
         cell.repTextField.delegate = self
