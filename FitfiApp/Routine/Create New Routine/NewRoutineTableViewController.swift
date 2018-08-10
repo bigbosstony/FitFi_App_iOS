@@ -68,8 +68,8 @@ class NewRoutineTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! NewRoutineTableViewCell
         cell.setTextField.delegate = self
         cell.repTextField.delegate = self
-//        cell.setTextField.tag = indexPath.row * 2
-//        cell.repTextField.tag = indexPath.row * 2 + 1
+        cell.setTextField.tag = indexPath.row * 2
+        cell.repTextField.tag = indexPath.row * 2 + 1
         cell.textLabel?.text = routineExercises[indexPath.row].name
         cell.setTextField.text = routineExercises[indexPath.row].sets
         cell.repTextField.text = routineExercises[indexPath.row].reps
