@@ -89,7 +89,12 @@ class RoutineDetailsTableViewController: UITableViewController {
         newRoutineHistory.totalCalorie = totalCalorie
         newRoutineHistory.totalWeight = totalWeight
         save()
+        
+        //goTo TrackingVC
+        performSegue(withIdentifier: "goToTrackingVC", sender: self)
     }
+    
+    
     
     //MARK: Temporary function, Delete me later
     func dateGenerator(_ date: Date) -> Date {

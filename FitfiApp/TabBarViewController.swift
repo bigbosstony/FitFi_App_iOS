@@ -37,7 +37,7 @@ class TabBarViewController: UITabBarController {
         smallTrackingVC.view.frame = CGRect(x: 0, y: (height - tabBarHeight - 64 - 0.5), width: width, height: 64)
         
         //MARK: Add to ParentVC
-//        add(smallTrackingVC)
+        add(smallTrackingVC)
         
 //        let trackingVC = SmallTrackingViewController()
 //  MARK: After Adding frame it become activate

@@ -16,8 +16,8 @@ class NewRoutineTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-//        setTextField.keyboardType = UIKeyboardType.numberPad
-//        repTextField.keyboardType = UIKeyboardType.numberPad
+        setTextField.keyboardType = UIKeyboardType.numberPad
+        repTextField.keyboardType = UIKeyboardType.numberPad
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,5 +25,16 @@ class NewRoutineTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+//    @objc func nextButtonPressed(view: UIView) {
+//        print("next button pressed")
+//        
+//    }
+//    
+//    @objc func dismissKeyboard() {
+//        self.endEditing(true)
+//    }
+
 
 }
+
