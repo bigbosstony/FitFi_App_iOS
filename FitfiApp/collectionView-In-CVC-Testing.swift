@@ -1,27 +1,18 @@
 //
-//  MaxTrackingViewController.swift
+//  collectionView-In-CVC-Testing.swift
 //  FitfiApp
 //
-//  Created by YAN YU on 2018-07-16.
+//  Created by YAN YU on 2018-08-13.
 //  Copyright © 2018 Fitfi. All rights reserved.
 //
 
 import UIKit
 
-protocol MaxTrackingDelegate: class {
-    var message: String { get }
-}
+class collectionView_In_CVC_Testing: UIViewController {
 
-class MaxTrackingViewController: UIViewController {
-
-    weak var delegate: MaxTrackingDelegate!
-    var message: String?
-    
-    @IBOutlet weak var collectionView: UICollectionView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(delegate.message)
+
         // Do any additional setup after loading the view.
     }
 
@@ -30,10 +21,10 @@ class MaxTrackingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func closeButtonTapped(_ sender: Any) {
+
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
     /*
     // MARK: - Navigation
 

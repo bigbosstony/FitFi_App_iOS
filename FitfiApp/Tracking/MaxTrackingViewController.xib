@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MaxTrackingViewController" customModule="FitfiApp" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="xga-xc-CnX" id="dFw-RN-n5n"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,23 +27,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69R-3Z-f1P">
-                                <rect key="frame" x="160" y="24" width="55" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="O8n-aS-2II"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8w9-dI-CrF">
-                                <rect key="frame" x="155" y="274" width="64" height="119"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="99"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ny-kP-Ajx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irA-BP-guF">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69R-3Z-f1P">
+                                                <rect key="frame" x="160" y="16" width="55" height="39"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Close"/>
+                                                <connections>
+                                                    <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="O8n-aS-2II"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="irA-BP-guF" secondAttribute="bottom" constant="0.5" id="6Pd-Z3-bvY"/>
+                                    <constraint firstItem="irA-BP-guF" firstAttribute="top" secondItem="2ny-kP-Ajx" secondAttribute="top" id="P0X-uI-hDm"/>
+                                    <constraint firstItem="irA-BP-guF" firstAttribute="leading" secondItem="2ny-kP-Ajx" secondAttribute="leading" id="cyg-fY-xKO"/>
+                                    <constraint firstAttribute="height" constant="64" id="mM3-GI-scF"/>
+                                    <constraint firstAttribute="trailing" secondItem="irA-BP-guF" secondAttribute="trailing" id="t40-zV-uP7"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xga-xc-CnX">
+                                <rect key="frame" x="0.0" y="128" width="375" height="300"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="VDd-KL-zQ1"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JWn-Oc-Mzg">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xga-xc-CnX" secondAttribute="trailing" id="3cC-J4-t5M"/>
+                            <constraint firstItem="xga-xc-CnX" firstAttribute="leading" secondItem="UBq-UL-3m2" secondAttribute="leading" id="DHJ-YQ-7ja"/>
+                            <constraint firstItem="xga-xc-CnX" firstAttribute="top" secondItem="2ny-kP-Ajx" secondAttribute="bottom" constant="64" id="WlI-8n-i5R"/>
+                            <constraint firstItem="2ny-kP-Ajx" firstAttribute="top" secondItem="UBq-UL-3m2" secondAttribute="top" id="YHC-IU-ESp"/>
+                            <constraint firstItem="2ny-kP-Ajx" firstAttribute="leading" secondItem="UBq-UL-3m2" secondAttribute="leading" id="eu4-fk-HQb"/>
+                            <constraint firstAttribute="trailing" secondItem="2ny-kP-Ajx" secondAttribute="trailing" id="uOy-2P-W45"/>
+                        </constraints>
                     </view>
                     <blurEffect style="extraLight"/>
                 </visualEffectView>
