@@ -14,6 +14,10 @@ class CalendarTableViewCell: UITableViewCell {
     @IBOutlet weak var dayOfMonth: UILabel!
     @IBOutlet weak var todayMarker: UIView!
     
+    @IBOutlet weak var estimatedTime: UILabel!
+    @IBOutlet weak var totalExercise: UILabel!
+    @IBOutlet weak var routineName: UILabel!
+    @IBOutlet weak var detailView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
