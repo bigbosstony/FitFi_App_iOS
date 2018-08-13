@@ -99,19 +99,60 @@ private var IOBPoints: [ChartPoint] = [("2016-02-28T07:25:00", 0.0), ("2016-02-2
 private let axisLabelSettings: ChartLabelSettings = ChartLabelSettings()
 class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource{
     var exerciseList:[String] = ["h ","j "]
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exerciseList.count
-    }
+    public var sectionData:[Seection] = [
+        Seection(category: "Arm", exercise: ["man","it shouls in"]), Seection(category: "Leg", exercise: ["man","it shouls in"])]
+   
+   
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var exerciseHistoryArray = [Exercise_History]()
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+
+     func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionData.count
+    }
+    
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sectionData[section].collapsed ? 0 : sectionData[section].exercise.count
+    }
+    // Cell
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: CollapsibleTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CollapsibleTableViewCell ??
+            CollapsibleTableViewCell(style: .default, reuseIdentifier: "cell")
         
-        cell.textLabel?.text = "\(exerciseList[indexPath.row])"
+        let item: String = sectionData[indexPath.section].exercise[indexPath.row]
+        
+        cell.nameLabel.text = item
+        
         
         return cell
     }
+    
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    // Header
+     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
+        
+        header.titleLabel.text = sectionData[section].category
+        header.arrowLabel.text = ">"
+        header.setCollapsed(sectionData[section].collapsed)
+        
+        header.section = section
+        header.delegate = self
+        
+        return header
+    }
+    
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44.0
+    }
+    
+     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1.0
+    }
+    
     
     var workoutBarChart:BarsChart!
     fileprivate lazy private(set) var axisLineColor = UIColor.clear
@@ -196,7 +237,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     var exWorkOuts:[NSManagedObject] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        oneMonthSelected()
+        //oneMonthSelected()
         //        for i in exerciseHistoryArray{
         //            if(exHistoryDict.contains(i.name!)){
         //                //do nothing
@@ -224,9 +265,12 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
         //print(exVolume) Volume
         //print(exWorkOuts.count) total routines
         timeSelected(index: 0)
+        
         chartLongPressGestureRecognizer.delegate = self
         exerciseTable.delegate = self
         exerciseTable.dataSource = self
+        exerciseTable.estimatedRowHeight = 44.0
+        exerciseTable.rowHeight = UITableViewAutomaticDimension
         chartLongPressGestureRecognizer.minimumPressDuration = 0.01
         volumeGraphView.addGestureRecognizer(chartLongPressGestureRecognizer)
         generateXAxisValues()
@@ -322,6 +366,8 @@ extension StatisticsViewController{
             barWidth: 10)
         
         exerciseList = []
+        sectionData = []
+        
         switch index {
         case 0:
             
@@ -651,6 +697,30 @@ extension StatisticsViewController{
                 //do nothing
             }
             else{
+                print(i.category!)
+                if(sectionData.count == 0)
+                {
+                    sectionData.append(Seection(category: i.category!, exercise: [i.name!]))
+                    
+                }
+                else{
+                for ii in 0...sectionData.count
+                {
+                    if(sectionData[ii].category == i.category!)
+                    {
+                        if(sectionData[ii].exercise.contains(i.name!)){
+                            //do nothing
+                        }
+                        else{
+                        sectionData[ii].exercise.append(i.name!)
+                        }
+                    }
+                    else{
+                        sectionData.append(Seection(category: i.category!, exercise: [i.name!]))
+                    }
+                }
+                }
+                
                 exerciseList.append(i.name!)
                 
             }
@@ -942,3 +1012,18 @@ extension UIColor {
         
     }
 }
+extension StatisticsViewController:CollapsibleTableViewHeaderDelegate {
+    
+    func toggleSection(_ header: CollapsibleTableViewHeader, section: Int) {
+        let collapsed = !sectionData[section].collapsed
+        
+        // Toggle collapse
+        sectionData[section].collapsed = collapsed
+        header.setCollapsed(collapsed)
+        
+        exerciseTable.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
+    }
+    
+}
+
+
