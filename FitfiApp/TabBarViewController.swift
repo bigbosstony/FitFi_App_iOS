@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreData
+import CoreBluetooth
+import AudioToolbox
+
 //It is first commit to harsh
 class TabBarViewController: UITabBarController {
     var smallTrackingVC: UIViewController!
@@ -17,6 +20,34 @@ class TabBarViewController: UITabBarController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
+    
+    
+    //BLE model version
+    let modelName = UIDevice.modelName
+    
+    lazy var bleVersion = {
+        return self.deviceModelToBLEVersion(modelName)
+    }()
+    
+    func deviceModelToBLEVersion(_ deviceModel: String) -> Double {
+        switch deviceModel {
+        case "iPhone 5", "iPhone5c", "iPhone 5s":
+            return 4.0
+        case "iPhone 6", "iPhone 6 Plus", "iPhone 6s", "iPhone SE", "iPhone 6s Plus", "iPhone 7", "iPhone 7 Plus", "iPad 6":
+            return 4.2
+        case "iPhone 8", "iPhone 8 Plus", "iPhone X":
+            return 5.0
+        default:
+            return 0.0
+        }
+    }
+    
+    //Setup COre Bluetooth Properties
+    var centralManager: CBCentralManager!
+    var blePeripheral: CBPeripheral!
+    
+    let bleServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E
+    let bleCharacteristicCBUUID = CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
     
     override func viewDidLoad() {
         let tabBarHeight = tabBarController?.tabBar.frame.size.height ?? 49.0
@@ -37,8 +68,11 @@ class TabBarViewController: UITabBarController {
         smallTrackingVC.view.frame = CGRect(x: 0, y: (height - tabBarHeight - 64 - 0.5), width: width, height: 64)
         
         //MARK: Add to ParentVC
-        add(smallTrackingVC)
+//        add(smallTrackingVC)
         
+        print("BLE Version: \(bleVersion)")
+        //
+        centralManager = CBCentralManager(delegate: self, queue: nil)
 //        let trackingVC = SmallTrackingViewController()
 //  MARK: After Adding frame it become activate
 //        smallTrackingVC.view.frame = CGRect(x: 0, y: 497.5, width: 375, height: 119)
@@ -56,6 +90,17 @@ class TabBarViewController: UITabBarController {
 //    }
 
 }
+
+extension TabBarViewController: CBCentralManagerDelegate {
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        <#code#>
+    }
+    
+    
+}
+
+//MARK: Save exercises to local database when first time launch the app
+//TODO: Get internet connection save data from api
 
 extension TabBarViewController {
     func saveExercises() {

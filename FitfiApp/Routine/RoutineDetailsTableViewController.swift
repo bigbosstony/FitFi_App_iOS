@@ -91,7 +91,7 @@ class RoutineDetailsTableViewController: UITableViewController {
         save()
         
         //goTo TrackingVC
-        performSegue(withIdentifier: "goToTrackingVC", sender: self)
+//        performSegue(withIdentifier: "goToTrackingVC", sender: self)
     }
     
     
