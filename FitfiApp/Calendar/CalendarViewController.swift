@@ -21,6 +21,7 @@ class CalendarViewController: UIViewController {
     let cellHeight: CGFloat = 78
     let dateFormatterCell = DateFormatter()
     let dateFormatterTitle = DateFormatter()
+    let dayFormatter = DateFormatter()
     let daysToAdd = 5
     
     lazy var days: [Date] = {
@@ -85,14 +86,25 @@ extension CalendarViewController: UITableViewDataSource {
         let dateFormatter = DateFormatter()
         cell.dayOfWeek.text = dateArray.first?.uppercased()
         cell.dayOfMonth.text = dateArray.last?.uppercased()
+        if( dateArray.last == "thu")
+        {
+            print("Thursday come")
+        }
         dateFormatter.dateFormat = "MM/dd/yyyy"
+        
         let today = Date()
-//        if dateFormatter.string(from: today) == dateFormatter.string(from: days[(indexPath as NSIndexPath).row]) {
-//            print("++++++++++TODAY++++++++++")
-//            cell.dayOfMonth.textColor = UIColor.white
-//            cell.dayOfWeek.textColor = UIColor.white
-//            cell.todayMarker.isHidden = false
-//        }
+        
+        if dateFormatter.string(from: today) == dateFormatter.string(from: days[(indexPath as NSIndexPath).row]) {
+            
+            cell.dayOfMonth.textColor = UIColor.white
+            cell.dayOfWeek.textColor = UIColor.white
+            cell.todayMarker.isHidden = false
+        }
+        else{
+            cell.dayOfMonth.textColor = UIColor.black
+            cell.dayOfWeek.textColor = UIColor.black
+            cell.todayMarker.isHidden = true
+        }
 
         // Configure the cell...
         
@@ -157,5 +169,6 @@ extension CalendarViewController: UITableViewDelegate {
     //
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        print(days[indexPath.row])
     }
 }
