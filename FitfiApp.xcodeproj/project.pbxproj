@@ -161,6 +161,7 @@
 		EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
 		EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
 		EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */; };
+		F13E2D2E211E238D005A0AAF /* CollapsibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -249,6 +250,7 @@
 		EAC0DD4420D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllExercisesTableViewCell.swift; sourceTree = "<group>"; };
 		EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewController.swift; sourceTree = "<group>"; };
 		EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
+		F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -370,6 +372,7 @@
 				EA99105820D85DA4003D6D6E /* TabBarViewController.swift */,
 				EA98E51B20FE569F002B2A70 /* StatisticsViewController.swift */,
 				EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */,
+				F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */,
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
 				EA7C92CE20F9401E006DBFF0 /* Profile */,
@@ -742,6 +745,7 @@
 				EA98E51120FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
 				EAABE9E320CB05EF0024B222 /* TodayCollectionViewCell.swift in Sources */,
 				EA94BB4D211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift in Sources */,
+				F13E2D2E211E238D005A0AAF /* CollapsibleTableViewCell.swift in Sources */,
 				EA30911C20C7199D00E09DDF /* Data.swift in Sources */,
 				EA8C64A120D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
 				EAC0DD4E20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
@@ -1021,7 +1025,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1037,7 +1044,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1054,7 +1064,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1072,7 +1086,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1089,7 +1107,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1106,7 +1128,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
