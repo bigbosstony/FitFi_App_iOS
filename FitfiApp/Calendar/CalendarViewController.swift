@@ -16,6 +16,9 @@ extension Date {
 
 class CalendarViewController: UIViewController {
     
+    @IBAction func addScheduleBtn(_ sender: Any) {
+        print("+ tapped")
+    }
     @IBOutlet weak var tableView: UITableView!
     var mondayRoutine:[String] = []
     var tuesdayRoutine:[String] = []
