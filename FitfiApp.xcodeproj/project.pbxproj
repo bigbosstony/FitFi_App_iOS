@@ -166,6 +166,8 @@
 		EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */; };
 		F13E2D2E211E238D005A0AAF /* CollapsibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */; };
 		F1C7AE3621232EFF001FB415 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */; };
+		F1C7AE3C21236293001FB415 /* selectRoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */; };
+		F1C7AE3E21237281001FB415 /* scheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +259,8 @@
 		EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
 		F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
 		F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleViewController.swift; path = Calendar/ScheduleViewController.swift; sourceTree = "<group>"; };
+		F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectRoutineCell.swift; sourceTree = "<group>"; };
+		F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,8 +385,10 @@
 				F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */,
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
-        F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */,
-        EAAF60CD212238AD00E8353F /* collectionView-In-CVC-Testing.swift */,
+				F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */,
+				F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */,
+				F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */,
+				EAAF60CD212238AD00E8353F /* collectionView-In-CVC-Testing.swift */,
 				EA7C92CE20F9401E006DBFF0 /* Profile */,
 				EAC0DD5120D4045300AC7A1E /* Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
@@ -824,6 +830,7 @@
 				EA64310621121A16000EAED5 /* NewExerciseNameTableViewCell.swift in Sources */,
 				EA94BB51211D4DC3002E8875 /* RecentWorkoutDetailTVCell.swift in Sources */,
 				EAB3B0B620C73B4A0077503F /* RoutineCollectionViewCell.swift in Sources */,
+				F1C7AE3E21237281001FB415 /* scheduleDetailViewController.swift in Sources */,
 				EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */,
 				EA97D95E20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
 				EA78F3D720EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
@@ -834,6 +841,7 @@
 				EA84FCAE20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EAC0DD4520D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA855DE920F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
+				F1C7AE3C21236293001FB415 /* selectRoutineCell.swift in Sources */,
 				EA8C64A520D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
 				EA7C92CB20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
 				EA98E51120FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
