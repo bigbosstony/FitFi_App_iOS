@@ -77,6 +77,9 @@ class TabBarViewController: UITabBarController {
         print("BLE Version: \(bleVersion)")
         //
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        //        MARK: Add to ParentVC
+        add(smallTrackingVC)
+        smallTrackingVC.view.isHidden = true
 //        let trackingVC = SmallTrackingViewController()
 //  MARK: After Adding frame it become activate
 //        smallTrackingVC.view.frame = CGRect(x: 0, y: 497.5, width: 375, height: 119)
@@ -164,16 +167,17 @@ extension TabBarViewController: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Did Connect to Peripheral")
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-//        MARK: Add to ParentVC
-        add(smallTrackingVC)
+//        MARK: Make Small TrackingVC Visable
+        smallTrackingVC.view.isHidden = false
         blePeripheral.discoverServices([bleServiceCBUUID]) // CHANGE THIS VALUE
     }
     
     //MARK: Did Disconnect Peripheral
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Did Disconnected Peripheral")
-        //MARK: Remove from ParentVC
-        smallTrackingVC.remove()
+        //MARK: Make Small TrackingVC Hidden
+//        smallTrackingVC.remove()
+        smallTrackingVC.view.isHidden = true
         switch central.state {
         case .poweredOn:
             print("central.state is .poweredOn again")
@@ -227,7 +231,8 @@ extension TabBarViewController: CBPeripheralDelegate {
                 
                 if dataArrayCounter == 2 {
                     //                    writeToFile(dataArray)
-                    print(dataArray)
+                    //MARK: Received Data Array
+                    print("XYZ Data Array: ", dataArray)
                     dataArray.removeAll()
                     dataArrayCounter = 0
                 } else {

@@ -999,7 +999,7 @@
                                                 <constraint firstAttribute="height" constant="64" id="7Br-lc-Co4"/>
                                             </constraints>
                                         </view>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tV8-pP-SiN">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tV8-pP-SiN">
                                             <rect key="frame" x="0.0" y="128" width="375" height="300"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -1012,33 +1012,34 @@
                                                 <inset key="sectionInset" minX="64" minY="0.0" maxX="64" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8W9-GB-Izn">
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="exerciseCVCell" id="8W9-GB-Izn" customClass="ExerciseCollectionViewCell" customModule="FitfiApp" customModuleProvider="target">
                                                     <rect key="frame" x="64" y="0.0" width="250" height="300"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QdC-lq-mt9">
+                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QdC-lq-mt9">
                                                                 <rect key="frame" x="0.0" y="24" width="250" height="48"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="48" id="iou-K1-p7W"/>
                                                                 </constraints>
-                                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="6" id="qBO-rI-K1B">
+                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="6" minimumInteritemSpacing="6" id="qBO-rI-K1B">
                                                                     <size key="itemSize" width="50" height="50"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                     <inset key="sectionInset" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
-                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bl0-r5-WSh">
+                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="setCVCell" id="bl0-r5-WSh">
                                                                         <rect key="frame" x="12" y="0.0" width="48" height="48"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                             <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                         </view>
+                                                                        <color key="backgroundColor" red="0.92156862750000001" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <size key="customSize" width="48" height="48"/>
                                                                     </collectionViewCell>
                                                                 </cells>
@@ -1052,10 +1053,14 @@
                                                         <constraint firstItem="QdC-lq-mt9" firstAttribute="top" secondItem="8W9-GB-Izn" secondAttribute="top" constant="24" id="fm0-52-oJa"/>
                                                     </constraints>
                                                     <size key="customSize" width="250" height="300"/>
+                                                    <connections>
+                                                        <outlet property="setCollectionViewCell" destination="QdC-lq-mt9" id="b6k-AI-wHI"/>
+                                                    </connections>
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.92156862745098034" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="tV8-pP-SiN" firstAttribute="top" secondItem="jT1-w4-To3" secondAttribute="bottom" constant="64" id="HnS-ZI-P5g"/>
                                         <constraint firstAttribute="trailing" secondItem="tV8-pP-SiN" secondAttribute="trailing" id="JWk-xJ-96p"/>
@@ -1077,6 +1082,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ppl-f1-ObG"/>
                     </view>
+                    <connections>
+                        <outlet property="exerciseCollectionView" destination="tV8-pP-SiN" id="VEy-aw-IXm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSu-IU-Htq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

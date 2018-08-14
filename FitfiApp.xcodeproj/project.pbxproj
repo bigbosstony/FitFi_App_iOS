@@ -164,6 +164,9 @@
 		EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
 		EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
 		EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */; };
+		EADD314E212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */; };
+		EADD314F212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */; };
+		EADD3150212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,6 +256,7 @@
 		EAC0DD4420D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllExercisesTableViewCell.swift; sourceTree = "<group>"; };
 		EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewController.swift; sourceTree = "<group>"; };
 		EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
+		EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +381,7 @@
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
 				EAAF60CD212238AD00E8353F /* collectionView-In-CVC-Testing.swift */,
+				EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */,
 				EA7C92CE20F9401E006DBFF0 /* Profile */,
 				EAC0DD5120D4045300AC7A1E /* Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
@@ -832,6 +837,7 @@
 				EA98E51120FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
 				EAABE9E320CB05EF0024B222 /* TodayCollectionViewCell.swift in Sources */,
 				EA94BB4D211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift in Sources */,
+				EADD314E212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */,
 				EA30911C20C7199D00E09DDF /* Data.swift in Sources */,
 				EA8C64A120D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
 				EAC0DD4E20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
@@ -895,6 +901,7 @@
 				EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EA77604620E43D2D0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
+				EADD314F212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */,
 				EA64310B21121A4F000EAED5 /* NewExerciseCategoryTableViewCell.swift in Sources */,
 				EABD59B6211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */,
 				EA64311821135788000EAED5 /* Extensions.swift in Sources */,
@@ -947,6 +954,7 @@
 				EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EA77604720E43D2E0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA78F3D920EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
+				EADD3150212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */,
 				EA64310C21121A4F000EAED5 /* NewExerciseCategoryTableViewCell.swift in Sources */,
 				EABD59B7211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */,
 				EA64311921135788000EAED5 /* Extensions.swift in Sources */,
