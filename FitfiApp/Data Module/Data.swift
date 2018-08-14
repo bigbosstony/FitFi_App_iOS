@@ -12,6 +12,7 @@ let equipments = ["Barbell", "Dumbbell"]
 
 let sections = ["Favorite", "Discover"]
 
+let dayOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 let items = [
     [

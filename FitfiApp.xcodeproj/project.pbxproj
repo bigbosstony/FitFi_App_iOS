@@ -151,9 +151,9 @@
 		EAABEA3E20D032F30024B222 /* TrackingSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */; };
 		EAABEA3F20D032F30024B222 /* TrackingSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */; };
 		EAABEA4020D032F30024B222 /* TrackingSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */; };
-		EAAF60C42121E55800E8353F /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF60C32121E55800E8353F /* TrackingViewController.swift */; };
-		EAAF60C52121E55800E8353F /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF60C32121E55800E8353F /* TrackingViewController.swift */; };
-		EAAF60C62121E55800E8353F /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF60C32121E55800E8353F /* TrackingViewController.swift */; };
+		EAAF60CE212238AD00E8353F /* collectionView-In-CVC-Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF60CD212238AD00E8353F /* collectionView-In-CVC-Testing.swift */; };
+		EAAF60CF212238AD00E8353F /* collectionView-In-CVC-Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF60CD212238AD00E8353F /* collectionView-In-CVC-Testing.swift */; };
+		EAAF60D0212238AD00E8353F /* collectionView-In-CVC-Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAF60CD212238AD00E8353F /* collectionView-In-CVC-Testing.swift */; };
 		EAB0A70320C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB0A70220C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift */; };
 		EAB3B0B620C73B4A0077503F /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3B0B520C73B4A0077503F /* RoutineCollectionViewCell.swift */; };
 		EABD59B5211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD59B4211A3A160065F774 /* SelectExerciseForRoutineVC.swift */; };
@@ -247,7 +247,7 @@
 		EAABE9E920CB16EC0024B222 /* RoutineDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineDetailsTableViewController.swift; sourceTree = "<group>"; };
 		EAABE9F520CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllRoutinesTableViewCell.swift; sourceTree = "<group>"; };
 		EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSViewController.swift; sourceTree = "<group>"; };
-		EAAF60C32121E55800E8353F /* TrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewController.swift; sourceTree = "<group>"; };
+		EAAF60CD212238AD00E8353F /* collectionView-In-CVC-Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "collectionView-In-CVC-Testing.swift"; sourceTree = "<group>"; };
 		EAB0A70220C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorkoutDetailsTableViewController.swift; sourceTree = "<group>"; };
 		EAB3B0B520C73B4A0077503F /* RoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		EABD59B4211A3A160065F774 /* SelectExerciseForRoutineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseForRoutineVC.swift; sourceTree = "<group>"; };
@@ -379,11 +379,11 @@
 				F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */,
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
+				EAAF60CD212238AD00E8353F /* collectionView-In-CVC-Testing.swift */,
 				EA7C92CE20F9401E006DBFF0 /* Profile */,
 				EAC0DD5120D4045300AC7A1E /* Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
 				EAC0DD4820D3106500AC7A1E /* Routine */,
-				EAAF60C72121E57000E8353F /* TrackingVC */,
 				EA3008C420D1ADAA001E7743 /* Exercise */,
 				EA855DDF20F5114B000D7EA5 /* Calendar */,
 				EA77603120E436EE0052774F /* Data Module */,
@@ -471,14 +471,6 @@
 				EA855DE020F51A6B000D7EA5 /* CalendarTableViewCell.swift */,
 			);
 			path = Calendar;
-			sourceTree = "<group>";
-		};
-		EAAF60C72121E57000E8353F /* TrackingVC */ = {
-			isa = PBXGroup;
-			children = (
-				EAAF60C32121E55800E8353F /* TrackingViewController.swift */,
-			);
-			path = TrackingVC;
 			sourceTree = "<group>";
 		};
 		EAC0DD4820D3106500AC7A1E /* Routine */ = {
@@ -582,6 +574,11 @@
 				TargetAttributes = {
 					EA3090E220C6DA4000E09DDF = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					EA3090F920C6DA4300E09DDF = {
 						CreatedOnToolsVersion = 9.4;
@@ -825,7 +822,6 @@
 				EAB3B0B620C73B4A0077503F /* RoutineCollectionViewCell.swift in Sources */,
 				EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */,
 				EA97D95E20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
-				EAAF60C42121E55800E8353F /* TrackingViewController.swift in Sources */,
 				EA78F3D720EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EA99105920D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EAABE9EA20CB16EC0024B222 /* RoutineDetailsTableViewController.swift in Sources */,
@@ -855,6 +851,7 @@
 				EA64311721135788000EAED5 /* Extensions.swift in Sources */,
 				EA3090E920C6DA4000E09DDF /* HomeViewController.swift in Sources */,
 				EA3090E720C6DA4000E09DDF /* AppDelegate.swift in Sources */,
+				EAAF60CE212238AD00E8353F /* collectionView-In-CVC-Testing.swift in Sources */,
 				EA77605820E484410052774F /* ProfileViewController.swift in Sources */,
 				EA30911820C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift in Sources */,
 			);
@@ -864,7 +861,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAAF60C52121E55800E8353F /* TrackingViewController.swift in Sources */,
 				EA855DE620F5438C000D7EA5 /* CalendarViewController.swift in Sources */,
 				EA94BB4E211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift in Sources */,
 				EA8C64A620D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
@@ -892,6 +888,7 @@
 				EA855DE220F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA77604A20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
+				EAAF60CF212238AD00E8353F /* collectionView-In-CVC-Testing.swift in Sources */,
 				EA77603820E43CA80052774F /* AppDelegate.swift in Sources */,
 				EA98E50920FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */,
 				EA84FCBF20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
@@ -916,7 +913,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAAF60C62121E55800E8353F /* TrackingViewController.swift in Sources */,
 				EA855DE720F5438C000D7EA5 /* CalendarViewController.swift in Sources */,
 				EA94BB4F211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift in Sources */,
 				EA8C64A720D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
@@ -944,6 +940,7 @@
 				EA855DE320F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA77604B20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
+				EAAF60D0212238AD00E8353F /* collectionView-In-CVC-Testing.swift in Sources */,
 				EA77603920E43CA90052774F /* AppDelegate.swift in Sources */,
 				EA98E50A20FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */,
 				EA84FCC020E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
