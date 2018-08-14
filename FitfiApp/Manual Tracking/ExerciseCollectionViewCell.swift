@@ -12,12 +12,12 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
     
     var numberOfSets: Int?
     
-    @IBOutlet weak var setCollectionViewCell: UICollectionView!
+    @IBOutlet weak var setCollectionView: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setCollectionViewCell.delegate = self
-        setCollectionViewCell.dataSource = self
+        setCollectionView.delegate = self
+        setCollectionView.dataSource = self
     }
 }
 

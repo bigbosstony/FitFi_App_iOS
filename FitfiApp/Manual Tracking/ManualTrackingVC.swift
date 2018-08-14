@@ -8,7 +8,7 @@
 
 import UIKit
 
-class collectionView_In_CVC_Testing: UIViewController {
+class ManualTrackingVC: UIViewController {
 
     @IBOutlet weak var exerciseCollectionView: UICollectionView!
     
@@ -23,7 +23,7 @@ class collectionView_In_CVC_Testing: UIViewController {
     }
 }
 
-extension collectionView_In_CVC_Testing: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ManualTrackingVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return testingRoutine.count
     }

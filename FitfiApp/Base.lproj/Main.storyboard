@@ -53,7 +53,7 @@
                                                     <constraint firstItem="wua-Qb-SUN" firstAttribute="leading" secondItem="Q9F-xd-HAp" secondAttribute="leading" constant="15" id="fJZ-UM-nJy"/>
                                                 </constraints>
                                             </view>
-                                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fM1-Lg-zr9">
+                                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fM1-Lg-zr9">
                                                 <rect key="frame" x="0.0" y="38" width="374" height="149"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="Fma-Yt-1YE">
@@ -362,7 +362,7 @@
                                                     <constraint firstItem="nQe-YI-SqK" firstAttribute="leading" secondItem="Gai-BW-OQ8" secondAttribute="leading" constant="15" id="lnC-D1-eQg"/>
                                                 </constraints>
                                             </view>
-                                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yeN-6v-Rj5" userLabel="Routines Collection View">
+                                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yeN-6v-Rj5" userLabel="Routines Collection View">
                                                 <rect key="frame" x="0.0" y="48" width="374" height="158"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="Dml-9B-HQQ">
@@ -558,7 +558,7 @@
                                     <constraint firstAttribute="trailing" secondItem="7JL-CI-UYq" secondAttribute="trailing" id="2gY-tl-ays"/>
                                     <constraint firstItem="iel-yp-L58" firstAttribute="leading" secondItem="RLP-Qa-baG" secondAttribute="leading" id="LiH-oZ-wf7"/>
                                     <constraint firstItem="tlL-7F-ctj" firstAttribute="top" secondItem="RLP-Qa-baG" secondAttribute="top" constant="8" id="Mqb-6x-rZk"/>
-                                    <constraint firstAttribute="bottom" secondItem="3ED-jO-8Sa" secondAttribute="bottom" constant="111" id="OQ3-bm-Qy6"/>
+                                    <constraint firstAttribute="bottom" secondItem="3ED-jO-8Sa" secondAttribute="bottom" constant="168" id="OQ3-bm-Qy6"/>
                                     <constraint firstAttribute="trailing" secondItem="3ED-jO-8Sa" secondAttribute="trailing" id="TO0-Cg-xmr"/>
                                     <constraint firstItem="3ED-jO-8Sa" firstAttribute="top" secondItem="iel-yp-L58" secondAttribute="bottom" id="X8S-fU-zrg"/>
                                     <constraint firstItem="tlL-7F-ctj" firstAttribute="centerX" secondItem="RLP-Qa-baG" secondAttribute="centerX" id="YdM-C6-nIx"/>
@@ -968,10 +968,10 @@
             </objects>
             <point key="canvasLocation" x="4614" y="1373"/>
         </scene>
-        <!--Collection View InCVC Testing-->
+        <!--Manual TrackingVC-->
         <scene sceneID="aUD-qx-DZi">
             <objects>
-                <viewController id="sH5-yi-bt0" customClass="collectionView_In_CVC_Testing" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sH5-yi-bt0" customClass="ManualTrackingVC" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ucj-6X-YPT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1054,7 +1054,7 @@
                                                     </constraints>
                                                     <size key="customSize" width="250" height="300"/>
                                                     <connections>
-                                                        <outlet property="setCollectionViewCell" destination="QdC-lq-mt9" id="b6k-AI-wHI"/>
+                                                        <outlet property="setCollectionView" destination="QdC-lq-mt9" id="b6k-AI-wHI"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>
@@ -1189,7 +1189,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CVd-vu-CkK">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CVd-vu-CkK">
                                             <rect key="frame" x="0.0" y="29.5" width="375" height="72"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -2934,7 +2934,7 @@ CgoKA
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="8" sectionFooterHeight="8" id="4fJ-hy-Uh3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Mo0-r5-yWs">
                             <rect key="frame" x="0.0" y="96" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
