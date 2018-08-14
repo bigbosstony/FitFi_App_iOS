@@ -165,6 +165,7 @@
 		EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
 		EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */; };
 		F13E2D2E211E238D005A0AAF /* CollapsibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */; };
+		F1C7AE3621232EFF001FB415 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +256,7 @@
 		EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewController.swift; sourceTree = "<group>"; };
 		EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
 		F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
+		F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleViewController.swift; path = Calendar/ScheduleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,7 +381,8 @@
 				F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */,
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
-				EAAF60CD212238AD00E8353F /* collectionView-In-CVC-Testing.swift */,
+        F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */,
+        EAAF60CD212238AD00E8353F /* collectionView-In-CVC-Testing.swift */,
 				EA7C92CE20F9401E006DBFF0 /* Profile */,
 				EAC0DD5120D4045300AC7A1E /* Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
@@ -816,6 +819,7 @@
 				EA855DE120F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA40F9F620EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
 				EA98E50820FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */,
+				F1C7AE3621232EFF001FB415 /* ScheduleViewController.swift in Sources */,
 				EA64311221123C9F000EAED5 /* ExerciseCategoryTableViewCell.swift in Sources */,
 				EA64310621121A16000EAED5 /* NewExerciseNameTableViewCell.swift in Sources */,
 				EA94BB51211D4DC3002E8875 /* RecentWorkoutDetailTVCell.swift in Sources */,

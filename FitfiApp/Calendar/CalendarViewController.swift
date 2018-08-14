@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 extension Date {
     func dateFromDays(_ days: Int) -> Date {
         return (Calendar.current as NSCalendar).date(byAdding: .day, value: days, to: self, options: [])!
@@ -16,14 +16,24 @@ extension Date {
 
 class CalendarViewController: UIViewController {
     
+    @IBAction func addScheduleBtn(_ sender: Any) {
+        print("+ tapped")
+    }
     @IBOutlet weak var tableView: UITableView!
-    
+    var mondayRoutine:[String] = []
+    var tuesdayRoutine:[String] = []
+    var wednesdayRoutine:[String] = []
+    var thursdayRoutine:[String] = []
+     var fridayRoutine:[String] = []
+    var saturdayRoutine:[String] = []
+    var sundayRoutine:[String] = []
+    var routineArr:[Routine] = []
     let cellHeight: CGFloat = 78
     let dateFormatterCell = DateFormatter()
     let dateFormatterTitle = DateFormatter()
     let dayFormatter = DateFormatter()
     let daysToAdd = 5
-    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     lazy var days: [Date] = {
         let beginDate = Date().dateFromDays(-3)
         let endDate = Date().dateFromDays(15)
@@ -32,11 +42,87 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
+        do {
+            routineArr = try context.fetch(fetchRequest) as! [Routine]
+            
+        } catch {
+            print("Loading Exercises Error: \(error)")
+        }
+        for i in routineArr{
+            if(i.scheduledRoutine?.dayOfWeek == "MONDAY")
+            {
+                mondayRoutine.append(i.name!)
+            }
+            if(i.scheduledRoutine?.dayOfWeek == "TUESDAY")
+            {
+                tuesdayRoutine.append(i.name!)
+            }
+            if(i.scheduledRoutine?.dayOfWeek == "WEDNESDAY")
+            {
+                wednesdayRoutine.append(i.name!)
+            }
+            if(i.scheduledRoutine?.dayOfWeek == "THURSDAY")
+            {
+                thursdayRoutine.append(i.name!)
+            }
+            if(i.scheduledRoutine?.dayOfWeek == "FRIDAY")
+            {
+                fridayRoutine.append(i.name!)
+            }
+            if(i.scheduledRoutine?.dayOfWeek == "SATURDAY")
+            {
+                saturdayRoutine.append(i.name!)
+            }
+            if(i.scheduledRoutine?.dayOfWeek == "SUNDAY")
+            {
+                sundayRoutine.append(i.name!)
+            }
+        }
+        print("File Path of SQLite and .plist: " ,FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         self.tableView.delegate = self
         self.tableView.dataSource = self
         dateFormatterCell.dateFormat = "E dd"
         dateFormatterTitle.dateFormat = "MMMM yyyy"
         self.title = dateFormatterTitle.string(from: days.first!)
+       
+        
+       // let newSchedule = Schedule(context: context)
+        
+   //     newSchedule.dayOfWeek = "WEDNESDAY"
+//        save()
+//        newSchedule.dayOfWeek = "THURSDAY"
+//        save()
+//    newSchedule.dayOfWeek = "FRIDAY"
+//        save()
+//        newSchedule.dayOfWeek = "SATURDAY"
+    //    save()
+    
+        //   >>>>>>>>>>>to map<<<<<<<<<<<<<<
+//        var routineArr:[Routine] = []
+//        var dayArr:[Schedule] = []
+//       let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+//       let dayPredicate = NSPredicate(format: "dayOfWeek == 'MONDAY'")
+//        fetchRequest.predicate = dayPredicate
+//        do {
+//             dayArr = try context.fetch(fetchRequest) as! [Schedule]
+//
+//        } catch {
+//            print("Loading Exercises Error: \(error)")
+//        }
+//        let fetchRequest1 = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
+//        let routinePredicate = NSPredicate(format: "name == 'HA'")
+//        fetchRequest1.predicate = routinePredicate
+//        do {
+//             routineArr = try context.fetch(fetchRequest1) as! [Routine]
+//
+//        } catch {
+//            print("Loading Exercises Error: \(error)")
+//        }
+//        routineArr.first?.schduledRoutine = dayArr[0]
+//        save()
+       
+        
     }
     
     func generateDays(_ beginDate: Date, endDate: Date) -> [Date] {
@@ -86,6 +172,52 @@ extension CalendarViewController: UITableViewDataSource {
         let dateFormatter = DateFormatter()
         cell.dayOfWeek.text = dateArray.first?.uppercased()
         cell.dayOfMonth.text = dateArray.last?.uppercased()
+        switch dateArray[0] {
+            case "Mon":
+                if(mondayRoutine.count != 0)
+                {
+                cell.routineName.text = mondayRoutine[0]
+                }
+            break
+            case "Tue":
+                if(tuesdayRoutine.count != 0){
+                cell.routineName.text = tuesdayRoutine[0]
+                }
+            break
+            case "Wed":
+                if(wednesdayRoutine.count != 0)
+                {
+                cell.routineName.text = wednesdayRoutine[0]
+                }
+            break
+            case "Thu":
+                if(thursdayRoutine.count != 0)
+                {
+                cell.routineName.text = thursdayRoutine[0]
+                }
+            break
+            case "Fri":
+                if(fridayRoutine.count != 0)
+                {
+                cell.routineName.text = fridayRoutine[0]
+                }
+            break
+            case "Sat":
+                if(saturdayRoutine.count != 0)
+                {
+                cell.routineName.text = saturdayRoutine[0]
+                }
+            break
+            case "Sun":
+                if(sundayRoutine.count != 0)
+                {
+                cell.routineName.text = sundayRoutine[0]
+                }
+            break
+        default:
+            print("err")
+            
+        }
         if( dateArray.last == "thu")
         {
             print("Thursday come")
@@ -171,4 +303,13 @@ extension CalendarViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         print(days[indexPath.row])
     }
+}
+extension CalendarViewController{
+func save() {
+    do {
+        try context.save()
+    } catch {
+        print("\(error)")
+    }
+}
 }
