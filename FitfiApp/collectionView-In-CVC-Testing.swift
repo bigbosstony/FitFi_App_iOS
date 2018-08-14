@@ -1,5 +1,5 @@
 //
-//  TrackingViewController.swift
+//  collectionView-In-CVC-Testing.swift
 //  FitfiApp
 //
 //  Created by YAN YU on 2018-08-13.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrackingViewController: UIViewController {
+class collectionView_In_CVC_Testing: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +21,10 @@ class TrackingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
     /*
     // MARK: - Navigation
 

@@ -17,6 +17,8 @@ class MaxTrackingViewController: UIViewController {
     weak var delegate: MaxTrackingDelegate!
     var message: String?
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(delegate.message)
