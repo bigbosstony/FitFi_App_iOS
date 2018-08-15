@@ -18,7 +18,7 @@ class ManualTrackingVC: UIViewController {
         exerciseCollectionView.dataSource = self
     }
     
-    @IBAction func closeButtonTapped(_ sender: UIButton) {
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
 }

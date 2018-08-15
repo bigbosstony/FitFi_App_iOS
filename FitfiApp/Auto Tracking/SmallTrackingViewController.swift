@@ -14,6 +14,8 @@ class SmallTrackingViewController: UIViewController {
     
     var maxTrackingVC: MaxTrackingViewController?
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     let modelName = UIDevice.modelName
     lazy var bleVersion = {
         return self.deviceModelToBLEVersion(modelName)
@@ -47,7 +49,14 @@ class SmallTrackingViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
-
+        //Register nib file to collection view
+        collectionView.register(UINib.init(nibName: "SmallTrackingVCCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "smallTrackingVCCVCell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        layout.minimumInteritemSpacing = 6
+//        collectionView.collectionViewLayout = layout
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(expandTrackingSmallView)) //Change This If Needed
         self.view.addGestureRecognizer(tap)
         self.view.isUserInteractionEnabled = true
@@ -215,6 +224,17 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
     }
 }
 
+extension SmallTrackingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "smallTrackingVCCVCell", for: indexPath) as! SmallTrackingVCCollectionViewCell
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+}
 
 extension SmallTrackingViewController: MaxTrackingDelegate {
     var message: String {

@@ -167,6 +167,12 @@
 		EADD314E212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */; };
 		EADD314F212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */; };
 		EADD3150212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */; };
+		EADD315421236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD315221236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift */; };
+		EADD315521236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD315221236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift */; };
+		EADD315621236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD315221236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift */; };
+		EADD315721236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */; };
+		EADD315821236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */; };
+		EADD315921236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +263,8 @@
 		EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewController.swift; sourceTree = "<group>"; };
 		EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
 		EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCollectionViewCell.swift; sourceTree = "<group>"; };
+		EADD315221236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTrackingVCCollectionViewCell.swift; sourceTree = "<group>"; };
+		EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallTrackingVCCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,8 +388,8 @@
 				EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */,
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
-				EADD31512123651100E9A3C7 /* Manual Tracking */,
 				EAC0DD5120D4045300AC7A1E /* Auto Tracking */,
+				EADD31512123651100E9A3C7 /* Manual Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
 				EAC0DD4820D3106500AC7A1E /* Routine */,
 				EA3008C420D1ADAA001E7743 /* Exercise */,
@@ -492,6 +500,8 @@
 				EAABEA3C20D032F30024B222 /* TrackingSViewController.swift */,
 				EA98E50620FD6573002B2A70 /* SmallTrackingViewController.swift */,
 				EA98E50720FD6573002B2A70 /* SmallTrackingViewController.xib */,
+				EADD315221236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift */,
+				EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */,
 				EA98E50F20FD9B25002B2A70 /* MaxTrackingViewController.swift */,
 				EA98E51020FD9B25002B2A70 /* MaxTrackingViewController.xib */,
 			);
@@ -633,6 +643,7 @@
 				EA3090EC20C6DA4000E09DDF /* Main.storyboard in Resources */,
 				EA98E51420FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */,
 				EA84FCB120E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
+				EADD315721236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,6 +652,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAABE9E720CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
+				EADD315821236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib in Resources */,
 				EA77605120E450B10052774F /* Main.storyboard in Resources */,
 				EA98E51520FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */,
 				EA84FCC220E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
@@ -654,6 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAABE9E820CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
+				EADD315921236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib in Resources */,
 				EA77605220E450B20052774F /* Main.storyboard in Resources */,
 				EA98E51620FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */,
 				EA84FCC320E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
@@ -851,6 +864,7 @@
 				EAC0DD4E20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA64310221120E9B000EAED5 /* NewExerciseTableViewController.swift in Sources */,
 				EAABE9F620CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift in Sources */,
+				EADD315421236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift in Sources */,
 				EABD59B5211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */,
 				EA84FCBE20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
 				EA855DE520F5438C000D7EA5 /* CalendarViewController.swift in Sources */,
@@ -895,6 +909,7 @@
 				EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EA77604820E43D320052774F /* RoutinesTableViewCell.swift in Sources */,
 				EA40F9F720EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
+				EADD315521236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift in Sources */,
 				EA855DE220F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA77604A20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
@@ -948,6 +963,7 @@
 				EA99105B20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EA77604920E43D330052774F /* RoutinesTableViewCell.swift in Sources */,
 				EA40F9F820EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */,
+				EADD315621236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift in Sources */,
 				EA855DE320F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA77604B20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
