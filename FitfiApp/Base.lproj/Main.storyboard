@@ -1032,7 +1032,7 @@
                                                 <inset key="sectionInset" minX="64" minY="0.0" maxX="64" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="exerciseCVCell" id="8W9-GB-Izn" customClass="ExerciseCollectionViewCell" customModule="FitfiApp" customModuleProvider="target">
+                                                <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="exerciseCVCell" id="8W9-GB-Izn" customClass="ExerciseCollectionViewCell" customModule="FitfiApp" customModuleProvider="target">
                                                     <rect key="frame" x="64" y="15" width="250" height="300"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1042,10 +1042,10 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEZ-iH-oTi">
                                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgB-Tw-5dO">
+                                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgB-Tw-5dO">
                                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                                                                         <subviews>
-                                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QdC-lq-mt9">
+                                                                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QdC-lq-mt9">
                                                                                 <rect key="frame" x="0.0" y="23" width="250" height="50"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
@@ -1128,11 +1128,20 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                         <integer key="value" value="6"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                                        <integer key="value" value="6"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                                        <real key="value" value="0.14999999999999999"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="range" keyPath="layer.shadowOffset">
+                                                                        <range key="value" location="0" length="2"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
                                                     </view>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="PEZ-iH-oTi" firstAttribute="top" secondItem="8W9-GB-Izn" secondAttribute="top" id="Lhl-PA-oWO"/>
                                                         <constraint firstAttribute="trailing" secondItem="PEZ-iH-oTi" secondAttribute="trailing" id="Ui7-Ex-MhB"/>

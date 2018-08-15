@@ -40,7 +40,10 @@ class SmallTrackingViewController: UIViewController {
     let bleCharacteristicCBUUID = CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
     //
     var dataArrayCounter = 0
-    var dataArray = [Double]()
+    var dataRowCounter = 0
+    var dataArray = [String]()
+    var dataSourceString: String = ""
+    let file = "log.csv"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +56,7 @@ class SmallTrackingViewController: UIViewController {
         collectionView.register(UINib.init(nibName: "SmallTrackingVCCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "smallTrackingVCCVCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
 //        layout.minimumInteritemSpacing = 6
 //        collectionView.collectionViewLayout = layout
         
@@ -204,13 +207,33 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
             if Int(String(data[0])) == dataArrayCounter {
                 let currentDataArray = String(managedData[1]).split(by: 6)
                 for i in currentDataArray {
-                    dataArray.append(Double(i)!)
+                    dataArray.append(i)
                 }
-                
+                //MARK: Received Data Array
                 if dataArrayCounter == 2 {
-                    //                    writeToFile(dataArray)
-                    //MARK: Received Data Array
-                    print("XYZ Data Array: ", dataArray)
+                    if dataRowCounter <= 50 {
+//                        NSLog("Row: \(dataRowCounter) XYZ Data Array: \(dataArray)\n")
+                        //TODO: Append to the File
+                        let dataString = dataArray.joined(separator: ",") + "\n"
+                        print("Row: \(dataRowCounter)"," \(dataString)")
+                        dataSourceString.append(dataString)
+                        dataRowCounter += 1
+                    } else {
+                        //MARK: write to the file
+                        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                            let fileURL = dir.appendingPathComponent(file)
+                            //writing
+                            do {
+                                try dataSourceString.write(to: fileURL, atomically: false, encoding: .utf8)
+                            }
+                            catch {/* error handling here */}
+                            
+                            
+                        }
+                        print("Data To Write")
+                        dataSourceString = ""
+                        dataRowCounter = 0
+                    }
                     dataArray.removeAll()
                     dataArrayCounter = 0
                 } else {
@@ -239,5 +262,17 @@ extension SmallTrackingViewController: UICollectionViewDelegate, UICollectionVie
 extension SmallTrackingViewController: MaxTrackingDelegate {
     var message: String {
         return "It's Working"
+    }
+}
+
+extension SmallTrackingViewController {
+    func uploadCSVFile() {
+        let fileURL: String = "http://192.168.5.29/work/upload.php"
+        guard let url = URL(string: fileURL) else {
+            print("Error: cannot create URL")
+            return
+        }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
     }
 }
