@@ -40,16 +40,17 @@ class SmallTrackingViewController: UIViewController {
     let bleCharacteristicCBUUID = CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
     //
     var dataArrayCounter = 0
-    var dataRowCounter = 0
+    var dataRowCounter = 1
     var dataArray = [String]()
     var dataSourceString: String = ""
-    let file = "log.csv"
+    var file = "log.csv"
+    let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Device: ", UIDevice.modelName)
         print("BLE Version: \(bleVersion)")
-        // Do any additional setup after loading the view.
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
         //Register nib file to collection view
@@ -221,6 +222,8 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                     } else {
                         //MARK: write to the file
                         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                            let currentTime = Date()
+                            file = dateFormatter.string(from: currentTime)
                             let fileURL = dir.appendingPathComponent(file)
                             //writing
                             do {
@@ -228,11 +231,17 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                             }
                             catch {/* error handling here */}
                             
-                            
+                            //Upload File
+//                            do {
+//                                let file2 = try Data(contentsOf: fileURL)
+//                                print(file2)
+//                            } catch {
+//                                print(error)
+//                            }
                         }
                         print("Data To Write")
                         dataSourceString = ""
-                        dataRowCounter = 0
+                        dataRowCounter = 1
                     }
                     dataArray.removeAll()
                     dataArrayCounter = 0
