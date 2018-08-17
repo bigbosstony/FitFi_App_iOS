@@ -9,10 +9,13 @@
 import UIKit
 import CoreBluetooth
 import AudioToolbox
+import Alamofire
 
 class SmallTrackingViewController: UIViewController {
     
     var maxTrackingVC: MaxTrackingViewController?
+    
+    @IBOutlet weak var exerciseTypeLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -45,12 +48,13 @@ class SmallTrackingViewController: UIViewController {
     var dataSourceString: String = ""
     var file = "log.csv"
     let dateFormatter = DateFormatter()
+    var exerciseName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Device: ", UIDevice.modelName)
         print("BLE Version: \(bleVersion)")
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = "yyyyMMddHHmmss"
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
         //Register nib file to collection view
@@ -223,7 +227,7 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                         //MARK: write to the file
                         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
                             let currentTime = Date()
-                            file = dateFormatter.string(from: currentTime)
+                            file = dateFormatter.string(from: currentTime) + ".csv"
                             let fileURL = dir.appendingPathComponent(file)
                             //writing
                             do {
@@ -231,15 +235,23 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                             }
                             catch {/* error handling here */}
                             
-                            //Upload File
-//                            do {
-//                                let file2 = try Data(contentsOf: fileURL)
-//                                print(file2)
-//                            } catch {
-//                                print(error)
-//                            }
+                            //MARK: Upload File with Alamofire
+                            Alamofire.upload(multipartFormData: { multipartFormData in
+                                multipartFormData.append(fileURL, withName: "uploaded_file")
+                            }, to: "http://192.168.2.25/work/upload.php",
+                                encodingCompletion: { encodingResult in
+                                    switch encodingResult {
+                                    case .success(let upload, _,_ ):
+                                        upload.responseString { response in
+                                            debugPrint(response)
+                                        }
+                                    case .failure(let encodingError):
+                                        print(encodingError)
+                                    }
+                            })
+                            //MARK: Get result From Api
+                            makeGetCall()
                         }
-                        print("Data To Write")
                         dataSourceString = ""
                         dataRowCounter = 1
                     }
@@ -285,3 +297,56 @@ extension SmallTrackingViewController {
         urlRequest.httpMethod = "POST"
     }
 }
+
+extension SmallTrackingViewController {
+    func makeGetCall() {
+        // Set up the URL request
+        let resultURL: String = "http://192.168.2.25/work/get_ename.php"
+        
+        guard let url = URL(string: resultURL) else {
+            print("Error: cannot create URL")
+            return
+        }
+        let urlRequest = URLRequest(url: url)
+        
+        // set up the session
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        // make the request
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            // check for any errors
+            guard error == nil else {
+                print("error calling GET on /gyms/0")
+                print(error!)
+                return
+            }
+            // make sure we got data
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            print(responseData)
+            
+            do {
+                guard let data = try JSONSerialization.jsonObject(with: responseData, options: [])
+                    as? [String: Any] else {
+                        print("error trying to convert data to JSON")
+                        return
+                }
+                //Set to Label
+                DispatchQueue.main.async {
+                    self.exerciseTypeLabel.text = data["e_name"] as? String
+                }
+
+            } catch  {
+                print("error trying to convert data to JSON")
+                return
+            }
+        }
+        task.resume()
+    }
+}
+
+
