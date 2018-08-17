@@ -208,6 +208,7 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
             
             //            print("Data: \(String(describing: String(data: characteristic.value!, encoding: .utf8)))")
             
+            
             //Array of Data
             if Int(String(data[0])) == dataArrayCounter {
                 let currentDataArray = String(managedData[1]).split(by: 6)
@@ -249,8 +250,6 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                                         print(encodingError)
                                     }
                             })
-                            //MARK: Get result From Api
-                            makeGetCall()
                         }
                         dataSourceString = ""
                         dataRowCounter = 1
@@ -261,6 +260,8 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                     dataArrayCounter += 1
                 }
             }
+            //MARK: Get result From Api
+            makeGetCall()
             
         default:
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
