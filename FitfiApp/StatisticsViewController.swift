@@ -419,6 +419,7 @@ extension StatisticsViewController{
             workOutLabel.text = "\(totalWorkOut)"
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut,by: maxWorkOut/10))
             //            barsArray.append("\(currentDateString)/\(currentDateString),150")
+            if(totalExercise > 0){
             oneMonthchart = BarsChart(
                 frame: frame,
                 chartConfig: chartConfig,
@@ -457,6 +458,10 @@ extension StatisticsViewController{
                 if let view = chart?.view {
                     volumeGraphView.addSubview(view)
                 }
+            }
+            }
+            else{
+                print("No data")
             }
             break
         case 1:
@@ -506,6 +511,8 @@ extension StatisticsViewController{
             volumeLabel.text = "\(totalVolume) t"
             //print(exWorkOuts.count) total routines
             workOutLabel.text = "\(totalWorkOut)"
+            if(totalExercise > 0)
+            {
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut,by: maxWorkOut/10))
             
             //            barsArray.append("\(currentDateString)/\(currentDateString),150")
@@ -550,7 +557,10 @@ extension StatisticsViewController{
                     volumeGraphView.addSubview(view)
                 }
             }
-            
+            }
+            else{
+                print("No Data")
+            }
             break
             
         case 2:
@@ -601,6 +611,8 @@ extension StatisticsViewController{
             volumeLabel.text = "\(totalVolume) t"
             //print(exWorkOuts.count) total routines
             workOutLabel.text = "\(totalWorkOut)"
+            if(totalExercise > 0)
+            {
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut,by: maxWorkOut/10))
             
             //            barsArray.append("\(currentDateString)/\(currentDateString),150")
@@ -644,6 +656,10 @@ extension StatisticsViewController{
                 }
             }
             exerciseTable.reloadData()
+            }
+            else{
+                print("No Data")
+            }
             break
             
             

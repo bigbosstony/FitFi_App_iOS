@@ -8,9 +8,13 @@
 
 import Foundation
 import UIKit
+import Alamofire
+
 class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var signal = 0
     @IBOutlet weak var scheduleTable: UITableView!
+   // var fileURL = Bundle.main.url(forResource: "Bicep copy", withExtension: "csv")
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -78,6 +82,28 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         super.viewDidLoad()
         scheduleTable.dataSource = self
         scheduleTable.delegate = self
+//        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+//
+//            fileURL = dir.appendingPathComponent("Bicep.csv")
+//        }
+//        print(fileURL)
+//        Alamofire.upload(
+//            multipartFormData: { multipartFormData in
+//                multipartFormData.append(self.fileURL!, withName: "uploaded_file")
+//
+//        },
+//            to: "http://192.168.2.25/work/upload.php",
+//            encodingCompletion: { encodingResult in
+//                switch encodingResult {
+//                case .success(let upload, _, _):
+//                    upload.responseJSON { response in
+//                        debugPrint(response)
+//                    }
+//                case .failure(let encodingError):
+//                    print(encodingError)
+//                }
+//        }
+//        )
     }
     
     
