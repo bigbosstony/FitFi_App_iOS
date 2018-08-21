@@ -12,8 +12,19 @@ import Alamofire
 
 class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var signal = 0
+    var scheduleArray:[String]!
     @IBOutlet weak var scheduleTable: UITableView!
-   // var fileURL = Bundle.main.url(forResource: "Bicep copy", withExtension: "csv")
+    @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func saveBtn(_ sender: UIBarButtonItem) {
+        day = []
+        routineInSchedule = []
+        date = []
+        self.dismiss(animated: true, completion: nil)
+    }
+    // var fileURL = Bundle.main.url(forResource: "Bicep copy", withExtension: "csv")
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -32,6 +43,14 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         if indexPath.row == 0 && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
             cell.routinePreviewLabel.text = "Routine"
+            if(routineInSchedule != nil)
+            {
+            if(routineInSchedule.count > 1)
+            {
+                print(routineInSchedule)
+                cell.routinePreviewLabel.text = routineInSchedule[1]
+            }
+            }
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             
             return cell
@@ -40,12 +59,26 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
             {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
             cell.routinePreviewLabel.text = "date"
+                if(date != nil)
+        {
+            if(date.count > 1)
+            {
+                cell.routinePreviewLabel.text = date[1]
+            }
+    }
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
             }
             else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
                 cell.routinePreviewLabel.text = "Day"
+                if(day != nil)
+                {
+                if(day.count > 1)
+                {
+                    cell.routinePreviewLabel.text = day[1]
+                }
+                }
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 return cell
             }
@@ -78,10 +111,16 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
             destinationVC.signal = signal
         }
     }
+    override func viewDidAppear(_ animated: Bool) {
+        print(scheduleArray)
+        scheduleTable.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         scheduleTable.dataSource = self
         scheduleTable.delegate = self
+        
 //        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
 //
 //            fileURL = dir.appendingPathComponent("Bicep.csv")

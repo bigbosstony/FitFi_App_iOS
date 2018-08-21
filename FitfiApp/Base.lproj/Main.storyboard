@@ -1324,7 +1324,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgl-eU-ca3">
-                                    <rect key="frame" x="15" y="-11.666666666666664" width="85" height="23.333333333333332"/>
+                                    <rect key="frame" x="15" y="-11.666666666666666" width="85" height="23.333333333333332"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -1744,7 +1744,7 @@
                             <color key="tintColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="addScheduleBtn:" destination="oTV-G4-mVH" id="zHc-io-IiF"/>
-                                <segue destination="cF1-31-c23" kind="show" id="UUE-py-B4O"/>
+                                <segue destination="nsh-Jf-6gz" kind="presentation" id="UUE-py-B4O"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1756,16 +1756,16 @@
             </objects>
             <point key="canvasLocation" x="9098.3999999999996" y="867.61619190404804"/>
         </scene>
-        <!--Schedule View Controller-->
+        <!--ScheduleViewController-->
         <scene sceneID="Vn7-nM-fzn">
             <objects>
-                <viewController id="cF1-31-c23" customClass="ScheduleViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ScheduleViewController" id="cF1-31-c23" customClass="ScheduleViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lD9-oV-lxR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bm9-o9-rpt">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bm9-o9-rpt">
+                                <rect key="frame" x="0.0" y="75" width="414" height="661"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectRoutine" id="Qen-dV-CF1" customClass="selectRoutineCell" customModule="FitfiApp" customModuleProvider="target">
@@ -1783,7 +1783,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mr-87-61T">
-                                                    <rect key="frame" x="288" y="10" width="49" height="21"/>
+                                                    <rect key="frame" x="224" y="10" width="113" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1800,6 +1800,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Bm9-o9-rpt" firstAttribute="bottom" secondItem="G2X-2Y-mP5" secondAttribute="bottom" id="bhU-tW-7Yn"/>
                             <constraint firstItem="Bm9-o9-rpt" firstAttribute="leading" secondItem="lD9-oV-lxR" secondAttribute="leading" id="h5a-SC-lYR"/>
@@ -1808,26 +1809,39 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G2X-2Y-mP5"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="vuS-Fm-1gB">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="qak-au-eDI">
+                            <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelBtn:" destination="cF1-31-c23" id="3Da-3G-mCQ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="c9z-86-CUV">
+                            <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="saveBtn:" destination="cF1-31-c23" id="j27-2D-1Zo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="scheduleTable" destination="Bm9-o9-rpt" id="Wbs-C0-SBs"/>
-                        <segue destination="qg4-8R-c39" kind="show" identifier="gotoDetailScheduleVC" id="W8D-2o-wTq"/>
+                        <segue destination="qg4-8R-c39" kind="presentation" identifier="gotoDetailScheduleVC" id="W8D-2o-wTq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1o-8P-uu1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9944.7999999999993" y="859.52023988005999"/>
+            <point key="canvasLocation" x="10850.72463768116" y="859.23913043478262"/>
         </scene>
-        <!--Schedule Detail View Controller-->
+        <!--scheduleDetailViewController-->
         <scene sceneID="rxq-Ni-6Yj">
             <objects>
-                <viewController id="qg4-8R-c39" customClass="scheduleDetailViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="scheduleDetailViewController" id="qg4-8R-c39" customClass="scheduleDetailViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Haq-Oh-jJj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker hidden="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="img-tB-248">
-                                <rect key="frame" x="0.0" y="311" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <datePicker hidden="YES" contentMode="scaleToFill" semanticContentAttribute="spatial" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="img-tB-248">
+                                <rect key="frame" x="0.0" y="289" width="414" height="181"/>
                                 <date key="date" timeIntervalSinceReferenceDate="555971021.31231999">
                                     <!--2018-08-14 20:23:41 +0000-->
                                 </date>
@@ -1837,25 +1851,70 @@
                                 <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
                                     <!--2037-12-31 11:00:00 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="datePickerAction:" destination="qg4-8R-c39" eventType="valueChanged" id="CbO-aw-fQr"/>
+                                </connections>
                             </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aCm-Xm-WZV">
-                                <rect key="frame" x="0.0" y="72" width="414" height="615"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="672" id="m5b-5A-kbk"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="scheduleTableCell" id="YTq-fK-vfu">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YTq-fK-vfu" id="k8E-P1-7rZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZX-v7-t2r">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="T" id="408-2M-7n0">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="3Gb-K8-HkU">
+                                            <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="Cancel:" destination="qg4-8R-c39" id="fko-Ze-szO"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="3zl-Am-2Nk">
+                                            <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="Done:" destination="qg4-8R-c39" id="fQo-uQ-3ac"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="aCm-Xm-WZV" firstAttribute="top" secondItem="YEM-Qz-iU2" secondAttribute="top" constant="8" id="78U-bg-hkK"/>
-                            <constraint firstItem="aCm-Xm-WZV" firstAttribute="bottom" secondItem="YEM-Qz-iU2" secondAttribute="bottom" id="CAG-I8-nvM"/>
-                            <constraint firstItem="aCm-Xm-WZV" firstAttribute="leading" secondItem="Haq-Oh-jJj" secondAttribute="leading" id="rA4-1h-ftl"/>
-                            <constraint firstAttribute="trailing" secondItem="aCm-Xm-WZV" secondAttribute="trailing" id="v8p-qh-lPO"/>
+                            <constraint firstItem="aCm-Xm-WZV" firstAttribute="top" secondItem="eZX-v7-t2r" secondAttribute="bottom" id="Hrd-vC-mwz"/>
+                            <constraint firstItem="aCm-Xm-WZV" firstAttribute="trailing" secondItem="img-tB-248" secondAttribute="trailing" id="W86-jx-5kU"/>
+                            <constraint firstItem="aCm-Xm-WZV" firstAttribute="bottom" secondItem="YEM-Qz-iU2" secondAttribute="bottom" id="fhG-f4-OtQ"/>
+                            <constraint firstItem="aCm-Xm-WZV" firstAttribute="leading" secondItem="eZX-v7-t2r" secondAttribute="leading" id="frA-Ba-O8K"/>
+                            <constraint firstItem="aCm-Xm-WZV" firstAttribute="trailing" secondItem="eZX-v7-t2r" secondAttribute="trailing" id="hL4-L5-PW4"/>
+                            <constraint firstItem="aCm-Xm-WZV" firstAttribute="leading" secondItem="img-tB-248" secondAttribute="leading" id="o3b-ZV-b7q"/>
+                            <constraint firstAttribute="trailing" secondItem="aCm-Xm-WZV" secondAttribute="trailing" id="o7p-GM-qx1"/>
+                            <constraint firstItem="aCm-Xm-WZV" firstAttribute="leading" secondItem="Haq-Oh-jJj" secondAttribute="leading" id="zlO-Sv-Iwf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YEM-Qz-iU2"/>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="img-tB-248" id="EZH-pb-SLp"/>
+                        <outlet property="table" destination="aCm-Xm-WZV" id="Ggf-kz-DbB"/>
+                        <outlet property="titlee" destination="408-2M-7n0" id="3q4-od-slV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7om-DV-iYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10661.6" y="800.14992503748135"/>
+            <point key="canvasLocation" x="10850.72463768116" y="1755.9782608695652"/>
         </scene>
         <!--Create New Account View Controller-->
         <scene sceneID="Zb6-ie-sav">
@@ -2316,7 +2375,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICn-7A-eig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12000.799999999999" y="783.95802098950526"/>
+            <point key="canvasLocation" x="12907.246376811596" y="783.42391304347836"/>
         </scene>
         <!--Settings-->
         <scene sceneID="dGg-g4-N30">
@@ -3207,6 +3266,24 @@ CgoKA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86F-ie-KUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1975" y="2525"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="W1Y-30-XQm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nsh-Jf-6gz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Kq9-vh-UdJ">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cF1-31-c23" kind="relationship" relationship="rootViewController" id="ehI-qQ-Tq7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="59h-Bs-Yfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9943.4782608695659" y="859.23913043478262"/>
         </scene>
     </scenes>
     <resources>
