@@ -448,7 +448,7 @@ extension StatisticsViewController{
             }
             print(IOBPoints)
             generateXAxisValues()
-            print(xAxisValues)
+            //print(xAxisValues)
             let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
             bottomChart = generateIOBChartWithFrame(frame: frame)
             for view in volumeGraphView.subviews {

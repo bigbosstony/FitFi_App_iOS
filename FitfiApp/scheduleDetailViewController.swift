@@ -76,7 +76,9 @@ class scheduleDetailViewController:UIViewController,UITableViewDelegate,UITableV
         {
             table.isHidden = true
             datePicker.isHidden = false
-            arrayForSchduleVC.append("Select Date")
+            arrayForSchduleVC.append("Date")
+            titlee.title = "Select Date"
+            arrayForSchduleVC.append("\(Date())")
             lastUpdated = 1
         }
         table.dataSource = self
