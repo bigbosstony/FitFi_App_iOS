@@ -210,13 +210,13 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
             if Int(String(data[0])) == dataArrayCounter {
                 let currentDataArray = String(managedData[1]).split(by: 6)
                 for i in currentDataArray {
-                    dataArray.append(Double(i)!)
+                    dataArray.append(round(1000 * Double(i)!) / 1000)
                 }
                 
                 if dataArrayCounter == 2 {
                     //                    writeToFile(dataArray)
                     //MARK: Received Data Array
-                    print("XYZ Data Array: ", dataArray)
+                    NSLog("XYZ Data Array: \(dataArray)")
                     dataArray.removeAll()
                     dataArrayCounter = 0
                 } else {
@@ -225,59 +225,6 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
             }
             
 //            print("Data: \(String(describing: String(data: characteristic.value!, encoding: .utf8)))")
-            
-            
-            //Array of Data
-//            if Int(String(data[0])) == dataArrayCounter {
-//                let currentDataArray = String(managedData[1]).split(by: 6)
-//                for i in currentDataArray {
-//                    dataArray.append(i)
-//                }
-//                //MARK: Received Data Array
-//                if dataArrayCounter == 2 {
-//                    if dataRowCounter <= 50 {
-////                        NSLog("Row: \(dataRowCounter) XYZ Data Array: \(dataArray)\n")
-//                        //TODO: Append to the File
-//                        let dataString = dataArray.joined(separator: ",") + "\n"
-//                        print("Row: \(dataRowCounter)"," \(dataString)")
-//                        dataSourceString.append(dataString)
-//                        dataRowCounter += 1
-//                    } else {
-//                        //MARK: write to the file
-//                        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-//                            let currentTime = Date()
-//                            file = dateFormatter.string(from: currentTime) + ".csv"
-//                            let fileURL = dir.appendingPathComponent(file)
-//                            //writing
-//                            do {
-//                                try dataSourceString.write(to: fileURL, atomically: false, encoding: .utf8)
-//                            }
-//                            catch {/* error handling here */}
-//
-//                            //MARK: Upload File with Alamofire
-//                            Alamofire.upload(multipartFormData: { multipartFormData in
-//                                multipartFormData.append(fileURL, withName: "uploaded_file")
-//                            }, to: "http://192.168.2.25/work/upload.php",
-//                                encodingCompletion: { encodingResult in
-//                                    switch encodingResult {
-//                                    case .success(let upload, _,_ ):
-//                                        upload.responseString { response in
-//                                            debugPrint(response)
-//                                        }
-//                                    case .failure(let encodingError):
-//                                        print(encodingError)
-//                                    }
-//                            })
-//                        }
-//                        dataSourceString = ""
-//                        dataRowCounter = 1
-//                    }
-//                    dataArray.removeAll()
-//                    dataArrayCounter = 0
-//                } else {
-//                    dataArrayCounter += 1
-//                }
-//            }
         default:
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
         }
@@ -313,56 +260,5 @@ extension SmallTrackingViewController {
         urlRequest.httpMethod = "POST"
     }
 }
-
-//extension SmallTrackingViewController {
-//    func makeGetCall() {
-//        // Set up the URL request
-//        let resultURL: String = "http://192.168.2.25/work/get_ename.php"
-//
-//        guard let url = URL(string: resultURL) else {
-//            print("Error: cannot create URL")
-//            return
-//        }
-//        let urlRequest = URLRequest(url: url)
-//
-//        // set up the session
-//        let config = URLSessionConfiguration.default
-//        let session = URLSession(configuration: config)
-//
-//        // make the request
-//        let task = session.dataTask(with: urlRequest) {
-//            (data, response, error) in
-//            // check for any errors
-//            guard error == nil else {
-//                print("error calling GET on /gyms/0")
-//                print(error!)
-//                return
-//            }
-//            // make sure we got data
-//            guard let responseData = data else {
-//                print("Error: did not receive data")
-//                return
-//            }
-//            print(responseData)
-//
-//            do {
-//                guard let data = try JSONSerialization.jsonObject(with: responseData, options: [])
-//                    as? [String: Any] else {
-//                        print("error trying to convert data to JSON")
-//                        return
-//                }
-//                //Set to Label
-//                DispatchQueue.main.async {
-//                    self.exerciseTypeLabel.text = data["e_name"] as? String
-//                }
-//
-//            } catch  {
-//                print("error trying to convert data to JSON")
-//                return
-//            }
-//        }
-//        task.resume()
-//    }
-//}
 
 
