@@ -11,12 +11,12 @@ import UIKit
 import CoreData
 var day:[String]!
 var routineInSchedule:[String]!
-var date:[String]!
+var date:Date!
 var lastUpdated:Int!
 class scheduleDetailViewController:UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     @IBOutlet weak var table: UITableView!
-    
+    var tempDate:Date = Date()
     @IBOutlet weak var titlee: UINavigationItem!
     
     @IBAction func Done(_ sender: UIBarButtonItem) {
@@ -26,7 +26,7 @@ class scheduleDetailViewController:UIViewController,UITableViewDelegate,UITableV
         }
         else if(lastUpdated == 1)
         {
-            date = arrayForSchduleVC
+            date = tempDate
         }
         else if(lastUpdated == 2)
         {
@@ -37,16 +37,8 @@ class scheduleDetailViewController:UIViewController,UITableViewDelegate,UITableV
          self.dismiss(animated: true, completion: nil)
     }
     @IBAction func datePickerAction(_ sender: UIDatePicker) {
-        let formatter = DateFormatter()
-        // initially set the format based on your datepicker date / server String
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        if(arrayForSchduleVC.count == 1)
-        {
-        arrayForSchduleVC.append(formatter.string(from: sender.date))
-        }
-        else{
-            arrayForSchduleVC[1] = formatter.string(from: sender.date)
-        }
+        tempDate = sender.date
+        
     }
     @IBOutlet weak var datePicker: UIDatePicker!
     var signal:Int?

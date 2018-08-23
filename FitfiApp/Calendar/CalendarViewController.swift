@@ -50,31 +50,31 @@ class CalendarViewController: UIViewController {
             print("Loading Exercises Error: \(error)")
         }
         for i in routineArr{
-            if(i.scheduledRoutine?.dayOfWeek == "MONDAY")
+            if(i.scheduledRoutine?.monday == true)
             {
                 mondayRoutine.append(i.name!)
             }
-            if(i.scheduledRoutine?.dayOfWeek == "TUESDAY")
+            if(i.scheduledRoutine?.tuesday == true)
             {
                 tuesdayRoutine.append(i.name!)
             }
-            if(i.scheduledRoutine?.dayOfWeek == "WEDNESDAY")
+            if(i.scheduledRoutine?.wednesday == true)
             {
                 wednesdayRoutine.append(i.name!)
             }
-            if(i.scheduledRoutine?.dayOfWeek == "THURSDAY")
+            if(i.scheduledRoutine?.thursday == true)
             {
                 thursdayRoutine.append(i.name!)
             }
-            if(i.scheduledRoutine?.dayOfWeek == "FRIDAY")
+            if(i.scheduledRoutine?.friday == true)
             {
                 fridayRoutine.append(i.name!)
             }
-            if(i.scheduledRoutine?.dayOfWeek == "SATURDAY")
+            if(i.scheduledRoutine?.saturday == true)
             {
                 saturdayRoutine.append(i.name!)
             }
-            if(i.scheduledRoutine?.dayOfWeek == "SUNDAY")
+            if(i.scheduledRoutine?.sunday == true)
             {
                 sundayRoutine.append(i.name!)
             }

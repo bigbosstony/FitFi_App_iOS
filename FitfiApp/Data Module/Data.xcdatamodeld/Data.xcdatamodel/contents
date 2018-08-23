@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Exercise" representedClassName="Exercise" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -42,7 +42,14 @@
         <relationship name="exerciseHistory" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Exercise_History" inverseName="parentRoutineHistory" inverseEntity="Exercise_History" syncable="YES"/>
     </entity>
     <entity name="Schedule" representedClassName="Schedule" syncable="YES" codeGenerationType="class">
-        <attribute name="dayOfWeek" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="friday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="monday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="saturday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sunday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="thursday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tuesday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="wednesday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="schdule" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Routine" inverseName="scheduledRoutine" inverseEntity="Routine" syncable="YES"/>
     </entity>
     <elements>
@@ -51,6 +58,6 @@
         <element name="Routine" positionX="-308" positionY="27" width="128" height="103"/>
         <element name="Routine_Exercise" positionX="-36" positionY="68" width="128" height="120"/>
         <element name="Routine_History" positionX="-81" positionY="-180" width="128" height="150"/>
-        <element name="Schedule" positionX="-551" positionY="27" width="128" height="73"/>
+        <element name="Schedule" positionX="-551" positionY="27" width="128" height="178"/>
     </elements>
 </model>

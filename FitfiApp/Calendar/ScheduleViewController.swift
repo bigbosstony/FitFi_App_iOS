@@ -13,15 +13,82 @@ import Alamofire
 class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var signal = 0
     var scheduleArray:[String]!
+    var monday:Bool = false
+    var tuesday:Bool = false
+    var wednesday:Bool = false
+    var thursday:Bool = false
+    var friday:Bool = false
+    var saturday:Bool = false
+    var sunday:Bool = false
     @IBOutlet weak var scheduleTable: UITableView!
     @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveBtn(_ sender: UIBarButtonItem) {
+        print(date)
+        print(routineInSchedule)
+        print(day)
+        //SAMPLE DATA
+//        some(2018-08-25 21:49:22 +0000)
+//        some(["Routine", "HH"])
+//        some(["Days", "MONDAY", "SUNDAY"])
+        if(day.contains("MONDAY"))
+        {
+            monday = true
+        }
+        else{
+            monday = false
+        }
+        if(day.contains("SUNDAY"))
+        {
+            sunday = true
+        }
+        else{
+            sunday = false
+        }
+        if(day.contains("SATURDAY"))
+        {
+            saturday = true
+        }
+        else{
+            saturday = false
+        }
+        if(day.contains("FRIDAY"))
+        {
+            friday = true
+        }
+        else{
+            friday = false
+        }
+        if(day.contains("THURSDAY"))
+        {
+            thursday = true
+        }
+        else{
+            thursday = false
+        }
+        if(day.contains("WEDNESDAY"))
+        {
+            wednesday = true
+        }
+        else{
+            wednesday = false
+        }
+        if(day.contains("TUESDAY"))
+        {
+            tuesday = true
+        }
+        else{
+            tuesday = false
+        }
+        
+        
         day = []
         routineInSchedule = []
-        date = []
+        date = Date()
+        
+        
         self.dismiss(animated: true, completion: nil)
     }
     // var fileURL = Bundle.main.url(forResource: "Bicep copy", withExtension: "csv")
@@ -59,13 +126,15 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
             {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
             cell.routinePreviewLabel.text = "date"
-                if(date != nil)
-        {
-            if(date.count > 1)
+            
+            if(date != nil)
             {
-                cell.routinePreviewLabel.text = date[1]
+                cell.routinePreviewLabel.text = "\(date!)"
             }
-    }
+            else{
+                cell.routinePreviewLabel.text = "\(Date())"
+                }
+    
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
             }
