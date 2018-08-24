@@ -1,6 +1,5 @@
 //  TrackingSViewController.swift
 //  FitfiApp
-//
 //  Created by Yan Yu on 2018-06-12.
 //  Copyright © 2018 Fitfi. All rights reserved.
 
