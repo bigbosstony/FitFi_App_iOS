@@ -20,6 +20,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var friday:Bool = false
     var saturday:Bool = false
     var sunday:Bool = false
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var scheduleTable: UITableView!
     @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -29,6 +30,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         print(date)
         print(routineInSchedule)
         print(day)
+        
         //SAMPLE DATA
 //        some(2018-08-25 21:49:22 +0000)
 //        some(["Routine", "HH"])
