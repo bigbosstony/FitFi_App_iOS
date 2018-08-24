@@ -34,6 +34,7 @@ class CalendarViewController: UIViewController {
     let dayFormatter = DateFormatter()
     let daysToAdd = 5
     var scheduleArr:[Schedule] = []
+    var tableCellScheduleArr:[Schedule] = []
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     lazy var days: [Date] = {
         let beginDate = Date().dateFromDays(-3)
@@ -43,6 +44,19 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+        
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request) as! [Schedule]
+            
+            scheduleArr = result
+            
+        } catch {
+            
+            print("Failed")
+        }
+    
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
         do {
                 routineArr = try context.fetch(fetchRequest) as! [Routine]
@@ -50,36 +64,37 @@ class CalendarViewController: UIViewController {
         } catch {
             print("Loading Exercises Error: \(error)")
         }
-        for i in routineArr{
-            if(i.scheduledRoutine?.monday == true)
-            {
-                mondayRoutine.append(i.name!)
-            }
-            if(i.scheduledRoutine?.tuesday == true)
-            {
-                tuesdayRoutine.append(i.name!)
-            }
-            if(i.scheduledRoutine?.wednesday == true)
-            {
-                wednesdayRoutine.append(i.name!)
-            }
-            if(i.scheduledRoutine?.thursday == true)
-            {
-                thursdayRoutine.append(i.name!)
-            }
-            if(i.scheduledRoutine?.friday == true)
-            {
-                fridayRoutine.append(i.name!)
-            }
-            if(i.scheduledRoutine?.saturday == true)
-            {
-                saturdayRoutine.append(i.name!)
-            }
-            if(i.scheduledRoutine?.sunday == true)
-            {
-                sundayRoutine.append(i.name!)
-            }
-        }
+        
+//        for i in routineArr{
+//            if(i.scheduledRoutine?.monday == true)
+//            {
+//                mondayRoutine.append(i.name!)
+//            }
+//            if(i.scheduledRoutine?.tuesday == true)
+//            {
+//                tuesdayRoutine.append(i.name!)
+//            }
+//            if(i.scheduledRoutine?.wednesday == true)
+//            {
+//                wednesdayRoutine.append(i.name!)
+//            }
+//            if(i.scheduledRoutine?.thursday == true)
+//            {
+//                thursdayRoutine.append(i.name!)
+//            }
+//            if(i.scheduledRoutine?.friday == true)
+//            {
+//                fridayRoutine.append(i.name!)
+//            }
+//            if(i.scheduledRoutine?.saturday == true)
+//            {
+//                saturdayRoutine.append(i.name!)
+//            }
+//            if(i.scheduledRoutine?.sunday == true)
+//            {
+//                sundayRoutine.append(i.name!)
+//            }
+//        }
         print("File Path of SQLite and .plist: " ,FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -232,31 +247,61 @@ extension CalendarViewController: UITableViewDataSource {
             cell.dayOfMonth.textColor = UIColor.white
             cell.dayOfWeek.textColor = UIColor.white
             cell.todayMarker.isHidden = false
+            cell.routineName.text = "H"
         }
         else{
             cell.dayOfMonth.textColor = UIColor.black
             cell.dayOfWeek.textColor = UIColor.black
             cell.todayMarker.isHidden = true
+            cell.routineName.text = "H"
         }
-        cell.routineName.text = "H"
+        for i in scheduleArr
+        {
+            if let s = i.schdule {
+                print(s.value(forKey: "name"))
+            }
+            if (days[indexPath.row] > i.date! || dateFormatter.string(from: days[indexPath.row]) == dateFormatter.string(from: i.date!))
+            {
+                
+                if(cell.dayOfWeek.text == "MON" && i.monday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                    //cell.routineName.text = i.schedule
+                }
+                else if(cell.dayOfWeek.text == "TUE" && i.tuesday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                else if(cell.dayOfWeek.text == "WED" && i.wednesday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                else if(cell.dayOfWeek.text == "FRI" && i.friday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                else if(cell.dayOfWeek.text == "THU" && i.thursday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                else if(cell.dayOfWeek.text == "SAT" && i.saturday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                else if(cell.dayOfWeek.text == "SUN" && i.sunday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                
+            }
+        }
+        
+        
         // Configure the cell...
         
         return cell
     }
-    override func viewDidAppear(_ animated: Bool){
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
-        
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request) as! [Schedule]
-            
-            scheduleArr = result
-            
-        } catch {
-            
-            print("Failed")
-        }
-    }
+    
 }
 
 extension CalendarViewController: UITableViewDelegate {
@@ -291,6 +336,7 @@ extension CalendarViewController: UITableViewDelegate {
             self.days.append(contentsOf: additionalDays)
             
             // Update the tableView
+            tableCellScheduleArr = []
             self.tableView.reloadData()
             //            self.tableView.contentOffset.y -= CGFloat(self.daysToAdd) * self.cellHeight
             print("Days: ", days)
@@ -306,6 +352,7 @@ extension CalendarViewController: UITableViewDelegate {
             self.days.insert(contentsOf: additionalDates, at: 0)
             
             // Update the tableView and contentOffset
+            tableCellScheduleArr = []
             self.tableView.reloadData()
             self.tableView.contentOffset.y = CGFloat(self.daysToAdd) * self.cellHeight
             print("Reset Y:", self.tableView.contentOffset.y)

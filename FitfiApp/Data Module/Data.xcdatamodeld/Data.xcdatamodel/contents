@@ -23,7 +23,7 @@
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="routineExercises" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Routine_Exercise" inverseName="parentRoutine" inverseEntity="Routine_Exercise" syncable="YES"/>
-        <relationship name="scheduledRoutine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Schedule" inverseName="schdule" inverseEntity="Schedule" syncable="YES"/>
+        <relationship name="scheduledRoutine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Schedule" inverseName="schdule" inverseEntity="Schedule" syncable="YES"/>
     </entity>
     <entity name="Routine_Exercise" representedClassName="Routine_Exercise" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
