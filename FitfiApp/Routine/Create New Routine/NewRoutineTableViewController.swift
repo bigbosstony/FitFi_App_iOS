@@ -32,6 +32,11 @@ class NewRoutineTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Adopting Drag and Drop Delegate
+//        tableView.dragDelegate = self
+//        tableView.dropDelegate = self
+        
         print("new routine TVC loaded")
     }
 
@@ -94,6 +99,17 @@ class NewRoutineTableViewController: UITableViewController {
         return cell
     }
     
+    //MARK: Slide to remove exercise
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        routineExercises.remove(at: indexPath.row)
+        tableView.reloadData()
+    }
+    
+    
     //Got To Next TextField
     @objc func nextButtonPressed() {
         print("next button pressed")
@@ -117,6 +133,7 @@ class NewRoutineTableViewController: UITableViewController {
 
     // MARK: Save to database When finished
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        print(routineExercises)
         self.view.endEditing(true) //Dismiss keyboard and save content by trigger resignFirstResponder
         if routineExercises.count == 0 {
             let alertView = UIAlertController(title: "Create Routine Failed",
@@ -137,15 +154,14 @@ class NewRoutineTableViewController: UITableViewController {
                 newRoutineExercise.reps = Int16(exercise.reps!)!
                 newRoutineExercise.category = exercise.category
                 newRoutineExercise.parentRoutine = newRoutine
+                save()
             }
-            save()
             dismiss(animated: true, completion: nil)
         }
     }
     
     //Delete the Temp Routine
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -174,6 +190,7 @@ class NewRoutineTableViewController: UITableViewController {
 //    }
     
     //MARK: Save to Database
+    
     func save() {
         do {
             try context.save()
@@ -184,7 +201,37 @@ class NewRoutineTableViewController: UITableViewController {
 }
 
 
+//MARK: Drag and Drop
+//Moving Cells
+extension NewRoutineTableViewController {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let exerciseToMove = routineExercises[sourceIndexPath.row]
+        
+        routineExercises.insert(exerciseToMove, at: destinationIndexPath.row)
+        routineExercises.remove(at: sourceIndexPath.row)
+    }
+}
 
+//extension NewRoutineTableViewController: UITableViewDragDelegate {
+//    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+//        <#code#>
+//    }
+//}
+//
+//extension NewRoutineTableViewController: UITableViewDropDelegate {
+//    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+//        <#code#>
+//    }
+//}
+
+
+
+
+//
 extension NewRoutineTableViewController: ReceiveRoutineExercises {
     func routineExerciseReceived(from exerciseArray: [Exercise]) {
         if exerciseArray.count > 0 {
