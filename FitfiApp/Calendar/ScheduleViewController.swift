@@ -29,6 +29,10 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     
     @IBAction func saveBtn(_ sender: UIBarButtonItem) {
+        //SAMPLE DATA
+        //        some(2018-08-25 21:49:22 +0000)
+        //        some(["Routine", "HH"])
+        //        some(["Days", "MONDAY", "SUNDAY"])
         if(routineInSchedule == nil){
             validationFlag = 1
             
@@ -52,120 +56,12 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         {
         
         
-        //SAMPLE DATA
-//        some(2018-08-25 21:49:22 +0000)
-//        some(["Routine", "HH"])
-//        some(["Days", "MONDAY", "SUNDAY"])
-    if(day == nil)
-    {
-        //nothing
-    }
-    else{
-        if(day.contains("MONDAY"))
-        {
-            monday = true
-        }
-        else{
-            monday = false
-        }
-        if(day.contains("SUNDAY"))
-        {
-            sunday = true
-        }
-        else{
-            sunday = false
-        }
-        if(day.contains("SATURDAY"))
-        {
-            saturday = true
-        }
-        else{
-            saturday = false
-        }
-        if(day.contains("FRIDAY"))
-        {
-            friday = true
-        }
-        else{
-            friday = false
-        }
-        if(day.contains("THURSDAY"))
-        {
-            thursday = true
-        }
-        else{
-            thursday = false
-        }
-        if(day.contains("WEDNESDAY"))
-        {
-            wednesday = true
-        }
-        else{
-            wednesday = false
-        }
-        if(day.contains("TUESDAY"))
-        {
-            tuesday = true
-        }
-        else{
-            tuesday = false
-        }
-        }
-        for i in 1...routineInSchedule.count - 1
-        {
-        let requestt = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
-        requestt.predicate = NSPredicate(format: "name = %@", routineInSchedule[i])
-        requestt.returnsObjectsAsFaults = false
-        do {
-           let resultt = try context.fetch(requestt)  as! [Routine]
-            routineArr.append(contentsOf: resultt)
-            
-            
-        } catch {
-            
-            print("Failed")
-        }
-        }
-        var newSet:NSSet? = nil
-       // newSet = newSet?.addingObjects(from: routineArr[0]) as? NSSet
-        var schedule = Schedule(context: context)
-        for i in routineArr{
-        schedule.addToSchdule(i)
-        }
-        schedule.date = date
-        schedule.monday = monday
-        schedule.tuesday = tuesday
-        schedule.wednesday = wednesday
-        schedule.thursday = thursday
-        schedule.friday = friday
-        schedule.saturday = saturday
-        schedule.sunday = sunday
-//        let entity = NSEntityDescription.entity(forEntityName: "Schedule", in: context)
-//        let newUser = NSManagedObject(entity: entity!, insertInto: context)
-//        newUser.setValue(date, forKey: "date")
-//        newUser.setValue(monday, forKey: "monday")
-//        newUser.setValue(tuesday, forKey: "tuesday")
-//        newUser.setValue(wednesday, forKey: "wednesday")
-//        newUser.setValue(thursday, forKey: "thursday")
-//        newUser.setValue(friday, forKey: "friday")
-//        newUser.setValue(saturday, forKey: "saturday")
-//        newUser.setValue(sunday, forKey: "sunday")
-//        newUser.setValue(routineArr, forKey: "schdule")
-//
-        do {
-            try context.save()
-        } catch {
-            print("Failed saving")
-        }
-       
-        
-        day = []
-        routineInSchedule = []
-        date = Date()
-        
+ 
+       saveDataToSchedule()
         
         self.dismiss(animated: true, completion: nil)
-        }
+        
+    }
     }
     // var fileURL = Bundle.main.url(forResource: "Bicep copy", withExtension: "csv")
 
@@ -259,21 +155,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     override func viewDidAppear(_ animated: Bool) {
         print(scheduleArray)
         scheduleTable.reloadData()
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
-       
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            
-            for data in result as! [NSManagedObject] {
-                
-                print(data)
-            }
-            
-        } catch {
-            
-            print("Failed")
-        }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -304,7 +186,117 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
 //        }
 //        )
     }
-    
+    func saveDataToSchedule()
+    {
+        if(day == nil)
+        {
+            //nothing
+            //not to repeat
+        }
+        else{
+        if(day.contains("MONDAY"))
+        {
+            monday = true
+        }
+        else{
+            monday = false
+        }
+        if(day.contains("SUNDAY"))
+        {
+            sunday = true
+        }
+        else{
+            sunday = false
+        }
+        if(day.contains("SATURDAY"))
+        {
+            saturday = true
+        }
+        else{
+            saturday = false
+        }
+        if(day.contains("FRIDAY"))
+        {
+            friday = true
+        }
+        else{
+            friday = false
+        }
+        if(day.contains("THURSDAY"))
+        {
+            thursday = true
+        }
+        else{
+            thursday = false
+        }
+        if(day.contains("WEDNESDAY"))
+        {
+            wednesday = true
+        }
+        else{
+            wednesday = false
+        }
+        if(day.contains("TUESDAY"))
+        {
+            tuesday = true
+        }
+        else{
+            tuesday = false
+        }
+        }
+        for i in 1...routineInSchedule.count - 1
+        {
+            let requestt = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
+            requestt.predicate = NSPredicate(format: "name = %@", routineInSchedule[i])
+            requestt.returnsObjectsAsFaults = false
+            do {
+                let resultt = try context.fetch(requestt)  as! [Routine]
+                routineArr.append(contentsOf: resultt)
+                
+                
+            } catch {
+                
+                print("Failed")
+            }
+        }
+        var newSet:NSSet? = nil
+        // newSet = newSet?.addingObjects(from: routineArr[0]) as? NSSet
+        var schedule = Schedule(context: context)
+        for i in routineArr{
+            schedule.addToSchdule(i)
+        }
+        schedule.date = date
+        schedule.monday = monday
+        schedule.tuesday = tuesday
+        schedule.wednesday = wednesday
+        schedule.thursday = thursday
+        schedule.friday = friday
+        schedule.saturday = saturday
+        schedule.sunday = sunday
+        //        let entity = NSEntityDescription.entity(forEntityName: "Schedule", in: context)
+        //        let newUser = NSManagedObject(entity: entity!, insertInto: context)
+        //        newUser.setValue(date, forKey: "date")
+        //        newUser.setValue(monday, forKey: "monday")
+        //        newUser.setValue(tuesday, forKey: "tuesday")
+        //        newUser.setValue(wednesday, forKey: "wednesday")
+        //        newUser.setValue(thursday, forKey: "thursday")
+        //        newUser.setValue(friday, forKey: "friday")
+        //        newUser.setValue(saturday, forKey: "saturday")
+        //        newUser.setValue(sunday, forKey: "sunday")
+        //        newUser.setValue(routineArr, forKey: "schdule")
+        //
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+        
+        
+        day = []
+        routineInSchedule = []
+        date = Date()
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

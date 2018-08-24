@@ -33,6 +33,7 @@ class CalendarViewController: UIViewController {
     let dateFormatterTitle = DateFormatter()
     let dayFormatter = DateFormatter()
     let daysToAdd = 5
+    var scheduleArr:[Schedule] = []
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     lazy var days: [Date] = {
         let beginDate = Date().dateFromDays(-3)
@@ -44,7 +45,7 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
         do {
-            routineArr = try context.fetch(fetchRequest) as! [Routine]
+                routineArr = try context.fetch(fetchRequest) as! [Routine]
             
         } catch {
             print("Loading Exercises Error: \(error)")
@@ -237,10 +238,24 @@ extension CalendarViewController: UITableViewDataSource {
             cell.dayOfWeek.textColor = UIColor.black
             cell.todayMarker.isHidden = true
         }
-
+        cell.routineName.text = "H"
         // Configure the cell...
         
         return cell
+    }
+    override func viewDidAppear(_ animated: Bool){
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+        
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request) as! [Schedule]
+            
+            scheduleArr = result
+            
+        } catch {
+            
+            print("Failed")
+        }
     }
 }
 

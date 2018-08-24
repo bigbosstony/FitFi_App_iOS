@@ -1739,8 +1739,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Tx-EW-Nn5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Rsc-u8-FB7">
-                        <barButtonItem key="rightBarButtonItem" title="+" id="fqO-yo-qPr">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Rsc-u8-FB7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fqO-yo-qPr">
                             <color key="tintColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="addScheduleBtn:" destination="oTV-G4-mVH" id="zHc-io-IiF"/>
