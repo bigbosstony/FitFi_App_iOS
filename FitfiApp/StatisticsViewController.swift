@@ -722,7 +722,7 @@ extension StatisticsViewController{
                     
                 }
                 else{
-                for ii in 0...sectionData.count
+                for ii in 0..<sectionData.count
                 {
                     if(sectionData[ii].category == i.category!)
                     {
@@ -734,7 +734,21 @@ extension StatisticsViewController{
                         }
                     }
                     else{
+                        var containsFlag = 0
+                        if(sectionData.count > 0)
+                        {
+                        for iii in 0..<sectionData.count
+                        {
+                            if(sectionData[iii].category == i.category!)
+                            {
+                                containsFlag = 1
+                            }
+                        }
+                        if(containsFlag == 0)
+                        {
                         sectionData.append(Seection(category: i.category!, exercise: [i.name!]))
+                        }
+                    }
                     }
                 }
                 }
