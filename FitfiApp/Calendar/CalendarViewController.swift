@@ -284,9 +284,9 @@ extension CalendarViewController: UITableViewDataSource {
         }
         for i in scheduleArr
         {
-            if let s = i.schdule {
-                print(s.value(forKey: "name"))
-            }
+//            if let s = i.schdule {
+//                print(s.value(forKey: "name"))
+//            }
             if (days[indexPath.row] > i.date! || dateFormatter.string(from: days[indexPath.row]) == dateFormatter.string(from: i.date!))
             {
                 
@@ -319,6 +319,7 @@ extension CalendarViewController: UITableViewDataSource {
                 {
                     tableCellScheduleArr.append(i)
                 }
+                
                 wholetableScheduleArr.append(tableCellScheduleArr)
                 if(tableCellScheduleArr == [])
                 {
@@ -338,6 +339,9 @@ extension CalendarViewController: UITableViewDataSource {
                 }
                 tableCellScheduleArr = []
                 
+            }
+            else{
+                wholetableScheduleArr.append(tableCellScheduleArr)
             }
         }
         
@@ -411,6 +415,7 @@ extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         print(days[indexPath.row])
+        print(indexPath.row)
         print(wholetableScheduleArr[indexPath.row])
     }
 }

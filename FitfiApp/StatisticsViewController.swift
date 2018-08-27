@@ -399,7 +399,8 @@ extension StatisticsViewController{
                 currentDateString = oneMonthformatter.string(from: currrentDate)
                 previousDateString = oneMonthformatter.string(from: previousDate)
                 nextCurrentDate = previousDate.addingTimeInterval(oneDay)
-                BarsArray[i] = ("\(previousDateString)-\(currentDateString)",tmp[0])
+               // BarsArray[i] = ("\(previousDateString)-\(currentDateString)",tmp[0])
+                BarsArray[i] = ("Week \(4 - (i))",tmp[0])
                 GraphArray[i] = ("\(previousDate)",tmp[1])
                 Graph1Array[i] = ("\(previousDate)",tmp[1])
                 totalExercise = totalExercise + tmp[0]
@@ -411,13 +412,14 @@ extension StatisticsViewController{
                 }
                 
             }
+            
             //print(exHistoryDict.count) number of exercise
             exerciseLabel.text = "\(totalExercise)"
             //print(exVolume) Volume
             volumeLabel.text = "\(totalVolume) t"
             //print(exWorkOuts.count) total routines
             workOutLabel.text = "\(totalWorkOut)"
-            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut,by: maxWorkOut/10))
+            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
             //            barsArray.append("\(currentDateString)/\(currentDateString),150")
             if(totalExercise > 0){
             oneMonthchart = BarsChart(
@@ -513,7 +515,7 @@ extension StatisticsViewController{
             workOutLabel.text = "\(totalWorkOut)"
             if(totalExercise > 0)
             {
-            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut,by: maxWorkOut/10))
+            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
             
             //            barsArray.append("\(currentDateString)/\(currentDateString),150")
             threeMonthchart = BarsChart(
@@ -613,7 +615,7 @@ extension StatisticsViewController{
             workOutLabel.text = "\(totalWorkOut)"
             if(totalExercise > 0)
             {
-            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut,by: maxWorkOut/10))
+            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
             
             //            barsArray.append("\(currentDateString)/\(currentDateString),150")
             oneYearChart = BarsChart(
@@ -818,7 +820,7 @@ extension StatisticsViewController{
             chartPoints: IOBPoints,
             tintColor: FitFiColor,
             labelCenterY: chartSettings.top,
-            gestureRecognizer: chartLongPressGestureRecognizer,
+            gestureRecognizer: nil,
             onCompleteHighlight: nil
         )
         
