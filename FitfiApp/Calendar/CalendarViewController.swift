@@ -34,6 +34,7 @@ class CalendarViewController: UIViewController {
     let dayFormatter = DateFormatter()
     let daysToAdd = 5
     var scheduleArr:[Schedule] = []
+    var wholetableScheduleArr:[[Schedule]] = []
     var tableCellScheduleArr:[Schedule] = []
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     lazy var days: [Date] = {
@@ -140,6 +141,31 @@ class CalendarViewController: UIViewController {
        
         
     }
+    override func viewDidAppear(_ animated: Bool)
+    {
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+        
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request) as! [Schedule]
+            
+            scheduleArr = result
+            
+        } catch {
+            
+            print("Failed")
+        }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
+        do {
+            routineArr = try context.fetch(fetchRequest) as! [Routine]
+            
+        } catch {
+            print("Loading Exercises Error: \(error)")
+        }
+        
+    }
     
     func generateDays(_ beginDate: Date, endDate: Date) -> [Date] {
         var dates: [Date] = []
@@ -179,6 +205,7 @@ extension CalendarViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print(self.days.count)
         return self.days.count
     }
     
@@ -292,6 +319,24 @@ extension CalendarViewController: UITableViewDataSource {
                 {
                     tableCellScheduleArr.append(i)
                 }
+                wholetableScheduleArr.append(tableCellScheduleArr)
+                if(tableCellScheduleArr == [])
+                {
+                    
+                }
+                else{
+                    let s = tableCellScheduleArr[0].schdule
+                    var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
+
+                    singleRoutineName =  singleRoutineName.components(separatedBy: .whitespacesAndNewlines).joined()
+                    singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
+                    singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
+                    singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
+                    cell.routineName.text = singleRoutineName
+                    
+                    
+                }
+                tableCellScheduleArr = []
                 
             }
         }
@@ -337,6 +382,7 @@ extension CalendarViewController: UITableViewDelegate {
             
             // Update the tableView
             tableCellScheduleArr = []
+            wholetableScheduleArr = []
             self.tableView.reloadData()
             //            self.tableView.contentOffset.y -= CGFloat(self.daysToAdd) * self.cellHeight
             print("Days: ", days)
@@ -353,6 +399,7 @@ extension CalendarViewController: UITableViewDelegate {
             
             // Update the tableView and contentOffset
             tableCellScheduleArr = []
+            wholetableScheduleArr = []
             self.tableView.reloadData()
             self.tableView.contentOffset.y = CGFloat(self.daysToAdd) * self.cellHeight
             print("Reset Y:", self.tableView.contentOffset.y)
@@ -364,6 +411,7 @@ extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         print(days[indexPath.row])
+        print(wholetableScheduleArr[indexPath.row])
     }
 }
 extension CalendarViewController{
