@@ -99,6 +99,7 @@ private var IOBPoints: [ChartPoint] = [("2016-02-28T07:25:00", 0.0), ("2016-02-2
 private let axisLabelSettings: ChartLabelSettings = ChartLabelSettings()
 class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource{
     var exerciseList:[String] = ["h ","j "]
+    var exerciseObject:Exercise? = nil
     public var sectionData:[Seection] = [
         Seection(category: "Arm", exercise: ["man","it shouls in"]), Seection(category: "Leg", exercise: ["man","it shouls in"])]
    
@@ -153,7 +154,12 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
         return 1.0
     }
     
-    
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        getExerciseObject(e_name: sectionData[indexPath.section].exercise[indexPath.row])
+        performSegue(withIdentifier: "showExerciseDetailVC", sender: self)
+        
+        exerciseTable.deselectRow(at: indexPath, animated: true)
+    }
     var workoutBarChart:BarsChart!
     fileprivate lazy private(set) var axisLineColor = UIColor.clear
     private let axisLabelSettings: ChartLabelSettings = ChartLabelSettings()
@@ -1012,6 +1018,15 @@ private extension BidirectionalCollection where Index: Strideable, Iterator.Elem
 }
 
 extension StatisticsViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showExerciseDetailVC" {
+            let destinationVC = segue.destination as! ExerciseDetailsViewController
+            if let indexPath = exerciseTable.indexPathForSelectedRow {
+              destinationVC.selectedExercise = exerciseObject!
+                destinationVC.fromStats = 1
+            }
+        }
+    }
     func oneMonthSelected()
     {
         //for calculate seven days
@@ -1034,6 +1049,7 @@ extension StatisticsViewController{
         }
     }
 }
+
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         let newRed = CGFloat(red)/255
@@ -1045,7 +1061,21 @@ extension UIColor {
     }
 }
 extension StatisticsViewController:CollapsibleTableViewHeaderDelegate {
-    
+    func getExerciseObject(e_name: String)
+    {
+        let allExercisesRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise")
+        let oneExercisePredicate = NSPredicate(format: "name = %@",e_name)
+        allExercisesRequest.predicate = oneExercisePredicate
+        
+        do {
+             let exerciseList = try context.fetch(allExercisesRequest) as! [Exercise]
+            exerciseObject = exerciseList[0]
+            
+        } catch {
+            print("\(error)")
+        }
+        
+    }
     func toggleSection(_ header: CollapsibleTableViewHeader, section: Int) {
         let collapsed = !sectionData[section].collapsed
         

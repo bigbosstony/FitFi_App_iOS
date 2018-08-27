@@ -12,23 +12,32 @@ import CoreData
 class ExerciseDetailsViewController: UIViewController {
     
     // Data
+    
     @IBOutlet weak var favButton: UIBarButtonItem!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet var aboutTableView: UITableView!
     var views: [UIView]!
+    @IBOutlet weak var segment: UISegmentedControl!
     
     @IBOutlet var aboutView: UIView!
     @IBOutlet var historyView: UIView!
     @IBOutlet var progressView: UIView!
     
+  
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+    var navFlag = 0
     var instructionIsProvided = false
     var instructionArray = [String]()
-    
+    var fromStats:Int?{
+        didSet{
+           navFlag = 1
+            print("from Stats")
+        }
+    }
     // Get Data from Exercise Tableview VC
     var selectedExercise: Exercise? {
         didSet {
+        //   self.titleBar.title = selectedExercise!.name
             loadInfo()
             print(selectedExercise!)
         }
@@ -53,12 +62,22 @@ class ExerciseDetailsViewController: UIViewController {
             viewContainer.addSubview(view)
         }
         // Bring the first one to front as default
-        viewContainer.bringSubview(toFront: views[0])
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.title = selectedExercise?.name
+        if(navFlag == 1){
+             viewContainer.bringSubview(toFront: views[2])
+             segment.selectedSegmentIndex = 2
+            
+            
+        }
+        else{
+             viewContainer.bringSubview(toFront: views[0])
+        }
+        
         favButton.image = (selectedExercise?.favorite)! ? UIImage(named: "Glyphs/Favorited") : UIImage(named: "Glyphs/Favorite")
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         
