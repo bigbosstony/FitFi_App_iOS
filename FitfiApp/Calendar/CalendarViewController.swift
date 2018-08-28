@@ -37,6 +37,7 @@ class CalendarViewController: UIViewController {
     var wholetableScheduleArr:[[Schedule]] = []
     var tableCellScheduleArr:[Schedule] = []
     var tt:[Int] = []
+    var selectedDate:Date?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     lazy var days: [Date] = {
         let beginDate = Date().dateFromDays(-3)
@@ -483,11 +484,25 @@ extension CalendarViewController: UITableViewDelegate {
         }
         
         print(tableCellScheduleArr)
+          selectedDate = days[indexPath.row]
+        performSegue(withIdentifier: "goToScheduleDetail", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
         tableCellScheduleArr = []
-        print(days[indexPath.row])
+        
         print(indexPath.row)
        
         print(wholetableScheduleArr[indexPath.row])
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "goToScheduleDetail")
+        {
+            let scheduleVC = segue.destination as! scheduleSelectedVC
+            
+            
+            scheduleVC.scheduleArr = tableCellScheduleArr
+            scheduleVC.date = selectedDate
+            
+        }
     }
 }
 extension CalendarViewController{

@@ -1751,11 +1751,36 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ezP-gs-cag" id="Rkh-Fr-hud"/>
+                        <segue destination="7gy-2n-0aK" kind="show" identifier="goToScheduleDetail" id="lk7-N6-phI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zuo-GH-a1M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="9098.3999999999996" y="867.61619190404804"/>
+        </scene>
+        <!--Schedule SelectedVC-->
+        <scene sceneID="ipe-EM-SrI">
+            <objects>
+                <viewController id="7gy-2n-0aK" customClass="scheduleSelectedVC" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kzk-pt-0WS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="aek-eA-0qX"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4aF-Xr-wlF">
+                        <barButtonItem key="leftBarButtonItem" image="Glyphs/Close" id="XpE-E3-Ajb">
+                            <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Glyphs/Edit" id="dZk-Kp-qbF">
+                            <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kec-0t-fYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10218.840579710146" y="1675.271739130435"/>
         </scene>
         <!--ScheduleViewController-->
         <scene sceneID="Vn7-nM-fzn">
@@ -1915,7 +1940,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7om-DV-iYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10850.72463768116" y="1755.9782608695652"/>
+            <point key="canvasLocation" x="11757.971014492754" y="1755.9782608695652"/>
         </scene>
         <!--Create New Account View Controller-->
         <scene sceneID="Zb6-ie-sav">
@@ -3017,7 +3042,7 @@ CgoKA
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" id="wRs-SE-Hhr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollapsibleTableViewCell" id="wRs-SE-Hhr">
                                         <rect key="frame" x="0.0" y="732" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wRs-SE-Hhr" id="oO2-W1-FM1">
@@ -3114,7 +3139,7 @@ CgoKA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZTp-Cm-aFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12000.799999999999" y="1571.9640179910045"/>
+            <point key="canvasLocation" x="12907.246376811596" y="1571.7391304347827"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gel-90-uNO">
@@ -3317,6 +3342,7 @@ CgoKA
         <image name="ExerciseIcons/Exercise S" width="20" height="20"/>
         <image name="ExerciseIcons/Time" width="45" height="45"/>
         <image name="ExerciseIcons/Time S" width="20" height="20"/>
+        <image name="Glyphs/Close" width="24" height="24"/>
         <image name="Glyphs/Edit" width="24" height="24"/>
         <image name="Glyphs/Gripper" width="22" height="9"/>
         <image name="Glyphs/Setting" width="24" height="24"/>
