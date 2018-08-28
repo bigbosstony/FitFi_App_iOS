@@ -55,13 +55,17 @@ class RoutineDetailsTableViewController: UITableViewController {
     }
     
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+        
         performSegue(withIdentifier: "goToRoutineEdit", sender: self)
     }
     
+    //MARK: Pass Data Through Navigation Controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToRoutineEdit" {
-            let secondVC = segue.destination as! RoutineEditViewController
-            
+            let navVC = segue.destination as? UINavigationController
+            let secondVC = navVC?.viewControllers.first as! NewRoutineTableViewController
+//            let secondVC = segue.destination as! RoutineEditViewController
+            secondVC.signal = 0
             secondVC.delegate = self
         }
     }
@@ -137,6 +141,7 @@ extension RoutineDetailsTableViewController: DataToReceive {
         print("\(data)")
         if data == 0 {
             self.navigationController?.popViewController(animated: true)
+//            self.dismiss(animated: true, completion: nil)
         }
     }
 }

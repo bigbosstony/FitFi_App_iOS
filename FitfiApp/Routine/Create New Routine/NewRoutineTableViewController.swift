@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+protocol DataToReceive {
+    func dataReceive(data: Int)
+}
+
 struct SelectedExercise {
     var name: String
     var category: String
@@ -22,18 +26,28 @@ struct SelectedExercise {
 }
 
 class NewRoutineTableViewController: UITableViewController {
+    var delegate: DataToReceive?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var routineName: UITextField!
+    @IBOutlet weak var deleteButtonView: UIView!
     
     var routineExercises = [SelectedExercise]()
     var textFieldTag: Int?
     
+    var signal: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("new routine TVC loaded")
+        routineName.delegate = self
         tableView.isEditing = true
+        print("Singal from Previous VC: \(signal ?? 2)")
+        
+        if signal != 0 {
+            deleteButtonView.isHidden = true
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +58,7 @@ class NewRoutineTableViewController: UITableViewController {
         print(routineExercises)
     }
     
+    //Dismiss Keyboard when draging
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         tableView.keyboardDismissMode = .onDrag
@@ -86,7 +101,8 @@ class NewRoutineTableViewController: UITableViewController {
         cell.setTextField.inputAccessoryView = toolbar
         cell.setTextField.tag = indexPath.row * 2
         cell.repTextField.tag = indexPath.row * 2 + 1
-        cell.textLabel?.text = routineExercises[indexPath.row].name
+//        cell.exerciseName.adjustsFontSizeToFitWidth = true
+        cell.exerciseName.text = routineExercises[indexPath.row].name
         cell.setTextField.text = routineExercises[indexPath.row].sets
         cell.repTextField.text = routineExercises[indexPath.row].reps
         
@@ -94,21 +110,12 @@ class NewRoutineTableViewController: UITableViewController {
         // Configure the cell...
         return cell
     }
-    
-    //MARK: Slide to remove exercise
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        routineExercises.remove(at: indexPath.row)
-        tableView.reloadData()
-    }
-    
+
     
     //Got To Next TextField
     @objc func nextButtonPressed() {
         print("next button pressed")
+        print("tag: ", textFieldTag ?? 100)
         if let tag = textFieldTag {
             if let nextTextField = self.view.viewWithTag(tag + 1) {
                 nextTextField.becomeFirstResponder()
@@ -116,7 +123,6 @@ class NewRoutineTableViewController: UITableViewController {
                 self.view.viewWithTag(tag)?.resignFirstResponder()
             }
         }
-
     }
     
     @objc func dismissKeyboard() {
@@ -125,6 +131,13 @@ class NewRoutineTableViewController: UITableViewController {
     
     @IBAction func addExerciseButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "goToSelectExerciseForRoutineVC", sender: self)
+    }
+    
+    //MARK: Call Delegate Function
+    @IBAction func deleteRoutineButtonPressed(_ sender: UIButton) {
+        print("delete")
+        delegate?.dataReceive(data: 0)
+        self.dismiss(animated: true, completion: nil)
     }
 
     // MARK: Save to database When finished
@@ -186,7 +199,6 @@ class NewRoutineTableViewController: UITableViewController {
 //    }
     
     //MARK: Save to Database
-    
     func save() {
         do {
             try context.save()
@@ -197,19 +209,41 @@ class NewRoutineTableViewController: UITableViewController {
 }
 
 
-//MARK: Drag and Drop TableView Cells
 extension NewRoutineTableViewController {
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    
+    //MARK: Slide to remove exercise
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            routineExercises.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
+//    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+//        return .none
+//    }
+//
+//    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+//        return false
+//    }
+
+    //MARK: Drag and Drop TableView Cells
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let exerciseToMove = routineExercises[sourceIndexPath.row]
         routineExercises.remove(at: sourceIndexPath.row)
         routineExercises.insert(exerciseToMove, at: destinationIndexPath.row)
+        tableView.reloadData()
+        print(routineExercises)
     }
 }
-
 
 
 //
@@ -230,7 +264,6 @@ extension NewRoutineTableViewController: ReceiveRoutineExercises {
             destinationVC.delegate = self
         }
     }
-
 }
 
 // PickerView
@@ -257,20 +290,22 @@ extension NewRoutineTableViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
 
-        let center: CGPoint = textField.center
-        let rootViewPoint: CGPoint = textField.superview!.convert(center, to: tableView)
-        let indexPath: IndexPath = tableView.indexPathForRow(at: rootViewPoint)! as IndexPath
-        let textFieldTag = textField.tag % 2
-        
-        switch textFieldTag {
-        case 0:
-            routineExercises[indexPath.row].sets = textField.text
-        case 1:
-            routineExercises[indexPath.row].reps = textField.text
-        default:
-            print("error")
+        if textField != routineName {
+            let center: CGPoint = textField.center
+            let rootViewPoint: CGPoint = textField.superview!.convert(center, to: tableView)
+            let indexPath: IndexPath = tableView.indexPathForRow(at: rootViewPoint)! as IndexPath
+            let textFieldTag = textField.tag % 2
+            
+            switch textFieldTag {
+            case 0:
+                routineExercises[indexPath.row].sets = textField.text
+            case 1:
+                routineExercises[indexPath.row].reps = textField.text
+            default:
+                print("error")
+            }
+            print(indexPath, textField.tag)
         }
-        print(indexPath, textField.tag)
     }
 
     //Store textField Tag
@@ -289,14 +324,17 @@ extension NewRoutineTableViewController: UITextFieldDelegate {
         // Need Edit TextField Return
         // Try to find next responder
         
-        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-            nextField.becomeFirstResponder()
-        } else {
-            // Not found, so remove keyboard.
+//        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+//            nextField.becomeFirstResponder()
+//        } else {
+//            // Not found, so remove keyboard.
+//            textField.resignFirstResponder()
+//        }
+        if textField == routineName {
             textField.resignFirstResponder()
         }
         // Do not add a line break
-        return false
+        return true
 //        textField.resignFirstResponder()
 //        return true
     }

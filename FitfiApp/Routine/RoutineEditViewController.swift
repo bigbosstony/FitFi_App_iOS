@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol DataToReceive {
-    func dataReceive(data: Int)
-}
+//protocol DataToReceive {
+//    func dataReceive(data: Int)
+//}
 
 class RoutineEditViewController: UIViewController {
     var delegate: DataToReceive?
