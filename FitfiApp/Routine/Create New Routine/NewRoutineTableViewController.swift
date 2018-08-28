@@ -32,12 +32,8 @@ class NewRoutineTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Adopting Drag and Drop Delegate
-//        tableView.dragDelegate = self
-//        tableView.dropDelegate = self
-        
         print("new routine TVC loaded")
+        tableView.isEditing = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -211,23 +207,14 @@ extension NewRoutineTableViewController {
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let exerciseToMove = routineExercises[sourceIndexPath.row]
         
-        routineExercises.insert(exerciseToMove, at: destinationIndexPath.row)
         routineExercises.remove(at: sourceIndexPath.row)
+        print(routineExercises)
+
+        routineExercises.insert(exerciseToMove, at: destinationIndexPath.row)
+        print(routineExercises)
+
     }
 }
-
-//extension NewRoutineTableViewController: UITableViewDragDelegate {
-//    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-//        <#code#>
-//    }
-//}
-//
-//extension NewRoutineTableViewController: UITableViewDropDelegate {
-//    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
-//        <#code#>
-//    }
-//}
-
 
 
 
@@ -251,18 +238,6 @@ extension NewRoutineTableViewController: ReceiveRoutineExercises {
     }
 
 }
-
-// Move Cell
-//extension NewRoutineTableViewController {
-//    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//
-//    }
-//
-//    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
-//}
-
 
 // PickerView
 //extension NewRoutineTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
