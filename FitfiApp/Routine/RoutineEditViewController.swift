@@ -1,28 +1,22 @@
 //
-//  MaxTrackingViewController.swift
+//  RoutineEditViewController.swift
 //  FitfiApp
 //
-//  Created by YAN YU on 2018-07-16.
+//  Created by YAN YU on 2018-08-28.
 //  Copyright © 2018 Fitfi. All rights reserved.
 //
 
 import UIKit
 
-protocol MaxTrackingDelegate: class {
-    var message: String { get }
+protocol DataToReceive {
+    func dataReceive(data: Int)
 }
 
-class MaxTrackingViewController: UIViewController {
+class RoutineEditViewController: UIViewController {
+    var delegate: DataToReceive?
 
-    weak var delegate: MaxTrackingDelegate!
-    var message: String?
-    
-    @IBOutlet weak var collectionView: UICollectionView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Maxi Tracking VC Loaded")
-        print(delegate.message)
         // Do any additional setup after loading the view.
     }
 
@@ -31,10 +25,7 @@ class MaxTrackingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func closeButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+
     /*
     // MARK: - Navigation
 
@@ -45,4 +36,9 @@ class MaxTrackingViewController: UIViewController {
     }
     */
 
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        delegate?.dataReceive(data: 0)
+        self.dismiss(animated: true, completion: nil)
+//        self.navigationController?.popViewController(animated: true)
+    }
 }

@@ -27,11 +27,13 @@ class RoutineDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Routine Details View Loaded")
         loadExercises()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        print("Routine Details View Will Appear")
         self.title = selectedRoutine?.name?.capitalized
         //TODO: Modify and Delete next few lines
 //        for e in (selectedRoutine?.routineExercises)! {
@@ -52,6 +54,17 @@ class RoutineDetailsTableViewController: UITableViewController {
         save()
     }
     
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "goToRoutineEdit", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToRoutineEdit" {
+            let secondVC = segue.destination as! RoutineEditViewController
+            
+            secondVC.delegate = self
+        }
+    }
     
     //MARK: Start Workout Button for Testing Only
     //Delete Me
@@ -119,6 +132,17 @@ class RoutineDetailsTableViewController: UITableViewController {
     
 }
 
+extension RoutineDetailsTableViewController: DataToReceive {
+    func dataReceive(data: Int) {
+        print("\(data)")
+        if data == 0 {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+}
+
+
+//TableView DataSource
 extension RoutineDetailsTableViewController {
     
     // MARK: - Table view data source

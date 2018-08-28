@@ -864,6 +864,55 @@
             </objects>
             <point key="canvasLocation" x="4614" y="517"/>
         </scene>
+        <!--Routine Edit View Controller-->
+        <scene sceneID="Qoq-2M-eAv">
+            <objects>
+                <viewController id="Aia-wX-vaO" customClass="RoutineEditViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Gc-aT-NBN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZg-jU-5Ig" userLabel="Background Gray">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSk-2R-Duz">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80I-AO-Yz1">
+                                                <rect key="frame" x="8" y="25" width="46" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="Aia-wX-vaO" eventType="touchUpInside" id="8KL-Q6-s7h"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.67451441287994385" green="0.67450141906738281" blue="0.67451030015945435" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="7Bx-aD-DKM"/>
+                                    <constraint firstAttribute="bottom" secondItem="cSk-2R-Duz" secondAttribute="bottom" constant="0.5" id="QPg-Jo-ocl"/>
+                                    <constraint firstItem="cSk-2R-Duz" firstAttribute="top" secondItem="kZg-jU-5Ig" secondAttribute="top" id="cSF-WP-CHQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="cSk-2R-Duz" secondAttribute="trailing" id="hQv-gX-YkP"/>
+                                    <constraint firstItem="cSk-2R-Duz" firstAttribute="leading" secondItem="kZg-jU-5Ig" secondAttribute="leading" id="lml-pQ-c5F"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kZg-jU-5Ig" firstAttribute="top" secondItem="1Gc-aT-NBN" secondAttribute="top" id="JZi-jS-IDQ"/>
+                            <constraint firstItem="kZg-jU-5Ig" firstAttribute="leading" secondItem="QAP-ST-sjp" secondAttribute="leading" id="UOg-vm-C9v"/>
+                            <constraint firstItem="QAP-ST-sjp" firstAttribute="trailing" secondItem="kZg-jU-5Ig" secondAttribute="trailing" id="fKF-3z-N2q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QAP-ST-sjp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9rG-Jj-xwb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3879" y="1442"/>
+        </scene>
         <!--Select Exercise For RoutineVC-->
         <scene sceneID="Z9B-ag-K79">
             <objects>
@@ -1578,12 +1627,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="J6J-hR-YLw">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="J6J-hR-YLw">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgl-eU-ca3">
-                                    <rect key="frame" x="15" y="-11.5" width="85" height="23"/>
+                                    <rect key="frame" x="15" y="16.5" width="85" height="23"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -1596,7 +1645,7 @@
                                 <constraint firstItem="fgl-eU-ca3" firstAttribute="leading" secondItem="J6J-hR-YLw" secondAttribute="leading" constant="15" id="eqF-cM-PR1"/>
                             </constraints>
                         </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="JlE-EZ-eqW">
+                        <view key="tableFooterView" contentMode="scaleToFill" id="JlE-EZ-eqW">
                             <rect key="frame" x="0.0" y="128" width="375" height="132"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -1631,7 +1680,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="top-cG-zGM">
-                                    <rect key="frame" x="40" y="-39" width="295" height="42"/>
+                                    <rect key="frame" x="40" y="74" width="295" height="42"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIH-Kz-U78">
                                             <rect key="frame" x="1" y="1" width="293" height="40"/>
@@ -1707,7 +1756,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="5lU-51-AHZ">
                         <rightBarButtonItems>
-                            <barButtonItem title="Edit" image="Glyphs/Edit" id="XZp-iV-fA3"/>
+                            <barButtonItem title="Edit" image="Glyphs/Edit" id="XZp-iV-fA3">
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="Nge-bI-Zan" id="0Tb-HS-ubN"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="favorite" id="9os-XJ-jY9">
                                 <connections>
                                     <action selector="faveButtonPressed:" destination="Nge-bI-Zan" id="pbd-8b-5dU"/>
@@ -1719,6 +1772,7 @@
                         <outlet property="editButton" destination="XZp-iV-fA3" id="u4x-Xb-nHM"/>
                         <outlet property="favButton" destination="9os-XJ-jY9" id="0Xt-dQ-44F"/>
                         <segue destination="sH5-yi-bt0" kind="presentation" identifier="goToTestingVC" id="372-5U-0mW"/>
+                        <segue destination="Aia-wX-vaO" kind="presentation" identifier="goToRoutineEdit" id="0iV-P7-32V"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gO3-sE-dn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
