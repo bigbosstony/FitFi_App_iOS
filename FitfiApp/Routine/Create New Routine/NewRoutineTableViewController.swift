@@ -197,8 +197,7 @@ class NewRoutineTableViewController: UITableViewController {
 }
 
 
-//MARK: Drag and Drop
-//Moving Cells
+//MARK: Drag and Drop TableView Cells
 extension NewRoutineTableViewController {
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -206,13 +205,8 @@ extension NewRoutineTableViewController {
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let exerciseToMove = routineExercises[sourceIndexPath.row]
-        
         routineExercises.remove(at: sourceIndexPath.row)
-        print(routineExercises)
-
         routineExercises.insert(exerciseToMove, at: destinationIndexPath.row)
-        print(routineExercises)
-
     }
 }
 
