@@ -36,6 +36,7 @@ class CalendarViewController: UIViewController {
     var scheduleArr:[Schedule] = []
     var wholetableScheduleArr:[[Schedule]] = []
     var tableCellScheduleArr:[Schedule] = []
+    var tt:[Int] = []
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     lazy var days: [Date] = {
         let beginDate = Date().dateFromDays(-3)
@@ -414,8 +415,78 @@ extension CalendarViewController: UITableViewDelegate {
     //
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        for i in scheduleArr
+        {
+            //            if let s = i.schdule {
+            //                print(s.value(forKey: "name"))
+            //            }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            let dateArray : [String] = dateFormatterCell.string(from: days[(indexPath as NSIndexPath).row]).components(separatedBy: " ")
+            let day = dateArray.first?.uppercased()
+            if (days[indexPath.row] > i.date! || dateFormatter.string(from: days[indexPath.row]) == dateFormatter.string(from: i.date!))
+            {
+                
+                if(day == "MON" && i.monday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                    //cell.routineName.text = i.schedule
+                }
+                else if(day == "TUE" && i.tuesday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                else if(day == "WED" && i.wednesday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                else if(day == "FRI" && i.friday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                else if(day == "THU" && i.thursday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                else if(day == "SAT" && i.saturday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                else if(day == "SUN" && i.sunday == true)
+                {
+                    tableCellScheduleArr.append(i)
+                }
+                
+                //selectedRowScheduleArr.append(tableCellScheduleArr)
+                if(tableCellScheduleArr == [])
+                {
+                    
+                }
+                else{
+//                    let s = tableCellScheduleArr[0].schdule
+//                    var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
+//
+//                    singleRoutineName =  singleRoutineName.components(separatedBy: .whitespacesAndNewlines).joined()
+//                    singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
+//                    singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
+//                    singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
+//                    cell.routineName.text = singleRoutineName
+                    
+                    
+                }
+               // tableCellScheduleArr = []
+                
+            }
+            else{
+              //  wholetableScheduleArr.append(tableCellScheduleArr)
+            }
+        }
+        
+        print(tableCellScheduleArr)
+        tableCellScheduleArr = []
         print(days[indexPath.row])
         print(indexPath.row)
+       
         print(wholetableScheduleArr[indexPath.row])
     }
 }
