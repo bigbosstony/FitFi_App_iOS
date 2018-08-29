@@ -20,6 +20,7 @@ class CalendarViewController: UIViewController {
         print("+ tapped")
     }
     @IBOutlet weak var tableView: UITableView!
+    var selectedDay:String?
     var mondayRoutine:[String] = []
     var tuesdayRoutine:[String] = []
     var wednesdayRoutine:[String] = []
@@ -485,6 +486,10 @@ extension CalendarViewController: UITableViewDelegate {
         
         print(tableCellScheduleArr)
           selectedDate = days[indexPath.row]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let dateArray : [String] = dateFormatterCell.string(from: days[(indexPath as NSIndexPath).row]).components(separatedBy: " ")
+        selectedDay = dateArray.first?.uppercased()
         performSegue(withIdentifier: "goToScheduleDetail", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
         tableCellScheduleArr = []
@@ -498,7 +503,7 @@ extension CalendarViewController: UITableViewDelegate {
         {
             let scheduleVC = segue.destination as! scheduleSelectedVC
             
-            
+            scheduleVC.day = selectedDay
             scheduleVC.scheduleArr = tableCellScheduleArr
             scheduleVC.date = selectedDate
             

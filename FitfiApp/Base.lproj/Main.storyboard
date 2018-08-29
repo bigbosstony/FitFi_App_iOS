@@ -1765,18 +1765,50 @@
                     <view key="view" contentMode="scaleToFill" id="kzk-pt-0WS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gvs-kr-WVt">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fNR-Gi-Hd1">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fNR-Gi-Hd1" id="Dar-4v-imD">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="gvs-kr-WVt" firstAttribute="top" secondItem="aek-eA-0qX" secondAttribute="top" id="7R8-cS-A9Y"/>
+                            <constraint firstItem="gvs-kr-WVt" firstAttribute="bottom" secondItem="aek-eA-0qX" secondAttribute="bottom" id="rtS-bd-o2P"/>
+                            <constraint firstAttribute="trailing" secondItem="gvs-kr-WVt" secondAttribute="trailing" id="uIX-dh-bkf"/>
+                            <constraint firstItem="gvs-kr-WVt" firstAttribute="leading" secondItem="kzk-pt-0WS" secondAttribute="leading" id="yyX-eq-rma"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aek-eA-0qX"/>
                     </view>
                     <navigationItem key="navigationItem" id="4aF-Xr-wlF">
                         <barButtonItem key="leftBarButtonItem" image="Glyphs/Close" id="XpE-E3-Ajb">
                             <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelBtnPressed:" destination="7gy-2n-0aK" id="5VR-64-0y8"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="Glyphs/Edit" id="dZk-Kp-qbF">
                             <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="editBtnPressed:" destination="7gy-2n-0aK" id="3pj-U7-BNl"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cancelBtn" destination="XpE-E3-Ajb" id="SWl-jc-Jg3"/>
+                        <outlet property="tableView" destination="gvs-kr-WVt" id="kKQ-qS-smU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kec-0t-fYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
