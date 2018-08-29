@@ -22,10 +22,25 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var sunday:Bool = false
     var routineArr:[Routine] = []
     var validationFlag:Int = 0
+    var editFlag:Int = 0
+    var getSchedule:Schedule?{
+    didSet{
+        editFlag = 1
+        print(getSchedule!)
+        }
+    }
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var scheduleTable: UITableView!
     @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
+        if(editFlag == 1)
+        {
         self.dismiss(animated: true, completion: nil)
+        }
+        else
+        {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     @IBAction func saveBtn(_ sender: UIBarButtonItem) {
@@ -82,6 +97,19 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         if indexPath.row == 0 && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
             cell.titleLabel.text = "Routine"
+            if(editFlag == 1)
+            {
+                let s = getSchedule?.schdule
+                var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
+                singleRoutineName =  singleRoutineName.components(separatedBy: .whitespacesAndNewlines).joined()
+                singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
+                singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
+                singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
+                cell.routinePreviewLabel.text = singleRoutineName
+            }
+            else{
+                
+            
             cell.routinePreviewLabel.text = "Routine"
             if(routineInSchedule != nil)
             {
@@ -91,14 +119,19 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 cell.routinePreviewLabel.text = routineInSchedule[1]
             }
             }
+            }
             cell.selectionStyle = UITableViewCellSelectionStyle.none
-            
             return cell
         } else {
             if(indexPath.row == 0)
             {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
             cell.titleLabel.text = "Date"
+                if(editFlag == 1)
+                {
+                    cell.routinePreviewLabel.text = String(describing: getSchedule!.date!)
+                }
+                else{
             cell.routinePreviewLabel.text = "date"
             
             if(date != nil)
@@ -108,7 +141,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
             else{
                 cell.routinePreviewLabel.text = "\(Date())"
                 }
-    
+                }
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
             }
@@ -116,12 +149,18 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
                 cell.titleLabel.text = "Day"
+                if(editFlag == 1)
+                {
+                    cell.routinePreviewLabel.text = "Routine"
+                }
+                else{
                 cell.routinePreviewLabel.text = "Day"
                 if(day != nil)
                 {
                 if(day.count > 1)
                 {
                     cell.routinePreviewLabel.text = day[1]
+                }
                 }
                 }
                 cell.selectionStyle = UITableViewCellSelectionStyle.none

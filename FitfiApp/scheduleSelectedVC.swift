@@ -168,11 +168,21 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
         
         return string
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "gotoRoutineDetail")
         {
             let destionationVC = segue.destination as! RoutineDetailsTableViewController
             destionationVC.selectedRoutine = selectedRoutine
+            
+        }
+        if(segue.identifier == "goToSetSchedule")
+        {
+            let destVC = segue.destination as! UINavigationController
+            let destinationVC = destVC.topViewController as!  ScheduleViewController
+            destinationVC.getSchedule = scheduleArr?[0]
+            
+            
             
         }
     }
