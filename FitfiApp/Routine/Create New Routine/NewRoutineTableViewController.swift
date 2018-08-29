@@ -36,16 +36,16 @@ class NewRoutineTableViewController: UITableViewController {
     var routineExercises = [SelectedExercise]()
     var textFieldTag: Int?
     
-    var signal: Int?
+    var signal: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("new routine TVC loaded")
         routineName.delegate = self
         tableView.isEditing = true
-        print("Singal from Previous VC: \(signal ?? 2)")
+        print("Singal from Previous VC: \(signal ?? "")")
         
-        if signal != 0 {
+        if signal != "edit" {
             deleteButtonView.isHidden = true
         }
     }
@@ -156,9 +156,10 @@ class NewRoutineTableViewController: UITableViewController {
             //Check routine Name, Sets, Reps later
             newRoutine.name = routineName.text!
             newRoutine.favorite = false
-            for exercise in routineExercises {
+            for (index, exercise) in routineExercises.enumerated() {
                 let newRoutineExercise = Routine_Exercise(context: context)
                 newRoutineExercise.name = exercise.name
+                newRoutineExercise.ranking = Int16(index)
                 newRoutineExercise.sets = Int16(exercise.sets!)!
                 newRoutineExercise.reps = Int16(exercise.reps!)!
                 newRoutineExercise.category = exercise.category
@@ -168,6 +169,8 @@ class NewRoutineTableViewController: UITableViewController {
             dismiss(animated: true, completion: nil)
         }
     }
+    
+    //TODO: Safty Check Set, Rep, Name
     
     //Delete the Temp Routine
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
@@ -246,7 +249,7 @@ extension NewRoutineTableViewController {
 }
 
 
-//
+//MARK: Receive Selected Exercise
 extension NewRoutineTableViewController: ReceiveRoutineExercises {
     func routineExerciseReceived(from exerciseArray: [Exercise]) {
         if exerciseArray.count > 0 {
@@ -315,9 +318,13 @@ extension NewRoutineTableViewController: UITextFieldDelegate {
     
     //MARK: Set Max Length to 2 Digit
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return true }
-        let newLength = text.count + string.count - range.length
-        return newLength <= 2 // Bool
+        if textField != routineName {
+            guard let text = textField.text else { return true }
+            let newLength = text.count + string.count - range.length
+            return newLength <= 2 // Bool
+        } else {
+            return true // Return true for routine name textfield
+        }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

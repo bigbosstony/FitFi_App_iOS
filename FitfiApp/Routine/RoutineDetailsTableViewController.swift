@@ -22,13 +22,14 @@ class RoutineDetailsTableViewController: UITableViewController {
     var selectedRoutine: Routine? {
         didSet {
             loadExercises()
+            
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Routine Details View Loaded")
-        loadExercises()
+//        loadExercises()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +66,7 @@ class RoutineDetailsTableViewController: UITableViewController {
             let navVC = segue.destination as? UINavigationController
             let secondVC = navVC?.viewControllers.first as! NewRoutineTableViewController
 //            let secondVC = segue.destination as! RoutineEditViewController
-            secondVC.signal = 0
+            secondVC.signal = "edit"
             secondVC.delegate = self
         }
     }
@@ -146,7 +147,6 @@ extension RoutineDetailsTableViewController: DataToReceive {
     }
 }
 
-
 //TableView DataSource
 extension RoutineDetailsTableViewController {
     
@@ -180,6 +180,9 @@ extension RoutineDetailsTableViewController {
         do {
             //save the result into itemArray
             routineExerciseArray = try context.fetch(request)
+            //sorting array of object by property value
+            routineExerciseArray = routineExerciseArray.sorted(by: { $0.ranking < $1.ranking })
+            print(routineExerciseArray)
         } catch {
             print("\(error)")
         }
