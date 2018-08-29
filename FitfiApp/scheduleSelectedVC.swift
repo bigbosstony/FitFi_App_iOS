@@ -57,7 +57,17 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
         singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
         
         cell.textLabel?.text = singleRoutineName
-        cell.detailTextLabel?.text = "Exercises"
+        let r = scheduleArr![indexPath.row].schdule
+        let e = s!.value(forKey: "routineExercises")
+            var singleExerciseName = "\(String(describing: (e as AnyObject).value(forKey: "name") ?? ""))"
+            singleExerciseName = singleExerciseName.components(separatedBy: .whitespacesAndNewlines).joined()
+            singleExerciseName = singleExerciseName.replacingOccurrences(of: "{(", with: "")
+            singleExerciseName = singleExerciseName.replacingOccurrences(of: ")}", with: "")
+            singleExerciseName = singleExerciseName.components(separatedBy: ",").first!
+            for i in singleExerciseName.components(separatedBy: ","){
+                singleExerciseName = singleExerciseName + " " + i
+            }
+        cell.detailTextLabel?.text = singleExerciseName
         }
         }
             
