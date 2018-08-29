@@ -22,7 +22,6 @@ class RoutineDetailsTableViewController: UITableViewController {
     var selectedRoutine: Routine? {
         didSet {
             loadExercises()
-            
         }
     }
     
@@ -42,6 +41,11 @@ class RoutineDetailsTableViewController: UITableViewController {
 //            print(ex.name)
 //        }
         favButton.image = (selectedRoutine?.favorite)! ? UIImage(named: "Glyphs/Favorited") : UIImage(named: "Glyphs/Favorite")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +71,7 @@ class RoutineDetailsTableViewController: UITableViewController {
             let secondVC = navVC?.viewControllers.first as! NewRoutineTableViewController
 //            let secondVC = segue.destination as! RoutineEditViewController
             secondVC.signal = "edit"
+            secondVC.selectedRoutine = selectedRoutine
             secondVC.delegate = self
         }
     }

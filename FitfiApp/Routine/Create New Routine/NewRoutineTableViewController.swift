@@ -34,9 +34,27 @@ class NewRoutineTableViewController: UITableViewController {
     @IBOutlet weak var deleteButtonView: UIView!
     
     var routineExercises = [SelectedExercise]()
+    var currentRoutineExerciseArray = [Routine_Exercise]()
+    
     var textFieldTag: Int?
     
     var signal: String?
+    
+    var selectedRoutine: Routine? {
+        didSet {
+            print("Did Set")
+            //MARK: Save to local var
+            if let routine = selectedRoutine {
+                print("Routine: ", routine)
+                if let exercises = routine.routineExercises?.array {
+                    currentRoutineExerciseArray = exercises as! [Routine_Exercise]
+                }
+            }
+            
+            //MARK: Prepare data for Tableview
+            //load()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +63,7 @@ class NewRoutineTableViewController: UITableViewController {
         tableView.isEditing = true
         print("Singal from Previous VC: \(signal ?? "")")
         
-        if signal != "edit" {
+        if selectedRoutine == nil {
             deleteButtonView.isHidden = true
         }
     }
@@ -55,7 +73,7 @@ class NewRoutineTableViewController: UITableViewController {
         
 //        exerciseList = (tempRoutine?.routineExercises)!.allObjects as! [Routine_Exercise]
         tableView.reloadData()
-        print(routineExercises)
+//        print(routineExercises)
     }
     
     //Dismiss Keyboard when draging
@@ -76,7 +94,8 @@ class NewRoutineTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routineExercises.count
+        return currentRoutineExerciseArray.count
+//        return routineExercises.count
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -102,9 +121,23 @@ class NewRoutineTableViewController: UITableViewController {
         cell.setTextField.tag = indexPath.row * 2
         cell.repTextField.tag = indexPath.row * 2 + 1
 //        cell.exerciseName.adjustsFontSizeToFitWidth = true
-        cell.exerciseName.text = routineExercises[indexPath.row].name
-        cell.setTextField.text = routineExercises[indexPath.row].sets
-        cell.repTextField.text = routineExercises[indexPath.row].reps
+//        cell.exerciseName.text = routineExercises[indexPath.row].name
+//        cell.setTextField.text = routineExercises[indexPath.row].sets
+//        cell.repTextField.text = routineExercises[indexPath.row].reps
+        
+        cell.exerciseName.text = currentRoutineExerciseArray[indexPath.row].name
+        
+        if currentRoutineExerciseArray[indexPath.row].sets == 0 {
+            cell.setTextField.text = ""
+        } else {
+            cell.setTextField.text = String(currentRoutineExerciseArray[indexPath.row].sets)
+        }
+        
+        if currentRoutineExerciseArray[indexPath.row].reps == 0 {
+            cell.repTextField.text = ""
+        } else {
+            cell.repTextField.text = String(currentRoutineExerciseArray[indexPath.row].reps)
+        }
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         // Configure the cell...
@@ -142,9 +175,10 @@ class NewRoutineTableViewController: UITableViewController {
 
     // MARK: Save to database When finished
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
-        print(routineExercises)
+        print(currentRoutineExerciseArray)
         self.view.endEditing(true) //Dismiss keyboard and save content by trigger resignFirstResponder
-        if routineExercises.count == 0 {
+//        if routineExercises.count == 0 {
+        if currentRoutineExerciseArray.count == 0 {
             let alertView = UIAlertController(title: "Create Routine Failed",
                                               message: "Please Add At Least One Exercise",
                                               preferredStyle:. alert)
@@ -152,19 +186,30 @@ class NewRoutineTableViewController: UITableViewController {
             alertView.addAction(okAction)
             present(alertView, animated: true)
         } else {
-            let newRoutine = Routine(context: context)
-            //Check routine Name, Sets, Reps later
-            newRoutine.name = routineName.text!
-            newRoutine.favorite = false
-            for (index, exercise) in routineExercises.enumerated() {
-                let newRoutineExercise = Routine_Exercise(context: context)
-                newRoutineExercise.name = exercise.name
-                newRoutineExercise.ranking = Int16(index)
-                newRoutineExercise.sets = Int16(exercise.sets!)!
-                newRoutineExercise.reps = Int16(exercise.reps!)!
-                newRoutineExercise.category = exercise.category
-                newRoutineExercise.parentRoutine = newRoutine
-                save()
+            if selectedRoutine == nil {
+                let newRoutine = Routine(context: context)
+                //TODO: Check routine Name, Sets, Reps later
+                newRoutine.name = routineName.text!
+                newRoutine.favorite = false
+                //TODO: Fix Resave, Routine Name
+                for (index, exercise) in currentRoutineExerciseArray.enumerated() {
+                    let newRoutineExercise = Routine_Exercise(context: context)
+                    newRoutineExercise.name = exercise.name
+                    newRoutineExercise.ranking = Int16(index)
+                    newRoutineExercise.sets = exercise.sets
+                    newRoutineExercise.reps = exercise.reps
+                    newRoutineExercise.category = exercise.category
+                    newRoutineExercise.parentRoutine = newRoutine
+                    save()
+                }
+            } else {
+                for (index, exercise) in currentRoutineExerciseArray.enumerated() {
+                    exercise.ranking = Int16(index)
+                    if exercise.parentRoutine == nil {
+                        exercise.parentRoutine = selectedRoutine!
+                    }
+                    save()
+                }
             }
             dismiss(animated: true, completion: nil)
         }
@@ -221,7 +266,10 @@ extension NewRoutineTableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            routineExercises.remove(at: indexPath.row)
+//            routineExercises.remove(at: indexPath.row)
+            currentRoutineExerciseArray.remove(at: indexPath.row)
+            
+            //TODO: Delete from context
             tableView.reloadData()
         }
     }
@@ -240,11 +288,11 @@ extension NewRoutineTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let exerciseToMove = routineExercises[sourceIndexPath.row]
-        routineExercises.remove(at: sourceIndexPath.row)
-        routineExercises.insert(exerciseToMove, at: destinationIndexPath.row)
+        let exerciseToMove = currentRoutineExerciseArray[sourceIndexPath.row]
+        currentRoutineExerciseArray.remove(at: sourceIndexPath.row)
+        currentRoutineExerciseArray.insert(exerciseToMove, at: destinationIndexPath.row)
         tableView.reloadData()
-        print(routineExercises)
+        print(currentRoutineExerciseArray)
     }
 }
 
@@ -254,8 +302,13 @@ extension NewRoutineTableViewController: ReceiveRoutineExercises {
     func routineExerciseReceived(from exerciseArray: [Exercise]) {
         if exerciseArray.count > 0 {
             for exercise in exerciseArray {
-                let newExercise = SelectedExercise(name: exercise.name!, category: exercise.category!)
-                routineExercises.append(newExercise)
+                let newRoutineExercise = Routine_Exercise(context: context)
+                newRoutineExercise.name = exercise.name
+                newRoutineExercise.category = exercise.category
+                currentRoutineExerciseArray.append(newRoutineExercise)
+//                let newExercise = SelecteharshdExercise(name: exercise.name!, category: exercise.category!)
+//                routineExercises.append(newExercise)
+                print("Current: " ,currentRoutineExerciseArray)
             }
         }
 //        selectedExerciseArray = exerciseArray
@@ -301,9 +354,11 @@ extension NewRoutineTableViewController: UITextFieldDelegate {
             
             switch textFieldTag {
             case 0:
-                routineExercises[indexPath.row].sets = textField.text
+//                routineExercises[indexPath.row].sets = textField.text
+                currentRoutineExerciseArray[indexPath.row].sets = Int16(textField.text!) ?? 0
             case 1:
-                routineExercises[indexPath.row].reps = textField.text
+//                routineExercises[indexPath.row].reps = textField.text
+                currentRoutineExerciseArray[indexPath.row].reps = Int16(textField.text!) ?? 0
             default:
                 print("error")
             }
