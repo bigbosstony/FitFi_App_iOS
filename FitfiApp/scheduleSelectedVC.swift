@@ -8,10 +8,10 @@
 
 import Foundation
 import UIKit
-
+import CoreData
 class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSource{
     
-    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBAction func cancelBtnPressed(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)    }
     
@@ -27,6 +27,7 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
             print(scheduleArr)
         }
     }
+    var selectedRoutine:Routine?
     var day:String?{
         didSet{
             print(day)
@@ -40,6 +41,29 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.section == 0)
+        {
+            let s = scheduleArr![indexPath.row].schdule
+            var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
+            
+            singleRoutineName =  singleRoutineName.components(separatedBy: .whitespacesAndNewlines).joined()
+            singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
+            singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
+            singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
+            let requestt = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
+            requestt.predicate = NSPredicate(format: "name = %@", singleRoutineName)
+            requestt.returnsObjectsAsFaults = false
+            do {
+                let resultt = try context.fetch(requestt)  as! [Routine]
+                selectedRoutine = resultt[0]
+                performSegue(withIdentifier: "gotoRoutineDetail", sender: self)
+                
+            } catch {
+                
+                print("Failed")
+            }
+        }
+        
         print(indexPath.row)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -143,5 +167,13 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
         }
         
         return string
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "gotoRoutineDetail")
+        {
+            let destionationVC = segue.destination as! RoutineDetailsTableViewController
+            destionationVC.selectedRoutine = selectedRoutine
+            
+        }
     }
 }

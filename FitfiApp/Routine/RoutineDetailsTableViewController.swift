@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 
 class RoutineDetailsTableViewController: UITableViewController {
-
+    
     //MARK: Properties
     @IBOutlet weak var favButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!

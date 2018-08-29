@@ -1316,7 +1316,7 @@
             <objects>
                 <tableViewController id="Nge-bI-Zan" customClass="RoutineDetailsTableViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CZe-BZ-6rc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="J6J-hR-YLw">
@@ -1448,8 +1448,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="5lU-51-AHZ">
                         <rightBarButtonItems>
-                            <barButtonItem title="Edit" image="Glyphs/Edit" id="XZp-iV-fA3"/>
+                            <barButtonItem title="Edit" image="Glyphs/Edit" id="XZp-iV-fA3">
+                                <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
                             <barButtonItem title="favorite" id="9os-XJ-jY9">
+                                <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="faveButtonPressed:" destination="Nge-bI-Zan" id="pbd-8b-5dU"/>
                                 </connections>
@@ -1601,6 +1604,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ntd-R4-s3D">
                         <barButtonItem key="rightBarButtonItem" title="Favorite" id="xlF-P4-EcM">
+                            <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="favButtonPressed:" destination="6jD-YE-X1F" id="BgC-Sd-bTk"/>
                             </connections>
@@ -1808,6 +1812,7 @@
                     <connections>
                         <outlet property="cancelBtn" destination="XpE-E3-Ajb" id="SWl-jc-Jg3"/>
                         <outlet property="tableView" destination="gvs-kr-WVt" id="kKQ-qS-smU"/>
+                        <segue destination="Nge-bI-Zan" kind="show" identifier="gotoRoutineDetail" id="OR4-Ta-Iop"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kec-0t-fYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3392,6 +3397,6 @@ CgoKA
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="05Y-6i-say"/>
-        <segue reference="wYH-sO-g9Q"/>
+        <segue reference="OR4-Ta-Iop"/>
     </inferredMetricsTieBreakers>
 </document>
