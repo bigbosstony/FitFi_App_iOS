@@ -81,6 +81,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
+            cell.titleLabel.text = "Routine"
             cell.routinePreviewLabel.text = "Routine"
             if(routineInSchedule != nil)
             {
@@ -97,6 +98,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
             if(indexPath.row == 0)
             {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
+            cell.titleLabel.text = "Date"
             cell.routinePreviewLabel.text = "date"
             
             if(date != nil)
@@ -111,7 +113,9 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
             return cell
             }
             else{
+                
                 let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
+                cell.titleLabel.text = "Day"
                 cell.routinePreviewLabel.text = "Day"
                 if(day != nil)
                 {

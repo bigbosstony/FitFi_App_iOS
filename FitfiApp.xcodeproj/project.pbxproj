@@ -13,7 +13,6 @@
 		EA3090E720C6DA4000E09DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090E620C6DA4000E09DDF /* AppDelegate.swift */; };
 		EA3090E920C6DA4000E09DDF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090E820C6DA4000E09DDF /* HomeViewController.swift */; };
 		EA3090EC20C6DA4000E09DDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3090EA20C6DA4000E09DDF /* Main.storyboard */; };
-		EA3090F120C6DA4300E09DDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA3090F020C6DA4300E09DDF /* Assets.xcassets */; };
 		EA3090F420C6DA4300E09DDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3090F220C6DA4300E09DDF /* LaunchScreen.storyboard */; };
 		EA3090FF20C6DA4300E09DDF /* FitfiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3090FE20C6DA4300E09DDF /* FitfiAppTests.swift */; };
 		EA30910A20C6DA4300E09DDF /* FitfiAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30910920C6DA4300E09DDF /* FitfiAppUITests.swift */; };
@@ -172,6 +171,9 @@
 		F1C7AE3621232EFF001FB415 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */; };
 		F1C7AE3C21236293001FB415 /* selectRoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */; };
 		F1C7AE3E21237281001FB415 /* scheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */; };
+		F1EC02AE213727590030DBA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1EC02AD213727590030DBA8 /* Assets.xcassets */; };
+		F1EC02AF213727590030DBA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1EC02AD213727590030DBA8 /* Assets.xcassets */; };
+		F1EC02B0213727590030DBA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1EC02AD213727590030DBA8 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,7 +207,6 @@
 		EA3090E620C6DA4000E09DDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA3090E820C6DA4000E09DDF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EA3090EB20C6DA4000E09DDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EA3090F020C6DA4300E09DDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA3090F320C6DA4300E09DDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA3090F520C6DA4300E09DDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA3090FA20C6DA4300E09DDF /* FitfiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitfiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +268,7 @@
 		F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleViewController.swift; path = Calendar/ScheduleViewController.swift; sourceTree = "<group>"; };
 		F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectRoutineCell.swift; sourceTree = "<group>"; };
 		F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleDetailViewController.swift; sourceTree = "<group>"; };
+		F1EC02AD213727590030DBA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = FitfiApp/Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,6 +369,7 @@
 				EA3090FD20C6DA4300E09DDF /* FitfiAppTests */,
 				EA30910820C6DA4300E09DDF /* FitfiAppUITests */,
 				EA3090E420C6DA4000E09DDF /* Products */,
+				F1EC02AD213727590030DBA8 /* Assets.xcassets */,
 				5E87D8AF17636864758AB136 /* Pods */,
 				992919DBA260A6BE75DBDE4D /* Frameworks */,
 			);
@@ -404,7 +407,6 @@
 				EA3008C420D1ADAA001E7743 /* Exercise */,
 				EA855DDF20F5114B000D7EA5 /* Calendar */,
 				EA77603120E436EE0052774F /* Data Module */,
-				EA3090F020C6DA4300E09DDF /* Assets.xcassets */,
 				EA3090F220C6DA4300E09DDF /* LaunchScreen.storyboard */,
 				EA3090F520C6DA4300E09DDF /* Info.plist */,
 			);
@@ -631,9 +633,9 @@
 				EAABE9E620CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
 				EA98E50B20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */,
 				EA3090F420C6DA4300E09DDF /* LaunchScreen.storyboard in Resources */,
-				EA3090F120C6DA4300E09DDF /* Assets.xcassets in Resources */,
 				EA3090EC20C6DA4000E09DDF /* Main.storyboard in Resources */,
 				EA98E51420FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */,
+				F1EC02AE213727590030DBA8 /* Assets.xcassets in Resources */,
 				EA84FCB120E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -646,6 +648,7 @@
 				EA77605120E450B10052774F /* Main.storyboard in Resources */,
 				EA98E51520FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */,
 				EA84FCC220E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
+				F1EC02AF213727590030DBA8 /* Assets.xcassets in Resources */,
 				EA98E50C20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */,
 				EA84FCB220E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
 			);
@@ -659,6 +662,7 @@
 				EA77605220E450B20052774F /* Main.storyboard in Resources */,
 				EA98E51620FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */,
 				EA84FCC320E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
+				F1EC02B0213727590030DBA8 /* Assets.xcassets in Resources */,
 				EA98E50D20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */,
 				EA84FCB320E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
 			);
