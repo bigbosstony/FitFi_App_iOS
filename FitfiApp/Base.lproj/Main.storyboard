@@ -1319,6 +1319,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="J6J-hR-YLw">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1447,6 +1448,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="5lU-51-AHZ">
+                        <barButtonItem key="backBarButtonItem" title="&lt;" id="HE0-GX-Mhi"/>
                         <rightBarButtonItems>
                             <barButtonItem title="Edit" image="Glyphs/Edit" id="XZp-iV-fA3">
                                 <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
@@ -3399,4 +3401,5 @@ CgoKA
         <segue reference="05Y-6i-say"/>
         <segue reference="OR4-Ta-Iop"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
 </document>

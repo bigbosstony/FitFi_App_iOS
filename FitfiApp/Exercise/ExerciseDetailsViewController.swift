@@ -12,7 +12,7 @@ import CoreData
 class ExerciseDetailsViewController: UIViewController {
     
     // Data
-    
+    let FitFiColor = UIColor(red: 213, green: 95, blue: 31)
     @IBOutlet weak var favButton: UIBarButtonItem!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet var aboutTableView: UITableView!
@@ -45,7 +45,7 @@ class ExerciseDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBar.tintColor = FitFiColor
         aboutTableView.delegate = self
         aboutTableView.dataSource = self
         // Register Customized cell for aboutTableView
@@ -177,5 +177,16 @@ extension ExerciseDetailsViewController: UITableViewDelegate, UITableViewDataSou
         else {
             return UITableViewAutomaticDimension
         }
+    }
+}
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        let newRed = CGFloat(red)/255
+        let newGreen = CGFloat(green)/255
+        let newBlue = CGFloat(blue)/255
+        
+        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
+        
     }
 }

@@ -10,8 +10,9 @@
 import UIKit
 import CoreData
 
+
 class RoutineDetailsTableViewController: UITableViewController {
-    
+    let FitFiColor = UIColor(red: 213, green: 95, blue: 31)
     //MARK: Properties
     @IBOutlet weak var favButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -27,6 +28,8 @@ class RoutineDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = FitFiColor
+        self.view.tintColor = FitFiColor
         loadExercises()
     }
     
