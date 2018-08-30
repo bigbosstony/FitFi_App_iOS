@@ -25,6 +25,18 @@ let items = [
     ]
 ]
 
+let testingRoutine = [
+    [
+        "name": "Biceps",
+        "sets": 3
+    ],
+    [
+        "name": "Triceps",
+        "sets": 5
+    ]
+]
+
+
 let Exercises = [
     [
         "name": "Hip Abduction Machine",

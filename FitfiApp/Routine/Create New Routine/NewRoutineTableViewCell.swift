@@ -12,6 +12,7 @@ class NewRoutineTableViewCell: UITableViewCell {
     
     @IBOutlet weak var setTextField: UITextField!
     @IBOutlet weak var repTextField: UITextField!
+    @IBOutlet weak var exerciseName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

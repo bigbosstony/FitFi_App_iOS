@@ -28,20 +28,27 @@ class RoutineDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.navigationController?.navigationBar.tintColor = FitFiColor
         self.view.tintColor = FitFiColor
         loadExercises()
+
+        print("Routine Details View Loaded")
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        print("Routine Details View Will Appear")
+        
         self.title = selectedRoutine?.name?.capitalized
-        //TODO: Modify and Delete next few lines
-//        for e in (selectedRoutine?.routineExercises)! {
-//            let ex = e as! Routine_Exercise
-//            print(ex.name)
-//        }
         favButton.image = (selectedRoutine?.favorite)! ? UIImage(named: "Glyphs/Favorited") : UIImage(named: "Glyphs/Favorite")
+        loadExercises()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +62,22 @@ class RoutineDetailsTableViewController: UITableViewController {
         save()
     }
     
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+        
+        performSegue(withIdentifier: "goToRoutineEdit", sender: self)
+    }
+    
+    //MARK: Pass Data Through Navigation Controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToRoutineEdit" {
+            let navVC = segue.destination as? UINavigationController
+            let secondVC = navVC?.viewControllers.first as! NewRoutineTableViewController
+//            let secondVC = segue.destination as! RoutineEditViewController
+            secondVC.signal = "edit"
+            secondVC.selectedRoutine = selectedRoutine
+            secondVC.delegate = self
+        }
+    }
     
     //MARK: Start Workout Button for Testing Only
     //Delete Me
@@ -122,6 +145,17 @@ class RoutineDetailsTableViewController: UITableViewController {
     
 }
 
+extension RoutineDetailsTableViewController: DataToReceive {
+    func dataReceive(data: Int) {
+        print("\(data)")
+        if data == 0 {
+            self.navigationController?.popViewController(animated: true)
+//            self.dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+//TableView DataSource
 extension RoutineDetailsTableViewController {
     
     // MARK: - Table view data source
@@ -154,6 +188,9 @@ extension RoutineDetailsTableViewController {
         do {
             //save the result into itemArray
             routineExerciseArray = try context.fetch(request)
+            //sorting array of object by property value
+            routineExerciseArray = routineExerciseArray.sorted(by: { $0.ranking < $1.ranking })
+            print(routineExerciseArray)
         } catch {
             print("\(error)")
         }
