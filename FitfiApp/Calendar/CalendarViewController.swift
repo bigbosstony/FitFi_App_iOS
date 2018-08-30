@@ -496,7 +496,7 @@ extension CalendarViewController: UITableViewDelegate {
         
         print(indexPath.row)
        
-        print(wholetableScheduleArr[indexPath.row])
+      //  print(wholetableScheduleArr[indexPath.row])
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "goToScheduleDetail")
