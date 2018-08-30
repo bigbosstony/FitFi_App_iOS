@@ -3281,7 +3281,7 @@ CgoKA
             </objects>
             <point key="canvasLocation" x="3722" y="517"/>
         </scene>
-        <!--Statistics View Controller-->
+        <!--Statastics-->
         <scene sceneID="0d6-zA-0Jz">
             <objects>
                 <viewController id="DRY-nQ-Log" customClass="StatisticsViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -3472,7 +3472,7 @@ CgoKA
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JeE-Lb-lhU"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cUq-wS-5Rp"/>
+                    <navigationItem key="navigationItem" title="Statastics" id="cUq-wS-5Rp"/>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="exerciseLabel" destination="hP8-Ia-VV5" id="i0n-yt-yFI"/>

@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import Alamofire
 import CoreData
+var scheduleToDelete:Schedule?
+var editFlag:Int = 0
 class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var signal = 0
     var scheduleArray:[String]!
@@ -22,10 +24,12 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var sunday:Bool = false
     var routineArr:[Routine] = []
     var validationFlag:Int = 0
-    var editFlag:Int = 0
+    
     var getSchedule:Schedule?{
     didSet{
+        
         editFlag = 1
+        scheduleToDelete = getSchedule
         print(getSchedule!)
         }
     }
@@ -34,6 +38,8 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
         if(editFlag == 1)
         {
+        editFlag = 0
+        scheduleToDelete = nil
         self.dismiss(animated: true, completion: nil)
         }
         else
@@ -48,9 +54,9 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         //        some(2018-08-25 21:49:22 +0000)
         //        some(["Routine", "HH"])
         //        some(["Days", "MONDAY", "SUNDAY"])
+        
         if(routineInSchedule == nil){
             validationFlag = 1
-            
         }
         else if(date == nil)
         {
@@ -69,7 +75,20 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
         if(validationFlag == 0)
         {
-        
+        if(editFlag == 1)
+        {
+           let date = scheduleToDelete?.date
+            let fetchRequest: NSFetchRequest<Schedule> = Schedule.fetchRequest()
+            fetchRequest.predicate = NSPredicate.init(format: "date = %@",date as! NSDate)
+            let object = try! context.fetch(fetchRequest)
+            if let result = try? context.fetch(fetchRequest) {
+                for object in result {
+                    context.delete(object)
+                }
+            }
+            editFlag = 0
+            scheduleToDelete = nil
+        }
         
  
        saveDataToSchedule()
