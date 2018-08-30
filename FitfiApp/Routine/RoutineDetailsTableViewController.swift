@@ -28,19 +28,15 @@ class RoutineDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Routine Details View Loaded")
-//        loadExercises()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         print("Routine Details View Will Appear")
+        
         self.title = selectedRoutine?.name?.capitalized
-        //TODO: Modify and Delete next few lines
-//        for e in (selectedRoutine?.routineExercises)! {
-//            let ex = e as! Routine_Exercise
-//            print(ex.name)
-//        }
         favButton.image = (selectedRoutine?.favorite)! ? UIImage(named: "Glyphs/Favorited") : UIImage(named: "Glyphs/Favorite")
+        loadExercises()
     }
     
     override func viewDidAppear(_ animated: Bool) {
