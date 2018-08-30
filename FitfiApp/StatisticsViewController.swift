@@ -99,20 +99,67 @@ private var IOBPoints: [ChartPoint] = [("2016-02-28T07:25:00", 0.0), ("2016-02-2
 private let axisLabelSettings: ChartLabelSettings = ChartLabelSettings()
 class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource{
     var exerciseList:[String] = ["h ","j "]
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exerciseList.count
-    }
+    var exerciseObject:Exercise? = nil
+    public var sectionData:[Seection] = [
+        Seection(category: "Arm", exercise: ["man","it shouls in"]), Seection(category: "Leg", exercise: ["man","it shouls in"])]
+   
+   
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var exerciseHistoryArray = [Exercise_History]()
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+
+     func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionData.count
+    }
+    
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sectionData[section].collapsed ? 0 : sectionData[section].exercise.count
+    }
+    // Cell
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: CollapsibleTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") as? CollapsibleTableViewCell ??
+            CollapsibleTableViewCell(style: .default, reuseIdentifier: "cell")
         
-        cell.textLabel?.text = "\(exerciseList[indexPath.row])"
+        let item: String = sectionData[indexPath.section].exercise[indexPath.row]
+        
+        cell.nameLabel.text = item
+        
         
         return cell
     }
     
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    // Header
+     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? CollapsibleTableViewHeader ?? CollapsibleTableViewHeader(reuseIdentifier: "header")
+        
+        header.titleLabel.text = sectionData[section].category
+        header.arrowLabel.text = ">"
+        header.setCollapsed(sectionData[section].collapsed)
+        
+        header.section = section
+        header.delegate = self
+        
+        return header
+    }
+    
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44.0
+    }
+    
+     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        getExerciseObject(e_name: sectionData[indexPath.section].exercise[indexPath.row])
+        performSegue(withIdentifier: "showExerciseDetailVC", sender: self)
+        
+        exerciseTable.deselectRow(at: indexPath, animated: true)
+    }
     var workoutBarChart:BarsChart!
     fileprivate lazy private(set) var axisLineColor = UIColor.clear
     private let axisLabelSettings: ChartLabelSettings = ChartLabelSettings()
@@ -196,7 +243,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     var exWorkOuts:[NSManagedObject] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        oneMonthSelected()
+        //oneMonthSelected()
         //        for i in exerciseHistoryArray{
         //            if(exHistoryDict.contains(i.name!)){
         //                //do nothing
@@ -224,9 +271,12 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
         //print(exVolume) Volume
         //print(exWorkOuts.count) total routines
         timeSelected(index: 0)
+        
         chartLongPressGestureRecognizer.delegate = self
         exerciseTable.delegate = self
         exerciseTable.dataSource = self
+        exerciseTable.estimatedRowHeight = 44.0
+        exerciseTable.rowHeight = UITableViewAutomaticDimension
         chartLongPressGestureRecognizer.minimumPressDuration = 0.01
         volumeGraphView.addGestureRecognizer(chartLongPressGestureRecognizer)
         generateXAxisValues()
@@ -322,6 +372,8 @@ extension StatisticsViewController{
             barWidth: 10)
         
         exerciseList = []
+        sectionData = []
+        
         switch index {
         case 0:
             
@@ -353,7 +405,8 @@ extension StatisticsViewController{
                 currentDateString = oneMonthformatter.string(from: currrentDate)
                 previousDateString = oneMonthformatter.string(from: previousDate)
                 nextCurrentDate = previousDate.addingTimeInterval(oneDay)
-                BarsArray[i] = ("\(previousDateString)-\(currentDateString)",tmp[0])
+               // BarsArray[i] = ("\(previousDateString)-\(currentDateString)",tmp[0])
+                BarsArray[i] = ("Week \(4 - (i))",tmp[0])
                 GraphArray[i] = ("\(previousDate)",tmp[1])
                 Graph1Array[i] = ("\(previousDate)",tmp[1])
                 totalExercise = totalExercise + tmp[0]
@@ -365,14 +418,16 @@ extension StatisticsViewController{
                 }
                 
             }
+            
             //print(exHistoryDict.count) number of exercise
             exerciseLabel.text = "\(totalExercise)"
             //print(exVolume) Volume
             volumeLabel.text = "\(totalVolume) t"
             //print(exWorkOuts.count) total routines
             workOutLabel.text = "\(totalWorkOut)"
-            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut,by: maxWorkOut/10))
+            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
             //            barsArray.append("\(currentDateString)/\(currentDateString),150")
+            if(totalExercise > 0){
             oneMonthchart = BarsChart(
                 frame: frame,
                 chartConfig: chartConfig,
@@ -401,7 +456,7 @@ extension StatisticsViewController{
             }
             print(IOBPoints)
             generateXAxisValues()
-            print(xAxisValues)
+            //print(xAxisValues)
             let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
             bottomChart = generateIOBChartWithFrame(frame: frame)
             for view in volumeGraphView.subviews {
@@ -411,6 +466,10 @@ extension StatisticsViewController{
                 if let view = chart?.view {
                     volumeGraphView.addSubview(view)
                 }
+            }
+            }
+            else{
+                print("No data")
             }
             break
         case 1:
@@ -460,7 +519,9 @@ extension StatisticsViewController{
             volumeLabel.text = "\(totalVolume) t"
             //print(exWorkOuts.count) total routines
             workOutLabel.text = "\(totalWorkOut)"
-            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut,by: maxWorkOut/10))
+            if(totalExercise > 0)
+            {
+            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
             
             //            barsArray.append("\(currentDateString)/\(currentDateString),150")
             threeMonthchart = BarsChart(
@@ -504,7 +565,10 @@ extension StatisticsViewController{
                     volumeGraphView.addSubview(view)
                 }
             }
-            
+            }
+            else{
+                print("No Data")
+            }
             break
             
         case 2:
@@ -555,7 +619,9 @@ extension StatisticsViewController{
             volumeLabel.text = "\(totalVolume) t"
             //print(exWorkOuts.count) total routines
             workOutLabel.text = "\(totalWorkOut)"
-            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut,by: maxWorkOut/10))
+            if(totalExercise > 0)
+            {
+            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
             
             //            barsArray.append("\(currentDateString)/\(currentDateString),150")
             oneYearChart = BarsChart(
@@ -598,6 +664,10 @@ extension StatisticsViewController{
                 }
             }
             exerciseTable.reloadData()
+            }
+            else{
+                print("No Data")
+            }
             break
             
             
@@ -651,6 +721,44 @@ extension StatisticsViewController{
                 //do nothing
             }
             else{
+                print(i.category!)
+                if(sectionData.count == 0)
+                {
+                    sectionData.append(Seection(category: i.category!, exercise: [i.name!]))
+                    
+                }
+                else{
+                for ii in 0..<sectionData.count
+                {
+                    if(sectionData[ii].category == i.category!)
+                    {
+                        if(sectionData[ii].exercise.contains(i.name!)){
+                            //do nothing
+                        }
+                        else{
+                        sectionData[ii].exercise.append(i.name!)
+                        }
+                    }
+                    else{
+                        var containsFlag = 0
+                        if(sectionData.count > 0)
+                        {
+                        for iii in 0..<sectionData.count
+                        {
+                            if(sectionData[iii].category == i.category!)
+                            {
+                                containsFlag = 1
+                            }
+                        }
+                        if(containsFlag == 0)
+                        {
+                        sectionData.append(Seection(category: i.category!, exercise: [i.name!]))
+                        }
+                    }
+                    }
+                }
+                }
+                
                 exerciseList.append(i.name!)
                 
             }
@@ -732,7 +840,7 @@ extension StatisticsViewController{
             chartPoints: IOBPoints,
             tintColor: FitFiColor,
             labelCenterY: chartSettings.top,
-            gestureRecognizer: chartLongPressGestureRecognizer,
+            gestureRecognizer: nil,
             onCompleteHighlight: nil
         )
         
@@ -910,6 +1018,15 @@ private extension BidirectionalCollection where Index: Strideable, Iterator.Elem
 }
 
 extension StatisticsViewController{
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showExerciseDetailVC" {
+            let destinationVC = segue.destination as! ExerciseDetailsViewController
+            if let indexPath = exerciseTable.indexPathForSelectedRow {
+              destinationVC.selectedExercise = exerciseObject!
+                destinationVC.fromStats = 1
+            }
+        }
+    }
     func oneMonthSelected()
     {
         //for calculate seven days
@@ -932,13 +1049,34 @@ extension StatisticsViewController{
         }
     }
 }
-extension UIColor {
-    convenience init(red: Int, green: Int, blue: Int) {
-        let newRed = CGFloat(red)/255
-        let newGreen = CGFloat(green)/255
-        let newBlue = CGFloat(blue)/255
+
+
+extension StatisticsViewController:CollapsibleTableViewHeaderDelegate {
+    func getExerciseObject(e_name: String)
+    {
+        let allExercisesRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise")
+        let oneExercisePredicate = NSPredicate(format: "name = %@",e_name)
+        allExercisesRequest.predicate = oneExercisePredicate
         
-        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
+        do {
+             let exerciseList = try context.fetch(allExercisesRequest) as! [Exercise]
+            exerciseObject = exerciseList[0]
+            
+        } catch {
+            print("\(error)")
+        }
         
     }
+    func toggleSection(_ header: CollapsibleTableViewHeader, section: Int) {
+        let collapsed = !sectionData[section].collapsed
+        
+        // Toggle collapse
+        sectionData[section].collapsed = collapsed
+        header.setCollapsed(collapsed)
+        
+        exerciseTable.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
+    }
+    
 }
+
+
