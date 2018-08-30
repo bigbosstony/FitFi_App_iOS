@@ -4,7 +4,7 @@
 //  Copyright © 2018 Fitfi. All rights reserved.
 
 //MARK: IGNORE THIS FILE
-//
+//ready to merge
 
 import UIKit
 import CoreBluetooth
