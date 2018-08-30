@@ -30,7 +30,7 @@ class RoutineDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.tintColor = FitFiColor
-        self.view.tintColor = FitFiColor
+//        self.view.tintColor = FitFiColor
         loadExercises()
 
         print("Routine Details View Loaded")
