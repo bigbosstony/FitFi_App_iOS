@@ -6,7 +6,10 @@ target 'FitfiApp' do
   use_frameworks!
 	
 	pod 'SwiftCharts', '~> 0.6.1'
+
+
     pod 'Alamofire', '~> 4.7'
+
 
   # Pods for FitfiApp
 
