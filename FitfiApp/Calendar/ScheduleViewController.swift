@@ -151,7 +151,49 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 cell.titleLabel.text = "Day"
                 if(editFlag == 1)
                 {
-                    cell.routinePreviewLabel.text = "Routine"
+                    var string = ""
+                    if(getSchedule?.sunday == true)
+                    {
+                        string = string + " Sunday"
+                    }
+                    if(getSchedule?.monday == true)
+                    {
+                        string = string + " Monday"
+                    }
+                    if(getSchedule?.tuesday == true)
+                    {
+                        string = string + " Tuesday"
+                    }
+                    if(getSchedule?.wednesday == true)
+                    {
+                        string = string + " Wednesday"
+                    }
+                    if(getSchedule?.thursday == true)
+                    {
+                        string = string + " Thursday"
+                    }
+                    if(getSchedule?.friday == true)
+                    {
+                        string = string + " Friday"
+                    }
+                    if(getSchedule?.saturday == true)
+                    {
+                        string = string + " Saturday"
+                    }
+                    
+                    
+                    
+                    if(string == "")
+                    {
+                        string = "No Repeat"
+                    }
+                    else{
+                        string = "Repeat Every" + string
+                    }
+                    
+                    
+
+                    cell.routinePreviewLabel.text = string
                 }
                 else{
                 cell.routinePreviewLabel.text = "Day"

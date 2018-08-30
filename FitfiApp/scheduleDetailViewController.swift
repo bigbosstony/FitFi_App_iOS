@@ -18,7 +18,12 @@ class scheduleDetailViewController:UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var table: UITableView!
     var tempDate:Date = Date()
     @IBOutlet weak var titlee: UINavigationItem!
-    
+    var editFlag:Int = 0
+    var editSchedule:Schedule?{
+        didSet{
+            editFlag = 1
+        }
+    }
     @IBAction func Done(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
         if(lastUpdated == 0){
