@@ -34,7 +34,7 @@ class TabBarViewController: UITabBarController {
             print("First Time Launch The Application")
             //MARL: Save default Exercise and Schedule Template
             saveExercises()
-            saveScheduleTemplate()
+//            saveScheduleTemplate()
             UserDefaults.standard.setValue(true, forKey: "hasLaunchedBefore")
         } else {
             print("Non-First Time Launch")
@@ -88,13 +88,13 @@ extension TabBarViewController {
         }
     }
     
-    func saveScheduleTemplate() {
-        for day in dayOfWeek {
-            let newSchedule = Schedule(context: context)
-            newSchedule.dayOfWeek = day
-            save()
-        }
-    }
+//    func saveScheduleTemplate() {
+//        for day in dayOfWeek {
+//            let newSchedule = Schedule(context: context)
+//            newSchedule.dayOfWeek = day
+//            save()
+//        }
+//    }
     
     func save() {
         do {
