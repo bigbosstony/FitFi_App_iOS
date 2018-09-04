@@ -13,6 +13,7 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
     var numberOfSets: Int?
     
     @IBOutlet weak var setCollectionView: UICollectionView!
+    @IBOutlet weak var weightLabel: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +32,4 @@ extension ExerciseCollectionViewCell: UICollectionViewDataSource, UICollectionVi
         
         return cell
     }
-    
-    
 }

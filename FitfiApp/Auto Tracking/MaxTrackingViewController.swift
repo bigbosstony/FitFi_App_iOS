@@ -9,23 +9,27 @@
 import UIKit
 
 protocol MaxTrackingDelegate: class {
-    var message: String { get }
+    var message: Int { get }
 }
 
 class MaxTrackingViewController: UIViewController {
 
     weak var delegate: MaxTrackingDelegate!
-    var message: String?
+    var message: Int?
+    
+    var timer = Timer()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Maxi Tracking VC Loaded")
-        print(delegate.message)
+        //MARK: Testing Timer
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateRandomInt), userInfo: nil, repeats: true)
+
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -35,6 +39,10 @@ class MaxTrackingViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Testing Function
+    @objc func updateRandomInt() {
+        print(delegate.message)
+    }
     /*
     // MARK: - Navigation
 

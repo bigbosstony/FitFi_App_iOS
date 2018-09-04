@@ -11,13 +11,25 @@ import CoreBluetooth
 import AudioToolbox
 import Alamofire
 
+//MARK: Testing
+struct CurrentExercise {
+    var name: String
+    var counts: [Int]
+    
+    init(name: String, counts: [Int]) {
+        self.name = name
+        self.counts = counts
+    }
+}
+
 class SmallTrackingViewController: UIViewController {
     
     var maxTrackingVC: MaxTrackingViewController?
     
     @IBOutlet weak var exerciseTypeLabel: UILabel!
-    
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var exerciseCountingLabel: UILabel!
+    @IBOutlet weak var exerciseDeviceLabel: UILabel!
     
     let modelName = UIDevice.modelName
     lazy var bleVersion = {
@@ -41,17 +53,20 @@ class SmallTrackingViewController: UIViewController {
     var blePeripheral: CBPeripheral!
     let bleServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E
     let bleCharacteristicCBUUID = CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
-    //
+    
     var dataArrayCounter = 0
-//    var dataRowCounter = 1
     var dataArray = [Double]()
-//    var dataSourceString: String = ""
-//    var file = "log.csv"
     let dateFormatter = DateFormatter()
-//    var exerciseName = ""
+    
+    //MARK: Testing
+    var currentExerciseArray = [CurrentExercise]()
+    var counter = 0
+    var tempExercise = "Biceps"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Small Tracking View Did Load")
         print("Device: ", UIDevice.modelName)
         print("BLE Version: \(bleVersion)")
 //        dateFormatter.dateFormat = "yyyyMMddHHmmss"
@@ -68,6 +83,13 @@ class SmallTrackingViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(expandTrackingSmallView)) //Change This If Needed
         self.view.addGestureRecognizer(tap)
         self.view.isUserInteractionEnabled = true
+        
+        //MARK: Testing
+//        var currentExercise = CurrentExercise(name: "Biceps")
+//        currentExercise.reps = 9
+//        currentExercise.sets = 2
+//        currentExerciseArray.append(currentExercise)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,14 +97,13 @@ class SmallTrackingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // Tap to expand
+    //MARK: Extend To MaxiTrackingView
     @objc func expandTrackingSmallView() {
         maxTrackingVC = MaxTrackingViewController.init(nibName: "MaxTrackingViewController", bundle: nil)
         maxTrackingVC?.delegate = self
         present(maxTrackingVC!, animated: true, completion: nil)
     }
 }
-
 
 //MARK: - Search and Connect to BLE Device
 //MARK: Central Manager
@@ -216,14 +237,30 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                 if dataArrayCounter == 2 {
                     //                    writeToFile(dataArray)
                     //MARK: Received Data Array
-                    NSLog("XYZ Data Array: \(dataArray)")
+//                    NSLog("XYZ Data Array: \(dataArray)")
+                    //MARK: Add CoreML
+                    counter += 1
+                    
+                    if counter > 240 {
+                        tempExercise = "Triceps"
+                    }
+                    
+                    if counter % 30 == 0 {
+                        print(counter)
+                        //MARK: CoreML Function
+                        collectingController(exercise: tempExercise)
+                    }
+                    
+                    collectionView.reloadData()
+                    exerciseTypeLabel.text = currentExerciseArray.last?.name
+                    //                    exerciseCountingLabel.text = String(counter)
+                    
                     dataArray.removeAll()
                     dataArrayCounter = 0
                 } else {
                     dataArrayCounter += 1
                 }
             }
-            
 //            print("Data: \(String(describing: String(data: characteristic.value!, encoding: .utf8)))")
         default:
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
@@ -235,30 +272,62 @@ extension SmallTrackingViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "smallTrackingVCCVCell", for: indexPath) as! SmallTrackingVCCollectionViewCell
         
+        if let exercise = currentExerciseArray.last {
+            cell.exerciseReps.text = String(exercise.counts[indexPath.row])
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return currentExerciseArray.last?.counts.count ?? 0
     }
 }
 
 extension SmallTrackingViewController: MaxTrackingDelegate {
-    var message: String {
-        return "It's Working"
+    //Testing
+    var message: Int {
+        let random = arc4random_uniform(100)
+        return Int(random)
     }
 }
 
 extension SmallTrackingViewController {
-    func uploadCSVFile() {
-        let fileURL: String = "http://192.168.5.29/work/upload.php"
-        guard let url = URL(string: fileURL) else {
-            print("Error: cannot create URL")
-            return
+    func collectingController (exercise name: String) {
+        if currentExerciseArray.count == 0 {
+            print("Create and Add new exercise")
+            let newExercise = CurrentExercise(name: name, counts: [1])
+            currentExerciseArray.append(newExercise)
+            print("1: ", newExercise)
+            
+        } else if currentExerciseArray.last?.name == name {
+            let indexOfExercise = currentExerciseArray.count - 1
+            let indexOfCounts = currentExerciseArray[indexOfExercise].counts.count - 1
+            
+            if currentExerciseArray[indexOfExercise].counts[indexOfCounts] <= 5 {
+                currentExerciseArray[indexOfExercise].counts[indexOfCounts] += 1
+            } else {
+                currentExerciseArray[indexOfExercise].counts.append(1)
+            }
+            
+            print("2: ", currentExerciseArray.last!)
+        } else {
+            let newExercise = CurrentExercise(name: name, counts: [1])
+            currentExerciseArray.append(newExercise)
+            print("3: ", currentExerciseArray.last!)
         }
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "POST"
     }
 }
+
+//extension SmallTrackingViewController {
+//    func uploadCSVFile() {
+//        let fileURL: String = "http://192.168.5.29/work/upload.php"
+//        guard let url = URL(string: fileURL) else {
+//            print("Error: cannot create URL")
+//            return
+//        }
+//        var urlRequest = URLRequest(url: url)
+//        urlRequest.httpMethod = "POST"
+//    }
+//}
 
 

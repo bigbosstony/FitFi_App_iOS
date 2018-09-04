@@ -106,6 +106,9 @@
                 <constraint firstAttribute="bottom" secondItem="AY8-xu-ZiY" secondAttribute="bottom" id="x5t-SL-x54"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="exerciseReps" destination="ufc-lt-e2y" id="2yM-rI-dWR"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>

@@ -13,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmallTrackingViewController" customModule="FitfiApp" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Xtn-U8-vNM" id="ORk-26-qSZ"/>
+                <outlet property="exerciseCountingLabel" destination="heP-Pg-4fV" id="Rg9-Mh-Akc"/>
+                <outlet property="exerciseDeviceLabel" destination="1CC-fx-aWN" id="sQD-v1-PTg"/>
                 <outlet property="exerciseTypeLabel" destination="6LT-y7-z2h" id="P9b-ys-X7i"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
