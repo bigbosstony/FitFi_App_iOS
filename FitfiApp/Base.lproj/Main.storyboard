@@ -1685,7 +1685,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgl-eU-ca3">
-                                    <rect key="frame" x="15" y="-11.666666666666666" width="85" height="23.333333333333332"/>
+                                    <rect key="frame" x="15" y="-8" width="85" height="23"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -1733,7 +1733,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="top-cG-zGM">
-                                    <rect key="frame" x="59.666666666666657" y="-39" width="295" height="42"/>
+                                    <rect key="frame" x="59.666666666666657" y="25" width="295" height="42"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIH-Kz-U78">
                                             <rect key="frame" x="1" y="1" width="293" height="40"/>
@@ -3543,7 +3543,7 @@ CgoKA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZTp-Cm-aFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12907.246376811596" y="1571.7391304347827"/>
+            <point key="canvasLocation" x="13593" y="1723"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gel-90-uNO">

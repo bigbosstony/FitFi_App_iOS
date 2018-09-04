@@ -12,6 +12,7 @@ import Alamofire
 import CoreData
 var scheduleToDelete:Schedule?
 var editFlag:Int = 0
+var fromEdit:Int = 0
 class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var signal = 0
     var scheduleArray:[String]!
@@ -24,6 +25,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var sunday:Bool = false
     var routineArr:[Routine] = []
     var validationFlag:Int = 0
+    
     
     var getSchedule:Schedule?{
     didSet{
@@ -39,6 +41,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         if(editFlag == 1)
         {
         editFlag = 0
+        fromEdit = 0
         scheduleToDelete = nil
         self.dismiss(animated: true, completion: nil)
         }
@@ -87,6 +90,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 }
             }
             editFlag = 0
+            fromEdit = 0
             scheduleToDelete = nil
         }
         
@@ -116,7 +120,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         if indexPath.row == 0 && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
             cell.titleLabel.text = "Routine"
-            if(editFlag == 1)
+            if(editFlag == 1 && fromEdit == 0)
             {
                 let s = getSchedule?.schdule
                 var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
@@ -126,6 +130,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
                 cell.routinePreviewLabel.text = singleRoutineName
             }
+          
             else{
                 
             
@@ -146,7 +151,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
             {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
             cell.titleLabel.text = "Date"
-                if(editFlag == 1)
+                if(editFlag == 1 && fromEdit == 0)
                 {
                     cell.routinePreviewLabel.text = String(describing: getSchedule!.date!)
                 }
@@ -168,7 +173,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
                 cell.titleLabel.text = "Day"
-                if(editFlag == 1)
+                if(editFlag == 1 && fromEdit == 0)
                 {
                     var string = ""
                     if(getSchedule?.sunday == true)
@@ -258,6 +263,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     override func viewDidAppear(_ animated: Bool) {
         print(scheduleArray)
+        
         scheduleTable.reloadData()
         
     }

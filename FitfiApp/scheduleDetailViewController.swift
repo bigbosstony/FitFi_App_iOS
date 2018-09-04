@@ -23,14 +23,26 @@ class scheduleDetailViewController:UIViewController,UITableViewDelegate,UITableV
         self.dismiss(animated: true, completion: nil)
         if(lastUpdated == 0){
            routineInSchedule = arrayForSchduleVC
+            if(editFlag == 1)
+            {
+                fromEdit = 1
+            }
         }
         else if(lastUpdated == 1)
         {
             date = tempDate
+            if(editFlag == 1)
+            {
+                fromEdit = 2
+            }
         }
         else if(lastUpdated == 2)
         {
                 day = arrayForSchduleVC
+            if(editFlag == 1)
+            {
+                fromEdit = 3
+            }
         }
     }
     @IBAction func Cancel(_ sender: UIBarButtonItem) {
