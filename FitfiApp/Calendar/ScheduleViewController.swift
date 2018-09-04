@@ -13,6 +13,7 @@ import CoreData
 var scheduleToDelete:Schedule?
 var editFlag:Int = 0
 var fromEdit:Int = 0
+var fromEditToScheduleSelect:Int = 0
 class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var signal = 0
     var scheduleArray:[String]!
@@ -91,6 +92,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
             }
             editFlag = 0
             fromEdit = 0
+            fromEditToScheduleSelect = 1
             scheduleToDelete = nil
         }
         

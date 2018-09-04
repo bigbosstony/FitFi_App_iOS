@@ -125,6 +125,14 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
         tableView.delegate = self
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        //nothing
+        if(fromEditToScheduleSelect == 1)
+        {
+            fromEditToScheduleSelect = 0
+           self.navigationController?.popViewController(animated: true)
+        }
+    }
     func getRepeatString(schedule: Schedule) ->String{
         var string = ""
         if(schedule.sunday == true)
