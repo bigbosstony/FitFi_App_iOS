@@ -2049,8 +2049,8 @@
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYN-W2-eZF">
                                                     <rect key="frame" x="68" y="11" width="292" height="56"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="R1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpM-gt-Mgg">
-                                                            <rect key="frame" x="22" y="8" width="50" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RoutineName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpM-gt-Mgg">
+                                                            <rect key="frame" x="22" y="8" width="128" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -2063,13 +2063,21 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIm-re-L1h">
-                                                            <rect key="frame" x="22" y="35" width="35" height="21"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TabBarIcons/Exercise Active" translatesAutoresizingMaskIntoConstraints="NO" id="Nxp-ok-h51">
+                                                            <rect key="frame" x="211" y="27" width="31" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="~30m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIm-re-L1h">
+                                                            <rect key="frame" x="30" y="32" width="46" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ExerciseIcons/Time" translatesAutoresizingMaskIntoConstraints="NO" id="Y4i-Wg-2S1">
+                                                            <rect key="frame" x="8" y="33" width="21" height="20"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" red="0.1647058824" green="0.69411764710000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2092,7 +2100,9 @@
                                             <outlet property="dayOfWeek" destination="680-pL-5Sw" id="Jkx-1b-z2y"/>
                                             <outlet property="detailView" destination="eYN-W2-eZF" id="pU7-VR-oOg"/>
                                             <outlet property="estimatedTime" destination="SIm-re-L1h" id="Yf6-Qw-XbD"/>
+                                            <outlet property="exerciseImageView" destination="eYN-W2-eZF" id="fcu-bm-ass"/>
                                             <outlet property="routineName" destination="LpM-gt-Mgg" id="M8Y-hY-gcn"/>
+                                            <outlet property="timeImageView" destination="Y4i-Wg-2S1" id="tqD-uQ-jnt"/>
                                             <outlet property="todayMarker" destination="idi-uu-Ief" id="ZiE-Nk-8P8"/>
                                             <outlet property="totalExercise" destination="c8f-5J-WRm" id="C7Q-sh-st2"/>
                                         </connections>
@@ -2125,7 +2135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zuo-GH-a1M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9098.3999999999996" y="867.61619190404804"/>
+            <point key="canvasLocation" x="9097.1014492753638" y="867.39130434782612"/>
         </scene>
         <!--Schedule SelectedVC-->
         <scene sceneID="ipe-EM-SrI">
@@ -3752,6 +3762,7 @@ CgoKA
         <image name="Glyphs/Setting" width="24" height="24"/>
         <image name="TabBarIcons/Calendar" width="48" height="34"/>
         <image name="TabBarIcons/Calendar Active" width="48" height="34"/>
+        <image name="TabBarIcons/Exercise Active" width="48" height="34"/>
         <image name="TabBarIcons/Profile" width="48" height="34"/>
         <image name="TabBarIcons/Profile Active" width="48" height="34"/>
         <image name="TabBarIcons/Social" width="48" height="34"/>
@@ -3763,7 +3774,7 @@ CgoKA
         <image name="pic" width="250" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Iro-ut-YEF"/>
+        <segue reference="dX0-mi-e4F"/>
         <segue reference="GN5-Aq-Wdx"/>
         <segue reference="05Y-6i-say"/>
         <segue reference="OR4-Ta-Iop"/>
