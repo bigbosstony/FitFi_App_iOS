@@ -48,7 +48,7 @@ class SmallTrackingViewController: UIViewController {
             return 0.0
         }
     }
-    //Setup COre Bluetooth Properties
+    //Setup Core Bluetooth Properties
     var centralManager: CBCentralManager!
     var blePeripheral: CBPeripheral!
     let bleServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E

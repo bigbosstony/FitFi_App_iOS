@@ -30,6 +30,9 @@ struct Section {
 class SelectExerciseForRoutineVC: UIViewController {
     
     @IBOutlet weak var exerciseTableView: UITableView!
+    @IBOutlet weak var addButton: UIButton!
+    
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var delegate: ReceiveRoutineExercises?
     
@@ -80,6 +83,7 @@ class SelectExerciseForRoutineVC: UIViewController {
 }
 
 extension SelectExerciseForRoutineVC: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         sections[indexPath.section].checkedArray[indexPath.row] = !sections[indexPath.section].checkedArray[indexPath.row]
@@ -91,6 +95,16 @@ extension SelectExerciseForRoutineVC: UITableViewDelegate {
         }
         
         print(selectedExercise)
+        
+        //Changing the Button Color and Text
+        if selectedExercise.count > 0 {
+            addButton.setTitle("Add (\(String(selectedExercise.count)))", for: .normal)
+            addButton.setTitleColor(#colorLiteral(red: 0.8740790486, green: 0.4554287791, blue: 0.1562839746, alpha: 1), for: .normal)
+        } else {
+            addButton.setTitle("Add", for: .normal)
+            addButton.setTitleColor(#colorLiteral(red: 0.6712639928, green: 0.6712799668, blue: 0.6712713838, alpha: 1), for: .normal)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }

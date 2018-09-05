@@ -22,7 +22,6 @@ class ManualTrackingVC: UIViewController {
         super.viewDidLoad()
         exerciseCollectionView.delegate = self
         exerciseCollectionView.dataSource = self
-        
         //Set the section inset value
         let sectionInsetValue = self.view.frame.width / 2 - 125
         //Assign the value to uicollectionview
