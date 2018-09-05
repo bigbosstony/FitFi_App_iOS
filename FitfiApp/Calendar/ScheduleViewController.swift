@@ -274,6 +274,8 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         scheduleTable.dataSource = self
         scheduleTable.delegate = self
+        scheduleTable.tableFooterView = UIView()
+    
         
 //        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
 //

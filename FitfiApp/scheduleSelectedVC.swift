@@ -123,6 +123,8 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.tableFooterView = UIView()
+    
         
     }
     override func viewDidAppear(_ animated: Bool) {

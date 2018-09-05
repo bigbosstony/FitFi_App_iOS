@@ -87,6 +87,8 @@ class scheduleDetailViewController:UIViewController,UITableViewDelegate,UITableV
         }
         table.dataSource = self
         table.delegate = self
+        table.tableFooterView = UIView()
+    
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
