@@ -10,6 +10,18 @@ import UIKit
 import CoreBluetooth
 import AudioToolbox
 import Alamofire
+import CoreML
+
+//Exercise Type Dictionary
+let exercise = [
+    0 : "Triceps",
+    1 : "Shoulder Press",
+    2 : "Biceps",
+    3 : "Lateral Raise",
+    4 : "Triceps Kickback",
+    5 : "Stationary Lunge",
+    6 : "None"
+]
 
 //MARK: Testing
 struct CurrentExercise {
@@ -48,6 +60,7 @@ class SmallTrackingViewController: UIViewController {
             return 0.0
         }
     }
+    
     //Setup Core Bluetooth Properties
     var centralManager: CBCentralManager!
     var blePeripheral: CBPeripheral!
@@ -57,6 +70,9 @@ class SmallTrackingViewController: UIViewController {
     var dataArrayCounter = 0
     var dataArray = [Double]()
     let dateFormatter = DateFormatter()
+    
+    //MARK: Core ML Model
+    let model = tracking_model_0_2()
     
     //MARK: Testing
     var currentExerciseArray = [CurrentExercise]()
@@ -235,25 +251,48 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                 }
                 
                 if dataArrayCounter == 2 {
-                    //                    writeToFile(dataArray)
-                    //MARK: Received Data Array
-//                    NSLog("XYZ Data Array: \(dataArray)")
-                    //MARK: Add CoreML
-                    counter += 1
+                    //MARK: Testing Collection View Cell
+//                    counter += 1
+//
+//                    if counter > 240 {
+//                        tempExercise = "Triceps"
+//                    }
+//
+//                    if counter % 30 == 0 {
+//                        print(counter)
+//
+//                        collectingController(exercise: tempExercise)
+//                    }
+//
+//                    collectionView.reloadData()
+//                    exerciseTypeLabel.text = currentExerciseArray.last?.name
+
+                    //MARK: Add CoreML, Create CoreML Properties
+                    let sensorInputData = try! MLMultiArray(shape: [9], dataType: .double)
+                    var outputArray = [Double]()
                     
-                    if counter > 240 {
-                        tempExercise = "Triceps"
+                    for (index, data) in dataArray.enumerated() {
+                        sensorInputData[index] = NSNumber(value: data)
                     }
                     
-                    if counter % 30 == 0 {
-                        print(counter)
-                        //MARK: CoreML Function
-                        collectingController(exercise: tempExercise)
-                    }
+                    //MARK: Input
+                    let input2 = tracking_model_0_2Input(input1: sensorInputData)
                     
-                    collectionView.reloadData()
-                    exerciseTypeLabel.text = currentExerciseArray.last?.name
-                    //                    exerciseCountingLabel.text = String(counter)
+                    if let predictionOutput = try? model.prediction(input: input2) {
+                        
+                        let output = predictionOutput.output1
+                        
+                        print(output)
+                        
+                        for count in 0..<7 {
+                            outputArray.append(output[count].doubleValue)
+                        }
+                        let highestPrediction = outputArray.index(of: outputArray.max()!)!
+                        let highestExercise = exercise[highestPrediction]
+                        let highestExercisePrecetage = Double(round(1000 * outputArray.max()!) / 1000) * 100
+                        print(highestExercise!, highestExercisePrecetage)
+                        exerciseTypeLabel.text = highestExercise! + " " + String(highestExercisePrecetage) + "%"
+                    }
                     
                     dataArray.removeAll()
                     dataArrayCounter = 0
@@ -292,7 +331,7 @@ extension SmallTrackingViewController: MaxTrackingDelegate {
 }
 
 extension SmallTrackingViewController {
-    func collectingController (exercise name: String) {
+    func collectingController(exercise name: String) {
         if currentExerciseArray.count == 0 {
             print("Create and Add new exercise")
             let newExercise = CurrentExercise(name: name, counts: [1])

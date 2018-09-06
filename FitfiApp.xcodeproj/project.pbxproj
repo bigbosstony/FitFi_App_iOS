@@ -111,6 +111,9 @@
 		EA8C64A520D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */; };
 		EA8C64A620D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */; };
 		EA8C64A720D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */; };
+		EA9175552140D41600A3EF67 /* tracking_model_0_2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA9175542140D41500A3EF67 /* tracking_model_0_2.mlmodel */; };
+		EA9175562140D41600A3EF67 /* tracking_model_0_2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA9175542140D41500A3EF67 /* tracking_model_0_2.mlmodel */; };
+		EA9175572140D41600A3EF67 /* tracking_model_0_2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA9175542140D41500A3EF67 /* tracking_model_0_2.mlmodel */; };
 		EA94BB4D211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94BB4C211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift */; };
 		EA94BB4E211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94BB4C211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift */; };
 		EA94BB4F211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94BB4C211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift */; };
@@ -255,6 +258,7 @@
 		EA855DEC20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewController.swift; sourceTree = "<group>"; };
 		EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
+		EA9175542140D41500A3EF67 /* tracking_model_0_2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = tracking_model_0_2.mlmodel; sourceTree = "<group>"; };
 		EA94BB4C211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorkoutDetailCVCell.swift; sourceTree = "<group>"; };
 		EA94BB50211D4DC3002E8875 /* RecentWorkoutDetailTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorkoutDetailTVCell.swift; sourceTree = "<group>"; };
 		EA97D95420E1728E00BE4C60 /* ExerciseHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistoryViewController.swift; sourceTree = "<group>"; };
@@ -413,6 +417,7 @@
 				F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */,
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
+				EA9175542140D41500A3EF67 /* tracking_model_0_2.mlmodel */,
 				F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */,
 				F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */,
 				F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */,
@@ -802,6 +807,7 @@
 				EA8C64A120D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
 				EAC0DD4E20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA64310221120E9B000EAED5 /* NewExerciseTableViewController.swift in Sources */,
+				EA9175552140D41600A3EF67 /* tracking_model_0_2.mlmodel in Sources */,
 				EAABE9F620CC6D7D0024B222 /* ShowAllRoutinesTableViewCell.swift in Sources */,
 				EADD315421236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift in Sources */,
 				EABD59B5211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */,
@@ -860,6 +866,7 @@
 				EA84FCBF20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
 				EA6431212114F7BE000EAED5 /* CollapsibleTableViewHeader.swift in Sources */,
 				EA8C64A220D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
+				EA9175562140D41600A3EF67 /* tracking_model_0_2.mlmodel in Sources */,
 				EA77604420E43D280052774F /* RoutineCollectionViewCell.swift in Sources */,
 				EA855DEE20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
 				EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
@@ -920,6 +927,7 @@
 				EA84FCC020E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
 				EA6431222114F7BE000EAED5 /* CollapsibleTableViewHeader.swift in Sources */,
 				EA8C64A320D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
+				EA9175572140D41600A3EF67 /* tracking_model_0_2.mlmodel in Sources */,
 				EA77604520E43D290052774F /* RoutineCollectionViewCell.swift in Sources */,
 				EA855DEF20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
 				EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
