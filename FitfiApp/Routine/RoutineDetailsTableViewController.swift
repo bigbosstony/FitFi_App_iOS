@@ -76,6 +76,9 @@ class RoutineDetailsTableViewController: UITableViewController {
             secondVC.signal = "edit"
             secondVC.selectedRoutine = selectedRoutine
             secondVC.delegate = self
+        } else if segue.identifier == "goToManualTrackingVC" {
+            let thirdVC = segue.destination as! ManualTrackingVC
+            thirdVC.selectedRoutine = selectedRoutine
         }
     }
     
@@ -116,8 +119,8 @@ class RoutineDetailsTableViewController: UITableViewController {
         newRoutineHistory.totalWeight = totalWeight
         save()
         
-        //goTo TrackingVC
-        performSegue(withIdentifier: "goToTestingVC", sender: self)
+        //Go To Manual TrackingVC
+        performSegue(withIdentifier: "goToManualTrackingVC", sender: self)
     }
     
     

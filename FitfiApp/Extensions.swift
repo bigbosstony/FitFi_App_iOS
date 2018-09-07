@@ -194,3 +194,33 @@ extension UIColor {
     }
     
 }
+
+
+extension UICollectionView {
+    func scrollToNextItem() {
+        let contentOffset = CGFloat(floor(self.contentOffset.x + self.bounds.size.width))
+        self.moveToFrame(contentOffset: contentOffset)
+    }
+    
+    func scrollToPreviousItem() {
+        let contentOffset = CGFloat(floor(self.contentOffset.x - self.bounds.size.width))
+        self.moveToFrame(contentOffset: contentOffset)
+    }
+    
+    func moveToFrame(contentOffset : CGFloat) {
+        let frame: CGRect = CGRect(x: contentOffset, y: self.contentOffset.y , width: self.frame.width, height: self.frame.height)
+        self.scrollRectToVisible(frame, animated: true)
+    }
+}
+
+extension NSObject {
+    func timeString(time: TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
+    }
+    
+
+
+}

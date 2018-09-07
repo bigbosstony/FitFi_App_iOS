@@ -23,6 +23,13 @@ let exercise = [
     6 : "None"
 ]
 
+
+
+let devices = [
+    true : "Dumnbell 5lb",
+    false : "Dumbbell 20lb"
+]
+
 //MARK: Testing
 struct CurrentExercise {
     var name: String
@@ -33,6 +40,8 @@ struct CurrentExercise {
         self.counts = counts
     }
 }
+
+
 
 class SmallTrackingViewController: UIViewController {
     
@@ -78,7 +87,6 @@ class SmallTrackingViewController: UIViewController {
     var currentExerciseArray = [CurrentExercise]()
     var counter = 0
     var tempExercise = "Biceps"
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

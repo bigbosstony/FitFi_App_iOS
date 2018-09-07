@@ -25,6 +25,9 @@
 		EA40F9F620EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */; };
 		EA40F9F720EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */; };
 		EA40F9F820EDCC35009F2CCB /* CreateNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */; };
+		EA4ACA2F2141B5E600FD1D59 /* SetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4ACA2E2141B5E600FD1D59 /* SetCollectionViewCell.swift */; };
+		EA4ACA302141B5E600FD1D59 /* SetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4ACA2E2141B5E600FD1D59 /* SetCollectionViewCell.swift */; };
+		EA4ACA312141B5E600FD1D59 /* SetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4ACA2E2141B5E600FD1D59 /* SetCollectionViewCell.swift */; };
 		EA61DE7920C8913300075FCE /* RoutinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */; };
 		EA64310221120E9B000EAED5 /* NewExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA64310121120E9B000EAED5 /* NewExerciseTableViewController.swift */; };
 		EA64310321120E9B000EAED5 /* NewExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA64310121120E9B000EAED5 /* NewExerciseTableViewController.swift */; };
@@ -236,6 +239,7 @@
 		EA30911720C7184D00E09DDF /* RecentWorkoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorkoutCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA30911B20C7199D00E09DDF /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		EA40F9F520EDCC35009F2CCB /* CreateNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewAccountViewController.swift; sourceTree = "<group>"; };
+		EA4ACA2E2141B5E600FD1D59 /* SetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA61DE7820C8913300075FCE /* RoutinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewCell.swift; sourceTree = "<group>"; };
 		EA64310121120E9B000EAED5 /* NewExerciseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseTableViewController.swift; sourceTree = "<group>"; };
 		EA64310521121A16000EAED5 /* NewExerciseNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExerciseNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -546,6 +550,7 @@
 			children = (
 				EAA11D25213846BC005D9FE4 /* ManualTrackingVC.swift */,
 				EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */,
+				EA4ACA2E2141B5E600FD1D59 /* SetCollectionViewCell.swift */,
 			);
 			path = "Manual Tracking";
 			sourceTree = "<group>";
@@ -814,6 +819,7 @@
 				EA84FCBE20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
 				EA855DE520F5438C000D7EA5 /* CalendarViewController.swift in Sources */,
 				EA64310E2112334E000EAED5 /* ExerciseCategoryTableViewController.swift in Sources */,
+				EA4ACA2F2141B5E600FD1D59 /* SetCollectionViewCell.swift in Sources */,
 				EA64310A21121A4F000EAED5 /* NewExerciseCategoryTableViewCell.swift in Sources */,
 				EA77604E20E4498A0052774F /* Data.xcdatamodeld in Sources */,
 				EA855DED20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
@@ -873,6 +879,7 @@
 				EA77604620E43D2D0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EADD314F212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */,
+				EA4ACA302141B5E600FD1D59 /* SetCollectionViewCell.swift in Sources */,
 				EA64310B21121A4F000EAED5 /* NewExerciseCategoryTableViewCell.swift in Sources */,
 				EAA11D2B2138530F005D9FE4 /* selectRoutineCell.swift in Sources */,
 				EABD59B6211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */,
@@ -901,6 +908,7 @@
 				F16E8E192135DD9400455C87 /* scheduleSelectedVC.swift in Sources */,
 				EA855DEB20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				EA77603720E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
+				EA4ACA312141B5E600FD1D59 /* SetCollectionViewCell.swift in Sources */,
 				EA77604120E43D1F0052774F /* TodayCollectionViewCell.swift in Sources */,
 				EA6431102112334E000EAED5 /* ExerciseCategoryTableViewController.swift in Sources */,
 				EAA11D28213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */,
