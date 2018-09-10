@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 struct CurrentWorkoutExercise {
     var name: String
+    var category: String
+    var calorie: Int16
     var setArray: [Int16]
     var setDoneArray: [Bool]
+    var weightArray: [Int16]
     var done: Bool
 }
 
@@ -40,6 +44,8 @@ class ManualTrackingVC: UIViewController {
     var scrollOffsetXmax : CGFloat = 0
     
     var seconds = 0
+    
+    var startTime: Date?
 
     var selectedRoutine: Routine? {
         didSet {
@@ -49,8 +55,9 @@ class ManualTrackingVC: UIViewController {
                     for exercise in exerciseArray as! [Routine_Exercise] {
                         let setArray = [Int16](repeating: exercise.reps, count: Int(exercise.sets))
                         let setDoneArray = [Bool](repeating: false, count: Int(exercise.sets))
+                        let weightArray = [Int16](repeating: 0, count: Int(exercise.sets))
                         
-                        let newCurrentWorkoutExercise = CurrentWorkoutExercise(name: exercise.name!, setArray: setArray, setDoneArray: setDoneArray, done: false)
+                        let newCurrentWorkoutExercise = CurrentWorkoutExercise(name: exercise.name!, category: exercise.category!, calorie: 0, setArray: setArray, setDoneArray: setDoneArray, weightArray: weightArray, done: false)
                         currentWorkoutExerciseArray.append(newCurrentWorkoutExercise)
                     }
                 }
@@ -59,6 +66,9 @@ class ManualTrackingVC: UIViewController {
             print(currentWorkoutExerciseArray)
         }
     }
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +84,8 @@ class ManualTrackingVC: UIViewController {
         let collectionViewLayout = exerciseCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
         collectionViewLayout?.sectionInset = UIEdgeInsets(top: 0, left: sectionInsetValue, bottom: 0, right: sectionInsetValue)
         collectionViewLayout?.invalidateLayout()
+        
+        startTime = Date()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,12 +112,18 @@ class ManualTrackingVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func finishButtonPressed(_ sender: UIButton) {
+        saveWorkoutResult(from: currentWorkoutExerciseArray)
+        dismiss(animated: true, completion: nil)
+    }
+    
     //Next Button Event
     @IBAction func goToNextButtonPressed(_ sender: UIButton) {
         print(currentWorkoutExerciseArray.count, currentWorkoutExerciseIndex, currentWorkoutExerciseSetIndex)
         
         if nextButton.titleLabel?.text == "Finish" {
             //MARK: Save
+            saveWorkoutResult(from: currentWorkoutExerciseArray)
             self.dismiss(animated: true, completion: nil)
             
         } else if currentWorkoutExerciseIndex < currentWorkoutExerciseArray.count {
@@ -158,6 +176,75 @@ extension ManualTrackingVC {
         titleLabel.textAlignment = .center
         titleLabel.attributedText = attributedString1
     }
+    
+    //Save Result to CoreData
+    func saveWorkoutResult(from workouts: [CurrentWorkoutExercise]) {
+        let newRoutineHistory = Routine_History(context: context)
+        let endTime = Date()
+        
+        newRoutineHistory.name = selectedRoutine?.name
+        newRoutineHistory.auto = false
+        newRoutineHistory.start = startTime
+        newRoutineHistory.end = endTime
+        newRoutineHistory.duration = Int16((newRoutineHistory.end?.timeIntervalSince(newRoutineHistory.start!))! / 60)
+        newRoutineHistory.totalWeight = 0
+        newRoutineHistory.totalCalorie = 0
+        
+        for exercise in workouts {
+            if exercise.done == true {
+                let newExerciseHistory = Exercise_History(context: context)
+                newExerciseHistory.name = exercise.name
+                newExerciseHistory.category = exercise.category
+                newExerciseHistory.calorie = 0
+                newExerciseHistory.weight = 0
+                
+                if exercise.setArray.count == exercise.weightArray.count {
+                    let sets = exercise.setArray.count
+                    for set in 0..<sets {
+                        let newSetRep = Set_Rep(context: context)
+                        newSetRep.rep = exercise.setArray[set]
+                        newSetRep.weight = exercise.weightArray[set]
+                        newSetRep.parentExerciseHistory = newExerciseHistory
+                        newExerciseHistory.calorie = newExerciseHistory.calorie + newSetRep.rep * newSetRep.weight * 5
+                        newExerciseHistory.weight = newExerciseHistory.weight + newSetRep.rep * newSetRep.weight
+                    }
+                }
+                newExerciseHistory.parentRoutineHistory = newRoutineHistory
+                newRoutineHistory.totalWeight = newRoutineHistory.totalWeight + newExerciseHistory.weight
+                newRoutineHistory.totalCalorie = newRoutineHistory.totalCalorie + newExerciseHistory.calorie
+                
+            } else if exercise.setDoneArray.index(of: true) != nil {
+                let newExerciseHistory = Exercise_History(context: context)
+                guard let sets = exercise.setDoneArray.index(of: true) else { return }
+                
+                newExerciseHistory.name = exercise.name
+                newExerciseHistory.category = exercise.category
+                newExerciseHistory.calorie = 0
+                newExerciseHistory.weight = 0
+                
+                for set in 0...sets {
+                    let newSetRep = Set_Rep(context: context)
+                    newSetRep.rep = exercise.setArray[set]
+                    newSetRep.weight = exercise.weightArray[set]
+                    newSetRep.parentExerciseHistory = newExerciseHistory
+                    newExerciseHistory.calorie = newExerciseHistory.calorie + newSetRep.rep * newSetRep.weight * 5
+                    newExerciseHistory.weight = newExerciseHistory.weight + newSetRep.rep * newSetRep.weight
+                }
+                newExerciseHistory.parentRoutineHistory = newRoutineHistory
+                newRoutineHistory.totalWeight = newRoutineHistory.totalWeight + newExerciseHistory.weight
+                newRoutineHistory.totalCalorie = newRoutineHistory.totalCalorie + newExerciseHistory.calorie
+                
+            } else {
+                print("None Finished Exercise")
+            }
+        }
+        
+        do {
+           try context.save()
+        } catch {
+            print(error)
+        }
+    }
 }
 
 extension ManualTrackingVC: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -168,17 +255,8 @@ extension ManualTrackingVC: UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("From Manual Tracking VC")
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exerciseCVCell", for: indexPath) as! ExerciseCollectionViewCell
-        cell.setArray = currentWorkoutExerciseArray[indexPath.row].setArray
-        cell.setDoneArray = currentWorkoutExerciseArray[indexPath.row].setDoneArray
-        cell.indexPath = indexPath
-        cell.setCollectionView.reloadData()
         
-        if let index = currentWorkoutExerciseArray[indexPath.row].setDoneArray.index(of: false) {
-            cell.mainCounterLabel.text = String(currentWorkoutExerciseArray[indexPath.row].setArray[index])
-        } else {
-            cell.mainCounterLabel.text = String(currentWorkoutExerciseArray[indexPath.row].setArray.last!)
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exerciseCVCell", for: indexPath) as! ExerciseCollectionViewCell
         
         //Setuo Toolbar for Keypad
         let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 42))
@@ -188,6 +266,26 @@ extension ManualTrackingVC: UICollectionViewDelegate, UICollectionViewDataSource
         toolbar.setItems([flexSpace, doneButton], animated: true)
         
         cell.weightLabel.inputAccessoryView = toolbar
+        cell.weightLabel.delegate = self
+        
+        cell.setArray = currentWorkoutExerciseArray[indexPath.row].setArray
+        cell.setDoneArray = currentWorkoutExerciseArray[indexPath.row].setDoneArray
+        cell.weightArray = currentWorkoutExerciseArray[indexPath.row].weightArray
+        cell.indexPath = indexPath
+        cell.setCollectionView.reloadData()
+        
+        if let index = currentWorkoutExerciseArray[indexPath.row].setDoneArray.index(of: false) {
+            cell.mainCounterLabel.text = String(currentWorkoutExerciseArray[indexPath.row].setArray[index])
+            if currentWorkoutExerciseArray[indexPath.row].weightArray[index] == 0 {
+                cell.weightLabel.text = ""
+            } else {
+                cell.weightLabel.text = String(currentWorkoutExerciseArray[indexPath.row].weightArray[index])
+            }
+        } else {
+            cell.mainCounterLabel.text = String(currentWorkoutExerciseArray[indexPath.row].setArray.last!)
+            cell.weightLabel.text = ""
+        }
+        
         
         cell.delegate = self
         
@@ -217,7 +315,6 @@ extension ManualTrackingVC: UICollectionViewDelegate, UICollectionViewDataSource
     }
 }
 
-
 extension ManualTrackingVC: ExerciseCollectionViewCellDelegate {
     func ExerciseCollectionViewCellDidTapPlus(_ sender: ExerciseCollectionViewCell) {
         if let index = sender.setDoneArray.index(of: false) {
@@ -241,10 +338,33 @@ extension ManualTrackingVC: ExerciseCollectionViewCellDelegate {
             currentWorkoutExerciseArray[sender.indexPath.row].setArray[index] = numberMinusOne
         }
     }
-    
-    
 }
 
+extension ManualTrackingVC: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //Found the current selected IndexPath
+        let center: CGPoint = textField.center
+        let rootViewPoint: CGPoint = textField.superview!.convert(center, to: exerciseCollectionView)
+        let indexPath: IndexPath = exerciseCollectionView.indexPathForItem(at: rootViewPoint)! as IndexPath
+        
+        if let index = currentWorkoutExerciseArray[indexPath.row].setDoneArray.index(of: false) {
+            if textField.text == "" {
+                print("Enter a Nummber")
+            } else {
+                let weight = Int16(textField.text!)
+                currentWorkoutExerciseArray[indexPath.row].weightArray[index] = weight!
+                exerciseCollectionView.reloadData()
+            }
+        }
+    }
+    
+    //MARK: Set Max Length to 3 Digit
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            guard let text = textField.text else { return true }
+            let newLength = text.count + string.count - range.length
+            return newLength <= 3 // Bool
+    }
+}
 
 
 

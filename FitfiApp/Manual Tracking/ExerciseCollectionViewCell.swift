@@ -17,6 +17,7 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
     
     var setArray: [Int16] = []
     var setDoneArray: [Bool] = []
+    var weightArray: [Int16] = []
     var indexPath: IndexPath!
     
     @IBOutlet weak var setCollectionView: UICollectionView!
@@ -67,7 +68,11 @@ extension ExerciseCollectionViewCell: UICollectionViewDataSource, UICollectionVi
             cell.repsLabel.textColor = #colorLiteral(red: 0.6078431373, green: 0.6078431373, blue: 0.6078431373, alpha: 1)
         }
         
-        cell.weightLabel.text = "120 lb"
+        if weightArray[indexPath.row] == 0 {
+            cell.weightLabel.text = ""
+        } else {
+            cell.weightLabel.text = String(weightArray[indexPath.row])
+        }
         
         return cell
     }
