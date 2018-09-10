@@ -6,7 +6,8 @@ target 'FitfiApp' do
   use_frameworks!
 	
 	pod 'SwiftCharts', '~> 0.6.1'
-
+	
+	 pod 'JTAppleCalendar', '~> 7.0'
 
     pod 'Alamofire', '~> 4.7'
 

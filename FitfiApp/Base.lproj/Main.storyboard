@@ -1989,39 +1989,193 @@
             </objects>
             <point key="canvasLocation" x="2239.130434782609" y="1800.0000000000002"/>
         </scene>
-        <!--View Controller-->
+        <!--Ib Calendar Data Source-->
         <scene sceneID="XWe-Pi-HUB">
             <objects>
-                <viewController id="wI1-FH-FDO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="calenderPopUpID" id="wI1-FH-FDO" customClass="PopUpCalenderVC" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YI6-IV-e2S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6HK-pI-43V">
-                                <rect key="frame" x="0.0" y="94" width="414" height="290"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xFC-6o-olu">
+                                <rect key="frame" x="0.0" y="20" width="414" height="378"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zMF-Hf-9nn">
-                                        <rect key="frame" x="8" y="21" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ez4-RU-Hc2">
-                                        <rect key="frame" x="0.0" y="157" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hc-Gj-9Md">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <textAttributes key="titleTextAttributes">
+                                            <color key="textColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </textAttributes>
+                                        <textAttributes key="largeTitleTextAttributes">
+                                            <color key="textColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </textAttributes>
+                                        <items>
+                                            <navigationItem title="Auguast 2018" id="tpf-86-gTn">
+                                                <barButtonItem key="rightBarButtonItem" title="Calander" image="TabBarIcons/Calendar" id="m5K-fv-vXW">
+                                                    <connections>
+                                                        <action selector="closeBtn:" destination="wI1-FH-FDO" id="Yny-nb-jR9"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cGr-cY-Qe5">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVi-uf-NDK">
+                                                <rect key="frame" x="0.0" y="0.0" width="59" height="56"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1k-Bq-nBm">
+                                                <rect key="frame" x="59" y="0.0" width="59.333333333333343" height="56"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0y-0y-VNL">
+                                                <rect key="frame" x="118.33333333333331" y="0.0" width="59" height="56"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOb-vJ-qV9">
+                                                <rect key="frame" x="177.33333333333334" y="0.0" width="59.333333333333343" height="56"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4g-0N-Qnp">
+                                                <rect key="frame" x="236.66666666666663" y="0.0" width="59" height="56"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3C-Ui-mFq">
+                                                <rect key="frame" x="295.66666666666669" y="0.0" width="59.333333333333314" height="56"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1SY-UX-zbg">
+                                                <rect key="frame" x="355" y="0.0" width="59" height="56"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="S1k-Bq-nBm" firstAttribute="top" secondItem="cGr-cY-Qe5" secondAttribute="top" id="7LU-m3-hVa"/>
+                                            <constraint firstAttribute="bottom" secondItem="N0y-0y-VNL" secondAttribute="bottom" id="9ju-q9-TGQ"/>
+                                            <constraint firstAttribute="height" constant="56.329999999999998" id="E7j-3Y-o3y"/>
+                                            <constraint firstItem="R4g-0N-Qnp" firstAttribute="top" secondItem="cGr-cY-Qe5" secondAttribute="top" id="QRu-ab-olX"/>
+                                            <constraint firstItem="c3C-Ui-mFq" firstAttribute="top" secondItem="cGr-cY-Qe5" secondAttribute="top" id="UvK-ba-fZG"/>
+                                            <constraint firstAttribute="bottom" secondItem="1SY-UX-zbg" secondAttribute="bottom" id="WKa-tT-7Yx"/>
+                                            <constraint firstAttribute="bottom" secondItem="c3C-Ui-mFq" secondAttribute="bottom" id="Wo6-L1-Fzg"/>
+                                            <constraint firstItem="EOb-vJ-qV9" firstAttribute="top" secondItem="cGr-cY-Qe5" secondAttribute="top" id="a0B-9d-bLz"/>
+                                            <constraint firstAttribute="bottom" secondItem="S1k-Bq-nBm" secondAttribute="bottom" id="b6U-Je-vhv"/>
+                                            <constraint firstItem="N0y-0y-VNL" firstAttribute="top" secondItem="cGr-cY-Qe5" secondAttribute="top" id="bRi-M4-DLc"/>
+                                            <constraint firstAttribute="bottom" secondItem="NVi-uf-NDK" secondAttribute="bottom" id="fVP-2n-zQY"/>
+                                            <constraint firstItem="1SY-UX-zbg" firstAttribute="top" secondItem="cGr-cY-Qe5" secondAttribute="top" id="gw0-Kr-H90"/>
+                                            <constraint firstAttribute="bottom" secondItem="R4g-0N-Qnp" secondAttribute="bottom" id="h8u-uG-9vw"/>
+                                            <constraint firstItem="NVi-uf-NDK" firstAttribute="top" secondItem="cGr-cY-Qe5" secondAttribute="top" id="or5-kB-og2"/>
+                                            <constraint firstAttribute="bottom" secondItem="EOb-vJ-qV9" secondAttribute="bottom" id="t4j-9f-SXC"/>
+                                        </constraints>
+                                    </stackView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zVI-9n-qt2" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
+                                        <rect key="frame" x="0.0" y="100" width="414" height="278"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="278" id="3V8-SF-zPH"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HEs-qk-VmN">
+                                            <size key="itemSize" width="110" height="85"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="CoustomCell" id="dGU-SJ-rAQ" customClass="CoustomCell" customModule="FitfiApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="85"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="85"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXD-Ml-hTG">
+                                                            <rect key="frame" x="34" y="49.333333333333336" width="42" height="21.000000000000007"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngd-fJ-2V2">
+                                                            <rect key="frame" x="35" y="40" width="40" height="40"/>
+                                                            <color key="backgroundColor" red="0.99215686274509807" green="0.96470588235294119" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="5hH-PZ-Wia"/>
+                                                                <constraint firstAttribute="width" constant="40" id="G2L-Zx-5En"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstItem="zXD-Ml-hTG" firstAttribute="centerY" secondItem="dGU-SJ-rAQ" secondAttribute="centerY" id="3M7-pV-vk6"/>
+                                                    <constraint firstItem="ngd-fJ-2V2" firstAttribute="centerX" secondItem="dGU-SJ-rAQ" secondAttribute="centerX" id="8Jg-Lk-SLU"/>
+                                                    <constraint firstItem="ngd-fJ-2V2" firstAttribute="centerY" secondItem="dGU-SJ-rAQ" secondAttribute="centerY" id="ACB-Hu-LnE"/>
+                                                    <constraint firstItem="zXD-Ml-hTG" firstAttribute="centerX" secondItem="dGU-SJ-rAQ" secondAttribute="centerX" id="WGO-Aa-OB9"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dateLabel" destination="zXD-Ml-hTG" id="35W-DO-FqO"/>
+                                                    <outlet property="selectedView" destination="ngd-fJ-2V2" id="qJs-Y5-W0I"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="wI1-FH-FDO" id="T5U-cm-HBC"/>
+                                            <outlet property="delegate" destination="wI1-FH-FDO" id="mZD-Av-N6j"/>
+                                            <outlet property="ibCalendarDataSource" destination="wI1-FH-FDO" id="fE8-uj-GAh"/>
+                                            <outlet property="ibCalendarDelegate" destination="wI1-FH-FDO" id="5VZ-Yh-T9b"/>
+                                            <outlet property="prefetchDataSource" destination="wI1-FH-FDO" id="U4G-mK-jI7"/>
+                                        </connections>
+                                    </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="290" id="qAE-WN-4hp"/>
+                                    <constraint firstItem="8hc-Gj-9Md" firstAttribute="leading" secondItem="xFC-6o-olu" secondAttribute="leading" id="Onm-B8-he7"/>
+                                    <constraint firstAttribute="trailing" secondItem="8hc-Gj-9Md" secondAttribute="trailing" id="znF-dS-7EY"/>
                                 </constraints>
-                            </view>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xFC-6o-olu" firstAttribute="leading" secondItem="Ojr-ZX-8la" secondAttribute="leading" id="6fF-GP-sP6"/>
+                            <constraint firstItem="xFC-6o-olu" firstAttribute="top" secondItem="Ojr-ZX-8la" secondAttribute="top" id="LI8-aW-bsD"/>
+                            <constraint firstItem="xFC-6o-olu" firstAttribute="trailing" secondItem="Ojr-ZX-8la" secondAttribute="trailing" id="ftm-ja-OPk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ojr-ZX-8la"/>
                     </view>
+                    <connections>
+                        <outlet property="CalenderTitleOutlet" destination="tpf-86-gTn" id="hb5-aN-XEw"/>
+                        <outlet property="calanderView" destination="zVI-9n-qt2" id="OOh-Hw-oqo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFN-Vj-CDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7808" y="967"/>
+            <point key="canvasLocation" x="7807.2463768115949" y="966.84782608695662"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="3mF-GR-0qh">
@@ -2154,15 +2308,24 @@
                         <viewLayoutGuide key="safeArea" id="2Tx-EW-Nn5"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Rsc-u8-FB7">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fqO-yo-qPr">
-                            <color key="tintColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="addScheduleBtn:" destination="oTV-G4-mVH" id="zHc-io-IiF"/>
-                                <segue destination="6fn-Zv-4BK" kind="presentation" id="dX0-mi-e4F"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Calender" image="Glyphs/Calendar Select" id="USz-Os-0g4">
+                                <connections>
+                                    <action selector="calenderBtnPressed:" destination="oTV-G4-mVH" id="WRv-tt-3ey"/>
+                                    <segue destination="wI1-FH-FDO" kind="presentation" identifier="popUpCalender" modalPresentationStyle="overCurrentContext" id="f08-6I-aOm"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="fqO-yo-qPr">
+                                <color key="tintColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="addScheduleBtn:" destination="oTV-G4-mVH" id="zHc-io-IiF"/>
+                                    <segue destination="6fn-Zv-4BK" kind="presentation" id="dX0-mi-e4F"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="calenderBtnOutlet" destination="USz-Os-0g4" id="ggv-I5-E53"/>
                         <outlet property="tableView" destination="ezP-gs-cag" id="Rkh-Fr-hud"/>
                         <segue destination="7gy-2n-0aK" kind="show" identifier="goToScheduleDetail" id="lk7-N6-phI"/>
                     </connections>
@@ -3831,6 +3994,7 @@ CgoKA
         <image name="ExerciseIcons/Exercise S" width="20" height="20"/>
         <image name="ExerciseIcons/Time" width="45" height="45"/>
         <image name="ExerciseIcons/Time S" width="20" height="20"/>
+        <image name="Glyphs/Calendar Select" width="24" height="24"/>
         <image name="Glyphs/Close" width="24" height="24"/>
         <image name="Glyphs/Edit" width="24" height="24"/>
         <image name="Glyphs/Gripper" width="22" height="9"/>

@@ -1,15 +1,24 @@
 PODS:
   - Alamofire (4.7.3)
+  - JTAppleCalendar (7.1.5)
   - SwiftCharts (0.6.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - JTAppleCalendar (~> 7.0)
   - SwiftCharts (~> 0.6.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - JTAppleCalendar
+    - SwiftCharts
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
   SwiftCharts: 77378d6cf667e95f9c79a745b6778e66eed5339c
 
-PODFILE CHECKSUM: c359927f2ef600472bbedd0dcada43d93b0fc1e5
+PODFILE CHECKSUM: 50e5e06e32daffec240e2bbee3d1af51b4c06219
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

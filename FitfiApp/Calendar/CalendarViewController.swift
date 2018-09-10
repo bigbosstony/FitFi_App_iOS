@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+
 extension Date {
     func dateFromDays(_ days: Int) -> Date {
         return (Calendar.current as NSCalendar).date(byAdding: .day, value: days, to: self, options: [])!
@@ -15,7 +16,31 @@ extension Date {
 }
 
 class CalendarViewController: UIViewController {
-    
+    var popUpFlag:Int = 0
+    @IBOutlet weak var calenderBtnOutlet: UIBarButtonItem!
+    @IBAction func calenderBtnPressed(_ sender: UIBarButtonItem) {
+        
+//        if(popUpFlag == 0)
+//        {
+//            let popVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "calenderPopUpID") as! PopUpCalenderVC
+//            
+//            popVC.view.frame = self.view.frame
+//            popVC.view.tag = 100
+//        self.addChildViewController(popVC)
+//        self.view.addSubview(popVC.view)
+//        popVC.didMove(toParentViewController: self)
+//        popUpFlag = 1
+//        }
+//        else{
+//            popUpFlag = 0
+//            if let viewWithTag = self.view.viewWithTag(100) {
+//                viewWithTag.removeFromSuperview()
+//            }else{
+//                print("No!")
+//            }
+//        }
+        
+    }
     @IBAction func addScheduleBtn(_ sender: Any) {
         print("+ tapped")
     }
@@ -548,6 +573,12 @@ extension CalendarViewController: UITableViewDelegate {
             scheduleVC.date = selectedDate
             
         }
+        if(segue.identifier == "popUpCalender")
+        {
+            //assign date
+            
+        }
+        
     }
 }
 extension CalendarViewController{
