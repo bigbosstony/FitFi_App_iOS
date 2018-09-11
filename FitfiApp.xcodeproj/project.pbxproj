@@ -184,6 +184,7 @@
 		F196876521384C6A0081C43E /* ManualTrackingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196876321384C6A0081C43E /* ManualTrackingVC.swift */; };
 		F196876621384C6A0081C43E /* ManualTrackingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196876321384C6A0081C43E /* ManualTrackingVC.swift */; };
 		F1A88B1E214165B90076063E /* PopUpCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A88B1D214165B90076063E /* PopUpCalenderVC.swift */; };
+		F1C3B25721481A5D0088E944 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E51B20FE569F002B2A70 /* StatisticsViewController.swift */; };
 		F1C7AE3621232EFF001FB415 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */; };
 		F1C7AE3C21236293001FB415 /* selectRoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */; };
 		F1C7AE3E21237281001FB415 /* scheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */; };
@@ -878,6 +879,7 @@
 				EA64311321123C9F000EAED5 /* ExerciseCategoryTableViewCell.swift in Sources */,
 				EA7C92CC20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
 				EA77605920E484410052774F /* ProfileViewController.swift in Sources */,
+				F1C3B25721481A5D0088E944 /* StatisticsViewController.swift in Sources */,
 				EA98E51220FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
 				EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EA77604820E43D320052774F /* RoutinesTableViewCell.swift in Sources */,

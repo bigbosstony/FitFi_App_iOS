@@ -106,7 +106,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var exerciseHistoryArray = [Exercise_History]()
-    
+    var routineHistoryArray = [Routine_History]()
 
      func numberOfSections(in tableView: UITableView) -> Int {
         return sectionData.count
@@ -240,7 +240,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     var exReps:[Int] = []
     var exSets:[Int] = []
     var exWeight:[Int] = []
-    var exWorkOuts:[NSManagedObject] = []
+    var exWorkOuts:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         //oneMonthSelected()
@@ -380,7 +380,7 @@ extension StatisticsViewController{
             var nextCurrentDate = Date()
             var currentDateString = " "
             var previousDateString = " "
-            var n:Double = 110
+            let n:Double = 110
             var currrentDate = Date()
             var previousDate = Date()
             var BarsArray = [("JUN",n),("JUN",n),("JUN",n),("JUN",n)]
@@ -391,8 +391,8 @@ extension StatisticsViewController{
             var totalVolume:Double = 0
             var totalWorkOut:Double = 0
             for i in 0...3{
-                var tt:TimeInterval = -630000
-                var oneDay:TimeInterval = -90000
+                let tt:TimeInterval = -630000
+                let oneDay:TimeInterval = -90000
                 
                 currrentDate = Date()
                 if(i != 4){
@@ -476,7 +476,7 @@ extension StatisticsViewController{
             var nextCurrentDate = Date()
             var currentDateString = " "
             var previousDateString = " "
-            var n:Double = 110
+            let n:Double = 110
             var currrentDate = Date()
             var previousDate = Date()
             var BarsArray = [("JUN",n),("JUN",n),("JUN",n)]
@@ -487,8 +487,8 @@ extension StatisticsViewController{
             var totalVolume:Double = 0
             var totalWorkOut:Double = 0
             for i in 0...2{
-                var tt:TimeInterval = -252000
-                var oneDay:TimeInterval = -90000
+                let tt:TimeInterval = -252000
+                let oneDay:TimeInterval = -90000
                 
                 
                 currrentDate = nextCurrentDate
@@ -554,7 +554,7 @@ extension StatisticsViewController{
             }
             print(IOBPoints)
             generateXAxisValues()
-            print(xAxisValues)
+//            print(xAxisValues)
             let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
             bottomChart = generateIOBChartWithFrame(frame: frame)
             for view in volumeGraphView.subviews {
@@ -683,10 +683,10 @@ extension StatisticsViewController{
         exReps = []
         exSets = []
         exWeight = []
-        exWorkOuts = []
+        exWorkOuts = 0
         
         //for calculate seven days
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise_History")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine_History")
         let calendar = NSCalendar.current
         
         let now = NSDate()
@@ -698,17 +698,31 @@ extension StatisticsViewController{
         //        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         //        fetchRequest.sortDescriptors = [sortDescriptor]
         do {
-            exerciseHistoryArray = try context.fetch(fetchRequest) as! [Exercise_History]
+            routineHistoryArray = try context.fetch(fetchRequest) as! [Routine_History]
             
         } catch {
             print("Loading Exercises Error: \(error)")
         }
-        print(exerciseHistoryArray)
+        if(routineHistoryArray.count > 0)
+        {
+        exWorkOuts = routineHistoryArray.count
+        print(routineHistoryArray)
+        for i in routineHistoryArray{
+            exVolume = exVolume + Int(i.totalWeight)
+        }
+        }
         //for graph
         //        for view in workOutGraphView.subviews {
         //            view.removeFromSuperview()
         //        }
         //
+        for i in routineHistoryArray 
+        {
+            for j in i.exerciseHistory!
+            {
+                exerciseHistoryArray.append(j as! Exercise_History)
+            }
+        }
         for i in exerciseHistoryArray{
             if(exHistoryDict.contains(i.name!)){
                 //do nothing
@@ -765,15 +779,8 @@ extension StatisticsViewController{
             
             //print(i.parentRoutineHistory!.name!)
             
-            if(exWorkOuts.contains(context.object(with: (i.parentRoutineHistory!.objectID))))
-            {
-                //do nothing
-            }
-            else{
-                exWorkOuts.append(context.object(with: (i.parentRoutineHistory!.objectID)))
-                
-            }
-            exVolume = exVolume + Int(i.reps * i.sets * i.weight)
+           
+           // exVolume = exVolume + Int(i.reps * i.sets * i.weight)
             
             
         }
@@ -785,8 +792,8 @@ extension StatisticsViewController{
         //print(exVolume) Volume
         volumeLabel.text = "\(exVolume/2000) t"
         //print(exWorkOuts.count) total routines
-        workOutLabel.text = "\(exWorkOuts.count)"
-        return [Double(exHistoryDict.count) , Double(exVolume/2000), Double(exWorkOuts.count)]
+        workOutLabel.text = "\(exWorkOuts)"
+        return [Double(exHistoryDict.count) , Double(exVolume/2000), Double(exWorkOuts)]
     }
     
     private func generateIOBChartWithFrame(frame: CGRect) -> Chart? {
@@ -1021,33 +1028,33 @@ extension StatisticsViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showExerciseDetailVC" {
             let destinationVC = segue.destination as! ExerciseDetailsViewController
-            if let indexPath = exerciseTable.indexPathForSelectedRow {
+            if exerciseTable.indexPathForSelectedRow != nil {
               destinationVC.selectedExercise = exerciseObject!
                 destinationVC.fromStats = 1
             }
         }
     }
-    func oneMonthSelected()
-    {
-        //for calculate seven days
-        let calendar = NSCalendar.current
-        
-        let now = NSDate()
-        
-        // let sevenDaysAgo = calendar.dateByAddingUnit(.Day, value: -7, toDate: now, options: NSCalendar.Options())!
-        // let startDate = calendar.startOfDayForDate(sevenDaysAgo)
-        let predicate = NSPredicate(format:"(end >= %@) AND (start < %@)", now, now)
-        
-        //        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        //        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        do {
-            exerciseHistoryArray = try context.fetch(Exercise_History.fetchRequest())
-            
-        } catch {
-            print("Loading Exercises Error: \(error)")
-        }
-    }
+//    func oneMonthSelected()
+//    {
+//        //for calculate seven days
+//        let calendar = NSCalendar.current
+//
+//        let now = NSDate()
+//
+//        // let sevenDaysAgo = calendar.dateByAddingUnit(.Day, value: -7, toDate: now, options: NSCalendar.Options())!
+//        // let startDate = calendar.startOfDayForDate(sevenDaysAgo)
+//        let predicate = NSPredicate(format:"(end >= %@) AND (start < %@)", now, now)
+//
+//        //        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+//        //        fetchRequest.sortDescriptors = [sortDescriptor]
+//
+//        do {
+//            exerciseHistoryArray = try context.fetch(Exercise_History.fetchRequest())
+//
+//        } catch {
+//            print("Loading Exercises Error: \(error)")
+//        }
+//    }
 }
 
 

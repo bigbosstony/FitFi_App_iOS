@@ -35,6 +35,7 @@
         <relationship name="parentRoutine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine" inverseName="routineExercises" inverseEntity="Routine" syncable="YES"/>
     </entity>
     <entity name="Routine_History" representedClassName="Routine_History" syncable="YES" codeGenerationType="class">
+        <attribute name="auto" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -56,6 +57,7 @@
     </entity>
     <entity name="Set_Rep" representedClassName="Set_Rep" syncable="YES" codeGenerationType="class">
         <attribute name="rep" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="parentExerciseHistory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise_History" inverseName="setRep" inverseEntity="Exercise_History" syncable="YES"/>
     </entity>
     <elements>
@@ -63,8 +65,8 @@
         <element name="Exercise_History" positionX="135" positionY="-180" width="128" height="208"/>
         <element name="Routine" positionX="-315" positionY="45" width="128" height="103"/>
         <element name="Routine_Exercise" positionX="-36" positionY="68" width="128" height="135"/>
-        <element name="Routine_History" positionX="-81" positionY="-180" width="128" height="150"/>
+        <element name="Routine_History" positionX="-81" positionY="-180" width="128" height="163"/>
         <element name="Schedule" positionX="-524" positionY="45" width="128" height="178"/>
-        <element name="Set_Rep" positionX="124" positionY="89" width="128" height="73"/>
+        <element name="Set_Rep" positionX="124" positionY="89" width="128" height="88"/>
     </elements>
 </model>
