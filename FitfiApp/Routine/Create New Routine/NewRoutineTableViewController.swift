@@ -107,7 +107,7 @@ class NewRoutineTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! NewRoutineTableViewCell
         
-        //Set up Toolbar for Keypad
+        //MARK: Set up Toolbar for Keypad
         let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 42))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
@@ -141,7 +141,6 @@ class NewRoutineTableViewController: UITableViewController {
         return cell
     }
 
-    
     //Got To Next TextField
     @objc func nextButtonPressed() {
         print("next button pressed")
@@ -296,7 +295,6 @@ extension NewRoutineTableViewController: ReceiveRoutineExercises {
         }
     }
 }
-
 
 // TextField Delegate
 extension NewRoutineTableViewController: UITextFieldDelegate {

@@ -9,7 +9,8 @@
 import UIKit
 
 class SmallTrackingVCCollectionViewCell: UICollectionViewCell {
-
+    @IBOutlet weak var exerciseReps: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -30,7 +30,7 @@ class RoutineDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.tintColor = FitFiColor
-        self.view.tintColor = FitFiColor
+//        self.view.tintColor = FitFiColor
         loadExercises()
 
         print("Routine Details View Loaded")
@@ -76,48 +76,17 @@ class RoutineDetailsTableViewController: UITableViewController {
             secondVC.signal = "edit"
             secondVC.selectedRoutine = selectedRoutine
             secondVC.delegate = self
+        } else if segue.identifier == "goToManualTrackingVC" {
+            let thirdVC = segue.destination as! ManualTrackingVC
+            thirdVC.selectedRoutine = selectedRoutine
         }
     }
     
     //MARK: Start Workout Button for Testing Only
     //Delete Me
     @IBAction func startWorkoutButtonPressed(_ sender: UIButton) {
-        print(routineExerciseArray)
-        var totalWeight: Int16 = 0, totalCalorie: Int16 = 0
-        var firstDate = UserDefaults.standard.object(forKey: "date") as! Date
-        UserDefaults.standard.set(yesterday(firstDate), forKey: "date")
-        let newRoutineHistory = Routine_History(context: context)
-        
-        newRoutineHistory.name = selectedRoutine?.name
-        newRoutineHistory.start = firstDate
-        print("First: ", firstDate)
-        
-        for exercise in routineExerciseArray {
-            let newExerciseHistory = Exercise_History(context: context)
-            let endDate = dateGenerator(firstDate)
-            print("First and End: ", firstDate, endDate)
-            newExerciseHistory.name = exercise.name
-            newExerciseHistory.category = exercise.category
-            newExerciseHistory.sets = exercise.sets
-            newExerciseHistory.reps = exercise.reps
-            newExerciseHistory.weight = Int16(arc4random_uniform(42))
-            newExerciseHistory.calorie = Int16(arc4random_uniform(1000))
-            newExerciseHistory.parentRoutineHistory = newRoutineHistory
-            newExerciseHistory.start = firstDate
-            newExerciseHistory.end = endDate
-            newExerciseHistory.equipment = equipments[Int(arc4random_uniform(2))]
-            totalWeight = totalWeight + newExerciseHistory.weight
-            totalCalorie = totalCalorie + newExerciseHistory.calorie
-            firstDate = endDate
-        }
-        newRoutineHistory.end = firstDate
-        newRoutineHistory.duration = Int16((newRoutineHistory.end?.timeIntervalSince(newRoutineHistory.start!))! / 60)
-        newRoutineHistory.totalCalorie = totalCalorie
-        newRoutineHistory.totalWeight = totalWeight
-        save()
-        
-        //goTo TrackingVC
-        performSegue(withIdentifier: "goToTestingVC", sender: self)
+        //Go To Manual TrackingVC
+        performSegue(withIdentifier: "goToManualTrackingVC", sender: self)
     }
     
     

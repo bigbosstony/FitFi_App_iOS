@@ -122,7 +122,7 @@ extension HomeViewController {
             fr.fetchOffset = 0
         }
         do { routineHistoryArray = try context.fetch(fr) as! [Routine_History] } catch { print(error) }
-//        routineHistoryArray = routineHistoryArray.reversed()
+        routineHistoryArray = routineHistoryArray.reversed()
         recentWorkoutCollectionView.reloadData()
     }
 }
