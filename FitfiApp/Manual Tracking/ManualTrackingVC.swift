@@ -134,6 +134,7 @@ class ManualTrackingVC: UIViewController {
             
             if currentWorkoutExerciseSetIndex < currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
                 nextButton.setTitle("Next Set", for: .normal)
+                
                 currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
                 currentWorkoutExerciseSetIndex += 1
                 
