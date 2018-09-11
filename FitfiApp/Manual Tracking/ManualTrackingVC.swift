@@ -195,7 +195,6 @@ extension ManualTrackingVC {
         newRoutineHistory.totalCalorie = 0
         
         for exercise in workouts {
-            print("newExercise")
             if exercise.done == true {
                 let newExerciseHistory = Exercise_History(context: context)
                 newExerciseHistory.name = exercise.name
@@ -212,7 +211,6 @@ extension ManualTrackingVC {
                     newSetRep.parentExerciseHistory = newExerciseHistory
                     newExerciseHistory.calorie = newExerciseHistory.calorie + newSetRep.rep * newSetRep.weight * 5
                     newExerciseHistory.weight = newExerciseHistory.weight + newSetRep.rep * newSetRep.weight
-                    print("newSetRep")
                 }
                 
                 newExerciseHistory.parentRoutineHistory = newRoutineHistory
@@ -221,14 +219,14 @@ extension ManualTrackingVC {
             }
                 else if exercise.setDoneArray.index(of: true) != nil {
                 let newExerciseHistory = Exercise_History(context: context)
-                guard let sets = exercise.setDoneArray.index(of: true) else { return }
-
+                guard let sets = exercise.setDoneArray.index(of: false) else { return }
+                print("Not Finished Exercise: \(sets)")
                 newExerciseHistory.name = exercise.name
                 newExerciseHistory.category = exercise.category
                 newExerciseHistory.calorie = 0
                 newExerciseHistory.weight = 0
 
-                for set in 0...sets {
+                for set in 0..<sets {
                     let newSetRep = Set_Rep(context: context)
                     newSetRep.rep = exercise.setArray[set]
                     newSetRep.weight = exercise.weightArray[set]
