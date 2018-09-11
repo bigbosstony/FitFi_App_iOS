@@ -487,7 +487,7 @@ extension StatisticsViewController{
             var totalVolume:Double = 0
             var totalWorkOut:Double = 0
             for i in 0...2{
-                let tt:TimeInterval = -252000
+                //let tt:TimeInterval = -252000
                 let oneDay:TimeInterval = -90000
                 
                 
@@ -576,7 +576,7 @@ extension StatisticsViewController{
             var nextCurrentDate = Date()
             var currentDateString = " "
             var previousDateString = " "
-            var n:Double = 110
+            let n:Double = 110
             var currrentDate = Date()
             var previousDate = Date()
             var BarsArray = [("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n)]
@@ -587,9 +587,9 @@ extension StatisticsViewController{
             var totalVolume:Double = 0
             var totalWorkOut:Double = 0
             for i in 0...11{
-                var tt:TimeInterval = -1764000
+               // var tt:TimeInterval = -1764000
                 
-                var oneDay:TimeInterval = -90000
+                let oneDay:TimeInterval = -90000
                 
                 
                 currrentDate = nextCurrentDate
@@ -652,7 +652,7 @@ extension StatisticsViewController{
             }
             print(IOBPoints)
             generateXAxisValues()
-            print(xAxisValues)
+          //  print(xAxisValues)
             let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
             bottomChart = generateIOBChartWithFrame(frame: frame)
             for view in volumeGraphView.subviews {
@@ -687,9 +687,9 @@ extension StatisticsViewController{
         
         //for calculate seven days
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine_History")
-        let calendar = NSCalendar.current
+       // let calendar = NSCalendar.current
         
-        let now = NSDate()
+        //let now = NSDate()
         
         // let sevenDaysAgo = calendar.dateByAddingUnit(.Day, value: -7, toDate: now, options: NSCalendar.Options())!
         // let startDate = calendar.startOfDayForDate(sevenDaysAgo)

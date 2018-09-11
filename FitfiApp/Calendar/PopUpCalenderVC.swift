@@ -121,7 +121,7 @@ extension PopUpCalenderVC:JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSou
                     validCell.selectedView.isHidden = false
                     validCell.selectedView.backgroundColor = UIColor.clear
                     validCell.layer.borderWidth = 1
-                    validCell.layer.borderColor = boarderColor as! CGColor
+                    validCell.layer.borderColor = boarderColor
                     
                 }
             }
@@ -152,7 +152,7 @@ extension PopUpCalenderVC:JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSou
        
     }
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        guard let cell = cell as? CoustomCell else {return}
+        guard cell is CoustomCell else {return}
         
     }
     
