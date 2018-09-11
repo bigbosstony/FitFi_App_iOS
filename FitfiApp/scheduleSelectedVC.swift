@@ -123,7 +123,17 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.tableFooterView = UIView()
+    
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        //nothing
+        if(fromEditToScheduleSelect == 1)
+        {
+            fromEditToScheduleSelect = 0
+           self.navigationController?.popViewController(animated: true)
+        }
     }
     func getRepeatString(schedule: Schedule) ->String{
         var string = ""

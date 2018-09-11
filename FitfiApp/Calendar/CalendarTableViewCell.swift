@@ -14,6 +14,8 @@ class CalendarTableViewCell: UITableViewCell {
     @IBOutlet weak var dayOfMonth: UILabel!
     @IBOutlet weak var todayMarker: UIView!
     
+    @IBOutlet weak var timeImageView: UIImageView!
+    @IBOutlet weak var exerciseImageView: UIView!
     @IBOutlet weak var estimatedTime: UILabel!
     @IBOutlet weak var totalExercise: UILabel!
     @IBOutlet weak var routineName: UILabel!

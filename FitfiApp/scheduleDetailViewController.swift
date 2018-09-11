@@ -18,24 +18,31 @@ class scheduleDetailViewController:UIViewController,UITableViewDelegate,UITableV
     @IBOutlet weak var table: UITableView!
     var tempDate:Date = Date()
     @IBOutlet weak var titlee: UINavigationItem!
-    var editFlag:Int = 0
-    var editSchedule:Schedule?{
-        didSet{
-            editFlag = 1
-        }
-    }
+   
     @IBAction func Done(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
         if(lastUpdated == 0){
            routineInSchedule = arrayForSchduleVC
+            if(editFlag == 1)
+            {
+                fromEdit = 1
+            }
         }
         else if(lastUpdated == 1)
         {
             date = tempDate
+            if(editFlag == 1)
+            {
+                fromEdit = 2
+            }
         }
         else if(lastUpdated == 2)
         {
                 day = arrayForSchduleVC
+            if(editFlag == 1)
+            {
+                fromEdit = 3
+            }
         }
     }
     @IBAction func Cancel(_ sender: UIBarButtonItem) {
@@ -80,6 +87,8 @@ class scheduleDetailViewController:UIViewController,UITableViewDelegate,UITableV
         }
         table.dataSource = self
         table.delegate = self
+        table.tableFooterView = UIView()
+    
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

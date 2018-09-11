@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import Alamofire
 import CoreData
+var scheduleToDelete:Schedule?
+var editFlag:Int = 0
+var fromEdit:Int = 0
+var fromEditToScheduleSelect:Int = 0
 class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var signal = 0
     var scheduleArray:[String]!
@@ -22,10 +26,13 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var sunday:Bool = false
     var routineArr:[Routine] = []
     var validationFlag:Int = 0
-    var editFlag:Int = 0
+    
+    
     var getSchedule:Schedule?{
     didSet{
+        
         editFlag = 1
+        scheduleToDelete = getSchedule
         print(getSchedule!)
         }
     }
@@ -34,6 +41,9 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
         if(editFlag == 1)
         {
+        editFlag = 0
+        fromEdit = 0
+        scheduleToDelete = nil
         self.dismiss(animated: true, completion: nil)
         }
         else
@@ -48,9 +58,9 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         //        some(2018-08-25 21:49:22 +0000)
         //        some(["Routine", "HH"])
         //        some(["Days", "MONDAY", "SUNDAY"])
+        
         if(routineInSchedule == nil){
             validationFlag = 1
-            
         }
         else if(date == nil)
         {
@@ -69,7 +79,22 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
         if(validationFlag == 0)
         {
-        
+        if(editFlag == 1)
+        {
+           let date = scheduleToDelete?.date
+            let fetchRequest: NSFetchRequest<Schedule> = Schedule.fetchRequest()
+            fetchRequest.predicate = NSPredicate.init(format: "date = %@",date as! NSDate)
+            let object = try! context.fetch(fetchRequest)
+            if let result = try? context.fetch(fetchRequest) {
+                for object in result {
+                    context.delete(object)
+                }
+            }
+            editFlag = 0
+            fromEdit = 0
+            fromEditToScheduleSelect = 1
+            scheduleToDelete = nil
+        }
         
  
        saveDataToSchedule()
@@ -97,7 +122,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         if indexPath.row == 0 && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
             cell.titleLabel.text = "Routine"
-            if(editFlag == 1)
+            if(editFlag == 1 && fromEdit == 0)
             {
                 let s = getSchedule?.schdule
                 var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
@@ -107,6 +132,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
                 cell.routinePreviewLabel.text = singleRoutineName
             }
+          
             else{
                 
             
@@ -127,7 +153,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
             {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
             cell.titleLabel.text = "Date"
-                if(editFlag == 1)
+                if(editFlag == 1 && fromEdit == 0)
                 {
                     cell.routinePreviewLabel.text = String(describing: getSchedule!.date!)
                 }
@@ -149,7 +175,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "selectRoutine", for: indexPath) as! selectRoutineCell
                 cell.titleLabel.text = "Day"
-                if(editFlag == 1)
+                if(editFlag == 1 && fromEdit == 0)
                 {
                     var string = ""
                     if(getSchedule?.sunday == true)
@@ -239,6 +265,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     override func viewDidAppear(_ animated: Bool) {
         print(scheduleArray)
+        
         scheduleTable.reloadData()
         
     }
@@ -247,6 +274,8 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         scheduleTable.dataSource = self
         scheduleTable.delegate = self
+        scheduleTable.tableFooterView = UIView()
+    
         
 //        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
 //

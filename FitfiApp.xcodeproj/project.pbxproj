@@ -172,6 +172,7 @@
 		EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
 		EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */; };
 		EAC0DD5520D4465D00AC7A1E /* ExerciseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */; };
+
 		EADD314E212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */; };
 		EADD314F212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */; };
 		EADD3150212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */; };
@@ -189,6 +190,12 @@
 		F16E8E172135DD9400455C87 /* scheduleSelectedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */; };
 		F16E8E182135DD9400455C87 /* scheduleSelectedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */; };
 		F16E8E192135DD9400455C87 /* scheduleSelectedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */; };
+		F178F2752141B64E001D3DB6 /* CoustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178F2742141B64E001D3DB6 /* CoustomCell.swift */; };
+		F196876421384C6A0081C43E /* ManualTrackingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196876321384C6A0081C43E /* ManualTrackingVC.swift */; };
+		F196876521384C6A0081C43E /* ManualTrackingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196876321384C6A0081C43E /* ManualTrackingVC.swift */; };
+		F196876621384C6A0081C43E /* ManualTrackingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196876321384C6A0081C43E /* ManualTrackingVC.swift */; };
+		F1A88B1E214165B90076063E /* PopUpCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A88B1D214165B90076063E /* PopUpCalenderVC.swift */; };
+		F1C3B25721481A5D0088E944 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E51B20FE569F002B2A70 /* StatisticsViewController.swift */; };
 		F1C7AE3621232EFF001FB415 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */; };
 		F1C7AE3C21236293001FB415 /* selectRoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */; };
 		F1C7AE3E21237281001FB415 /* scheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */; };
@@ -285,12 +292,16 @@
 		EAC0DD4420D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllExercisesTableViewCell.swift; sourceTree = "<group>"; };
 		EAC0DD4D20D3132300AC7A1E /* RoutinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewController.swift; sourceTree = "<group>"; };
 		EAC0DD5420D4465D00AC7A1E /* ExerciseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsViewController.swift; sourceTree = "<group>"; };
+
 		EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCollectionViewCell.swift; sourceTree = "<group>"; };
 		EADD315221236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTrackingVCCollectionViewCell.swift; sourceTree = "<group>"; };
 		EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallTrackingVCCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1324FED2125DEBD00A7F955 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
 		F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleSelectedVC.swift; sourceTree = "<group>"; };
+		F178F2742141B64E001D3DB6 /* CoustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoustomCell.swift; sourceTree = "<group>"; };
+		F196876321384C6A0081C43E /* ManualTrackingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualTrackingVC.swift; sourceTree = "<group>"; };
+		F1A88B1D214165B90076063E /* PopUpCalenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpCalenderVC.swift; sourceTree = "<group>"; };
 		F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleViewController.swift; path = Calendar/ScheduleViewController.swift; sourceTree = "<group>"; };
 		F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectRoutineCell.swift; sourceTree = "<group>"; };
 		F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleDetailViewController.swift; sourceTree = "<group>"; };
@@ -422,10 +433,12 @@
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
 				EA9175542140D41500A3EF67 /* tracking_model_0_2.mlmodel */,
+
 				F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */,
 				F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */,
 				F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */,
 				F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */,
+
 				EAC0DD5120D4045300AC7A1E /* Auto Tracking */,
 				EADD31512123651100E9A3C7 /* Manual Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
@@ -514,7 +527,9 @@
 			isa = PBXGroup;
 			children = (
 				EA855DE420F5438C000D7EA5 /* CalendarViewController.swift */,
+				F1A88B1D214165B90076063E /* PopUpCalenderVC.swift */,
 				EA855DE020F51A6B000D7EA5 /* CalendarTableViewCell.swift */,
+				F178F2742141B64E001D3DB6 /* CoustomCell.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -549,6 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA11D25213846BC005D9FE4 /* ManualTrackingVC.swift */,
+
 				EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */,
 				EA4ACA2E2141B5E600FD1D59 /* SetCollectionViewCell.swift */,
 			);
@@ -600,6 +616,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA30911420C6DA4300E09DDF /* Build configuration list for PBXNativeTarget "FitfiAppUITests" */;
 			buildPhases = (
+
+				97DDA61C9A319A0BAEB3F4AC /* [CP] Check Pods Manifest.lock */,
 				EA30910120C6DA4300E09DDF /* Sources */,
 				EA30910220C6DA4300E09DDF /* Frameworks */,
 				EA30910320C6DA4300E09DDF /* Resources */,
@@ -748,6 +766,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		97DDA61C9A319A0BAEB3F4AC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FitfiAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FC972BED72C4CED59DFE67E9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -756,11 +792,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftCharts/SwiftCharts.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCharts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -775,6 +813,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F178F2752141B64E001D3DB6 /* CoustomCell.swift in Sources */,
 				EAABEA3E20D032F30024B222 /* TrackingSViewController.swift in Sources */,
 				EAB0A70320C9E506005D7C8F /* RecentWorkoutDetailsTableViewController.swift in Sources */,
 				EA6431202114F7BE000EAED5 /* CollapsibleTableViewHeader.swift in Sources */,
@@ -798,6 +837,7 @@
 				EA98E51C20FE569F002B2A70 /* StatisticsViewController.swift in Sources */,
 				EA84FCAE20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EAC0DD4520D303E000AC7A1E /* ShowAllExercisesTableViewCell.swift in Sources */,
+				F1A88B1E214165B90076063E /* PopUpCalenderVC.swift in Sources */,
 				EA855DE920F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				F1C7AE3C21236293001FB415 /* selectRoutineCell.swift in Sources */,
 				EA8C64A520D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
@@ -806,6 +846,7 @@
 				EAABE9E320CB05EF0024B222 /* TodayCollectionViewCell.swift in Sources */,
 				EA94BB4D211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift in Sources */,
 				EAA11D26213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */,
+
 				F13E2D2E211E238D005A0AAF /* CollapsibleTableViewCell.swift in Sources */,
 				EADD314E212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */,
 				EA30911C20C7199D00E09DDF /* Data.swift in Sources */,
@@ -847,6 +888,7 @@
 				F13CA496213733BA00E10A0E /* ScheduleViewController.swift in Sources */,
 				EA97D95F20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
 				EAA11D27213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */,
+
 				EA855DEA20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				EA77603620E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
 				EA77604020E43D1F0052774F /* TodayCollectionViewCell.swift in Sources */,
@@ -859,6 +901,7 @@
 				EA64311321123C9F000EAED5 /* ExerciseCategoryTableViewCell.swift in Sources */,
 				EA7C92CC20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
 				EA77605920E484410052774F /* ProfileViewController.swift in Sources */,
+				F1C3B25721481A5D0088E944 /* StatisticsViewController.swift in Sources */,
 				EA98E51220FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
 				EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EA77604820E43D320052774F /* RoutinesTableViewCell.swift in Sources */,
@@ -913,6 +956,7 @@
 				EA6431102112334E000EAED5 /* ExerciseCategoryTableViewController.swift in Sources */,
 				EAA11D28213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */,
 				EAA11D2C21385310005D9FE4 /* selectRoutineCell.swift in Sources */,
+
 				EAABEA4020D032F30024B222 /* TrackingSViewController.swift in Sources */,
 				EA77604320E43D260052774F /* ShowAllRoutinesTableViewCell.swift in Sources */,
 				EAA11D2A213852CF005D9FE4 /* scheduleDetailViewController.swift in Sources */,
