@@ -18,7 +18,7 @@
         <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="parentRoutineHistory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine_History" inverseName="exerciseHistory" inverseEntity="Routine_History" syncable="YES"/>
-        <relationship name="setRep" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Set_Rep" inverseName="parentExerciseHistory" inverseEntity="Set_Rep" syncable="YES"/>
+        <relationship name="setRep" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Set_Rep" inverseName="parentExerciseHistory" inverseEntity="Set_Rep" syncable="YES"/>
     </entity>
     <entity name="Routine" representedClassName="Routine" syncable="YES" codeGenerationType="class">
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>

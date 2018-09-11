@@ -96,13 +96,18 @@ class RecentWorkoutDetailsTableViewController: UITableViewController {
 //MARK: Collection View DataSource and Delegate
 extension RecentWorkoutDetailsTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(currentExerciseHistory[collectionView.tag].sets)
+        guard let numberOfSet = currentExerciseHistory[collectionView.tag].setRep?.count else { return 0 }
+        return numberOfSet
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! RecentWorkoutDetailCVCell
-        cell.reps.text = String(currentExerciseHistory[collectionView.tag].reps)
-        cell.weight.text = String(currentExerciseHistory[collectionView.tag].weight) + " lb"
+        
+        guard let setRepArray = currentExerciseHistory[collectionView.tag].setRep?.array as? [Set_Rep] else { return cell }
+        print("set rep array: ", setRepArray[indexPath.row].rep)
+        
+        cell.reps.text = String(setRepArray[indexPath.row].rep)
+        cell.weight.text = String(setRepArray[indexPath.row].weight) + " lb"
         cell.equipment.text = currentExerciseHistory[collectionView.tag].equipment ?? ""
         
         return cell

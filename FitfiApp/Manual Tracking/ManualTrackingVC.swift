@@ -113,6 +113,7 @@ class ManualTrackingVC: UIViewController {
     }
     
     @IBAction func finishButtonPressed(_ sender: UIButton) {
+        print(currentWorkoutExerciseArray)
         saveWorkoutResult(from: currentWorkoutExerciseArray)
         dismiss(animated: true, completion: nil)
     }
@@ -123,6 +124,9 @@ class ManualTrackingVC: UIViewController {
         
         if nextButton.titleLabel?.text == "Finish" {
             //MARK: Save
+            currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
+            currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
+            
             saveWorkoutResult(from: currentWorkoutExerciseArray)
             self.dismiss(animated: true, completion: nil)
             
@@ -191,6 +195,7 @@ extension ManualTrackingVC {
         newRoutineHistory.totalCalorie = 0
         
         for exercise in workouts {
+            print("newExercise")
             if exercise.done == true {
                 let newExerciseHistory = Exercise_History(context: context)
                 newExerciseHistory.name = exercise.name
@@ -198,30 +203,31 @@ extension ManualTrackingVC {
                 newExerciseHistory.calorie = 0
                 newExerciseHistory.weight = 0
                 
-                if exercise.setArray.count == exercise.weightArray.count {
-                    let sets = exercise.setArray.count
-                    for set in 0..<sets {
-                        let newSetRep = Set_Rep(context: context)
-                        newSetRep.rep = exercise.setArray[set]
-                        newSetRep.weight = exercise.weightArray[set]
-                        newSetRep.parentExerciseHistory = newExerciseHistory
-                        newExerciseHistory.calorie = newExerciseHistory.calorie + newSetRep.rep * newSetRep.weight * 5
-                        newExerciseHistory.weight = newExerciseHistory.weight + newSetRep.rep * newSetRep.weight
-                    }
+                let sets = exercise.setArray.count
+                
+                for set in 0..<sets {
+                    let newSetRep = Set_Rep(context: context)
+                    newSetRep.rep = exercise.setArray[set]
+                    newSetRep.weight = exercise.weightArray[set]
+                    newSetRep.parentExerciseHistory = newExerciseHistory
+                    newExerciseHistory.calorie = newExerciseHistory.calorie + newSetRep.rep * newSetRep.weight * 5
+                    newExerciseHistory.weight = newExerciseHistory.weight + newSetRep.rep * newSetRep.weight
+                    print("newSetRep")
                 }
+                
                 newExerciseHistory.parentRoutineHistory = newRoutineHistory
                 newRoutineHistory.totalWeight = newRoutineHistory.totalWeight + newExerciseHistory.weight
                 newRoutineHistory.totalCalorie = newRoutineHistory.totalCalorie + newExerciseHistory.calorie
-                
-            } else if exercise.setDoneArray.index(of: true) != nil {
+            }
+                else if exercise.setDoneArray.index(of: true) != nil {
                 let newExerciseHistory = Exercise_History(context: context)
                 guard let sets = exercise.setDoneArray.index(of: true) else { return }
-                
+
                 newExerciseHistory.name = exercise.name
                 newExerciseHistory.category = exercise.category
                 newExerciseHistory.calorie = 0
                 newExerciseHistory.weight = 0
-                
+
                 for set in 0...sets {
                     let newSetRep = Set_Rep(context: context)
                     newSetRep.rep = exercise.setArray[set]
@@ -233,14 +239,18 @@ extension ManualTrackingVC {
                 newExerciseHistory.parentRoutineHistory = newRoutineHistory
                 newRoutineHistory.totalWeight = newRoutineHistory.totalWeight + newExerciseHistory.weight
                 newRoutineHistory.totalCalorie = newRoutineHistory.totalCalorie + newExerciseHistory.calorie
-                
+
             } else {
                 print("None Finished Exercise")
             }
         }
-        
+        save()
+
+    }
+    
+    func save() {
         do {
-           try context.save()
+            try context.save()
         } catch {
             print(error)
         }
