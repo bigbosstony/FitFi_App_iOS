@@ -134,9 +134,16 @@ class ManualTrackingVC: UIViewController {
             
             if currentWorkoutExerciseSetIndex < currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
                 nextButton.setTitle("Next Set", for: .normal)
-                
-                currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
-                currentWorkoutExerciseSetIndex += 1
+                if currentWorkoutExerciseArray[currentWorkoutExerciseIndex].weightArray[currentWorkoutExerciseSetIndex] == 0 {
+                    let alert = UIAlertController(title: "Oops", message: "Add Weight To Your Set", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                        print("Add Weight")
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
+                    currentWorkoutExerciseSetIndex += 1
+                }
                 
                 if currentWorkoutExerciseSetIndex == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
                     currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
@@ -287,6 +294,9 @@ extension ManualTrackingVC: UICollectionViewDelegate, UICollectionViewDataSource
             cell.mainCounterLabel.text = String(currentWorkoutExerciseArray[indexPath.row].setArray[index])
             if currentWorkoutExerciseArray[indexPath.row].weightArray[index] == 0 {
                 cell.weightLabel.text = ""
+                if index - 1 >= 0 {
+                    cell.weightLabel.placeholder = String(currentWorkoutExerciseArray[indexPath.row].weightArray[index - 1])
+                }
             } else {
                 cell.weightLabel.text = String(currentWorkoutExerciseArray[indexPath.row].weightArray[index])
             }
