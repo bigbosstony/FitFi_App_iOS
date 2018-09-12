@@ -716,6 +716,7 @@ extension StatisticsViewController{
         //            view.removeFromSuperview()
         //        }
         //
+        exerciseHistoryArray = []
         for i in routineHistoryArray 
         {
             for j in i.exerciseHistory!
