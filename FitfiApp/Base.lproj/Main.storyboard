@@ -77,7 +77,7 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="180" height="140"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WORKOUT NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="26u-Zz-tRV">
-                                                                                    <rect key="frame" x="10" y="12" width="160" height="16"/>
+                                                                                    <rect key="frame" x="10" y="12" width="117.5" height="16"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="16" id="orL-WW-QP5"/>
                                                                                     </constraints>
@@ -178,6 +178,13 @@
                                                                                         <constraint firstAttribute="width" constant="20" id="EwP-6a-OSc"/>
                                                                                     </constraints>
                                                                                 </imageView>
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Glyphs/Manual" translatesAutoresizingMaskIntoConstraints="NO" id="ZgT-Iy-oi8">
+                                                                                    <rect key="frame" x="135.5" y="10" width="20" height="20"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="height" constant="20" id="3dC-qI-n9V"/>
+                                                                                        <constraint firstAttribute="width" constant="20" id="gk1-9T-2f3"/>
+                                                                                    </constraints>
+                                                                                </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" red="0.99215686270000003" green="0.96470588239999999" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <constraints>
@@ -187,13 +194,14 @@
                                                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pmb-vd-w9e" secondAttribute="trailing" constant="20" symbolic="YES" id="DGi-JF-4OR"/>
                                                                                 <constraint firstItem="5Mk-Rt-por" firstAttribute="top" secondItem="26u-Zz-tRV" secondAttribute="bottom" constant="16" id="DJf-SV-7KC"/>
                                                                                 <constraint firstItem="rZs-9P-rrZ" firstAttribute="leading" secondItem="k5Y-c4-MyE" secondAttribute="leading" constant="10" id="EyT-57-Uaz"/>
+                                                                                <constraint firstItem="ZgT-Iy-oi8" firstAttribute="centerY" secondItem="26u-Zz-tRV" secondAttribute="centerY" id="HmQ-5j-UeK"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="BXf-ao-iu5" secondAttribute="trailing" constant="10" id="INR-tN-x2I"/>
                                                                                 <constraint firstItem="rZs-9P-rrZ" firstAttribute="top" secondItem="26u-Zz-tRV" secondAttribute="bottom" constant="16" id="LzG-2T-MDZ"/>
                                                                                 <constraint firstItem="26u-Zz-tRV" firstAttribute="top" secondItem="k5Y-c4-MyE" secondAttribute="top" constant="12" id="Yyp-4T-tHV"/>
+                                                                                <constraint firstItem="ZgT-Iy-oi8" firstAttribute="leading" secondItem="26u-Zz-tRV" secondAttribute="trailing" constant="8" id="bqP-zB-Ywy"/>
                                                                                 <constraint firstAttribute="bottom" secondItem="BXf-ao-iu5" secondAttribute="bottom" constant="9" id="eNm-1T-FcM"/>
                                                                                 <constraint firstItem="o9Y-lM-hHX" firstAttribute="leading" secondItem="k5Y-c4-MyE" secondAttribute="leading" constant="7" id="hkw-Tg-78v"/>
                                                                                 <constraint firstItem="pmb-vd-w9e" firstAttribute="leading" secondItem="o9Y-lM-hHX" secondAttribute="trailing" constant="3" id="iBm-DP-xg6"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="26u-Zz-tRV" secondAttribute="trailing" constant="10" id="iEK-mw-ggg"/>
                                                                                 <constraint firstAttribute="bottom" secondItem="o9Y-lM-hHX" secondAttribute="bottom" constant="8" id="noT-RR-gjr"/>
                                                                                 <constraint firstItem="BXf-ao-iu5" firstAttribute="centerY" secondItem="1Pg-4c-C3z" secondAttribute="centerY" id="oOZ-nJ-ymu"/>
                                                                                 <constraint firstItem="BXf-ao-iu5" firstAttribute="leading" secondItem="1Pg-4c-C3z" secondAttribute="trailing" constant="3" id="xxE-Sw-JIf"/>
@@ -1241,14 +1249,14 @@
                                                                                 <color key="textColor" red="0.23921568627450979" green="0.77254901960784317" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7J-JK-bHG">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7J-JK-bHG">
                                                                                 <rect key="frame" x="16" y="120" width="35" height="34"/>
                                                                                 <color key="backgroundColor" red="0.92156862745098034" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="33.600000000000001" id="Vt4-LO-DGl"/>
                                                                                     <constraint firstAttribute="width" constant="34.600000000000001" id="up9-CI-tgi"/>
                                                                                 </constraints>
-                                                                                <state key="normal" title="-"/>
+                                                                                <state key="normal" image="Glyphs/minus"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                                         <real key="value" value="3.2000000000000002"/>
@@ -1258,14 +1266,14 @@
                                                                                     <action selector="minusButtonPressed:" destination="8W9-GB-Izn" eventType="touchUpInside" id="DDu-om-JkV"/>
                                                                                 </connections>
                                                                             </button>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0n-YL-MyB">
-                                                                                <rect key="frame" x="200" y="120" width="34" height="34"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0n-YL-MyB">
+                                                                                <rect key="frame" x="199.5" y="120" width="34.5" height="34"/>
                                                                                 <color key="backgroundColor" red="0.92156862750000001" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="34.600000000000001" id="3V1-ju-idO"/>
                                                                                     <constraint firstAttribute="height" constant="33.600000000000001" id="N1J-ye-gNo"/>
                                                                                 </constraints>
-                                                                                <state key="normal" title="+"/>
+                                                                                <state key="normal" image="Glyphs/plus"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                                         <real key="value" value="3.2000000000000002"/>
@@ -4071,7 +4079,10 @@ CgoKA
         <image name="Glyphs/Calendar Select" width="24" height="24"/>
         <image name="Glyphs/Close" width="24" height="24"/>
         <image name="Glyphs/Edit" width="24" height="24"/>
+        <image name="Glyphs/Manual" width="40" height="40"/>
         <image name="Glyphs/Setting" width="24" height="24"/>
+        <image name="Glyphs/minus" width="35" height="34"/>
+        <image name="Glyphs/plus" width="35" height="35"/>
         <image name="TabBarIcons/Calendar" width="48" height="34"/>
         <image name="TabBarIcons/Calendar Active" width="48" height="34"/>
         <image name="TabBarIcons/Exercise Active" width="48" height="34"/>
@@ -4089,6 +4100,6 @@ CgoKA
         <segue reference="dX0-mi-e4F"/>
         <segue reference="8Ri-Wx-ze4"/>
         <segue reference="udI-Ha-zQT"/>
-        <segue reference="wYH-sO-g9Q"/>
+        <segue reference="14h-tr-23b"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -86,15 +86,18 @@ class ManualTrackingVC: UIViewController {
         collectionViewLayout?.invalidateLayout()
         
         startTime = Date()
+        runTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        runTimer()
-        
         if currentWorkoutExerciseSetIndex == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count - 1 {
-            nextButton.setTitle("Next Exercise", for: .normal)
+            if currentWorkoutExerciseArray.count == 1 {
+                nextButton.setTitle("Finish", for: .normal)
+            } else {
+                nextButton.setTitle("Next Exercise", for: .normal)
+            }
         }
     }
     
@@ -193,7 +196,6 @@ extension ManualTrackingVC {
     func saveWorkoutResult(from workouts: [CurrentWorkoutExercise]) {
         let newRoutineHistory = Routine_History(context: context)
         let endTime = Date()
-        var saveWorkout = true
         
         newRoutineHistory.name = selectedRoutine?.name
         newRoutineHistory.auto = false
@@ -253,7 +255,6 @@ extension ManualTrackingVC {
             }
         }
         save()
-
     }
     
     func save() {
