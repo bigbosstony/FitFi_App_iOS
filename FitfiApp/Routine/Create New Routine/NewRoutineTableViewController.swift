@@ -75,7 +75,6 @@ class NewRoutineTableViewController: UITableViewController {
         
 //        exerciseList = (tempRoutine?.routineExercises)!.allObjects as! [Routine_Exercise]
         tableView.reloadData()
-//        print(routineExercises)
     }
     
     //Dismiss Keyboard when draging
@@ -97,7 +96,6 @@ class NewRoutineTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentRoutineExerciseArray.count
-//        return routineExercises.count
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -173,7 +171,27 @@ class NewRoutineTableViewController: UITableViewController {
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         print(currentRoutineExerciseArray)
         self.view.endEditing(true) //Dismiss keyboard and save content by trigger resignFirstResponder
-//        if routineExercises.count == 0 {
+        var validSetRep = false
+        var checkSetRep = [Int16]()
+        var validRoutineName = false
+        
+        for exercise in currentRoutineExerciseArray {
+            checkSetRep.append(exercise.sets)
+            checkSetRep.append(exercise.reps)
+        }
+        
+        if checkSetRep.contains(0) {
+            validSetRep = false
+        } else {
+            validSetRep = true
+        }
+        
+        if routineName.text == "" {
+            validRoutineName = false
+        } else {
+            validRoutineName = true
+        }
+        
         if currentRoutineExerciseArray.count == 0 {
             let alertView = UIAlertController(title: "Create Routine Failed",
                                               message: "Please Add At Least One Exercise",
@@ -181,20 +199,20 @@ class NewRoutineTableViewController: UITableViewController {
             let okAction = UIAlertAction(title: "Dismiss", style: .default)
             alertView.addAction(okAction)
             present(alertView, animated: true)
-        } else {
+        }
+        else if validSetRep && validRoutineName {
             if selectedRoutine == nil {
-                print("nil")
                 let newRoutine = Routine(context: context)
-                //TODO: Check routine Name, Sets, Reps later
                 newRoutine.name = routineName.text!
                 newRoutine.favorite = false
+                
                 //TODO: Fix Delete, Routine Name
                 for (index, exercise) in currentRoutineExerciseArray.enumerated() {
                     exercise.ranking = Int16(index)
                     exercise.parentRoutine = newRoutine
-                    save()
                 }
-            } else {
+                save()
+            } else {    //Edit Routine
                 selectedRoutine?.name = routineName.text
                 for (index, exercise) in currentRoutineExerciseArray.enumerated() {
                     exercise.ranking = Int16(index)
@@ -210,10 +228,26 @@ class NewRoutineTableViewController: UITableViewController {
                 }
             }
             dismiss(animated: true, completion: nil)
+        } else if validSetRep == false && validRoutineName == true {
+            let alert = UIAlertController(title: "Oops", message: "Please Enter Set and Rep number For Each Exercise", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (_) in
+                print("fail set or rep")
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else if validSetRep == true && validRoutineName == false {
+            let alert = UIAlertController(title: "Oops", message: "Please Enter a Routine Name", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (_) in
+                print("fail routine name")
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Oops", message: "Please Enter Set and Rep number For Each Exercise and a Routine Name", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { (_) in
+                print("fail two!")
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
-    
-    //TODO: Safty Check Set, Rep, Name
     
     //Delete the Temp Routine
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
@@ -232,7 +266,6 @@ class NewRoutineTableViewController: UITableViewController {
 
 
 extension NewRoutineTableViewController {
-    
     //MARK: Slide to remove exercise
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -285,7 +318,6 @@ extension NewRoutineTableViewController: ReceiveRoutineExercises {
                 print("Current: " ,currentRoutineExerciseArray)
             }
         }
-//        selectedExerciseArray = exerciseArray
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

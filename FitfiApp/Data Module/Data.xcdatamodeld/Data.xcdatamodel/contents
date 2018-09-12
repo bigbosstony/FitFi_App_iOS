@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="18A384a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-
     <entity name="Exercise" representedClassName="Exercise" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -20,7 +19,6 @@
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="parentRoutineHistory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine_History" inverseName="exerciseHistory" inverseEntity="Routine_History" syncable="YES"/>
         <relationship name="setRep" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Set_Rep" inverseName="parentExerciseHistory" inverseEntity="Set_Rep" syncable="YES"/>
-
     </entity>
     <entity name="Routine" representedClassName="Routine" syncable="YES" codeGenerationType="class">
         <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -32,8 +30,8 @@
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ranking" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="reps" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="sets" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="reps" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="parentRoutine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine" inverseName="routineExercises" inverseEntity="Routine" syncable="YES"/>
     </entity>
     <entity name="Routine_History" representedClassName="Routine_History" syncable="YES" codeGenerationType="class">
@@ -66,10 +64,9 @@
         <element name="Exercise" positionX="-648" positionY="-189" width="128" height="118"/>
         <element name="Exercise_History" positionX="-216" positionY="-256" width="128" height="208"/>
         <element name="Routine" positionX="-315" positionY="45" width="128" height="103"/>
-        <element name="Routine_Exercise" positionX="-36" positionY="68" width="128" height="135"/>
+        <element name="Routine_Exercise" positionX="-36" positionY="68" width="128" height="133"/>
         <element name="Routine_History" positionX="-414" positionY="-213" width="128" height="163"/>
         <element name="Schedule" positionX="-524" positionY="45" width="128" height="178"/>
         <element name="Set_Rep" positionX="-20" positionY="-207" width="128" height="88"/>
-
     </elements>
 </model>

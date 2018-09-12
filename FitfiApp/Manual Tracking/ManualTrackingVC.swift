@@ -193,6 +193,7 @@ extension ManualTrackingVC {
     func saveWorkoutResult(from workouts: [CurrentWorkoutExercise]) {
         let newRoutineHistory = Routine_History(context: context)
         let endTime = Date()
+        var saveWorkout = true
         
         newRoutineHistory.name = selectedRoutine?.name
         newRoutineHistory.auto = false
@@ -224,8 +225,8 @@ extension ManualTrackingVC {
                 newExerciseHistory.parentRoutineHistory = newRoutineHistory
                 newRoutineHistory.totalWeight = newRoutineHistory.totalWeight + newExerciseHistory.weight
                 newRoutineHistory.totalCalorie = newRoutineHistory.totalCalorie + newExerciseHistory.calorie
-            }
-                else if exercise.setDoneArray.index(of: true) != nil {
+            
+            } else if exercise.setDoneArray.index(of: true) != nil {
                 let newExerciseHistory = Exercise_History(context: context)
                 guard let sets = exercise.setDoneArray.index(of: false) else { return }
                 print("Not Finished Exercise: \(sets)")
@@ -248,6 +249,7 @@ extension ManualTrackingVC {
 
             } else {
                 print("None Finished Exercise")
+                context.delete(newRoutineHistory)
             }
         }
         save()
