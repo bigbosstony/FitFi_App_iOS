@@ -17,6 +17,8 @@ extension Date {
 
 class CalendarViewController: UIViewController {
     var popUpFlag:Int = 0
+    let boarderColor:CGColor = UIColor(red: 61/255, green: 197/255, blue: 202/255, alpha: 1).cgColor
+    let lightRedColor = UIColor(displayP3Red: 253/255, green: 246/255, blue: 242/255, alpha: 1.0)
     @IBOutlet weak var calenderBtnOutlet: UIBarButtonItem!
     @IBAction func calenderBtnPressed(_ sender: UIBarButtonItem) {
         
@@ -62,6 +64,7 @@ class CalendarViewController: UIViewController {
     var scheduleArr:[Schedule] = []
     var wholetableScheduleArr:[[Schedule]] = []
     var tableCellScheduleArr:[Schedule] = []
+    var routineHistoryArr:[Routine_History] = []
     var tt:[Int] = []
     var selectedDate:Date?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -73,15 +76,26 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+        let requestSchedule = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
         
-        request.returnsObjectsAsFaults = false
+        requestSchedule.returnsObjectsAsFaults = false
         do {
-            let result = try context.fetch(request) as! [Schedule]
+            let result = try context.fetch(requestSchedule) as! [Schedule]
             
             scheduleArr = result
             
         } catch {
+            
+            print("Failed")
+        }
+        let requestRoutineHistory = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine_History")
+        requestRoutineHistory.returnsObjectsAsFaults = false
+        do{
+            let result = try context.fetch(requestRoutineHistory) as! [Routine_History]
+            
+            routineHistoryArr = result
+        }
+        catch {
             
             print("Failed")
         }
@@ -315,6 +329,33 @@ extension CalendarViewController: UITableViewDataSource {
             cell.timeImageView.isHidden = true
             cell.exerciseImageView.isHidden = true
         }
+        var scheduleHistoryFlag:Int = 0
+        
+        for i in routineHistoryArr{
+            if (dateFormatter.string(from: days[indexPath.row]) == dateFormatter.string(from: i.start!))
+            {
+            print(i.end!)
+                print((i.exerciseHistory![0] as! Exercise_History).name!)
+            print(i.totalCalorie)
+                print(i.totalWeight)
+               cell.detailView.backgroundColor = lightRedColor
+                cell.exerciseImageView.isHidden = true
+                cell.timeImageView.isHidden = true
+                cell.detailView.isHidden = false
+                cell.dumbellImage.isHidden = true
+                cell.routineName.text = i.name!
+                cell.estimatedTime.text = String(i.totalCalorie) + " kcal"
+                cell.totalExercise.text = String(i.totalWeight) + " lb"
+                let formatter =  DateFormatter()
+                formatter.dateFormat = "h:mm a"
+                
+                cell.startedTime.text = formatter.string(from: i.end!)
+                scheduleHistoryFlag = 1
+                return cell
+            }
+        }
+        if(scheduleHistoryFlag == 0)
+        {
         for i in scheduleArr
         {
 //            if let s = i.schdule {
@@ -370,6 +411,12 @@ extension CalendarViewController: UITableViewDataSource {
                     cell.timeImageView.isHidden = false
                     cell.exerciseImageView.isHidden = false
                     cell.totalExercise.text = "\(getNumberOfExercise(scheduleName:tableCellScheduleArr))"
+                    cell.detailView.layer.borderWidth = 1.5
+                    cell.detailView.layer.cornerRadius = 6
+                    cell.dumbellImage.isHidden = false
+                    cell.detailView.layer.borderColor = boarderColor
+                    cell.detailView.backgroundColor = UIColor.clear
+                    cell.startedTime.text = ""
                     
                 }
                 tableCellScheduleArr = []
@@ -384,6 +431,7 @@ extension CalendarViewController: UITableViewDataSource {
         // Configure the cell...
         
         return cell
+        }
     }
     
 }

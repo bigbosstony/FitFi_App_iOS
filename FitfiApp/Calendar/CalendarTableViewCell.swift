@@ -20,6 +20,8 @@ class CalendarTableViewCell: UITableViewCell {
     @IBOutlet weak var totalExercise: UILabel!
     @IBOutlet weak var routineName: UILabel!
     @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var startedTime: UILabel!
+    @IBOutlet weak var dumbellImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

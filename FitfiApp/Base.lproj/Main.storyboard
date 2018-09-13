@@ -2255,7 +2255,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="78"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aAk-0a-C2G">
-                                                            <rect key="frame" x="17" y="20.5" width="26.5" height="38.5"/>
+                                                            <rect key="frame" x="17" y="20" width="26.5" height="38.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="680-pL-5Sw">
                                                                     <rect key="frame" x="0.0" y="0.0" width="26.5" height="14.5"/>
@@ -2299,9 +2299,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8f-5J-WRm">
-                                                            <rect key="frame" x="250" y="27" width="11" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8f-5J-WRm">
+                                                            <rect key="frame" x="250.5" y="27" width="10.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -2311,7 +2310,7 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="~30m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIm-re-L1h">
-                                                            <rect key="frame" x="30" y="32" width="46" height="21"/>
+                                                            <rect key="frame" x="30" y="32" width="88" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -2321,9 +2320,24 @@
                                                             <rect key="frame" x="8" y="33" width="21" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ti1-qb-LpF">
+                                                            <rect key="frame" x="261" y="3" width="0.0" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="afC-nR-0Wg"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" red="0.1647058824" green="0.69411764710000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="Ti1-qb-LpF" firstAttribute="trailing" secondItem="c8f-5J-WRm" secondAttribute="trailing" id="GT5-wA-5hi"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ti1-qb-LpF" secondAttribute="trailing" constant="32" id="J3s-7d-7UJ"/>
+                                                        <constraint firstItem="c8f-5J-WRm" firstAttribute="top" secondItem="Ti1-qb-LpF" secondAttribute="bottom" constant="3" id="lou-n4-cce"/>
+                                                        <constraint firstItem="Ti1-qb-LpF" firstAttribute="top" secondItem="eYN-W2-eZF" secondAttribute="top" constant="3" id="xgZ-5N-M1a"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2342,9 +2356,11 @@
                                             <outlet property="dayOfMonth" destination="4t5-zZ-UMH" id="ju1-dC-OUF"/>
                                             <outlet property="dayOfWeek" destination="680-pL-5Sw" id="Jkx-1b-z2y"/>
                                             <outlet property="detailView" destination="eYN-W2-eZF" id="pU7-VR-oOg"/>
+                                            <outlet property="dumbellImage" destination="Nxp-ok-h51" id="vk3-St-r7n"/>
                                             <outlet property="estimatedTime" destination="SIm-re-L1h" id="Yf6-Qw-XbD"/>
                                             <outlet property="exerciseImageView" destination="eYN-W2-eZF" id="fcu-bm-ass"/>
                                             <outlet property="routineName" destination="LpM-gt-Mgg" id="M8Y-hY-gcn"/>
+                                            <outlet property="startedTime" destination="Ti1-qb-LpF" id="lpN-Yu-hMG"/>
                                             <outlet property="timeImageView" destination="Y4i-Wg-2S1" id="tqD-uQ-jnt"/>
                                             <outlet property="todayMarker" destination="idi-uu-Ief" id="ZiE-Nk-8P8"/>
                                             <outlet property="totalExercise" destination="c8f-5J-WRm" id="C7Q-sh-st2"/>
@@ -2387,7 +2403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zuo-GH-a1M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9097.1014492753638" y="867.39130434782612"/>
+            <point key="canvasLocation" x="9096.7999999999993" y="866.71664167916049"/>
         </scene>
         <!--Schedule SelectedVC-->
         <scene sceneID="ipe-EM-SrI">
@@ -3761,7 +3777,7 @@ CgoKA
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollapsibleTableViewCell" id="wRs-SE-Hhr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollapsibleTableViewCell" id="wRs-SE-Hhr">
                                         <rect key="frame" x="0.0" y="1084" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wRs-SE-Hhr" id="oO2-W1-FM1">
