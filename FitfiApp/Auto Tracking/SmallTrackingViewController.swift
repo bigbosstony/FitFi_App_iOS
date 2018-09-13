@@ -142,7 +142,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             view.isHidden = true
         case .unsupported:
             print("central.state is .unsupported")
-            view.isHidden = false
+            view.isHidden = true
         case .unauthorized:
             print("central.state is .unauthorized")
             view.isHidden = true

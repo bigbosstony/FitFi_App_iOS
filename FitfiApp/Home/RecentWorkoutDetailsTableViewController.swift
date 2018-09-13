@@ -50,15 +50,11 @@ class RecentWorkoutDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("View Did Load")
         updateView(date: date, name: name, duration: duration, totalWeight: totalWeight, totalCalorie: totalCalorie)
-        
-        print(currentExerciseHistory.count)
-        
+        tableView.tableFooterView = UIView()
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1

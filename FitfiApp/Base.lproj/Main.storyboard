@@ -619,11 +619,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="v5M-D6-7Am">
-                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="routinesTableviewCell" id="ZSL-Be-0bt">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -1583,11 +1578,6 @@
                                 <constraint firstItem="XqL-au-FeI" firstAttribute="top" secondItem="Oxe-VY-WlT" secondAttribute="top" constant="16" id="xLX-JL-tKc"/>
                             </constraints>
                         </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="yiL-NW-740">
-                            <rect key="frame" x="0.0" y="231" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="102" id="fmA-L2-8dG" customClass="RecentWorkoutDetailTVCell" customModule="FitfiApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="129" width="375" height="102"/>
@@ -1902,11 +1892,11 @@
             <objects>
                 <viewController id="6jD-YE-X1F" customClass="ExerciseDetailsViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BO0-y2-tTp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJy-2r-AFc" userLabel="SegmentedBackground">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="55"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMc-dq-QKK" userLabel="SegmentedFront">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
@@ -1946,7 +1936,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G6y-c6-jld">
-                                <rect key="frame" x="0.0" y="55" width="375" height="499"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="499"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wu-vU-P8S">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="499"/>
@@ -1973,31 +1963,27 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yoY-3Z-vGY">
-                                                <rect key="frame" x="0.0" y="81" width="375" height="473"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress Coming Soon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbP-f0-dcb">
-                                                        <rect key="frame" x="46" y="219" width="284.5" height="35"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="mbP-f0-dcb" firstAttribute="centerX" secondItem="yoY-3Z-vGY" secondAttribute="centerX" id="Alj-dr-FYB"/>
-                                                    <constraint firstItem="mbP-f0-dcb" firstAttribute="centerY" secondItem="yoY-3Z-vGY" secondAttribute="centerY" id="GfQ-GV-dPV"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="yoY-3Z-vGY" firstAttribute="top" secondItem="1Re-nM-2Yd" secondAttribute="top" constant="81" id="2V3-AM-lue"/>
-                                            <constraint firstAttribute="trailing" secondItem="yoY-3Z-vGY" secondAttribute="trailing" id="dzL-3Z-6ek"/>
                                             <constraint firstItem="pjo-9Q-NBy" firstAttribute="centerX" secondItem="1Re-nM-2Yd" secondAttribute="centerX" id="h30-9Y-itz"/>
-                                            <constraint firstAttribute="bottom" secondItem="yoY-3Z-vGY" secondAttribute="bottom" constant="-55" id="he5-FM-0bA"/>
-                                            <constraint firstItem="yoY-3Z-vGY" firstAttribute="leading" secondItem="1Re-nM-2Yd" secondAttribute="leading" id="p4r-7f-XrI"/>
                                             <constraint firstItem="pjo-9Q-NBy" firstAttribute="centerY" secondItem="1Re-nM-2Yd" secondAttribute="centerY" id="taP-QP-jcU"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yoY-3Z-vGY">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="499"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress Coming Soon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbP-f0-dcb">
+                                                <rect key="frame" x="46" y="232" width="284.5" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="mbP-f0-dcb" firstAttribute="centerX" secondItem="yoY-3Z-vGY" secondAttribute="centerX" id="Alj-dr-FYB"/>
+                                            <constraint firstItem="mbP-f0-dcb" firstAttribute="centerY" secondItem="yoY-3Z-vGY" secondAttribute="centerY" id="GfQ-GV-dPV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2013,8 +1999,12 @@
                                     <constraint firstAttribute="trailing" secondItem="9wu-vU-P8S" secondAttribute="trailing" id="VVe-JU-Lxl"/>
                                     <constraint firstItem="1Re-nM-2Yd" firstAttribute="leading" secondItem="G6y-c6-jld" secondAttribute="leading" id="X5s-qc-Crc"/>
                                     <constraint firstAttribute="trailing" secondItem="1Re-nM-2Yd" secondAttribute="trailing" id="XIt-If-OvR"/>
+                                    <constraint firstAttribute="trailing" secondItem="yoY-3Z-vGY" secondAttribute="trailing" id="YNK-nH-FPu"/>
                                     <constraint firstAttribute="bottom" secondItem="1Re-nM-2Yd" secondAttribute="bottom" id="ZTq-ed-mAX"/>
+                                    <constraint firstItem="yoY-3Z-vGY" firstAttribute="leading" secondItem="G6y-c6-jld" secondAttribute="leading" id="eZV-83-7Yg"/>
                                     <constraint firstItem="9wu-vU-P8S" firstAttribute="leading" secondItem="G6y-c6-jld" secondAttribute="leading" id="j0c-W4-lo2"/>
+                                    <constraint firstItem="yoY-3Z-vGY" firstAttribute="top" secondItem="G6y-c6-jld" secondAttribute="top" id="jAd-js-19N"/>
+                                    <constraint firstAttribute="bottom" secondItem="yoY-3Z-vGY" secondAttribute="bottom" id="mOH-CS-f7L"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -3499,11 +3489,6 @@ CgoKA
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="Srj-hX-iVS">
-                            <rect key="frame" x="0.0" y="100" width="375" height="118"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="exerciseCell" id="E2i-SA-cGe" customClass="ExerciseTableViewCell" customModule="FitfiApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="56" width="375" height="44"/>
@@ -4098,8 +4083,8 @@ CgoKA
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dX0-mi-e4F"/>
-        <segue reference="8Ri-Wx-ze4"/>
-        <segue reference="udI-Ha-zQT"/>
-        <segue reference="14h-tr-23b"/>
+        <segue reference="GN5-Aq-Wdx"/>
+        <segue reference="05Y-6i-say"/>
+        <segue reference="wYH-sO-g9Q"/>
     </inferredMetricsTieBreakers>
 </document>
