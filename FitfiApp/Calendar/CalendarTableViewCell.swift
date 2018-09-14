@@ -13,15 +13,8 @@ class CalendarTableViewCell: UITableViewCell {
     @IBOutlet weak var dayOfWeek: UILabel!
     @IBOutlet weak var dayOfMonth: UILabel!
     @IBOutlet weak var todayMarker: UIView!
-    
-    @IBOutlet weak var timeImageView: UIImageView!
-    @IBOutlet weak var exerciseImageView: UIView!
-    @IBOutlet weak var estimatedTime: UILabel!
-    @IBOutlet weak var totalExercise: UILabel!
-    @IBOutlet weak var routineName: UILabel!
-    @IBOutlet weak var detailView: UIView!
-    @IBOutlet weak var startedTime: UILabel!
-    @IBOutlet weak var dumbellImage: UIImageView!
+    @IBOutlet weak var detailCollectionView: UICollectionView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,4 +26,16 @@ class CalendarTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+extension CalendarTableViewCell
+{
+    func setCollectionViewDataSourceDelegate
+        <D: UICollectionViewDelegate & UICollectionViewDataSource>
+        (_ dataSourceDelegate : D ,forRow row:Int)
+    
+    {
+        detailCollectionView.dataSource = dataSourceDelegate
+        detailCollectionView.delegate = dataSourceDelegate
+        detailCollectionView.reloadData()
+    }
 }

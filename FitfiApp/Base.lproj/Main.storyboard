@@ -1732,7 +1732,7 @@
             <objects>
                 <tableViewController id="Nge-bI-Zan" customClass="RoutineDetailsTableViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CZe-BZ-6rc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="J6J-hR-YLw">
@@ -1740,7 +1740,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgl-eU-ca3">
-                                    <rect key="frame" x="15" y="-8" width="85" height="23"/>
+                                    <rect key="frame" x="15" y="-11.5" width="85" height="23"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -1788,7 +1788,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="top-cG-zGM">
-                                    <rect key="frame" x="40" y="25" width="295" height="42"/>
+                                    <rect key="frame" x="40" y="-39" width="295" height="42"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIH-Kz-U78">
                                             <rect key="frame" x="1" y="1" width="293" height="40"/>
@@ -2289,65 +2289,108 @@
                                                         <constraint firstItem="idi-uu-Ief" firstAttribute="top" secondItem="NRZ-fn-Rmn" secondAttribute="top" constant="3" id="owS-BO-0aw"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYN-W2-eZF">
-                                                    <rect key="frame" x="68" y="11" width="293" height="56"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RoutineName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpM-gt-Mgg">
-                                                            <rect key="frame" x="22" y="8" width="128" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8f-5J-WRm">
-                                                            <rect key="frame" x="250.5" y="27" width="10.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TabBarIcons/Exercise Active" translatesAutoresizingMaskIntoConstraints="NO" id="Nxp-ok-h51">
-                                                            <rect key="frame" x="211" y="27" width="31" height="26"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="~30m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIm-re-L1h">
-                                                            <rect key="frame" x="30" y="32" width="88" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ExerciseIcons/Time" translatesAutoresizingMaskIntoConstraints="NO" id="Y4i-Wg-2S1">
-                                                            <rect key="frame" x="8" y="33" width="21" height="20"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ti1-qb-LpF">
-                                                            <rect key="frame" x="261" y="3" width="0.0" height="21"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="21" id="afC-nR-0Wg"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="anW-ZJ-RMQ">
+                                                    <rect key="frame" x="68" y="12" width="295" height="56"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="tintColor" red="0.1647058824" green="0.69411764710000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstItem="Ti1-qb-LpF" firstAttribute="trailing" secondItem="c8f-5J-WRm" secondAttribute="trailing" id="GT5-wA-5hi"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Ti1-qb-LpF" secondAttribute="trailing" constant="32" id="J3s-7d-7UJ"/>
-                                                        <constraint firstItem="c8f-5J-WRm" firstAttribute="top" secondItem="Ti1-qb-LpF" secondAttribute="bottom" constant="3" id="lou-n4-cce"/>
-                                                        <constraint firstItem="Ti1-qb-LpF" firstAttribute="top" secondItem="eYN-W2-eZF" secondAttribute="top" constant="3" id="xgZ-5N-M1a"/>
-                                                    </constraints>
-                                                </view>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BdF-uw-rHk">
+                                                        <size key="itemSize" width="290" height="53"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="detailCollectionCell" id="jCV-Xq-6Nw" customClass="DetailCollectionViewCell" customModule="FitfiApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="1.5" width="290" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="290" height="53"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYN-W2-eZF">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="290" height="53"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RoutineName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpM-gt-Mgg">
+                                                                                <rect key="frame" x="22" y="8" width="128" height="21"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TabBarIcons/Exercise Active" translatesAutoresizingMaskIntoConstraints="NO" id="Nxp-ok-h51">
+                                                                                <rect key="frame" x="211" y="27" width="31" height="26"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            </imageView>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="~30m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIm-re-L1h">
+                                                                                <rect key="frame" x="30" y="32" width="88" height="21"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ExerciseIcons/Time" translatesAutoresizingMaskIntoConstraints="NO" id="Y4i-Wg-2S1">
+                                                                                <rect key="frame" x="8" y="33" width="21" height="20"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            </imageView>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ti1-qb-LpF">
+                                                                                <rect key="frame" x="258" y="3" width="0.0" height="21"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="21" id="afC-nR-0Wg"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8f-5J-WRm">
+                                                                                <rect key="frame" x="247" y="27" width="11" height="21"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="tintColor" red="0.1647058824" green="0.69411764710000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="Ti1-qb-LpF" firstAttribute="trailing" secondItem="c8f-5J-WRm" secondAttribute="trailing" id="GT5-wA-5hi"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="Ti1-qb-LpF" secondAttribute="trailing" constant="32" id="J3s-7d-7UJ"/>
+                                                                            <constraint firstItem="c8f-5J-WRm" firstAttribute="top" secondItem="Ti1-qb-LpF" secondAttribute="bottom" constant="3" id="lou-n4-cce"/>
+                                                                            <constraint firstItem="Ti1-qb-LpF" firstAttribute="top" secondItem="eYN-W2-eZF" secondAttribute="top" constant="3" id="xgZ-5N-M1a"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstItem="eYN-W2-eZF" firstAttribute="leading" secondItem="jCV-Xq-6Nw" secondAttribute="leading" id="8Mp-Zf-Iu7"/>
+                                                                <constraint firstItem="eYN-W2-eZF" firstAttribute="centerY" secondItem="jCV-Xq-6Nw" secondAttribute="centerY" id="MG7-wd-lx1"/>
+                                                                <constraint firstItem="eYN-W2-eZF" firstAttribute="leading" secondItem="jCV-Xq-6Nw" secondAttribute="leading" id="QRy-LG-5AM"/>
+                                                                <constraint firstAttribute="trailing" secondItem="eYN-W2-eZF" secondAttribute="trailing" id="X2v-qX-RwR"/>
+                                                                <constraint firstAttribute="bottom" secondItem="eYN-W2-eZF" secondAttribute="bottom" id="fVw-9u-ypr"/>
+                                                                <constraint firstItem="eYN-W2-eZF" firstAttribute="top" secondItem="jCV-Xq-6Nw" secondAttribute="top" id="lHy-hD-ian"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="detailView" destination="eYN-W2-eZF" id="MbL-fy-eSg"/>
+                                                                <outlet property="dumbellImage" destination="Nxp-ok-h51" id="xAV-aB-bwS"/>
+                                                                <outlet property="estimatedTime" destination="SIm-re-L1h" id="3Uw-Qg-CFX"/>
+                                                                <outlet property="routineName" destination="LpM-gt-Mgg" id="X4j-TM-gaa"/>
+                                                                <outlet property="startedTime" destination="Ti1-qb-LpF" id="b4E-Z0-ftG"/>
+                                                                <outlet property="timeImageView" destination="Y4i-Wg-2S1" id="1OS-IV-Mdj"/>
+                                                                <outlet property="totalExercise" destination="c8f-5J-WRm" id="a6V-Z8-9y4"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="oTV-G4-mVH" id="FTN-jK-wHI"/>
+                                                        <outlet property="delegate" destination="oTV-G4-mVH" id="2wT-eQ-Ajf"/>
+                                                    </connections>
+                                                </collectionView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="eYN-W2-eZF" firstAttribute="leading" secondItem="NRZ-fn-Rmn" secondAttribute="trailing" constant="8" symbolic="YES" id="Grk-8r-aHw"/>
-                                                <constraint firstItem="eYN-W2-eZF" firstAttribute="centerY" secondItem="NRZ-fn-Rmn" secondAttribute="centerY" id="ZDf-AO-b5e"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="eYN-W2-eZF" secondAttribute="trailing" constant="-1" id="e4V-mt-2dn"/>
+                                                <constraint firstItem="anW-ZJ-RMQ" firstAttribute="leading" secondItem="NRZ-fn-Rmn" secondAttribute="trailing" constant="8" id="3Gy-RE-Cmr"/>
+                                                <constraint firstItem="anW-ZJ-RMQ" firstAttribute="trailing" secondItem="fxI-fl-DuW" secondAttribute="trailingMargin" constant="3" id="GeP-KY-bVG"/>
+                                                <constraint firstItem="anW-ZJ-RMQ" firstAttribute="bottom" secondItem="fxI-fl-DuW" secondAttribute="bottomMargin" constant="1" id="Ycd-Oz-Jzi"/>
+                                                <constraint firstItem="anW-ZJ-RMQ" firstAttribute="top" secondItem="fxI-fl-DuW" secondAttribute="topMargin" constant="1" id="ehl-dK-Box"/>
                                                 <constraint firstItem="NRZ-fn-Rmn" firstAttribute="leading" secondItem="fxI-fl-DuW" secondAttribute="leading" id="fWk-XM-hfk"/>
                                                 <constraint firstAttribute="bottom" secondItem="NRZ-fn-Rmn" secondAttribute="bottom" id="j5a-sI-gV2"/>
-                                                <constraint firstItem="eYN-W2-eZF" firstAttribute="bottom" secondItem="fxI-fl-DuW" secondAttribute="bottomMargin" id="n3S-OU-Mdj"/>
                                                 <constraint firstItem="NRZ-fn-Rmn" firstAttribute="top" secondItem="fxI-fl-DuW" secondAttribute="top" id="rcC-FM-iq1"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -2355,15 +2398,8 @@
                                         <connections>
                                             <outlet property="dayOfMonth" destination="4t5-zZ-UMH" id="ju1-dC-OUF"/>
                                             <outlet property="dayOfWeek" destination="680-pL-5Sw" id="Jkx-1b-z2y"/>
-                                            <outlet property="detailView" destination="eYN-W2-eZF" id="pU7-VR-oOg"/>
-                                            <outlet property="dumbellImage" destination="Nxp-ok-h51" id="vk3-St-r7n"/>
-                                            <outlet property="estimatedTime" destination="SIm-re-L1h" id="Yf6-Qw-XbD"/>
-                                            <outlet property="exerciseImageView" destination="eYN-W2-eZF" id="fcu-bm-ass"/>
-                                            <outlet property="routineName" destination="LpM-gt-Mgg" id="M8Y-hY-gcn"/>
-                                            <outlet property="startedTime" destination="Ti1-qb-LpF" id="lpN-Yu-hMG"/>
-                                            <outlet property="timeImageView" destination="Y4i-Wg-2S1" id="tqD-uQ-jnt"/>
+                                            <outlet property="detailCollectionView" destination="anW-ZJ-RMQ" id="2by-3m-2g4"/>
                                             <outlet property="todayMarker" destination="idi-uu-Ief" id="ZiE-Nk-8P8"/>
-                                            <outlet property="totalExercise" destination="c8f-5J-WRm" id="C7Q-sh-st2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -4115,6 +4151,6 @@ CgoKA
         <segue reference="dX0-mi-e4F"/>
         <segue reference="GN5-Aq-Wdx"/>
         <segue reference="05Y-6i-say"/>
-        <segue reference="OR4-Ta-Iop"/>
+        <segue reference="14h-tr-23b"/>
     </inferredMetricsTieBreakers>
 </document>

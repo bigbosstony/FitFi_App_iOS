@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 extension Date {
     func dateFromDays(_ days: Int) -> Date {
         return (Calendar.current as NSCalendar).date(byAdding: .day, value: days, to: self, options: [])!
@@ -22,6 +23,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var calenderBtnOutlet: UIBarButtonItem!
     @IBAction func calenderBtnPressed(_ sender: UIBarButtonItem) {
         
+    
 //        if(popUpFlag == 0)
 //        {
 //            let popVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "calenderPopUpID") as! PopUpCalenderVC
@@ -65,6 +67,13 @@ class CalendarViewController: UIViewController {
     var wholetableScheduleArr:[[Schedule]] = []
     var tableCellScheduleArr:[Schedule] = []
     var routineHistoryArr:[Routine_History] = []
+    var numberOfViewsInCollectionCell:Int = 1
+    var isSchedule:Int = 0
+    var routineName:[String] = []
+    var startedTime:[String] = []
+    var estimatedTime:[String] = []
+    var totalExercise:[String] = []
+    var scheduleHistoryFlag:Int = 0
     var tt:[Int] = []
     var selectedDate:Date?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -257,103 +266,105 @@ extension CalendarViewController: UITableViewDataSource {
         let dateFormatter = DateFormatter()
         cell.dayOfWeek.text = dateArray.first?.uppercased()
         cell.dayOfMonth.text = dateArray.last?.uppercased()
+        cell.detailCollectionView.isHidden = true
+    
+        isSchedule = 0
         switch dateArray[0] {
             case "Mon":
                 if(mondayRoutine.count != 0)
                 {
-                cell.routineName.text = mondayRoutine[0]
+             //   cell.routineName.text = mondayRoutine[0]
                 }
             break
             case "Tue":
                 if(tuesdayRoutine.count != 0){
-                cell.routineName.text = tuesdayRoutine[0]
+               // cell.routineName.text = tuesdayRoutine[0]
                 }
             break
             case "Wed":
                 if(wednesdayRoutine.count != 0)
                 {
-                cell.routineName.text = wednesdayRoutine[0]
+             //   cell.routineName.text = wednesdayRoutine[0]
                 }
             break
             case "Thu":
                 if(thursdayRoutine.count != 0)
                 {
-                cell.routineName.text = thursdayRoutine[0]
+              //  cell.routineName.text = thursdayRoutine[0]
                 }
             break
             case "Fri":
                 if(fridayRoutine.count != 0)
                 {
-                cell.routineName.text = fridayRoutine[0]
+              //  cell.routineName.text = fridayRoutine[0]
                 }
             break
             case "Sat":
                 if(saturdayRoutine.count != 0)
                 {
-                cell.routineName.text = saturdayRoutine[0]
+               // cell.routineName.text = saturdayRoutine[0]
                 }
             break
             case "Sun":
                 if(sundayRoutine.count != 0)
                 {
-                cell.routineName.text = sundayRoutine[0]
+              //  cell.routineName.text = sundayRoutine[0]
                 }
             break
         default:
             print("err")
-            
+
         }
         if( dateArray.last == "thu")
         {
             print("Thursday come")
         }
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        
+
         let today = Date()
-        
+
         if dateFormatter.string(from: today) == dateFormatter.string(from: days[(indexPath as NSIndexPath).row]) {
-            
+
             cell.dayOfMonth.textColor = UIColor.white
             cell.dayOfWeek.textColor = UIColor.white
             cell.todayMarker.isHidden = false
+
             
-            cell.routineName.text = " "
-            cell.timeImageView.isHidden = true
-            cell.exerciseImageView.isHidden = true
         }
         else{
             cell.dayOfMonth.textColor = UIColor.black
             cell.dayOfWeek.textColor = UIColor.black
             cell.todayMarker.isHidden = true
-            cell.routineName.text = " "
-            cell.timeImageView.isHidden = true
-            cell.exerciseImageView.isHidden = true
+          
         }
-        var scheduleHistoryFlag:Int = 0
-        
+        scheduleHistoryFlag = 0
+        numberOfViewsInCollectionCell = 0
         for i in routineHistoryArr{
             if (dateFormatter.string(from: days[indexPath.row]) == dateFormatter.string(from: i.start!))
             {
+                
+                numberOfViewsInCollectionCell = numberOfViewsInCollectionCell + 1
+                isSchedule = 1
             print(i.end!)
                 print((i.exerciseHistory![0] as! Exercise_History).name!)
             print(i.totalCalorie)
                 print(i.totalWeight)
-               cell.detailView.backgroundColor = lightRedColor
-                cell.exerciseImageView.isHidden = true
-                cell.timeImageView.isHidden = true
-                cell.detailView.isHidden = false
-                cell.dumbellImage.isHidden = true
-                cell.routineName.text = i.name!
-                cell.estimatedTime.text = String(i.totalCalorie) + " kcal"
-                cell.totalExercise.text = String(i.totalWeight) + " lb"
+                cell.detailCollectionView.isHidden = false
+              
+                routineName.append(i.name!)
+                estimatedTime.append(String(i.totalCalorie) + " kcal")
+                totalExercise.append(String(i.totalWeight) + " lb")
                 let formatter =  DateFormatter()
                 formatter.dateFormat = "h:mm a"
-                
-                cell.startedTime.text = formatter.string(from: i.end!)
+
+                startedTime.append(formatter.string(from: i.end!))
                 scheduleHistoryFlag = 1
-                return cell
+                
+                
             }
+            
         }
+        
         if(scheduleHistoryFlag == 0)
         {
         for i in scheduleArr
@@ -393,11 +404,11 @@ extension CalendarViewController: UITableViewDataSource {
                 {
                     tableCellScheduleArr.append(i)
                 }
-                
+
                 wholetableScheduleArr.append(tableCellScheduleArr)
                 if(tableCellScheduleArr == [])
                 {
-                    
+
                 }
                 else{
                     let s = tableCellScheduleArr[0].schdule
@@ -407,35 +418,78 @@ extension CalendarViewController: UITableViewDataSource {
                     singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
                     singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
                     singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
-                    cell.routineName.text = singleRoutineName
-                    cell.timeImageView.isHidden = false
-                    cell.exerciseImageView.isHidden = false
-                    cell.totalExercise.text = "\(getNumberOfExercise(scheduleName:tableCellScheduleArr))"
-                    cell.detailView.layer.borderWidth = 1.5
-                    cell.detailView.layer.cornerRadius = 6
-                    cell.dumbellImage.isHidden = false
-                    cell.detailView.layer.borderColor = boarderColor
-                    cell.detailView.backgroundColor = UIColor.clear
-                    cell.startedTime.text = ""
-                    
+                    isSchedule = 2
+                    cell.detailCollectionView.isHidden = false
+                    numberOfViewsInCollectionCell = 1
+                    routineName.append(singleRoutineName)
+                   
+                    totalExercise.append("\(getNumberOfExercise(scheduleName:tableCellScheduleArr))")
+                   
+
                 }
                 tableCellScheduleArr = []
-                
+
             }
             else{
                 wholetableScheduleArr.append(tableCellScheduleArr)
             }
         }
-        
-        
+
+
         // Configure the cell...
-        
-        return cell
+
+       
         }
-    }
+        cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+         return cell
+   }
     
 }
 
+extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return numberOfViewsInCollectionCell
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCollectionCell", for: indexPath) as! DetailCollectionViewCell
+        cell.routineName.text = " "
+        cell.timeImageView.isHidden = true
+     //   cell.exerciseImageView.isHidden = true
+        if(estimatedTime.count > 0)
+        {
+        if(isSchedule == 1)
+        {
+            //apply routine_history theme
+            cell.detailView.backgroundColor = lightRedColor
+            cell.timeImageView.isHidden = true
+            cell.detailView.isHidden = false
+            cell.dumbellImage.isHidden = true
+            cell.detailView.layer.borderWidth = 0
+            cell.estimatedTime.text = estimatedTime[indexPath.row]
+            cell.routineName.text = routineName[indexPath.row]
+            cell.startedTime.text = startedTime[indexPath.row]
+            cell.totalExercise.text = totalExercise[indexPath.row]
+        }
+        else if (isSchedule == 2){
+            //apply schedule theme
+            cell.timeImageView.isHidden = false
+            cell.detailView.layer.borderWidth = 1.5
+            cell.detailView.layer.cornerRadius = 6
+            cell.dumbellImage.isHidden = false
+            cell.detailView.layer.borderColor = boarderColor
+            cell.detailView.backgroundColor = UIColor.clear
+            cell.startedTime.text = ""
+            cell.estimatedTime.text = estimatedTime[indexPath.row]
+            cell.routineName.text = routineName[indexPath.row]
+            cell.totalExercise.text = totalExercise[indexPath.row]
+        }
+        }
+        return cell
+    }
+     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+}
 extension CalendarViewController: UITableViewDelegate {
     func getNumberOfExercise(scheduleName:[Schedule]) -> Int{
         var totalExercise:Int = 0
@@ -518,11 +572,16 @@ extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       //  tableView.deselectRow(at: indexPath, animated: true)
         var flag:Int = 0
+        startedTime = []
+        estimatedTime = []
+        totalExercise = []
+        routineName = []
         for i in scheduleArr
         {
             //            if let s = i.schdule {
             //                print(s.value(forKey: "name"))
             //            }
+            
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yyyy"
             let dateArray : [String] = dateFormatterCell.string(from: days[(indexPath as NSIndexPath).row]).components(separatedBy: " ")
