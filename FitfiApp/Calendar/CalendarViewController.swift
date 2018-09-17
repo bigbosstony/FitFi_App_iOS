@@ -50,6 +50,7 @@ class CalendarViewController: UIViewController {
     }
     @IBOutlet weak var tableView: UITableView!
     var selectedDay:String?
+    var currentTableIndexPath:IndexPath?
     var mondayRoutine:[String] = []
     var tuesdayRoutine:[String] = []
     var wednesdayRoutine:[String] = []
@@ -76,6 +77,8 @@ class CalendarViewController: UIViewController {
     var scheduleHistoryFlag:Int = 0
     var tt:[Int] = []
     var selectedDate:Date?
+    var routineHistoryObj:[Routine_History] = []
+    var selectedRoutineHistory:Routine_History!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     lazy var days: [Date] = {
         let beginDate = Date().dateFromDays(-3)
@@ -352,6 +355,7 @@ extension CalendarViewController: UITableViewDataSource {
                 cell.detailCollectionView.isHidden = false
               
                 routineName.append(i.name!)
+                routineHistoryObj.append(i)
                 estimatedTime.append(String(i.totalCalorie) + " kcal")
                 totalExercise.append(String(i.totalWeight) + " lb")
                 let formatter =  DateFormatter()
@@ -469,6 +473,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             cell.routineName.text = routineName[indexPath.row]
             cell.startedTime.text = startedTime[indexPath.row]
             cell.totalExercise.text = totalExercise[indexPath.row]
+            cell.routineObj = routineHistoryObj[indexPath.row]
         }
         else if (isSchedule == 2){
             //apply schedule theme
@@ -480,6 +485,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             cell.detailView.backgroundColor = UIColor.clear
             cell.startedTime.text = ""
             cell.estimatedTime.text = estimatedTime[indexPath.row]
+            
             cell.routineName.text = routineName[indexPath.row]
             cell.totalExercise.text = totalExercise[indexPath.row]
         }
@@ -487,6 +493,15 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         return cell
     }
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+   
+       let cell = collectionView.cellForItem(at: indexPath) as! DetailCollectionViewCell
+        print(cell.routineObj.name!)
+        if(cell.routineObj != nil)
+        {
+        selectedRoutineHistory = cell.routineObj
+        performSegue(withIdentifier: "goToRoutineHistoryDetail", sender: self)
+        }
+        
         
     }
 }
@@ -576,6 +591,8 @@ extension CalendarViewController: UITableViewDelegate {
         estimatedTime = []
         totalExercise = []
         routineName = []
+        routineHistoryObj = []
+        currentTableIndexPath = indexPath
         for i in scheduleArr
         {
             //            if let s = i.schdule {
@@ -684,6 +701,11 @@ extension CalendarViewController: UITableViewDelegate {
         {
             //assign date
             
+        }
+        if(segue.identifier == "goToRoutineHistoryDetail")
+        {
+            let recentDetailVC = segue.destination as! RecentWorkoutDetailsTableViewController
+            recentDetailVC.selectedRoutineHistory = selectedRoutineHistory
         }
         
     }

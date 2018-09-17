@@ -36,6 +36,7 @@ extension CalendarTableViewCell
     {
         detailCollectionView.dataSource = dataSourceDelegate
         detailCollectionView.delegate = dataSourceDelegate
+        detailCollectionView.tag = row
         detailCollectionView.reloadData()
     }
 }
