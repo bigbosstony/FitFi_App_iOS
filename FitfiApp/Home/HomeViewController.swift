@@ -172,6 +172,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.volumeLabel.text = String(routineHistoryArray[indexPath.row].totalWeight) + " lb"
             cell.calorieLabel.text = String(routineHistoryArray[indexPath.row].totalCalorie) + " kcal"
             cell.numberOfExercises.text = String(numberOfExercise)
+            cell.typeOfTracking.isHidden = routineHistoryArray[indexPath.row].auto ? true : false
             return cell
             
             //MARK: Routine Collection View Data Source on HomePage

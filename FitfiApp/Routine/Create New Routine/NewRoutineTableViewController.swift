@@ -49,6 +49,7 @@ class NewRoutineTableViewController: UITableViewController {
                 print("Routine: ", routine)
                 if let exercises = routine.routineExercises?.array {
                     currentRoutineExerciseArray = exercises as! [Routine_Exercise]
+                    currentRoutineExerciseArray = currentRoutineExerciseArray.sorted(by: { $0.ranking < $1.ranking })
                 }
             }
             //MARK: Prepare data for Tableview
@@ -164,6 +165,8 @@ class NewRoutineTableViewController: UITableViewController {
     @IBAction func deleteRoutineButtonPressed(_ sender: UIButton) {
         print("delete")
         delegate?.dataReceive(data: 0)
+        context.delete(selectedRoutine!)
+        save()
         self.dismiss(animated: true, completion: nil)
     }
 

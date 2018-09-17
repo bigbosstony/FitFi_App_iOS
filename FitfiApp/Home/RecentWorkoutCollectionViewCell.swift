@@ -17,5 +17,5 @@ class RecentWorkoutCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var volumeLabel: UILabel!
     @IBOutlet weak var timeDurationLabel: UILabel!
     @IBOutlet weak var numberOfExercises: UILabel!
-    
+    @IBOutlet weak var typeOfTracking: UIImageView!
 }

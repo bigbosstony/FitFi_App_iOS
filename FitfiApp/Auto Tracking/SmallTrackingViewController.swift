@@ -74,7 +74,7 @@ class SmallTrackingViewController: UIViewController {
     var centralManager: CBCentralManager!
     var blePeripheral: CBPeripheral!
     let bleServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E
-    let bleCharacteristicCBUUID = CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
+    let bleCharacteristicCBUUID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
     
     var dataArrayCounter = 0
     var dataArray = [Double]()
@@ -158,11 +158,15 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
     
     //MARK: Did Discover Peipheral
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print("Did Discover Peripheral")
-        print("name: ", peripheral.name!, "\nidentifier: ", peripheral.identifier, "\nstate: ", peripheral.state.rawValue)
-        print("advData = \(advertisementData)")
+        print("\nDid Discover Peripheral")
+        print("name: ", peripheral.name!)
+        print("identifier: ", peripheral.identifier)
+        print("state: ", peripheral.state.rawValue)
+        print("Services: ", peripheral.services)
+        print("AdvertisementData Description: ", advertisementData.description)
+        print("AdvertisementData Keys: ", advertisementData.keys)
         print("RSSI = \(RSSI)")
-        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
         
         switch bleVersion {
         case 4.0:

@@ -116,7 +116,12 @@ class ManualTrackingVC: UIViewController {
     }
     
     @IBAction func finishButtonPressed(_ sender: UIButton) {
-        print(currentWorkoutExerciseArray)
+        if currentWorkoutExerciseArray.last?.weightArray.last != 0 {
+            currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
+            currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
+        }
+        print("Finish Button On Top: ", currentWorkoutExerciseArray)
+
         saveWorkoutResult(from: currentWorkoutExerciseArray)
         dismiss(animated: true, completion: nil)
     }
@@ -127,11 +132,22 @@ class ManualTrackingVC: UIViewController {
         
         if nextButton.titleLabel?.text == "Finish" {
             //MARK: Save
-            currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
-            currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
             
-            saveWorkoutResult(from: currentWorkoutExerciseArray)
-            self.dismiss(animated: true, completion: nil)
+            if currentWorkoutExerciseArray.last?.weightArray.last == 0 {
+                let alert = UIAlertController(title: "Oops", message: "Add Weight To Your Set", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                    print("Add Weight")
+                }))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
+                currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
+                
+                print("Finish Button On Bottom: ", currentWorkoutExerciseArray)
+
+                saveWorkoutResult(from: currentWorkoutExerciseArray)
+                self.dismiss(animated: true, completion: nil)
+            }
             
         } else if currentWorkoutExerciseIndex < currentWorkoutExerciseArray.count {
             
@@ -205,56 +221,58 @@ extension ManualTrackingVC {
         newRoutineHistory.totalWeight = 0
         newRoutineHistory.totalCalorie = 0
         
-        for exercise in workouts {
-            if exercise.done == true {
-                let newExerciseHistory = Exercise_History(context: context)
-                newExerciseHistory.name = exercise.name
-                newExerciseHistory.category = exercise.category
-                newExerciseHistory.calorie = 0
-                newExerciseHistory.weight = 0
+        if workouts.first?.setDoneArray.first == true {
+            for exercise in workouts {
+                if exercise.done == true {
+                    let newExerciseHistory = Exercise_History(context: context)
+                    newExerciseHistory.name = exercise.name
+                    newExerciseHistory.category = exercise.category
+                    newExerciseHistory.calorie = 0
+                    newExerciseHistory.weight = 0
+                    
+                    let sets = exercise.setArray.count
+                    
+                    for set in 0..<sets {
+                        let newSetRep = Set_Rep(context: context)
+                        newSetRep.rep = exercise.setArray[set]
+                        newSetRep.weight = exercise.weightArray[set]
+                        newSetRep.parentExerciseHistory = newExerciseHistory
+                        newExerciseHistory.calorie = newExerciseHistory.calorie + newSetRep.rep * newSetRep.weight * 5
+                        newExerciseHistory.weight = newExerciseHistory.weight + newSetRep.rep * newSetRep.weight
+                    }
+                    
+                    newExerciseHistory.parentRoutineHistory = newRoutineHistory
+                    newRoutineHistory.totalWeight = newRoutineHistory.totalWeight + newExerciseHistory.weight
+                    newRoutineHistory.totalCalorie = newRoutineHistory.totalCalorie + newExerciseHistory.calorie
                 
-                let sets = exercise.setArray.count
-                
-                for set in 0..<sets {
-                    let newSetRep = Set_Rep(context: context)
-                    newSetRep.rep = exercise.setArray[set]
-                    newSetRep.weight = exercise.weightArray[set]
-                    newSetRep.parentExerciseHistory = newExerciseHistory
-                    newExerciseHistory.calorie = newExerciseHistory.calorie + newSetRep.rep * newSetRep.weight * 5
-                    newExerciseHistory.weight = newExerciseHistory.weight + newSetRep.rep * newSetRep.weight
-                }
-                
-                newExerciseHistory.parentRoutineHistory = newRoutineHistory
-                newRoutineHistory.totalWeight = newRoutineHistory.totalWeight + newExerciseHistory.weight
-                newRoutineHistory.totalCalorie = newRoutineHistory.totalCalorie + newExerciseHistory.calorie
-            
-            } else if exercise.setDoneArray.index(of: true) != nil {
-                let newExerciseHistory = Exercise_History(context: context)
-                guard let sets = exercise.setDoneArray.index(of: false) else { return }
-                print("Not Finished Exercise: \(sets)")
-                newExerciseHistory.name = exercise.name
-                newExerciseHistory.category = exercise.category
-                newExerciseHistory.calorie = 0
-                newExerciseHistory.weight = 0
+                } else if exercise.setDoneArray.index(of: true) != nil {
+                    let newExerciseHistory = Exercise_History(context: context)
+                    guard let sets = exercise.setDoneArray.index(of: false) else { return }
+                    print("Not Finished Exercise: \(sets)")
+                    newExerciseHistory.name = exercise.name
+                    newExerciseHistory.category = exercise.category
+                    newExerciseHistory.calorie = 0
+                    newExerciseHistory.weight = 0
 
-                for set in 0..<sets {
-                    let newSetRep = Set_Rep(context: context)
-                    newSetRep.rep = exercise.setArray[set]
-                    newSetRep.weight = exercise.weightArray[set]
-                    newSetRep.parentExerciseHistory = newExerciseHistory
-                    newExerciseHistory.calorie = newExerciseHistory.calorie + newSetRep.rep * newSetRep.weight * 5
-                    newExerciseHistory.weight = newExerciseHistory.weight + newSetRep.rep * newSetRep.weight
-                }
-                newExerciseHistory.parentRoutineHistory = newRoutineHistory
-                newRoutineHistory.totalWeight = newRoutineHistory.totalWeight + newExerciseHistory.weight
-                newRoutineHistory.totalCalorie = newRoutineHistory.totalCalorie + newExerciseHistory.calorie
+                    for set in 0..<sets {
+                        let newSetRep = Set_Rep(context: context)
+                        newSetRep.rep = exercise.setArray[set]
+                        newSetRep.weight = exercise.weightArray[set]
+                        newSetRep.parentExerciseHistory = newExerciseHistory
+                        newExerciseHistory.calorie = newExerciseHistory.calorie + newSetRep.rep * newSetRep.weight * 5
+                        newExerciseHistory.weight = newExerciseHistory.weight + newSetRep.rep * newSetRep.weight
+                    }
+                    newExerciseHistory.parentRoutineHistory = newRoutineHistory
+                    newRoutineHistory.totalWeight = newRoutineHistory.totalWeight + newExerciseHistory.weight
+                    newRoutineHistory.totalCalorie = newRoutineHistory.totalCalorie + newExerciseHistory.calorie
 
-            } else {
-                print("None Finished Exercise")
-                context.delete(newRoutineHistory)
+                }
             }
+            save()
+        } else {
+            context.delete(newRoutineHistory)
+            save()
         }
-        save()
     }
     
     func save() {

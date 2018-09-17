@@ -252,6 +252,7 @@
                                                             <outlet property="numberOfExercises" destination="BXf-ao-iu5" id="zf3-q5-RPY"/>
                                                             <outlet property="timeDurationLabel" destination="pmb-vd-w9e" id="GpB-j5-QGU"/>
                                                             <outlet property="timeLabel" destination="uZs-T9-Gbx" id="ITS-6e-36P"/>
+                                                            <outlet property="typeOfTracking" destination="ZgT-Iy-oi8" id="Bo7-KC-j2z"/>
                                                             <outlet property="volumeLabel" destination="Vi2-hH-G75" id="D80-Fc-OWm"/>
                                                             <outlet property="workoutNameLabel" destination="26u-Zz-tRV" id="sUB-Qu-Tgd"/>
                                                         </connections>
@@ -1733,12 +1734,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="J6J-hR-YLw">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="J6J-hR-YLw">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgl-eU-ca3">
-                                    <rect key="frame" x="15" y="-11.5" width="85" height="23"/>
+                                    <rect key="frame" x="15" y="16.5" width="85" height="23"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -1751,7 +1752,7 @@
                                 <constraint firstItem="fgl-eU-ca3" firstAttribute="leading" secondItem="J6J-hR-YLw" secondAttribute="leading" constant="15" id="eqF-cM-PR1"/>
                             </constraints>
                         </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="JlE-EZ-eqW">
+                        <view key="tableFooterView" contentMode="scaleToFill" id="JlE-EZ-eqW">
                             <rect key="frame" x="0.0" y="128" width="375" height="132"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -1786,7 +1787,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="top-cG-zGM">
-                                    <rect key="frame" x="40" y="-39" width="295" height="42"/>
+                                    <rect key="frame" x="40" y="74" width="295" height="42"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIH-Kz-U78">
                                             <rect key="frame" x="1" y="1" width="293" height="40"/>
@@ -4085,6 +4086,6 @@ CgoKA
         <segue reference="dX0-mi-e4F"/>
         <segue reference="GN5-Aq-Wdx"/>
         <segue reference="05Y-6i-say"/>
-        <segue reference="wYH-sO-g9Q"/>
+        <segue reference="14h-tr-23b"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol ExerciseCollectionViewCellDelegate: class {
     func ExerciseCollectionViewCellDidTapPlus(_ sender: ExerciseCollectionViewCell)
@@ -39,10 +40,12 @@ class ExerciseCollectionViewCell: UICollectionViewCell {
 //            mainCounterLabel.text = String(numberIncreaseOne)
 //            setCollectionView.reloadData()
 //        }
+        AudioServicesPlaySystemSound(1104)
         delegate?.ExerciseCollectionViewCellDidTapPlus(self)
     }
     
     @IBAction func minusButtonPressed(_ sender: UIButton) {
+        AudioServicesPlaySystemSound(1104)
         delegate?.ExerciseCollectionViewCellDidTapMinus(self)
     }
 }

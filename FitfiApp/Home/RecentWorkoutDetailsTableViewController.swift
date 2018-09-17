@@ -86,6 +86,11 @@ class RecentWorkoutDetailsTableViewController: UITableViewController {
         guard let tableViewCell = cell as? RecentWorkoutDetailTVCell else { return }
         storedOffsets[indexPath.row] = tableViewCell.collectionViewOffset
     }
+    
+    //
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("TableView: " ,indexPath)
+    }
  
 }
 
@@ -93,6 +98,7 @@ class RecentWorkoutDetailsTableViewController: UITableViewController {
 extension RecentWorkoutDetailsTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let numberOfSet = currentExerciseHistory[collectionView.tag].setRep?.count else { return 0 }
+        
         return numberOfSet
     }
     
@@ -107,6 +113,10 @@ extension RecentWorkoutDetailsTableViewController: UICollectionViewDelegate, UIC
         cell.equipment.text = currentExerciseHistory[collectionView.tag].equipment ?? ""
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Collection View Tag: ", collectionView.tag)
     }
 }
 
