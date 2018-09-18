@@ -18,5 +18,6 @@ class DetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var startedTime: UILabel!
     @IBOutlet weak var dumbellImage: UIImageView!
     var routineObj:Routine_History!
+    var didSelectDay:Date!
     
 }
