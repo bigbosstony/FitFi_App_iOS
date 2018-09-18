@@ -1503,10 +1503,10 @@
             <objects>
                 <tableViewController id="Zqf-7B-v7Q" customClass="RecentWorkoutDetailsTableViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1z2-4C-P8S">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="Oxe-VY-WlT">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Oxe-VY-WlT">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -1575,7 +1575,7 @@
                                 <constraint firstItem="XqL-au-FeI" firstAttribute="top" secondItem="Oxe-VY-WlT" secondAttribute="top" constant="16" id="xLX-JL-tKc"/>
                             </constraints>
                         </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="yiL-NW-740">
+                        <view key="tableFooterView" contentMode="scaleToFill" id="yiL-NW-740">
                             <rect key="frame" x="0.0" y="231" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2226,22 +2226,23 @@
                     <connections>
                         <outlet property="CalenderTitleOutlet" destination="tpf-86-gTn" id="hb5-aN-XEw"/>
                         <outlet property="calanderView" destination="zVI-9n-qt2" id="OOh-Hw-oqo"/>
+                        <segue destination="oTV-G4-mVH" kind="presentation" identifier="removePopUpCal" id="Kf4-Hr-3xz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFN-Vj-CDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7807.2463768115949" y="966.84782608695662"/>
+            <point key="canvasLocation" x="7807.1999999999998" y="966.56671664167925"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="3mF-GR-0qh">
             <objects>
                 <viewController id="oTV-G4-mVH" customClass="CalendarViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gnk-an-Nt8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ezP-gs-cag">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="calendarCell" rowHeight="78" id="Wj4-VY-UMF" customClass="CalendarTableViewCell" customModule="FitfiApp" customModuleProvider="target">
@@ -2447,11 +2448,11 @@
             <objects>
                 <viewController id="7gy-2n-0aK" customClass="scheduleSelectedVC" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kzk-pt-0WS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gvs-kr-WVt">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fNR-Gi-Hd1">
@@ -4158,8 +4159,10 @@ CgoKA
         <image name="pic" width="250" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="f08-6I-aOm"/>
         <segue reference="dX0-mi-e4F"/>
         <segue reference="GN5-Aq-Wdx"/>
+        <segue reference="Kf4-Hr-3xz"/>
         <segue reference="05Y-6i-say"/>
         <segue reference="14h-tr-23b"/>
         <segue reference="avN-2A-2ct"/>

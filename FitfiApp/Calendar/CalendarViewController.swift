@@ -8,7 +8,16 @@
 
 import UIKit
 import CoreData
+var beginDate:Date = Date().dateFromDays(-3)
+var endDate:Date = Date().dateFromDays(15)
+var fromPopUp:Int = 0
 
+protocol fromPopUpVCDelegate:class {
+    // Classes that adopt this protocol MUST define
+    // this method -- and hopefully do something in
+    // that definition.
+    func dateSelected(_ sender:PopUpCalenderVC)
+}
 
 extension Date {
     func dateFromDays(_ days: Int) -> Date {
@@ -16,14 +25,21 @@ extension Date {
     }
 }
 
-class CalendarViewController: UIViewController {
+
+class CalendarViewController: UIViewController,fromPopUpVCDelegate {
+    func dateSelected(_ sender: PopUpCalenderVC) {
+      days = generateDays(beginDate, endDate: endDate)
+        tableView.reloadData()
+    }
+    
     var popUpFlag:Int = 0
+    var fromPopUpDelegate:fromPopUpVCDelegate?
     let boarderColor:CGColor = UIColor(red: 61/255, green: 197/255, blue: 202/255, alpha: 1).cgColor
     let lightRedColor = UIColor(displayP3Red: 253/255, green: 246/255, blue: 242/255, alpha: 1.0)
     @IBOutlet weak var calenderBtnOutlet: UIBarButtonItem!
-    @IBAction func calenderBtnPressed(_ sender: UIBarButtonItem) {
+        @IBAction func calenderBtnPressed(_ sender: UIBarButtonItem) {
         
-    
+        
 //        if(popUpFlag == 0)
 //        {
 //            let popVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "calenderPopUpID") as! PopUpCalenderVC
@@ -81,17 +97,29 @@ class CalendarViewController: UIViewController {
     var routineHistoryObj:[Routine_History] = []
     var selectedRoutineHistory:Routine_History!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var popUpVC:PopUpCalenderVC?
     lazy var days: [Date] = {
-        let beginDate = Date().dateFromDays(-3)
-        let endDate = Date().dateFromDays(15)
-        return self.generateDays(beginDate, endDate: endDate)
+        let beginnDate = beginDate
+        let enddDate = endDate
+        return self.generateDays(beginnDate, endDate: enddDate)
     }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let requestSchedule = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+//        popUpVC = PopUpCalenderVC
+       // popUpVC?.delegate = self
         
+        days = generateDays(beginDate, endDate: endDate)
+        let requestSchedule = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+        if(fromPopUp == 1)
+        {
+            DispatchQueue.main.async {
+                let indexPath = IndexPath(item: 0, section: 0)
+                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            }
+        }
         requestSchedule.returnsObjectsAsFaults = false
         do {
             let result = try context.fetch(requestSchedule) as! [Schedule]
@@ -158,7 +186,10 @@ class CalendarViewController: UIViewController {
         dateFormatterCell.dateFormat = "E dd"
         dateFormatterTitle.dateFormat = "MMMM yyyy"
         self.title = dateFormatterTitle.string(from: days.first!)
-       
+        
+        DispatchQueue.main.async{
+            self.tableView.reloadData()
+        }
         
        // let newSchedule = Schedule(context: context)
         
@@ -501,6 +532,8 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
        
         if(cell.routineObj == nil)
         {
+            if(cell.didSelectDay != nil)
+            {
             var flag:Int = 0
             startedTime = []
             estimatedTime = []
@@ -599,7 +632,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             tableCellScheduleArr = []
             
             print(indexPath.row)
-            
+            }
         }
         else
         {
@@ -608,6 +641,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         }
         
         
+    }
+   override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 }
 extension CalendarViewController: UITableViewDelegate {
@@ -707,6 +743,8 @@ extension CalendarViewController: UITableViewDelegate {
         if(segue.identifier == "popUpCalender")
         {
             //assign date
+            let detailSmallCalVC = segue.destination as! PopUpCalenderVC
+            detailSmallCalVC.delegate = self
             
         }
         if(segue.identifier == "goToRoutineHistoryDetail")
