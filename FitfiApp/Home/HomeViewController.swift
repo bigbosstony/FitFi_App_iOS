@@ -46,7 +46,7 @@ class HomeViewController: UIViewController {
         //MARK: Register Customized Cell for Today Collection View
         todayCollectionView.register(UINib.init(nibName: "TodayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TodayCollectionViewCell")
         if let flowLayout = todayCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = CGSize(width: 1,height: 1)
+            flowLayout.estimatedItemSize = CGSize(width: 384, height: 64)
         }
         
         recentWorkoutCollectionView.delegate = self
