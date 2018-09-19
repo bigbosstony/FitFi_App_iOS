@@ -222,6 +222,30 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     
     
     @IBOutlet weak var R1: UIImageView!
+    
+    @IBOutlet weak var R2: UIImageView!
+    
+    @IBOutlet weak var R3: UIImageView!
+    
+    @IBOutlet weak var R4: UIImageView!
+    
+    @IBOutlet weak var R5: UIImageView!
+    @IBOutlet weak var R6: UIImageView!
+    @IBOutlet weak var R7: UIImageView!
+    
+    @IBOutlet weak var R8: UIImageView!
+    @IBOutlet weak var R9: UIImageView!
+    @IBOutlet weak var R10: UIImageView!
+    
+    @IBOutlet weak var R11: UIImageView!
+    
+    
+    @IBOutlet weak var R12: UIImageView!
+    
+    
+    
+    
+    
     @IBAction func timeSegments(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -281,6 +305,8 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
         R1.image = (R1.image?.withRenderingMode(.alwaysTemplate))!
         R1.tintColor = FitFiColor
         
+        R12.image = (R12.image?.withRenderingMode(.alwaysTemplate))!
+        R12.tintColor = FitFiColor
         //oneMonthSelected()
         //        for i in exerciseHistoryArray{
         //            if(exHistoryDict.contains(i.name!)){
