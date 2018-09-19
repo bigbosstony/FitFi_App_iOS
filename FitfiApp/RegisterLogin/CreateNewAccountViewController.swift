@@ -11,12 +11,25 @@ import UIKit
 class CreateNewAccountViewController: UIViewController {
 
     @IBOutlet weak var backGroundView: UIView!
-    let gradient = CAGradientLayer()
-    let camoGreen = UIColor(red: 57.0 / 255.0, green: 40.0 / 255.0, blue: 29.0 / 255.0, alpha: 1.0).cgColor
-    let fadedOrange = UIColor(red: 237.0 / 255.0, green: 146.0 / 255.0, blue: 98.0 / 255.0, alpha: 1.0).cgColor
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        email.attributedPlaceholder = NSAttributedString(string: "EMAIL ADDRESS", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+        password.attributedPlaceholder = NSAttributedString(string: "PASSWORD", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+        
+        gradient.frame = view.bounds
+        gradient.colors = [camoGreen, fadedOrange]
+//        self.view.layer.insertSublayer(gradient, at: 0)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -27,11 +40,15 @@ class CreateNewAccountViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        gradient.frame = view.bounds
-        gradient.colors = [camoGreen, fadedOrange]
-        
-        backGroundView.layer.insertSublayer(gradient, at: 0)
+        self.view.layer.insertSublayer(gradient, at: 0)
     }
+    //
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        print("login view will dissapear")
+//        self.view.layer.insertSublayer(gradient, at: 0)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -41,6 +58,7 @@ class CreateNewAccountViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
     @IBAction func loginPressed(_ sender: UIButton) {
         print("Login Pressed")
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
