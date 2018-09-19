@@ -3834,6 +3834,20 @@ CgoKA
                                                                 <constraint firstAttribute="width" constant="190" id="X8p-nW-ulG"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone 8Back_Full" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XfZ-n6-Q4y">
+                                                            <rect key="frame" x="216" y="8" width="190" height="287"/>
+                                                            <color key="tintColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="190" id="K7h-pf-FcP"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone 8R1" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phh-1y-2BL">
+                                                            <rect key="frame" x="216" y="8" width="190" height="287"/>
+                                                            <color key="tintColor" red="0.92941176469999998" green="0.57254901960000004" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="190" id="aiy-Vq-sMQ"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -3842,6 +3856,7 @@ CgoKA
                                                         <constraint firstItem="to2-aB-ib2" firstAttribute="centerY" secondItem="b9D-qt-xC5" secondAttribute="centerY" id="4AE-NT-Okg"/>
                                                         <constraint firstItem="Gei-bW-t5Y" firstAttribute="centerX" secondItem="b9D-qt-xC5" secondAttribute="centerX" id="5HE-Ux-pOm"/>
                                                         <constraint firstItem="Zxa-vm-CyL" firstAttribute="height" secondItem="b9D-qt-xC5" secondAttribute="height" id="6Qj-Wh-Viy"/>
+                                                        <constraint firstItem="Phh-1y-2BL" firstAttribute="height" secondItem="XfZ-n6-Q4y" secondAttribute="height" id="6Zw-aE-m16"/>
                                                         <constraint firstItem="HkF-wm-WHH" firstAttribute="centerY" secondItem="b9D-qt-xC5" secondAttribute="centerY" id="7M4-Zo-Bnh"/>
                                                         <constraint firstItem="HkF-wm-WHH" firstAttribute="height" secondItem="b9D-qt-xC5" secondAttribute="height" id="7di-5R-1TT"/>
                                                         <constraint firstItem="Y27-Oj-546" firstAttribute="centerY" secondItem="b9D-qt-xC5" secondAttribute="centerY" id="8WD-ax-GfR"/>
@@ -3859,6 +3874,7 @@ CgoKA
                                                         <constraint firstItem="8Id-rQ-THi" firstAttribute="width" secondItem="b9D-qt-xC5" secondAttribute="width" id="KQs-tB-NsC"/>
                                                         <constraint firstItem="tvh-z9-QqP" firstAttribute="height" secondItem="b9D-qt-xC5" secondAttribute="height" id="KSs-Tv-Qbs"/>
                                                         <constraint firstItem="D2x-2Z-S4a" firstAttribute="height" secondItem="b9D-qt-xC5" secondAttribute="height" id="KqD-l3-eYu"/>
+                                                        <constraint firstItem="Phh-1y-2BL" firstAttribute="centerX" secondItem="XfZ-n6-Q4y" secondAttribute="centerX" id="Ljf-vq-Ga0"/>
                                                         <constraint firstItem="vCW-1s-Xqk" firstAttribute="centerX" secondItem="b9D-qt-xC5" secondAttribute="centerX" id="MRd-5j-Upz"/>
                                                         <constraint firstItem="b9D-qt-xC5" firstAttribute="bottom" secondItem="w3F-gF-8yf" secondAttribute="bottomMargin" id="Msi-5C-L41"/>
                                                         <constraint firstItem="yQ2-y0-Tus" firstAttribute="leading" secondItem="b9D-qt-xC5" secondAttribute="leading" id="OLe-yi-Kpi"/>
@@ -3866,6 +3882,7 @@ CgoKA
                                                         <constraint firstItem="yQ2-y0-Tus" firstAttribute="width" secondItem="b9D-qt-xC5" secondAttribute="width" id="PSH-3K-Fmx"/>
                                                         <constraint firstItem="8Id-rQ-THi" firstAttribute="centerY" secondItem="b9D-qt-xC5" secondAttribute="centerY" id="PeA-fv-UGe"/>
                                                         <constraint firstItem="Y27-Oj-546" firstAttribute="centerX" secondItem="b9D-qt-xC5" secondAttribute="centerX" id="QZP-Ia-Les"/>
+                                                        <constraint firstItem="XfZ-n6-Q4y" firstAttribute="trailing" secondItem="w3F-gF-8yf" secondAttribute="trailingMargin" id="QdM-FU-cKn"/>
                                                         <constraint firstItem="to2-aB-ib2" firstAttribute="centerX" secondItem="b9D-qt-xC5" secondAttribute="centerX" id="QpW-Dk-rb0"/>
                                                         <constraint firstItem="D2x-2Z-S4a" firstAttribute="width" secondItem="b9D-qt-xC5" secondAttribute="width" id="Sf1-dY-sfw"/>
                                                         <constraint firstItem="yQ2-y0-Tus" firstAttribute="top" secondItem="b9D-qt-xC5" secondAttribute="top" id="UMk-ww-w0T"/>
@@ -3877,6 +3894,7 @@ CgoKA
                                                         <constraint firstItem="0uh-SX-Z7e" firstAttribute="centerY" secondItem="yQ2-y0-Tus" secondAttribute="centerY" id="aDh-t3-huj"/>
                                                         <constraint firstItem="to2-aB-ib2" firstAttribute="width" secondItem="b9D-qt-xC5" secondAttribute="width" id="aOv-I0-3Lj"/>
                                                         <constraint firstItem="Ve9-R0-GZl" firstAttribute="width" secondItem="b9D-qt-xC5" secondAttribute="width" id="cK7-R4-5pR"/>
+                                                        <constraint firstItem="Phh-1y-2BL" firstAttribute="width" secondItem="XfZ-n6-Q4y" secondAttribute="width" id="cyj-np-aTG"/>
                                                         <constraint firstItem="Gei-bW-t5Y" firstAttribute="width" secondItem="b9D-qt-xC5" secondAttribute="width" id="dv1-n0-7uA"/>
                                                         <constraint firstItem="tvh-z9-QqP" firstAttribute="centerY" secondItem="b9D-qt-xC5" secondAttribute="centerY" id="eiU-Vk-mQf"/>
                                                         <constraint firstItem="Zxa-vm-CyL" firstAttribute="centerX" secondItem="b9D-qt-xC5" secondAttribute="centerX" id="fQr-RP-euh"/>
@@ -3886,6 +3904,7 @@ CgoKA
                                                         <constraint firstItem="Y27-Oj-546" firstAttribute="height" secondItem="b9D-qt-xC5" secondAttribute="height" id="gbH-wt-Pbv"/>
                                                         <constraint firstItem="Ve9-R0-GZl" firstAttribute="height" secondItem="b9D-qt-xC5" secondAttribute="height" id="hzg-4R-zwH"/>
                                                         <constraint firstItem="Gei-bW-t5Y" firstAttribute="height" secondItem="b9D-qt-xC5" secondAttribute="height" id="itK-aM-A7G"/>
+                                                        <constraint firstItem="XfZ-n6-Q4y" firstAttribute="top" secondItem="KFh-Gy-nc9" secondAttribute="top" id="jlI-TR-RJW"/>
                                                         <constraint firstItem="qj6-br-9EA" firstAttribute="height" secondItem="b9D-qt-xC5" secondAttribute="height" id="kFC-Pu-fFU"/>
                                                         <constraint firstItem="Zxa-vm-CyL" firstAttribute="width" secondItem="b9D-qt-xC5" secondAttribute="width" id="kwg-2W-kHi"/>
                                                         <constraint firstItem="Ve9-R0-GZl" firstAttribute="centerX" secondItem="b9D-qt-xC5" secondAttribute="centerX" id="l5Y-7T-hNm"/>
@@ -3899,8 +3918,10 @@ CgoKA
                                                         <constraint firstItem="qj6-br-9EA" firstAttribute="width" secondItem="b9D-qt-xC5" secondAttribute="width" id="sbs-of-wBP"/>
                                                         <constraint firstItem="8Id-rQ-THi" firstAttribute="height" secondItem="b9D-qt-xC5" secondAttribute="height" id="uWX-Js-xVg"/>
                                                         <constraint firstItem="qj6-br-9EA" firstAttribute="centerY" secondItem="b9D-qt-xC5" secondAttribute="centerY" id="und-SW-aqV"/>
+                                                        <constraint firstItem="XfZ-n6-Q4y" firstAttribute="bottom" secondItem="vCW-1s-Xqk" secondAttribute="bottom" id="w3D-5H-FZc"/>
                                                         <constraint firstItem="KFh-Gy-nc9" firstAttribute="width" secondItem="b9D-qt-xC5" secondAttribute="width" id="wl8-3y-eEm"/>
                                                         <constraint firstItem="KFh-Gy-nc9" firstAttribute="height" secondItem="b9D-qt-xC5" secondAttribute="height" id="xhM-cL-TXv"/>
+                                                        <constraint firstItem="Phh-1y-2BL" firstAttribute="centerY" secondItem="XfZ-n6-Q4y" secondAttribute="centerY" id="z4P-X8-0Dq"/>
                                                         <constraint firstItem="Zxa-vm-CyL" firstAttribute="centerY" secondItem="b9D-qt-xC5" secondAttribute="centerY" id="zvu-XY-ncw"/>
                                                     </constraints>
                                                 </view>
@@ -4033,6 +4054,7 @@ CgoKA
                         <outlet property="F7" destination="Zxa-vm-CyL" id="J2Z-YA-aak"/>
                         <outlet property="F8" destination="Gei-bW-t5Y" id="MCH-DW-U4q"/>
                         <outlet property="F9" destination="Y27-Oj-546" id="rWX-YL-CZF"/>
+                        <outlet property="R1" destination="Phh-1y-2BL" id="JJs-jq-zye"/>
                         <outlet property="exerciseLabel" destination="hP8-Ia-VV5" id="i0n-yt-yFI"/>
                         <outlet property="exerciseTable" destination="6qQ-p7-RaM" id="2TS-8p-QR1"/>
                         <outlet property="timeSegmentOutlet" destination="VTq-Ss-PJk" id="Tms-hZ-gIL"/>
@@ -4336,6 +4358,7 @@ CgoKA
         <image name="TabBarIcons/Statistic Active" width="48" height="34"/>
         <image name="TabBarIcons/Workout" width="48" height="34"/>
         <image name="TabBarIcons/Workout Active" width="48" height="34"/>
+        <image name="iPhone 8Back_Full" width="200" height="440"/>
         <image name="iPhone 8F1" width="200" height="440"/>
         <image name="iPhone 8F10" width="200" height="440"/>
         <image name="iPhone 8F11" width="200" height="440"/>
@@ -4352,6 +4375,7 @@ CgoKA
         <image name="iPhone 8F8" width="200" height="440"/>
         <image name="iPhone 8F9" width="200" height="440"/>
         <image name="iPhone 8Front_Full" width="200" height="440"/>
+        <image name="iPhone 8R1" width="200" height="440"/>
         <image name="pic" width="250" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
