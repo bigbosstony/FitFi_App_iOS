@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+
 var beginDate:Date = Date().dateFromDays(-3)
 var endDate:Date = Date().dateFromDays(15)
 var fromPopUp:Int = 0

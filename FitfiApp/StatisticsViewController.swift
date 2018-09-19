@@ -193,7 +193,34 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     fileprivate var bottomChart: Chart?
     fileprivate lazy private(set) var chartLongPressGestureRecognizer = UILongPressGestureRecognizer()
     
+    @IBOutlet weak var F1: UIImageView!
     //var volumeAreaGraph:IOB
+    @IBOutlet weak var F2: UIImageView!
+    
+    @IBOutlet weak var F3: UIImageView!
+    
+    @IBOutlet weak var F4: UIImageView!
+    
+    @IBOutlet weak var F5: UIImageView!
+    
+    @IBOutlet weak var F6: UIImageView!
+    @IBOutlet weak var F7: UIImageView!
+    
+    @IBOutlet weak var F8: UIImageView!
+    
+    
+    @IBOutlet weak var F9: UIImageView!
+    
+    @IBOutlet weak var F10: UIImageView!
+    
+    @IBOutlet weak var F11: UIImageView!
+    
+    @IBOutlet weak var F12: UIImageView!
+    @IBOutlet weak var F13: UIImageView!
+    @IBOutlet weak var F14: UIImageView!
+    @IBOutlet weak var F15: UIImageView!
+    
+    
     @IBAction func timeSegments(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -243,6 +270,13 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     var exWorkOuts:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+       F1.image = (F1.image?.withRenderingMode(.alwaysTemplate))!
+        F1.tintColor = FitFiColor
+        F2.image = (F2.image?.withRenderingMode(.alwaysTemplate))!
+        F2.tintColor = FitFiColor
+        F12.image = (F12.image?.withRenderingMode(.alwaysTemplate))!
+        F12.tintColor = FitFiColor
         //oneMonthSelected()
         //        for i in exerciseHistoryArray{
         //            if(exHistoryDict.contains(i.name!)){
