@@ -452,10 +452,14 @@ extension CalendarViewController: UITableViewDataSource {
                     let s = tableCellScheduleArr[0].schdule
                     var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
                     collectionDidSelectDate = days[indexPath.row]
-                    singleRoutineName =  singleRoutineName.components(separatedBy: .whitespacesAndNewlines).joined()
+                    singleRoutineName =  singleRoutineName.components(separatedBy: "\n").joined()
                     singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
                     singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
+                    
                     singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
+                    
+                    singleRoutineName = singleRoutineName.replacingOccurrences(of: "\"", with: "")
+                    singleRoutineName = String(singleRoutineName.dropFirst(4))
                     isSchedule = 2
                     cell.detailCollectionView.isHidden = false
                     numberOfViewsInCollectionCell = 1
@@ -655,10 +659,11 @@ extension CalendarViewController: UITableViewDelegate {
             let s = i.schdule
             let e = s!.value(forKey: "routineExercises")
             var singleExerciseName = "\(String(describing: (e as AnyObject).value(forKey: "name") ?? ""))"
-            singleExerciseName = singleExerciseName.components(separatedBy: .whitespacesAndNewlines).joined()
+            singleExerciseName = singleExerciseName.components(separatedBy: "\n").joined()
             singleExerciseName = singleExerciseName.replacingOccurrences(of: "{(", with: "")
             singleExerciseName = singleExerciseName.replacingOccurrences(of: ")}", with: "")
             singleExerciseName = singleExerciseName.components(separatedBy: ",").first!
+            singleExerciseName = singleExerciseName.replacingOccurrences(of: "\"", with: "")
             for i in singleExerciseName.components(separatedBy: ","){
                 
                 exerciseList.append(i)

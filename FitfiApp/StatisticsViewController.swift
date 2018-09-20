@@ -344,7 +344,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
         chartLongPressGestureRecognizer.minimumPressDuration = 0.01
         volumeGraphView.addGestureRecognizer(chartLongPressGestureRecognizer)
         generateXAxisValues()
-        let frame = CGRect(x:0,y:10,width:volumeGraphView.bounds.width - 13,height:workOutGraphView.bounds.height - 8)
+        let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
         bottomChart = generateIOBChartWithFrame(frame: frame)
         
         for chart in [bottomChart]{
@@ -405,7 +405,7 @@ extension StatisticsViewController{
     {
         let chartConfigg = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: 100,by: 10))
         
-        let frame = CGRect(x:0,y:10,width:workOutGraphView.bounds.width - 13,height:workOutGraphView.bounds.height - 8)
+        let frame = CGRect(x:0,y:10,width:workOutGraphView.bounds.width,height:workOutGraphView.bounds.height - 10)
         var oneMonthchart = BarsChart(
             frame: frame,
             chartConfig: chartConfigg,
@@ -521,8 +521,7 @@ extension StatisticsViewController{
             print(IOBPoints)
             generateXAxisValues()
             //print(xAxisValues)
-            let frame = CGRect(x:0,y:10,width:volumeGraphView.bounds.width - 13,height:workOutGraphView.bounds.height - 8)
-           
+            let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
             bottomChart = generateIOBChartWithFrame(frame: frame)
             for view in volumeGraphView.subviews {
                 view.removeFromSuperview()
@@ -620,7 +619,7 @@ extension StatisticsViewController{
             print(IOBPoints)
             generateXAxisValues()
 //            print(xAxisValues)
-            let frame = CGRect(x:0,y:10,width:volumeGraphView.bounds.width - 13,height:workOutGraphView.bounds.height - 8)
+            let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
             bottomChart = generateIOBChartWithFrame(frame: frame)
             for view in volumeGraphView.subviews {
                 view.removeFromSuperview()
@@ -718,7 +717,8 @@ extension StatisticsViewController{
             print(IOBPoints)
             generateXAxisValues()
           //  print(xAxisValues)
-            let frame = CGRect(x:0,y:10,width:volumeGraphView.bounds.width - 13,height:workOutGraphView.bounds.height - 8)
+                let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
+
             bottomChart = generateIOBChartWithFrame(frame: frame)
             for view in volumeGraphView.subviews {
                 view.removeFromSuperview()
@@ -858,6 +858,7 @@ extension StatisticsViewController{
         //print(exVolume) Volume
         if(exVolume < 1000)
         {
+            exVolume = 2000
             volumeLabel.text = "\(exVolume/2000) t"
         }
         else{
@@ -920,7 +921,7 @@ extension StatisticsViewController{
             chartPoints: IOBPoints,
             tintColor: FitFiColor,
             labelCenterY: chartSettings.top,
-            gestureRecognizer: nil,
+            gestureRecognizer: chartLongPressGestureRecognizer,
             onCompleteHighlight: nil
         )
         
