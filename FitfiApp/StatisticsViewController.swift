@@ -470,25 +470,25 @@ extension StatisticsViewController{
                 previousDateString = oneMonthformatter.string(from: previousDate)
                 nextCurrentDate = previousDate.addingTimeInterval(oneDay)
                // BarsArray[i] = ("\(previousDateString)-\(currentDateString)",tmp[0])
-                BarsArray[i] = ("Week \(4 - (i))",tmp[0])
+                BarsArray[i] = ("Week \(4 - (i))",tmp[2])
                 GraphArray[i] = ("\(previousDate)",tmp[1])
                 Graph1Array[i] = ("\(previousDate)",tmp[1])
                 totalExercise = totalExercise + tmp[0]
                 totalVolume = totalVolume + tmp[1]
                 totalWorkOut = totalWorkOut + tmp[2]
-                if(tmp[0] >  maxWorkOut)
+                if(tmp[2] >  maxWorkOut)
                 {
-                    maxWorkOut = tmp[0]
+                    maxWorkOut = tmp[2]
                 }
                 
             }
             
             //print(exHistoryDict.count) number of exercise
-            exerciseLabel.text = "\(totalExercise)"
+            exerciseLabel.text = "\(Int(totalExercise))"
             //print(exVolume) Volume
             volumeLabel.text = "\(totalVolume) t"
             //print(exWorkOuts.count) total routines
-            workOutLabel.text = "\(totalWorkOut)"
+            workOutLabel.text = "\(Int(totalWorkOut))"
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
             //            barsArray.append("\(currentDateString)/\(currentDateString),150")
             if(totalExercise > 0){
@@ -579,11 +579,11 @@ extension StatisticsViewController{
                 
             }
             //print(exHistoryDict.count) number of exercise
-            exerciseLabel.text = "\(totalExercise)"
+            exerciseLabel.text = "\(Int(totalExercise))"
             //print(exVolume) Volume
             volumeLabel.text = "\(totalVolume) t"
             //print(exWorkOuts.count) total routines
-            workOutLabel.text = "\(totalWorkOut)"
+            workOutLabel.text = "\(Int(totalWorkOut))"
             if(totalExercise > 0)
             {
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
@@ -679,11 +679,11 @@ extension StatisticsViewController{
                 
             }
             //print(exHistoryDict.count) number of exercise
-            exerciseLabel.text = "\(totalExercise)"
+            exerciseLabel.text = "\(Int(totalExercise))"
             //print(exVolume) Volume
             volumeLabel.text = "\(totalVolume) t"
             //print(exWorkOuts.count) total routines
-            workOutLabel.text = "\(totalWorkOut)"
+            workOutLabel.text = "\(Int(totalWorkOut))"
             if(totalExercise > 0)
             {
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
@@ -856,9 +856,16 @@ extension StatisticsViewController{
         //print(exHistoryDict.count) number of exercise
         exerciseLabel.text = "\(exHistoryDict.count)"
         //print(exVolume) Volume
-        volumeLabel.text = "\(exVolume/2000) t"
+        if(exVolume < 1000)
+        {
+            volumeLabel.text = "\(exVolume/2000) t"
+        }
+        else{
+            volumeLabel.text = "\(exVolume/2000) t"
+        }
+        
         //print(exWorkOuts.count) total routines
-        workOutLabel.text = "\(exWorkOuts)"
+        workOutLabel.text = "\(Int(exWorkOuts))"
         return [Double(exHistoryDict.count) , Double(exVolume/2000), Double(exWorkOuts)]
     }
     

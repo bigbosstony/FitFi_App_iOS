@@ -1577,6 +1577,7 @@
                             <rect key="frame" x="0.0" y="231" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="102" id="fmA-L2-8dG" customClass="RecentWorkoutDetailTVCell" customModule="FitfiApp" customModuleProvider="target">
@@ -2009,6 +2010,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ds2-Fz-Jxc" firstAttribute="bottom" secondItem="G6y-c6-jld" secondAttribute="bottom" id="2v6-Sa-65z"/>
                             <constraint firstItem="oJy-2r-AFc" firstAttribute="leading" secondItem="ds2-Fz-Jxc" secondAttribute="leading" id="81f-ba-wtV"/>
@@ -4522,6 +4524,7 @@ CgoKA
         <image name="pic" width="250" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="f08-6I-aOm"/>
         <segue reference="dX0-mi-e4F"/>
         <segue reference="GN5-Aq-Wdx"/>
         <segue reference="Kf4-Hr-3xz"/>
