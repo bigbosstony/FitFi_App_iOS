@@ -29,7 +29,7 @@ class FirstViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        self.view.layer.insertSublayer(gradient, at: 0)
+//        self.view.layer.insertSublayer(gradient, at: 0)
     }
 //
     override func viewWillDisappear(_ animated: Bool) {

@@ -73,9 +73,15 @@ class SmallTrackingViewController: UIViewController {
     //Setup Core Bluetooth Properties
     var centralManager: CBCentralManager!
     var blePeripheral: CBPeripheral!
-    let bleServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E
-    let bleCharacteristicCBUUID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
+    let bleMainServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E
+    let bleMainServiceCharacteristicCBUUID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
+
+    let bleBattery = CBUUID(string: "2A19")
+    let bleSystemID = CBUUID(string: "2A23")
+    let bleManufacturerNameString = CBUUID(string: "2A29")
+    let bleModelNumberString = CBUUID(string: "2A24")
     
+    //>>>>>>>>
     var dataArrayCounter = 0
     var dataArray = [Double]()
     let dateFormatter = DateFormatter()
@@ -151,7 +157,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             view.isHidden = true
         case .poweredOn:
             print("central.state is .poweredOn")
-            centralManager.scanForPeripherals(withServices: [bleServiceCBUUID]) // ????? [bleServiceCBUUID]
+            centralManager.scanForPeripherals(withServices: [bleMainServiceCBUUID]) // ????? [bleServiceCBUUID]
             print("Scanning...")
         }
     }
@@ -179,7 +185,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
                 //                centralManager.stopScan()
                 centralManager.connect(blePeripheral)
             } else {
-                centralManager.scanForPeripherals(withServices: [bleServiceCBUUID], options: nil)
+                centralManager.scanForPeripherals(withServices: [bleMainServiceCBUUID], options: nil)
             }
         case 5.0:
             print("BLE: 5.0")
@@ -189,7 +195,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
                 //                centralManager.stopScan()
                 centralManager.connect(blePeripheral)
             } else {
-                centralManager.scanForPeripherals(withServices: [bleServiceCBUUID], options: nil)
+                centralManager.scanForPeripherals(withServices: [bleMainServiceCBUUID], options: nil)
             }
         case 0.0:
             print("No Way")
@@ -204,7 +210,9 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         //        MARK: Make Small TrackingVC Visable
         self.view.isHidden = false
-        blePeripheral.discoverServices([bleServiceCBUUID]) // CHANGE THIS VALUE
+        //MARK: IMPORTANT SERVICE UUID
+        blePeripheral.discoverServices(nil) // CHANGE THIS VALUE
+        
     }
     
     //MARK: Did Disconnect Peripheral
@@ -216,7 +224,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         switch central.state {
         case .poweredOn:
             print("central.state is .poweredOn again")
-            centralManager.scanForPeripherals(withServices: [bleServiceCBUUID], options: nil)
+            centralManager.scanForPeripherals(withServices: [bleMainServiceCBUUID], options: nil)
         default:
             print("bluetooth unavailable")
         }
@@ -226,10 +234,11 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
 //MARK: CB Peripheral
 extension SmallTrackingViewController: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        print("«««««««««««««««««««")
         print(peripheral.services!)
         guard let services = peripheral.services else { return }
         for service in services {
-            print("Did Discover Service: \n \(service)")
+            print("Did Discover Service: \(service)")
             peripheral.discoverCharacteristics(nil, for: service)
         }
     }
@@ -242,6 +251,16 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
             if characteristic.properties.contains(.notify) {
                 print("\(characteristic.uuid): properties contains .notify")
                 peripheral.setNotifyValue(true, for: characteristic)
+            } else if characteristic.uuid == bleManufacturerNameString {
+                print("Manufacturer Name String: ", String(data: characteristic.value!, encoding: .utf8)!)
+            } else if characteristic.uuid == bleModelNumberString {
+                print("Model Number String: ", String(data: characteristic.value!, encoding: .utf8)!)
+            } else if characteristic.uuid == bleSystemID {
+                print("System ID: ", [UInt8](characteristic.value!))
+                
+//                characteristicData
+//                print("RSSI: ", peripheral.readRSSI())
+//                print("System ID: ", String.init(String(data: characteristic.value!, encoding: .utf8)!))
             }
         }
     }
@@ -249,7 +268,7 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
     //MARK: Update Characteristic Value
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         switch characteristic.uuid {
-        case bleCharacteristicCBUUID:
+        case bleMainServiceCharacteristicCBUUID:
             //                let realData = String(data!.suffix(17))
             
             guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
@@ -313,6 +332,10 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                 }
             }
 //            print("Data: \(String(describing: String(data: characteristic.value!, encoding: .utf8)))")
+        case bleBattery:
+//            print("Battery Level Property: ", characteristic.properties)
+            print("Battery Level value: ", [UInt8](characteristic.value!))
+            
         default:
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
         }

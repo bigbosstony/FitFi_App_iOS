@@ -8,14 +8,12 @@
 
 import UIKit
 
-class CreateNewAccountViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var backGroundView: UIView!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +28,9 @@ class CreateNewAccountViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+        
+        email.delegate = self
+        password.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,7 +41,7 @@ class CreateNewAccountViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        self.view.layer.insertSublayer(gradient, at: 0)
+//        self.view.layer.insertSublayer(gradient, at: 0)
     }
     //
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,5 +69,48 @@ class CreateNewAccountViewController: UIViewController {
         //MARK: Delete
         UserDefaults.standard.setValue(Date(), forKey: "date")
         
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func animateTextField(textField: UITextField, up: Bool)
+    {
+        let movementDistance:CGFloat = -110
+        let movementDuration: Double = 0.3
+        
+        var movement:CGFloat = 0
+        if up
+        {
+            movement = movementDistance
+        }
+        else
+        {
+            movement = -movementDistance
+        }
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.animateTextField(textField: textField, up: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.animateTextField(textField: textField, up: false)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        
+        return true
     }
 }

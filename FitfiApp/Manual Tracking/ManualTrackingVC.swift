@@ -92,6 +92,7 @@ class ManualTrackingVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        //MARK: Set Default Value For Next Button
         if currentWorkoutExerciseSetIndex == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count - 1 {
             if currentWorkoutExerciseArray.count == 1 {
                 nextButton.setTitle("Finish", for: .normal)
@@ -130,9 +131,65 @@ class ManualTrackingVC: UIViewController {
     @IBAction func goToNextButtonPressed(_ sender: UIButton) {
         print(currentWorkoutExerciseArray.count, currentWorkoutExerciseIndex, currentWorkoutExerciseSetIndex)
         
-        if nextButton.titleLabel?.text == "Finish" {
-            //MARK: Save
+        switch nextButton.titleLabel?.text {
             
+        case "Next Set":
+            if currentWorkoutExerciseArray[currentWorkoutExerciseIndex].weightArray[currentWorkoutExerciseSetIndex] == 0 {
+                let alert = UIAlertController(title: "Oops", message: "Add Weight To Your Set", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                    print("Add Weight")
+                }))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
+                currentWorkoutExerciseSetIndex += 1
+                if currentWorkoutExerciseIndex + 1 == currentWorkoutExerciseArray.count {
+                    if currentWorkoutExerciseSetIndex + 1 == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
+                        nextButton.setTitle("Finish", for: .normal)
+                    } else {
+                        nextButton.setTitle("Next Set", for: .normal)
+                    }
+                } else {
+                    if currentWorkoutExerciseSetIndex + 1 == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
+                        nextButton.setTitle("Next Exercise", for: .normal)
+                    } else {
+                        nextButton.setTitle("Next Set", for: .normal)
+                    }
+                }
+            }
+            
+        case "Next Exercise":
+            if currentWorkoutExerciseArray[currentWorkoutExerciseIndex].weightArray[currentWorkoutExerciseSetIndex] == 0 {
+                let alert = UIAlertController(title: "Oops", message: "Add Weight To Your Set", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                    print("Add Weight")
+                }))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
+                currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
+                
+                currentWorkoutExerciseIndex += 1
+                currentWorkoutExerciseSetIndex = 0
+                
+                self.exerciseCollectionView.scrollToItem(at: IndexPath(item: currentWorkoutExerciseIndex, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+                currentExerciseCounterLabel.text = "\(currentWorkoutExerciseIndex + 1)/\(currentWorkoutExerciseArray.count)"
+                
+                if currentWorkoutExerciseIndex + 1 == currentWorkoutExerciseArray.count {
+                    if currentWorkoutExerciseSetIndex + 1 == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
+                        nextButton.setTitle("Finish", for: .normal)
+                    } else {
+                        nextButton.setTitle("Next Set", for: .normal)
+                    }
+                } else {
+                    if currentWorkoutExerciseSetIndex + 1 == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
+                        nextButton.setTitle("Next Exercise", for: .normal)
+                    } else {
+                        nextButton.setTitle("Next Set", for: .normal)
+                    }
+                }
+            }
+        case "Finish":
             if currentWorkoutExerciseArray.last?.weightArray.last == 0 {
                 let alert = UIAlertController(title: "Oops", message: "Add Weight To Your Set", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
@@ -143,46 +200,68 @@ class ManualTrackingVC: UIViewController {
                 currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
                 currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
                 
-                print("Finish Button On Bottom: ", currentWorkoutExerciseArray)
-
                 saveWorkoutResult(from: currentWorkoutExerciseArray)
                 self.dismiss(animated: true, completion: nil)
             }
-            
-        } else if currentWorkoutExerciseIndex < currentWorkoutExerciseArray.count {
-            
-            if currentWorkoutExerciseSetIndex < currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
-                nextButton.setTitle("Next Set", for: .normal)
-                if currentWorkoutExerciseArray[currentWorkoutExerciseIndex].weightArray[currentWorkoutExerciseSetIndex] == 0 {
-                    let alert = UIAlertController(title: "Oops", message: "Add Weight To Your Set", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-                        print("Add Weight")
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
-                    currentWorkoutExerciseSetIndex += 1
-                }
-                
-                if currentWorkoutExerciseSetIndex == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
-                    currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
-                    print("Flow To Next")
-                    
-                    currentWorkoutExerciseIndex += 1
-                    currentWorkoutExerciseSetIndex = 0
-                    
-                    self.exerciseCollectionView.scrollToItem(at: IndexPath(item: currentWorkoutExerciseIndex, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
-                    currentExerciseCounterLabel.text = "\(currentWorkoutExerciseIndex + 1)/\(currentWorkoutExerciseArray.count)"
 
-                } else if currentWorkoutExerciseSetIndex == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count - 1 {
-                    if currentWorkoutExerciseIndex == currentWorkoutExerciseArray.count - 1 {
-                        nextButton.setTitle("Finish", for: .normal)
-                    } else {
-                        nextButton.setTitle("Next Exercise", for: .normal)
-                    }
-                }
-            }
+        default:
+            print("d")
         }
+        
+//
+//        if nextButton.titleLabel?.text == "Finish" {
+//            //MARK: Save
+//
+//            if currentWorkoutExerciseArray.last?.weightArray.last == 0 {
+//                let alert = UIAlertController(title: "Oops", message: "Add Weight To Your Set", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+//                    print("Add Weight")
+//                }))
+//                self.present(alert, animated: true, completion: nil)
+//            } else {
+//                currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
+//                currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
+//
+//                print("Finish Button On Bottom: ", currentWorkoutExerciseArray)
+//
+//                saveWorkoutResult(from: currentWorkoutExerciseArray)
+//                self.dismiss(animated: true, completion: nil)
+//            }
+//
+//        } else if currentWorkoutExerciseIndex < currentWorkoutExerciseArray.count {
+//
+//            if currentWorkoutExerciseSetIndex < currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
+//                nextButton.setTitle("Next Set", for: .normal)
+//                if currentWorkoutExerciseArray[currentWorkoutExerciseIndex].weightArray[currentWorkoutExerciseSetIndex] == 0 {
+//                    let alert = UIAlertController(title: "Oops", message: "Add Weight To Your Set", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+//                        print("Add Weight")
+//                    }))
+//                    self.present(alert, animated: true, completion: nil)
+//                } else {
+//                    currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
+//                    currentWorkoutExerciseSetIndex += 1
+//                }
+//
+//                if currentWorkoutExerciseSetIndex == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
+//                    currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
+//                    print("Flow To Next")
+//
+//                    currentWorkoutExerciseIndex += 1
+//                    currentWorkoutExerciseSetIndex = 0
+//
+//                    self.exerciseCollectionView.scrollToItem(at: IndexPath(item: currentWorkoutExerciseIndex, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+//                    currentExerciseCounterLabel.text = "\(currentWorkoutExerciseIndex + 1)/\(currentWorkoutExerciseArray.count)"
+//
+//                } else if currentWorkoutExerciseSetIndex == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count - 1 {
+//                    if currentWorkoutExerciseIndex == currentWorkoutExerciseArray.count - 1 {
+//                        nextButton.setTitle("Finish", for: .normal)
+//                    } else {
+//                        nextButton.setTitle("Next Exercise", for: .normal)
+//                    }
+//                }
+//            }
+//        }
         
         print(currentWorkoutExerciseArray)
         exerciseCollectionView.reloadData()
