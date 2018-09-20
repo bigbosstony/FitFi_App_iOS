@@ -82,7 +82,7 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
         singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
         singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
         singleRoutineName = singleRoutineName.replacingOccurrences(of: "\"", with: "")
-        
+        singleRoutineName = String(singleRoutineName.dropFirst(4))
         cell.textLabel?.text = singleRoutineName
         let r = scheduleArr![indexPath.row].schdule
         let e = s!.value(forKey: "routineExercises")
@@ -92,6 +92,7 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
             singleExerciseName = singleExerciseName.replacingOccurrences(of: ")}", with: "")
             singleExerciseName = singleExerciseName.components(separatedBy: ",").first!
             singleExerciseName = singleExerciseName.replacingOccurrences(of: "\"", with: "")
+            singleExerciseName = String(singleExerciseName.dropFirst(8))
             for i in singleExerciseName.components(separatedBy: ","){
                 singleExerciseName = singleExerciseName + " " + i
             }
