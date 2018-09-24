@@ -171,7 +171,6 @@ extension PopUpCalenderVC:JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSou
         formatter.locale = Calendar.current.locale
         let startDate = Calendar.current.date(byAdding: .month, value: -3, to: Date())
         let endDate = Calendar.current.date(byAdding: .month, value: 11, to: Date())
-
         let parameters = ConfigurationParameters(startDate: startDate!, endDate: endDate!)
         calendar.scrollToDate(Date())
         return parameters

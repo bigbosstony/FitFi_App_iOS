@@ -299,7 +299,6 @@
 		EADD315221236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTrackingVCCollectionViewCell.swift; sourceTree = "<group>"; };
 		EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallTrackingVCCollectionViewCell.xib; sourceTree = "<group>"; };
 		F11FA574214AE5F200AAB38F /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
-		F1324FED2125DEBD00A7F955 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
 		F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleSelectedVC.swift; sourceTree = "<group>"; };
 		F178F2742141B64E001D3DB6 /* CoustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoustomCell.swift; sourceTree = "<group>"; };
@@ -403,7 +402,6 @@
 		EA3090DA20C6DA3F00E09DDF = {
 			isa = PBXGroup;
 			children = (
-				F1324FED2125DEBD00A7F955 /* Alamofire.framework */,
 				EA3090E520C6DA4000E09DDF /* FitfiApp */,
 				EA3090FD20C6DA4300E09DDF /* FitfiAppTests */,
 				EA30910820C6DA4300E09DDF /* FitfiAppUITests */,
