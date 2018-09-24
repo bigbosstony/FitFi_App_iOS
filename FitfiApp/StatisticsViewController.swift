@@ -293,6 +293,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     var exSets:[Int] = []
     var exWeight:[Int] = []
     var exWorkOuts:Int = 0
+     var metricFlag:Int = 0// to get ton know if weight is low than it will be 0 to print lb instead of tone
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -486,7 +487,18 @@ extension StatisticsViewController{
             //print(exHistoryDict.count) number of exercise
             exerciseLabel.text = "\(Int(totalExercise))"
             //print(exVolume) Volume
-            volumeLabel.text = "\(totalVolume) t"
+            if(totalVolume < 1)
+            {
+                metricFlag = 0
+                volumeLabel.text = "\(totalVolume * 2000) lb"
+                
+            }
+            else{
+                metricFlag = 1
+                volumeLabel.text = "\(totalVolume) t"
+                
+            }
+
             //print(exWorkOuts.count) total routines
             workOutLabel.text = "\(Int(totalWorkOut))"
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
@@ -580,7 +592,18 @@ extension StatisticsViewController{
             //print(exHistoryDict.count) number of exercise
             exerciseLabel.text = "\(Int(totalExercise))"
             //print(exVolume) Volume
-            volumeLabel.text = "\(totalVolume) t"
+            if(totalVolume < 1)
+            {
+                metricFlag = 0
+                volumeLabel.text = "\(totalVolume * 2000) lb"
+                
+            }
+            else{
+                metricFlag = 1
+                volumeLabel.text = "\(totalVolume) t"
+                
+            }
+
             //print(exWorkOuts.count) total routines
             workOutLabel.text = "\(Int(totalWorkOut))"
             if(totalExercise > 0)
@@ -680,7 +703,18 @@ extension StatisticsViewController{
             //print(exHistoryDict.count) number of exercise
             exerciseLabel.text = "\(Int(totalExercise))"
             //print(exVolume) Volume
-            volumeLabel.text = "\(totalVolume) t"
+            if(totalVolume < 1)
+            {
+                metricFlag = 0
+                volumeLabel.text = "\(totalVolume * 2000) lb"
+                
+            }
+            else{
+                metricFlag = 1
+                volumeLabel.text = "\(totalVolume) t"
+                
+            }
+
             //print(exWorkOuts.count) total routines
             workOutLabel.text = "\(Int(totalWorkOut))"
             if(totalExercise > 0)
@@ -855,19 +889,23 @@ extension StatisticsViewController{
         
         //print(exHistoryDict.count) number of exercise
         exerciseLabel.text = "\(exHistoryDict.count)"
+        workOutLabel.text = "\(Int(exWorkOuts))"
         //print(exVolume) Volume
-        if(exVolume < 1000)
+        if(exVolume < 2000)
         {
-            exVolume = 2000
-            volumeLabel.text = "\(exVolume/2000) t"
+            
+            volumeLabel.text = "\(exVolume) lb"
+            return [Double(exHistoryDict.count) , Double(exVolume/2000), Double(exWorkOuts)]
         }
         else{
+            
             volumeLabel.text = "\(exVolume/2000) t"
+            return [Double(exHistoryDict.count) , Double(exVolume/2000), Double(exWorkOuts)]
         }
         
         //print(exWorkOuts.count) total routines
-        workOutLabel.text = "\(Int(exWorkOuts))"
-        return [Double(exHistoryDict.count) , Double(exVolume/2000), Double(exWorkOuts)]
+     
+       
     }
     
     private func generateIOBChartWithFrame(frame: CGRect) -> Chart? {

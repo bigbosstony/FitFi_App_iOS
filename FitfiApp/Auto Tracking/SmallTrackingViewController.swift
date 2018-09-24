@@ -248,9 +248,10 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
         switch characteristic.uuid {
         case bleCharacteristicCBUUID:
             //                let realData = String(data!.suffix(17))
+             guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
+             print(data)
             
-            guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
-            let managedData = data.split{ [":", "\0"].contains($0.description) }
+            var managedData = data.replacingOccurrences(of:"\r\n" , with: "").split{ [":", "\0"].contains($0.description) }
             
             //Array of Data
             if Int(String(data[0])) == dataArrayCounter {
