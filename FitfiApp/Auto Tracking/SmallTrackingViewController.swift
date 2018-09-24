@@ -73,16 +73,26 @@ class SmallTrackingViewController: UIViewController {
     //Setup Core Bluetooth Properties
     var centralManager: CBCentralManager!
     var blePeripheral: CBPeripheral!
-    let bleServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E
-    let bleCharacteristicCBUUID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
-   
-    //6E400002-B5A3-F393-E0A9-E50E24DCCA9E
+
+    let bleMainServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E
+    let bleMainServiceCharacteristicCBUUID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
+
+    let bleBattery = CBUUID(string: "2A19")
+    let bleSystemID = CBUUID(string: "2A23")
+    let bleManufacturerNameString = CBUUID(string: "2A29")
+    let bleModelNumberString = CBUUID(string: "2A24")
+    
+    //>>>>>>>>
+    var globalCounter = 0
+
     var dataArrayCounter = 0
     var dataArray = [Double]()
     let dateFormatter = DateFormatter()
+    let dataArrayCounterDictionary = [0: "A", 1: "G", 2: "M"]
     
-    //MARK: Core ML Model
-    let model = tracking_model_0_2()
+    //MARK: Create Core ML Model
+    let countingModel = counting_model_0_4()
+    let classifyModel = classify_model_0_4()
     
     //MARK: Testing
     var currentExerciseArray = [CurrentExercise]()
@@ -114,7 +124,6 @@ class SmallTrackingViewController: UIViewController {
 //        currentExercise.reps = 9
 //        currentExercise.sets = 2
 //        currentExerciseArray.append(currentExercise)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,7 +152,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             view.isHidden = true
         case .unsupported:
             print("central.state is .unsupported")
-            view.isHidden = false
+            view.isHidden = true
         case .unauthorized:
             print("central.state is .unauthorized")
             view.isHidden = true
@@ -152,18 +161,22 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             view.isHidden = true
         case .poweredOn:
             print("central.state is .poweredOn")
-            centralManager.scanForPeripherals(withServices: [bleServiceCBUUID]) // ????? [bleServiceCBUUID]
+            centralManager.scanForPeripherals(withServices: [bleMainServiceCBUUID]) // ????? [bleServiceCBUUID]
             print("Scanning...")
         }
     }
     
     //MARK: Did Discover Peipheral
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print("Did Discover Peripheral")
-        print("name: ", peripheral.name!, "\nidentifier: ", peripheral.identifier, "\nstate: ", peripheral.state.rawValue)
-        print("advData = \(advertisementData)")
+        print("\nDid Discover Peripheral")
+        print("name: ", peripheral.name!)
+        print("identifier: ", peripheral.identifier)
+        print("state: ", peripheral.state.rawValue)
+        print("Services: ", peripheral.services)
+        print("AdvertisementData Description: ", advertisementData.description)
+        print("AdvertisementData Keys: ", advertisementData.keys)
         print("RSSI = \(RSSI)")
-        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
         
         switch bleVersion {
         case 4.0:
@@ -176,7 +189,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
                 //                centralManager.stopScan()
                 centralManager.connect(blePeripheral)
             } else {
-                centralManager.scanForPeripherals(withServices: [bleServiceCBUUID], options: nil)
+                centralManager.scanForPeripherals(withServices: [bleMainServiceCBUUID], options: nil)
             }
         case 5.0:
             print("BLE: 5.0")
@@ -186,7 +199,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
                 //                centralManager.stopScan()
                 centralManager.connect(blePeripheral)
             } else {
-                centralManager.scanForPeripherals(withServices: [bleServiceCBUUID], options: nil)
+                centralManager.scanForPeripherals(withServices: [bleMainServiceCBUUID], options: nil)
             }
         case 0.0:
             print("No Way")
@@ -201,7 +214,9 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         //        MARK: Make Small TrackingVC Visable
         self.view.isHidden = false
-        blePeripheral.discoverServices([bleServiceCBUUID]) // CHANGE THIS VALUE
+        //MARK: IMPORTANT SERVICE UUID
+        blePeripheral.discoverServices(nil) // CHANGE THIS VALUE
+        
     }
     
     //MARK: Did Disconnect Peripheral
@@ -213,7 +228,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         switch central.state {
         case .poweredOn:
             print("central.state is .poweredOn again")
-            centralManager.scanForPeripherals(withServices: [bleServiceCBUUID], options: nil)
+            centralManager.scanForPeripherals(withServices: [bleMainServiceCBUUID], options: nil)
         default:
             print("bluetooth unavailable")
         }
@@ -223,10 +238,11 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
 //MARK: CB Peripheral
 extension SmallTrackingViewController: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        print("«««««««««««««««««««")
         print(peripheral.services!)
         guard let services = peripheral.services else { return }
         for service in services {
-            print("Did Discover Service: \n \(service)")
+            print("Did Discover Service: \(service)")
             peripheral.discoverCharacteristics(nil, for: service)
         }
     }
@@ -239,6 +255,21 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
             if characteristic.properties.contains(.notify) {
                 print("\(characteristic.uuid): properties contains .notify")
                 peripheral.setNotifyValue(true, for: characteristic)
+            } else if characteristic.uuid == bleManufacturerNameString {
+                if let value = characteristic.value {
+                    print("Manufacturer Name String: ", String(data: value, encoding: .utf8) ?? "None")
+                }
+            } else if characteristic.uuid == bleModelNumberString {
+                if let value = characteristic.value {
+                    print("Model Number String: ", String(data: value, encoding: .utf8) ?? "None")
+                }
+            } else if characteristic.uuid == bleSystemID {
+                if let value = characteristic.value {
+                    print("System ID: ", [UInt8](value))
+                }
+                
+//                print("RSSI: ", peripheral.readRSSI())
+//                print("System ID: ", String.init(String(data: characteristic.value!, encoding: .utf8)!))
             }
         }
     }
@@ -246,17 +277,28 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
     //MARK: Update Characteristic Value
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         switch characteristic.uuid {
-        case bleCharacteristicCBUUID:
+        case bleMainServiceCharacteristicCBUUID:
             //                let realData = String(data!.suffix(17))
              guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
              print(data)
             
-            var managedData = data.replacingOccurrences(of:"\r\n" , with: "").split{ [":", "\0"].contains($0.description) }
+
+            guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
+            let newData = data.replacingOccurrences(of: "-", with: "+-")
+            let managedData = newData.replacingOccurrences(of: "\r\n\n", with: "").split{ [":", "\0", " ", "+"].contains($0.description) }
+
             
+//            print("Sensor Data: ", managedData)
+
             //Array of Data
-            if Int(String(data[0])) == dataArrayCounter {
-                let currentDataArray = String(managedData[1]).split(by: 6)
-                for i in currentDataArray {
+//            if Int(String(data[0])) == dataArrayCounter {
+            if String(data[0]) == dataArrayCounterDictionary[dataArrayCounter] {
+
+//                let currentDataArray = String(managedData[1]).split(by: 6)
+//                for i in currentDataArray {
+//                    dataArray.append(round(1000 * Double(i)!) / 1000)
+//                }
+                for i in managedData[1...3] {
                     dataArray.append(round(1000 * Double(i)!) / 1000)
                 }
                 
@@ -276,33 +318,54 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
 //
 //                    collectionView.reloadData()
 //                    exerciseTypeLabel.text = currentExerciseArray.last?.name
-
+                    if globalCounter < sampleSensorData.count {
+                        dataArray = sampleSensorData[globalCounter]
+                    }
+                    
+                    globalCounter += 1
+                    
                     //MARK: Add CoreML, Create CoreML Properties
                     let sensorInputData = try! MLMultiArray(shape: [9], dataType: .double)
-                    var outputArray = [Double]()
+//                    var outputArray = [Double]()
                     
                     for (index, data) in dataArray.enumerated() {
                         sensorInputData[index] = NSNumber(value: data)
                     }
                     
-                    //MARK: Input
-                    let input2 = tracking_model_0_2Input(input1: sensorInputData)
                     
-                    if let predictionOutput = try? model.prediction(input: input2) {
+                    //MARK: Input
+//                    let input2 = tracking_model_0_2Input(input1: sensorInputData)
+                    let input4Counting = counting_model_0_4Input(input1: sensorInputData)
+                    
+                    let input4Classify = classify_model_0_4Input(input1: sensorInputData)
+                    
+                    
+                    if let predictionOutput4Counting = try? countingModel.prediction(input: input4Counting) {
                         
-                        let output = predictionOutput.output1
+                        let output4Counting = predictionOutput4Counting.output1
                         
-                        print(output)
-                        
-                        for count in 0..<7 {
-                            outputArray.append(output[count].doubleValue)
-                        }
-                        let highestPrediction = outputArray.index(of: outputArray.max()!)!
-                        let highestExercise = exercise[highestPrediction]
-                        let highestExercisePrecetage = Double(round(1000 * outputArray.max()!) / 1000) * 100
-                        print(highestExercise!, highestExercisePrecetage)
-                        exerciseTypeLabel.text = highestExercise! + " " + String(highestExercisePrecetage) + "%"
+                        print("Prediction Counting Output: ", output4Counting)
+                    
+//                        for count in 0..<7 {
+//                            outputArray.append(output[count].doubleValue)
+//                        }
+//                        let highestPrediction = outputArray.index(of: outputArray.max()!)!
+//                        let highestExercise = exercise[highestPrediction]
+//                        let highestExercisePrecetage = Double(round(1000 * outputArray.max()!) / 1000) * 100
+//                        print(highestExercise!, highestExercisePrecetage)
+//                        exerciseTypeLabel.text = highestExercise! + " " + String(highestExercisePrecetage) + "%"
                     }
+                    
+                    
+                    if let predictionOutput4Classify = try? classifyModel.prediction(input: input4Classify) {
+                        
+                        let output4Counting = predictionOutput4Classify.output1
+                        
+//                        print("Prediction Classify Output: ", output4Counting)
+                    }
+                    
+//                    print(dataArray)
+                    
                     
                     dataArray.removeAll()
                     dataArrayCounter = 0
@@ -310,7 +373,10 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                     dataArrayCounter += 1
                 }
             }
-//            print("Data: \(String(describing: String(data: characteristic.value!, encoding: .utf8)))")
+            
+        case bleBattery:
+
+            print("Battery Level value: ", [UInt8](characteristic.value!))
         default:
            print(characteristic.service.uuid)
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
@@ -384,3 +450,10 @@ extension SmallTrackingViewController {
 //}
 
 
+//MARK: Convert Data Format
+
+//MARK: CoreML
+/*
+ 1. Counting
+ 2. Classify
+ */

@@ -50,15 +50,11 @@ class RecentWorkoutDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("View Did Load")
         updateView(date: date, name: name, duration: duration, totalWeight: totalWeight, totalCalorie: totalCalorie)
-        
-        print(currentExerciseHistory.count)
-        
+        tableView.tableFooterView = UIView()
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -90,6 +86,11 @@ class RecentWorkoutDetailsTableViewController: UITableViewController {
         guard let tableViewCell = cell as? RecentWorkoutDetailTVCell else { return }
         storedOffsets[indexPath.row] = tableViewCell.collectionViewOffset
     }
+    
+    //
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("TableView: " ,indexPath)
+    }
  
 }
 
@@ -97,6 +98,7 @@ class RecentWorkoutDetailsTableViewController: UITableViewController {
 extension RecentWorkoutDetailsTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let numberOfSet = currentExerciseHistory[collectionView.tag].setRep?.count else { return 0 }
+        
         return numberOfSet
     }
     
@@ -111,6 +113,10 @@ extension RecentWorkoutDetailsTableViewController: UICollectionViewDelegate, UIC
         cell.equipment.text = currentExerciseHistory[collectionView.tag].equipment ?? ""
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Collection View Tag: ", collectionView.tag)
     }
 }
 

@@ -53,8 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func goToLoginScreen() {
+//        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let initialViewController : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "FirstVC") as UIViewController
+        
         let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "CreateNewAccountVC") as UIViewController
+        let initialViewController : UINavigationController = mainStoryboardIpad.instantiateViewController(withIdentifier: "rootLoginNC") as UIViewController as! UINavigationController
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()

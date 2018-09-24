@@ -46,7 +46,7 @@ class HomeViewController: UIViewController {
         //MARK: Register Customized Cell for Today Collection View
         todayCollectionView.register(UINib.init(nibName: "TodayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TodayCollectionViewCell")
         if let flowLayout = todayCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = CGSize(width: 1,height: 1)
+            flowLayout.estimatedItemSize = CGSize(width: 384, height: 64)
         }
         
         recentWorkoutCollectionView.delegate = self
@@ -172,6 +172,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.volumeLabel.text = String(routineHistoryArray[indexPath.row].totalWeight) + " lb"
             cell.calorieLabel.text = String(routineHistoryArray[indexPath.row].totalCalorie) + " kcal"
             cell.numberOfExercises.text = String(numberOfExercise)
+            cell.typeOfTracking.isHidden = routineHistoryArray[indexPath.row].auto ? true : false
             return cell
             
             //MARK: Routine Collection View Data Source on HomePage

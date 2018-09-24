@@ -20,6 +20,8 @@ class RoutineDetailsTableViewController: UITableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var routineExerciseArray = [Routine_Exercise]()
     
+//    var deletedRoutine = false
+    
     var selectedRoutine: Routine? {
         didSet {
             loadExercises()
@@ -142,7 +144,7 @@ extension RoutineDetailsTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routinedetailsCell", for: indexPath) as! RoutineDetailsTableViewCell
         cell.textLabel?.text = routineExerciseArray[indexPath.row].name
-        cell.setRepLabel.text = setRepString(routineExerciseArray[indexPath.row].sets, routineExerciseArray[indexPath.row].reps)
+        cell.setRepLabel.attributedText = setRepString(routineExerciseArray[indexPath.row].sets, routineExerciseArray[indexPath.row].reps)
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
@@ -152,18 +154,23 @@ extension RoutineDetailsTableViewController {
 extension RoutineDetailsTableViewController {
     
     func loadExercises(with request: NSFetchRequest<Routine_Exercise> = Routine_Exercise.fetchRequest(), predicate: NSPredicate? = nil) {
-        request.predicate = NSPredicate(format: "parentRoutine.name MATCHES %@", selectedRoutine!.name!)
         
-        do {
-            //save the result into itemArray
-            routineExerciseArray = try context.fetch(request)
-            //sorting array of object by property value
-            routineExerciseArray = routineExerciseArray.sorted(by: { $0.ranking < $1.ranking })
-            print(routineExerciseArray)
-        } catch {
-            print("\(error)")
+        if let routineName = selectedRoutine?.name {
+            print(routineName)
+            request.predicate = NSPredicate(format: "parentRoutine.name MATCHES %@", routineName)
+            do {
+                //save the result into itemArray
+                routineExerciseArray = try context.fetch(request)
+                //sorting array of object by property value
+                routineExerciseArray = routineExerciseArray.sorted(by: { $0.ranking < $1.ranking })
+                print(routineExerciseArray)
+            } catch {
+                print("\(error)")
+            }
+            tableView.reloadData()
+        } else {
+            print("Routine Deleted")
         }
-        tableView.reloadData()
     }
     
     func save() {
@@ -174,8 +181,21 @@ extension RoutineDetailsTableViewController {
         }
     }
     
-    func setRepString(_ set: Int16, _ rep: Int16) -> String {
-        return String(set) + " SET X " + String(rep) + " REP"
+    func setRepString(_ set: Int16, _ rep: Int16) -> NSMutableAttributedString {
+        let setLabel = String(set)
+        let repLabel = String(rep)
+        
+        //MARK: Build multiple lines with different color and text size for nav bar title
+        let attrs1 = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12, weight: .regular), NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.6078431373, green: 0.6078431373, blue: 0.6078431373, alpha: 1)] as [NSAttributedStringKey : Any]
+        let attrs2 = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12, weight: .regular), NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.8352941176, green: 0.3725490196, blue: 0.1215686275, alpha: 1)] as [NSAttributedStringKey : Any]
+        
+        let attributedString1 = NSMutableAttributedString(string: setLabel + " SET", attributes:attrs2)
+        let attributedString2 = NSMutableAttributedString(string: " X ", attributes:attrs1)
+        let attributedString3 = NSMutableAttributedString(string: repLabel + " REP", attributes:attrs2)
+        attributedString1.append(attributedString2)
+        attributedString1.append(attributedString3)
+        
+        return attributedString1
     }
 }
 

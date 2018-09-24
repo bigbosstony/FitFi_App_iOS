@@ -96,8 +96,11 @@ class ProfileSettingsTableViewController: UITableViewController {
     }
     
     @IBAction func logOutButtonPressed(_ sender: UIButton) {
+//        let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let initialViewController : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "FirstVC") as UIViewController
+        
         let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "CreateNewAccountVC") as UIViewController
+        let initialViewController : UINavigationController = mainStoryboardIpad.instantiateViewController(withIdentifier: "rootLoginNC") as UIViewController as! UINavigationController
         self.present(initialViewController, animated:true, completion:nil)
         UserDefaults.standard.set(false, forKey: "hasLoginKey")
     }

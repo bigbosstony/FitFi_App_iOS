@@ -10,6 +10,13 @@
 import Foundation
 import UIKit
 
+let gradient = CAGradientLayer()
+let camoGreen = UIColor(red: 57.0 / 255.0, green: 40.0 / 255.0, blue: 29.0 / 255.0, alpha: 1.0).cgColor
+let fadedOrange = UIColor(red: 237.0 / 255.0, green: 146.0 / 255.0, blue: 98.0 / 255.0, alpha: 1.0).cgColor
+
+
+
+
 extension String {
     subscript (i: Int) -> Character {
         return self[index(startIndex, offsetBy: i)]
@@ -193,6 +200,9 @@ extension UIColor {
         )
     }
     
+
+    
+
 }
 
 
