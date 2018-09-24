@@ -99,7 +99,7 @@ extension PopUpCalenderVC:JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSou
     func handleCellTextColor(view: JTAppleCell?,cellState:CellState)
     {
         guard let validCell = view as? CoustomCell else {return}
-        if(validCell.isSelected)
+        if(cellState.isSelected)
         {
             validCell.dateLabel.textColor = UIColor.black
         }
@@ -139,7 +139,7 @@ extension PopUpCalenderVC:JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSou
     {
         guard let validCell = view as? CoustomCell else {return}
         
-        if(validCell.isSelected)
+        if(cellState.isSelected)
         {
            
             validCell.selectedView.isHidden = false
