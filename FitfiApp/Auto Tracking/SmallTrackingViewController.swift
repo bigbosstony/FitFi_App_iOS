@@ -283,7 +283,7 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
              print(data)
             
 
-            guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
+//             guard String(data: characteristic.value!, encoding: .utf8) != nil else { return }
             let newData = data.replacingOccurrences(of: "-", with: "+-")
             let managedData = newData.replacingOccurrences(of: "\r\n\n", with: "").split{ [":", "\0", " ", "+"].contains($0.description) }
 

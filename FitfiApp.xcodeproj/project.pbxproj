@@ -455,13 +455,11 @@
 				F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */,
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
-
 				F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */,
 				F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */,
 				F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */,
 				F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */,
 				EA283D382152D0FD00F71461 /* RegisterLogin */,
-
 				EAC0DD5120D4045300AC7A1E /* Auto Tracking */,
 				EADD31512123651100E9A3C7 /* Manual Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
@@ -622,7 +620,6 @@
 				EA3090E020C6DA4000E09DDF /* Frameworks */,
 				EA3090E120C6DA4000E09DDF /* Resources */,
 				FC972BED72C4CED59DFE67E9 /* [CP] Embed Pods Frameworks */,
-				0D055FFA2D3254209A268B15 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -641,8 +638,6 @@
 				EA3090F620C6DA4300E09DDF /* Sources */,
 				EA3090F720C6DA4300E09DDF /* Frameworks */,
 				EA3090F820C6DA4300E09DDF /* Resources */,
-				25FA2F20EAAA775411C0834C /* [CP] Embed Pods Frameworks */,
-				CD8D94234888BC67A0346A5D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -662,8 +657,6 @@
 				EA30910120C6DA4300E09DDF /* Sources */,
 				EA30910220C6DA4300E09DDF /* Frameworks */,
 				EA30910320C6DA4300E09DDF /* Resources */,
-				0BADE82022D2C76B86F8616C /* [CP] Embed Pods Frameworks */,
-				D75463F2D180C09DA058583B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -773,51 +766,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0BADE82022D2C76B86F8616C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		0D055FFA2D3254209A268B15 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		25FA2F20EAAA775411C0834C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2DD80342EC9D08D51791C25D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -870,36 +818,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CD8D94234888BC67A0346A5D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D75463F2D180C09DA058583B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC972BED72C4CED59DFE67E9 /* [CP] Embed Pods Frameworks */ = {
@@ -1009,11 +927,8 @@
 				F13CA496213733BA00E10A0E /* ScheduleViewController.swift in Sources */,
 				EA283D3B2152D15300F71461 /* FirstViewController.swift in Sources */,
 				EA97D95F20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
-
 				EA890FB6215576EB00B56BAD /* classify_model_0_4.mlmodel in Sources */,
-
 				F11A86AA2152AEE90060B7D5 /* PopUpCalenderVC.swift in Sources */,
-
 				EAA11D27213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */,
 				EA855DEA20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				EA77603620E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
@@ -1079,11 +994,8 @@
 				EA97D96020E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
 				EA283D3C2152D15300F71461 /* FirstViewController.swift in Sources */,
 				F16E8E192135DD9400455C87 /* scheduleSelectedVC.swift in Sources */,
-
 				EA890FB7215576EB00B56BAD /* classify_model_0_4.mlmodel in Sources */,
-
 				F11A86AB2152AEE90060B7D5 /* PopUpCalenderVC.swift in Sources */,
-
 				EA855DEB20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				EA77603720E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
 				EA4ACA312141B5E600FD1D59 /* SetCollectionViewCell.swift in Sources */,
