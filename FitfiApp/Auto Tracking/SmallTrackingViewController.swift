@@ -74,8 +74,9 @@ class SmallTrackingViewController: UIViewController {
     var centralManager: CBCentralManager!
     var blePeripheral: CBPeripheral!
     let bleServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E
-    let bleCharacteristicCBUUID = CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
-    
+    let bleCharacteristicCBUUID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
+   
+    //6E400002-B5A3-F393-E0A9-E50E24DCCA9E
     var dataArrayCounter = 0
     var dataArray = [Double]()
     let dateFormatter = DateFormatter()
@@ -247,9 +248,10 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
         switch characteristic.uuid {
         case bleCharacteristicCBUUID:
             //                let realData = String(data!.suffix(17))
+             guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
+             print(data)
             
-            guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
-            let managedData = data.split{ [":", "\0"].contains($0.description) }
+            var managedData = data.replacingOccurrences(of:"\r\n" , with: "").split{ [":", "\0"].contains($0.description) }
             
             //Array of Data
             if Int(String(data[0])) == dataArrayCounter {
@@ -310,7 +312,11 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
             }
 //            print("Data: \(String(describing: String(data: characteristic.value!, encoding: .utf8)))")
         default:
+           print(characteristic.service.uuid)
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
+            let data = String(data: characteristic.value!, encoding: .utf8)
+            print(data)
+            
         }
     }
 }

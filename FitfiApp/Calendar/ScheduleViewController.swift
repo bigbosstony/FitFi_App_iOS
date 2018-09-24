@@ -126,7 +126,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
             {
                 let s = getSchedule?.schdule
                 var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
-                singleRoutineName =  singleRoutineName.components(separatedBy: .whitespacesAndNewlines).joined()
+                singleRoutineName =  singleRoutineName.components(separatedBy: "\n").joined()
                 singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
                 singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
                 singleRoutineName = singleRoutineName.components(separatedBy: ",").first!

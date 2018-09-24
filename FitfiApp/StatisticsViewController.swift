@@ -193,7 +193,59 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     fileprivate var bottomChart: Chart?
     fileprivate lazy private(set) var chartLongPressGestureRecognizer = UILongPressGestureRecognizer()
     
+    @IBOutlet weak var F1: UIImageView!
     //var volumeAreaGraph:IOB
+    @IBOutlet weak var F2: UIImageView!
+    
+    @IBOutlet weak var F3: UIImageView!
+    
+    @IBOutlet weak var F4: UIImageView!
+    
+    @IBOutlet weak var F5: UIImageView!
+    
+    @IBOutlet weak var F6: UIImageView!
+    @IBOutlet weak var F7: UIImageView!
+    
+    @IBOutlet weak var F8: UIImageView!
+    
+    
+    @IBOutlet weak var F9: UIImageView!
+    
+    @IBOutlet weak var F10: UIImageView!
+    
+    @IBOutlet weak var F11: UIImageView!
+    
+    @IBOutlet weak var F12: UIImageView!
+    @IBOutlet weak var F13: UIImageView!
+    @IBOutlet weak var F14: UIImageView!
+    @IBOutlet weak var F15: UIImageView!
+    
+    
+    @IBOutlet weak var R1: UIImageView!
+    
+    @IBOutlet weak var R2: UIImageView!
+    
+    @IBOutlet weak var R3: UIImageView!
+    
+    @IBOutlet weak var R4: UIImageView!
+    
+    @IBOutlet weak var R5: UIImageView!
+    @IBOutlet weak var R6: UIImageView!
+    @IBOutlet weak var R7: UIImageView!
+    
+    @IBOutlet weak var R8: UIImageView!
+    @IBOutlet weak var R9: UIImageView!
+    @IBOutlet weak var R10: UIImageView!
+    
+    @IBOutlet weak var R11: UIImageView!
+    
+    
+    @IBOutlet weak var R12: UIImageView!
+    
+    
+    
+    
+    
     @IBAction func timeSegments(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -241,8 +293,21 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     var exSets:[Int] = []
     var exWeight:[Int] = []
     var exWorkOuts:Int = 0
+     var metricFlag:Int = 0// to get ton know if weight is low than it will be 0 to print lb instead of tone
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+       F1.image = (F1.image?.withRenderingMode(.alwaysTemplate))!
+        F1.tintColor = FitFiColor
+        F2.image = (F2.image?.withRenderingMode(.alwaysTemplate))!
+        F2.tintColor = FitFiColor
+        F12.image = (F12.image?.withRenderingMode(.alwaysTemplate))!
+        F12.tintColor = FitFiColor
+        R1.image = (R1.image?.withRenderingMode(.alwaysTemplate))!
+        R1.tintColor = FitFiColor
+        
+        R12.image = (R12.image?.withRenderingMode(.alwaysTemplate))!
+        R12.tintColor = FitFiColor
         //oneMonthSelected()
         //        for i in exerciseHistoryArray{
         //            if(exHistoryDict.contains(i.name!)){
@@ -406,25 +471,36 @@ extension StatisticsViewController{
                 previousDateString = oneMonthformatter.string(from: previousDate)
                 nextCurrentDate = previousDate.addingTimeInterval(oneDay)
                // BarsArray[i] = ("\(previousDateString)-\(currentDateString)",tmp[0])
-                BarsArray[i] = ("Week \(4 - (i))",tmp[0])
+                BarsArray[i] = ("Week \(4 - (i))",tmp[2])
                 GraphArray[i] = ("\(previousDate)",tmp[1])
                 Graph1Array[i] = ("\(previousDate)",tmp[1])
                 totalExercise = totalExercise + tmp[0]
                 totalVolume = totalVolume + tmp[1]
                 totalWorkOut = totalWorkOut + tmp[2]
-                if(tmp[0] >  maxWorkOut)
+                if(tmp[2] >  maxWorkOut)
                 {
-                    maxWorkOut = tmp[0]
+                    maxWorkOut = tmp[2]
                 }
                 
             }
             
             //print(exHistoryDict.count) number of exercise
-            exerciseLabel.text = "\(totalExercise)"
+            exerciseLabel.text = "\(Int(totalExercise))"
             //print(exVolume) Volume
-            volumeLabel.text = "\(totalVolume) t"
+            if(totalVolume < 1)
+            {
+                metricFlag = 0
+                volumeLabel.text = "\(totalVolume * 2000) lb"
+                
+            }
+            else{
+                metricFlag = 1
+                volumeLabel.text = "\(totalVolume) t"
+                
+            }
+
             //print(exWorkOuts.count) total routines
-            workOutLabel.text = "\(totalWorkOut)"
+            workOutLabel.text = "\(Int(totalWorkOut))"
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
             //            barsArray.append("\(currentDateString)/\(currentDateString),150")
             if(totalExercise > 0){
@@ -514,11 +590,22 @@ extension StatisticsViewController{
                 
             }
             //print(exHistoryDict.count) number of exercise
-            exerciseLabel.text = "\(totalExercise)"
+            exerciseLabel.text = "\(Int(totalExercise))"
             //print(exVolume) Volume
-            volumeLabel.text = "\(totalVolume) t"
+            if(totalVolume < 1)
+            {
+                metricFlag = 0
+                volumeLabel.text = "\(totalVolume * 2000) lb"
+                
+            }
+            else{
+                metricFlag = 1
+                volumeLabel.text = "\(totalVolume) t"
+                
+            }
+
             //print(exWorkOuts.count) total routines
-            workOutLabel.text = "\(totalWorkOut)"
+            workOutLabel.text = "\(Int(totalWorkOut))"
             if(totalExercise > 0)
             {
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
@@ -614,11 +701,22 @@ extension StatisticsViewController{
                 
             }
             //print(exHistoryDict.count) number of exercise
-            exerciseLabel.text = "\(totalExercise)"
+            exerciseLabel.text = "\(Int(totalExercise))"
             //print(exVolume) Volume
-            volumeLabel.text = "\(totalVolume) t"
+            if(totalVolume < 1)
+            {
+                metricFlag = 0
+                volumeLabel.text = "\(totalVolume * 2000) lb"
+                
+            }
+            else{
+                metricFlag = 1
+                volumeLabel.text = "\(totalVolume) t"
+                
+            }
+
             //print(exWorkOuts.count) total routines
-            workOutLabel.text = "\(totalWorkOut)"
+            workOutLabel.text = "\(Int(totalWorkOut))"
             if(totalExercise > 0)
             {
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
@@ -653,7 +751,8 @@ extension StatisticsViewController{
             print(IOBPoints)
             generateXAxisValues()
           //  print(xAxisValues)
-            let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
+                let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
+
             bottomChart = generateIOBChartWithFrame(frame: frame)
             for view in volumeGraphView.subviews {
                 view.removeFromSuperview()
@@ -716,6 +815,7 @@ extension StatisticsViewController{
         //            view.removeFromSuperview()
         //        }
         //
+        exerciseHistoryArray = []   
         for i in routineHistoryArray 
         {
             for j in i.exerciseHistory!
@@ -789,11 +889,23 @@ extension StatisticsViewController{
         
         //print(exHistoryDict.count) number of exercise
         exerciseLabel.text = "\(exHistoryDict.count)"
+        workOutLabel.text = "\(Int(exWorkOuts))"
         //print(exVolume) Volume
-        volumeLabel.text = "\(exVolume/2000) t"
+        if(exVolume < 2000)
+        {
+            
+            volumeLabel.text = "\(exVolume) lb"
+            return [Double(exHistoryDict.count) , Double(exVolume/2000), Double(exWorkOuts)]
+        }
+        else{
+            
+            volumeLabel.text = "\(exVolume/2000) t"
+            return [Double(exHistoryDict.count) , Double(exVolume/2000), Double(exWorkOuts)]
+        }
+        
         //print(exWorkOuts.count) total routines
-        workOutLabel.text = "\(exWorkOuts)"
-        return [Double(exHistoryDict.count) , Double(exVolume/2000), Double(exWorkOuts)]
+     
+       
     }
     
     private func generateIOBChartWithFrame(frame: CGRect) -> Chart? {
@@ -847,7 +959,7 @@ extension StatisticsViewController{
             chartPoints: IOBPoints,
             tintColor: FitFiColor,
             labelCenterY: chartSettings.top,
-            gestureRecognizer: nil,
+            gestureRecognizer: chartLongPressGestureRecognizer,
             onCompleteHighlight: nil
         )
         

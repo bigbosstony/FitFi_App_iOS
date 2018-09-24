@@ -19,6 +19,8 @@ class PopUpCalenderVC: UIViewController {
     var eventFlag:Int = 0
     var todayFlag:Int = 0
     var todayDate:Date = Date()
+    var selectedDate:Date = Date()
+    weak var delegate:fromPopUpVCDelegate?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var calanderView: JTAppleCalendarView!
     
@@ -29,11 +31,17 @@ class PopUpCalenderVC: UIViewController {
     @IBOutlet weak var CalenderTitleOutlet: UINavigationItem!
     
     @IBAction func closeBtn(_ sender: UIBarButtonItem) {
+        
         self.dismiss(animated: true, completion: nil)
+      //  performSegue(withIdentifier: "removePopUpCal", sender: self)
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        calanderView.layer.cornerRadius = 6
+        calanderView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        calanderView.layer.shadowOpacity = 0.5
+        calanderView.layer.shadowRadius = 6
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
         todayDate = Date()
         request.returnsObjectsAsFaults = false
@@ -99,7 +107,7 @@ extension PopUpCalenderVC:JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSou
     func handleCellTextColor(view: JTAppleCell?,cellState:CellState)
     {
         guard let validCell = view as? CoustomCell else {return}
-        if(validCell.isSelected)
+        if(cellState.isSelected)
         {
             validCell.dateLabel.textColor = UIColor.black
         }
@@ -139,7 +147,7 @@ extension PopUpCalenderVC:JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSou
     {
         guard let validCell = view as? CoustomCell else {return}
         
-        if(validCell.isSelected)
+        if(cellState.isSelected)
         {
            
             validCell.selectedView.isHidden = false
@@ -163,7 +171,6 @@ extension PopUpCalenderVC:JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSou
         formatter.locale = Calendar.current.locale
         let startDate = Calendar.current.date(byAdding: .month, value: -3, to: Date())
         let endDate = Calendar.current.date(byAdding: .month, value: 11, to: Date())
-
         let parameters = ConfigurationParameters(startDate: startDate!, endDate: endDate!)
         calendar.scrollToDate(Date())
         return parameters
@@ -191,9 +198,22 @@ extension PopUpCalenderVC:JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSou
         
         return cell
     }
+   
+    
+    
+    
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
        handleCellTextColor(view: cell, cellState: cellState)
         handleCellSelected(view: cell, cellState: cellState)
+        selectedDate = date
+        beginDate = selectedDate.dateFromDays(-3)
+        endDate = selectedDate.dateFromDays(15)
+        fromPopUp = 1
+        delegate?.dateSelected(self)
+       
+        self.dismiss(animated: true, completion: nil)
+       // performSegue(withIdentifier: "removePopUpCal", sender: self)
+        
     }
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
        handleCellTextColor(view: cell, cellState: cellState)
@@ -212,7 +232,7 @@ extension UILabel{
         ] as [NSAttributedStringKey : Any]
         self.attributedText = NSMutableAttributedString(string: self.text ?? "", attributes: strokeTextAttributes)
     }
-    
+
     func underline() {
         if let textString = self.text {
             let attributedString = NSMutableAttributedString(string: textString); attributedString.addAttribute(NSAttributedStringKey.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 0, length: attributedString.length))

@@ -46,10 +46,12 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
             let s = scheduleArr![indexPath.row].schdule
             var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
             
-            singleRoutineName =  singleRoutineName.components(separatedBy: .whitespacesAndNewlines).joined()
+            singleRoutineName =  singleRoutineName.components(separatedBy: "\n").joined()
             singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
             singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
             singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
+            singleRoutineName = singleRoutineName.replacingOccurrences(of: "\"", with: "")
+             singleRoutineName = String(singleRoutineName.dropFirst(4))
             let requestt = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
             requestt.predicate = NSPredicate(format: "name = %@", singleRoutineName)
             requestt.returnsObjectsAsFaults = false
@@ -75,19 +77,22 @@ class scheduleSelectedVC:UIViewController,UITableViewDelegate,UITableViewDataSou
         let s = scheduleArr![indexPath.row].schdule
         var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
         
-        singleRoutineName =  singleRoutineName.components(separatedBy: .whitespacesAndNewlines).joined()
+        singleRoutineName =  singleRoutineName.components(separatedBy: "\n").joined()
         singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
         singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
         singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
-        
+        singleRoutineName = singleRoutineName.replacingOccurrences(of: "\"", with: "")
+        singleRoutineName = String(singleRoutineName.dropFirst(4))
         cell.textLabel?.text = singleRoutineName
         let r = scheduleArr![indexPath.row].schdule
         let e = s!.value(forKey: "routineExercises")
             var singleExerciseName = "\(String(describing: (e as AnyObject).value(forKey: "name") ?? ""))"
-            singleExerciseName = singleExerciseName.components(separatedBy: .whitespacesAndNewlines).joined()
+            singleExerciseName = singleExerciseName.components(separatedBy: "\n").joined()
             singleExerciseName = singleExerciseName.replacingOccurrences(of: "{(", with: "")
             singleExerciseName = singleExerciseName.replacingOccurrences(of: ")}", with: "")
             singleExerciseName = singleExerciseName.components(separatedBy: ",").first!
+            singleExerciseName = singleExerciseName.replacingOccurrences(of: "\"", with: "")
+            singleExerciseName = String(singleExerciseName.dropFirst(8))
             for i in singleExerciseName.components(separatedBy: ","){
                 singleExerciseName = singleExerciseName + " " + i
             }
