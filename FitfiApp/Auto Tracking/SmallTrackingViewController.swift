@@ -82,12 +82,15 @@ class SmallTrackingViewController: UIViewController {
     let bleModelNumberString = CBUUID(string: "2A24")
     
     //>>>>>>>>
+    var globalCounter = 0
     var dataArrayCounter = 0
     var dataArray = [Double]()
     let dateFormatter = DateFormatter()
+    let dataArrayCounterDictionary = [0: "A", 1: "G", 2: "M"]
     
-    //MARK: Core ML Model
-    let model = tracking_model_0_2()
+    //MARK: Create Core ML Model
+    let countingModel = counting_model_0_4()
+    let classifyModel = classify_model_0_4()
     
     //MARK: Testing
     var currentExerciseArray = [CurrentExercise]()
@@ -119,7 +122,6 @@ class SmallTrackingViewController: UIViewController {
 //        currentExercise.reps = 9
 //        currentExercise.sets = 2
 //        currentExerciseArray.append(currentExercise)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -252,13 +254,18 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                 print("\(characteristic.uuid): properties contains .notify")
                 peripheral.setNotifyValue(true, for: characteristic)
             } else if characteristic.uuid == bleManufacturerNameString {
-                print("Manufacturer Name String: ", String(data: characteristic.value!, encoding: .utf8)!)
+                if let value = characteristic.value {
+                    print("Manufacturer Name String: ", String(data: value, encoding: .utf8) ?? "None")
+                }
             } else if characteristic.uuid == bleModelNumberString {
-                print("Model Number String: ", String(data: characteristic.value!, encoding: .utf8)!)
+                if let value = characteristic.value {
+                    print("Model Number String: ", String(data: value, encoding: .utf8) ?? "None")
+                }
             } else if characteristic.uuid == bleSystemID {
-                print("System ID: ", [UInt8](characteristic.value!))
+                if let value = characteristic.value {
+                    print("System ID: ", [UInt8](value))
+                }
                 
-//                characteristicData
 //                print("RSSI: ", peripheral.readRSSI())
 //                print("System ID: ", String.init(String(data: characteristic.value!, encoding: .utf8)!))
             }
@@ -272,12 +279,20 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
             //                let realData = String(data!.suffix(17))
             
             guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
-            let managedData = data.split{ [":", "\0"].contains($0.description) }
+            let newData = data.replacingOccurrences(of: "-", with: "+-")
+            let managedData = newData.replacingOccurrences(of: "\r\n\n", with: "").split{ [":", "\0", " ", "+"].contains($0.description) }
             
+//            print("Sensor Data: ", managedData)
+
             //Array of Data
-            if Int(String(data[0])) == dataArrayCounter {
-                let currentDataArray = String(managedData[1]).split(by: 6)
-                for i in currentDataArray {
+//            if Int(String(data[0])) == dataArrayCounter {
+            if String(data[0]) == dataArrayCounterDictionary[dataArrayCounter] {
+
+//                let currentDataArray = String(managedData[1]).split(by: 6)
+//                for i in currentDataArray {
+//                    dataArray.append(round(1000 * Double(i)!) / 1000)
+//                }
+                for i in managedData[1...3] {
                     dataArray.append(round(1000 * Double(i)!) / 1000)
                 }
                 
@@ -297,33 +312,54 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
 //
 //                    collectionView.reloadData()
 //                    exerciseTypeLabel.text = currentExerciseArray.last?.name
-
+                    if globalCounter < sampleSensorData.count {
+                        dataArray = sampleSensorData[globalCounter]
+                    }
+                    
+                    globalCounter += 1
+                    
                     //MARK: Add CoreML, Create CoreML Properties
                     let sensorInputData = try! MLMultiArray(shape: [9], dataType: .double)
-                    var outputArray = [Double]()
+//                    var outputArray = [Double]()
                     
                     for (index, data) in dataArray.enumerated() {
                         sensorInputData[index] = NSNumber(value: data)
                     }
                     
-                    //MARK: Input
-                    let input2 = tracking_model_0_2Input(input1: sensorInputData)
                     
-                    if let predictionOutput = try? model.prediction(input: input2) {
+                    //MARK: Input
+//                    let input2 = tracking_model_0_2Input(input1: sensorInputData)
+                    let input4Counting = counting_model_0_4Input(input1: sensorInputData)
+                    
+                    let input4Classify = classify_model_0_4Input(input1: sensorInputData)
+                    
+                    
+                    if let predictionOutput4Counting = try? countingModel.prediction(input: input4Counting) {
                         
-                        let output = predictionOutput.output1
+                        let output4Counting = predictionOutput4Counting.output1
                         
-                        print(output)
-                        
-                        for count in 0..<7 {
-                            outputArray.append(output[count].doubleValue)
-                        }
-                        let highestPrediction = outputArray.index(of: outputArray.max()!)!
-                        let highestExercise = exercise[highestPrediction]
-                        let highestExercisePrecetage = Double(round(1000 * outputArray.max()!) / 1000) * 100
-                        print(highestExercise!, highestExercisePrecetage)
-                        exerciseTypeLabel.text = highestExercise! + " " + String(highestExercisePrecetage) + "%"
+                        print("Prediction Counting Output: ", output4Counting)
+                    
+//                        for count in 0..<7 {
+//                            outputArray.append(output[count].doubleValue)
+//                        }
+//                        let highestPrediction = outputArray.index(of: outputArray.max()!)!
+//                        let highestExercise = exercise[highestPrediction]
+//                        let highestExercisePrecetage = Double(round(1000 * outputArray.max()!) / 1000) * 100
+//                        print(highestExercise!, highestExercisePrecetage)
+//                        exerciseTypeLabel.text = highestExercise! + " " + String(highestExercisePrecetage) + "%"
                     }
+                    
+                    
+                    if let predictionOutput4Classify = try? classifyModel.prediction(input: input4Classify) {
+                        
+                        let output4Counting = predictionOutput4Classify.output1
+                        
+//                        print("Prediction Classify Output: ", output4Counting)
+                    }
+                    
+//                    print(dataArray)
+                    
                     
                     dataArray.removeAll()
                     dataArrayCounter = 0
@@ -331,11 +367,10 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                     dataArrayCounter += 1
                 }
             }
-//            print("Data: \(String(describing: String(data: characteristic.value!, encoding: .utf8)))")
-        case bleBattery:
-//            print("Battery Level Property: ", characteristic.properties)
-            print("Battery Level value: ", [UInt8](characteristic.value!))
             
+        case bleBattery:
+
+            print("Battery Level value: ", [UInt8](characteristic.value!))
         default:
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
         }
@@ -405,3 +440,10 @@ extension SmallTrackingViewController {
 //}
 
 
+//MARK: Convert Data Format
+
+//MARK: CoreML
+/*
+ 1. Counting
+ 2. Classify
+ */
