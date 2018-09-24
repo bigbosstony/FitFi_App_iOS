@@ -190,6 +190,13 @@
 		EADD315721236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */; };
 		EADD315821236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */; };
 		EADD315921236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */; };
+		F11A86AA2152AEE90060B7D5 /* PopUpCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A88B1D214165B90076063E /* PopUpCalenderVC.swift */; };
+		F11A86AB2152AEE90060B7D5 /* PopUpCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A88B1D214165B90076063E /* PopUpCalenderVC.swift */; };
+		F11A86AC2152AEF10060B7D5 /* CoustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178F2742141B64E001D3DB6 /* CoustomCell.swift */; };
+		F11A86AD2152AEF20060B7D5 /* CoustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178F2742141B64E001D3DB6 /* CoustomCell.swift */; };
+		F11FA575214AE5F200AAB38F /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11FA574214AE5F200AAB38F /* DetailCollectionViewCell.swift */; };
+		F11FA576214AE5F200AAB38F /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11FA574214AE5F200AAB38F /* DetailCollectionViewCell.swift */; };
+		F11FA577214AE5F200AAB38F /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11FA574214AE5F200AAB38F /* DetailCollectionViewCell.swift */; };
 		F13CA496213733BA00E10A0E /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */; };
 		F13CA497213733BB00E10A0E /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */; };
 		F13E2D2E211E238D005A0AAF /* CollapsibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */; };
@@ -303,7 +310,7 @@
 		EADD314D212326C000E9A3C7 /* ExerciseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCollectionViewCell.swift; sourceTree = "<group>"; };
 		EADD315221236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTrackingVCCollectionViewCell.swift; sourceTree = "<group>"; };
 		EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallTrackingVCCollectionViewCell.xib; sourceTree = "<group>"; };
-		F1324FED2125DEBD00A7F955 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F11FA574214AE5F200AAB38F /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
 		F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleSelectedVC.swift; sourceTree = "<group>"; };
 		F178F2742141B64E001D3DB6 /* CoustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoustomCell.swift; sourceTree = "<group>"; };
@@ -417,12 +424,13 @@
 		EA3090DA20C6DA3F00E09DDF = {
 			isa = PBXGroup;
 			children = (
-				F1324FED2125DEBD00A7F955 /* Alamofire.framework */,
 				EA3090E520C6DA4000E09DDF /* FitfiApp */,
 				EA3090FD20C6DA4300E09DDF /* FitfiAppTests */,
 				EA30910820C6DA4300E09DDF /* FitfiAppUITests */,
 				EA3090E420C6DA4000E09DDF /* Products */,
 				F1EC02AD213727590030DBA8 /* Assets.xcassets */,
+				F1DA28822152EE1C00B1CE41 /* Back */,
+				F11A86B02152D1480060B7D5 /* Front */,
 				5E87D8AF17636864758AB136 /* Pods */,
 				992919DBA260A6BE75DBDE4D /* Frameworks */,
 			);
@@ -447,11 +455,13 @@
 				F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */,
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
+
 				F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */,
 				F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */,
 				F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */,
 				F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */,
 				EA283D382152D0FD00F71461 /* RegisterLogin */,
+
 				EAC0DD5120D4045300AC7A1E /* Auto Tracking */,
 				EADD31512123651100E9A3C7 /* Manual Tracking */,
 				EA3008C320D1ACFD001E7743 /* Home */,
@@ -540,6 +550,7 @@
 			isa = PBXGroup;
 			children = (
 				EA855DE420F5438C000D7EA5 /* CalendarViewController.swift */,
+				F11FA574214AE5F200AAB38F /* DetailCollectionViewCell.swift */,
 				F1A88B1D214165B90076063E /* PopUpCalenderVC.swift */,
 				EA855DE020F51A6B000D7EA5 /* CalendarTableViewCell.swift */,
 				F178F2742141B64E001D3DB6 /* CoustomCell.swift */,
@@ -583,6 +594,20 @@
 				EA4ACA2E2141B5E600FD1D59 /* SetCollectionViewCell.swift */,
 			);
 			path = "Manual Tracking";
+			sourceTree = "<group>";
+		};
+		F11A86B02152D1480060B7D5 /* Front */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Front;
+			sourceTree = "<group>";
+		};
+		F1DA28822152EE1C00B1CE41 /* Back */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Back;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -944,6 +969,7 @@
 				EAA11D26213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */,
 				F13E2D2E211E238D005A0AAF /* CollapsibleTableViewCell.swift in Sources */,
 				EADD314E212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */,
+				F11FA575214AE5F200AAB38F /* DetailCollectionViewCell.swift in Sources */,
 				EA30911C20C7199D00E09DDF /* Data.swift in Sources */,
 				EA8C64A120D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
 				EAC0DD4E20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
@@ -983,7 +1009,11 @@
 				F13CA496213733BA00E10A0E /* ScheduleViewController.swift in Sources */,
 				EA283D3B2152D15300F71461 /* FirstViewController.swift in Sources */,
 				EA97D95F20E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
+
 				EA890FB6215576EB00B56BAD /* classify_model_0_4.mlmodel in Sources */,
+
+				F11A86AA2152AEE90060B7D5 /* PopUpCalenderVC.swift in Sources */,
+
 				EAA11D27213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */,
 				EA855DEA20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				EA77603620E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
@@ -1006,6 +1036,7 @@
 				EA855DE220F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA77604A20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
+				F11FA576214AE5F200AAB38F /* DetailCollectionViewCell.swift in Sources */,
 				EA77603820E43CA80052774F /* AppDelegate.swift in Sources */,
 				EA98E50920FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */,
 				EA84FCBF20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
@@ -1019,6 +1050,7 @@
 				EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EADD314F212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */,
 				EA4ACA302141B5E600FD1D59 /* SetCollectionViewCell.swift in Sources */,
+				F11A86AC2152AEF10060B7D5 /* CoustomCell.swift in Sources */,
 				EA64310B21121A4F000EAED5 /* NewExerciseCategoryTableViewCell.swift in Sources */,
 				EAA11D2B2138530F005D9FE4 /* selectRoutineCell.swift in Sources */,
 				EABD59B6211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */,
@@ -1047,7 +1079,11 @@
 				EA97D96020E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
 				EA283D3C2152D15300F71461 /* FirstViewController.swift in Sources */,
 				F16E8E192135DD9400455C87 /* scheduleSelectedVC.swift in Sources */,
+
 				EA890FB7215576EB00B56BAD /* classify_model_0_4.mlmodel in Sources */,
+
+				F11A86AB2152AEE90060B7D5 /* PopUpCalenderVC.swift in Sources */,
+
 				EA855DEB20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				EA77603720E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
 				EA4ACA312141B5E600FD1D59 /* SetCollectionViewCell.swift in Sources */,
@@ -1070,6 +1106,7 @@
 				EADD315621236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift in Sources */,
 				EA855DE320F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA77604B20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
+				F11FA577214AE5F200AAB38F /* DetailCollectionViewCell.swift in Sources */,
 				F16E8E152135DBC900455C87 /* CollapsibleTableViewCell.swift in Sources */,
 				EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA77603920E43CA90052774F /* AppDelegate.swift in Sources */,
@@ -1083,6 +1120,7 @@
 				EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EA77604720E43D2E0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA78F3D920EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
+				F11A86AD2152AEF20060B7D5 /* CoustomCell.swift in Sources */,
 				EADD3150212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */,
 				EA64310C21121A4F000EAED5 /* NewExerciseCategoryTableViewCell.swift in Sources */,
 				EABD59B7211A3A160065F774 /* SelectExerciseForRoutineVC.swift in Sources */,

@@ -73,6 +73,7 @@ class SmallTrackingViewController: UIViewController {
     //Setup Core Bluetooth Properties
     var centralManager: CBCentralManager!
     var blePeripheral: CBPeripheral!
+
     let bleMainServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E
     let bleMainServiceCharacteristicCBUUID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
 
@@ -83,6 +84,7 @@ class SmallTrackingViewController: UIViewController {
     
     //>>>>>>>>
     var globalCounter = 0
+
     var dataArrayCounter = 0
     var dataArray = [Double]()
     let dateFormatter = DateFormatter()
@@ -277,10 +279,14 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
         switch characteristic.uuid {
         case bleMainServiceCharacteristicCBUUID:
             //                let realData = String(data!.suffix(17))
+             guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
+             print(data)
             
+
             guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
             let newData = data.replacingOccurrences(of: "-", with: "+-")
             let managedData = newData.replacingOccurrences(of: "\r\n\n", with: "").split{ [":", "\0", " ", "+"].contains($0.description) }
+
             
 //            print("Sensor Data: ", managedData)
 
@@ -372,7 +378,11 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
 
             print("Battery Level value: ", [UInt8](characteristic.value!))
         default:
+           print(characteristic.service.uuid)
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
+            let data = String(data: characteristic.value!, encoding: .utf8)
+            print(data)
+            
         }
     }
 }

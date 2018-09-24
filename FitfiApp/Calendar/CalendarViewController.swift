@@ -9,16 +9,37 @@
 import UIKit
 import CoreData
 
+var beginDate:Date = Date().dateFromDays(-3)
+var endDate:Date = Date().dateFromDays(15)
+var fromPopUp:Int = 0
+
+protocol fromPopUpVCDelegate:class {
+    // Classes that adopt this protocol MUST define
+    // this method -- and hopefully do something in
+    // that definition.
+    func dateSelected(_ sender:PopUpCalenderVC)
+}
+
 extension Date {
     func dateFromDays(_ days: Int) -> Date {
         return (Calendar.current as NSCalendar).date(byAdding: .day, value: days, to: self, options: [])!
     }
 }
 
-class CalendarViewController: UIViewController {
+
+class CalendarViewController: UIViewController,fromPopUpVCDelegate {
+    func dateSelected(_ sender: PopUpCalenderVC) {
+      days = generateDays(beginDate, endDate: endDate)
+        tableView.reloadData()
+    }
+    
     var popUpFlag:Int = 0
+    var fromPopUpDelegate:fromPopUpVCDelegate?
+    let boarderColor:CGColor = UIColor(red: 61/255, green: 197/255, blue: 202/255, alpha: 1).cgColor
+    let lightRedColor = UIColor(displayP3Red: 253/255, green: 246/255, blue: 242/255, alpha: 1.0)
     @IBOutlet weak var calenderBtnOutlet: UIBarButtonItem!
-    @IBAction func calenderBtnPressed(_ sender: UIBarButtonItem) {
+        @IBAction func calenderBtnPressed(_ sender: UIBarButtonItem) {
+        
         
 //        if(popUpFlag == 0)
 //        {
@@ -46,6 +67,7 @@ class CalendarViewController: UIViewController {
     }
     @IBOutlet weak var tableView: UITableView!
     var selectedDay:String?
+    var currentTableIndexPath:IndexPath?
     var mondayRoutine:[String] = []
     var tuesdayRoutine:[String] = []
     var wednesdayRoutine:[String] = []
@@ -62,26 +84,61 @@ class CalendarViewController: UIViewController {
     var scheduleArr:[Schedule] = []
     var wholetableScheduleArr:[[Schedule]] = []
     var tableCellScheduleArr:[Schedule] = []
+    var routineHistoryArr:[Routine_History] = []
+    var numberOfViewsInCollectionCell:Int = 1
+    var isSchedule:Int = 0
+    var routineName:[String] = []
+    var startedTime:[String] = []
+    var estimatedTime:[String] = []
+    var totalExercise:[String] = []
+    var scheduleHistoryFlag:Int = 0
     var tt:[Int] = []
     var selectedDate:Date?
+    var collectionDidSelectDate:Date!
+    var routineHistoryObj:[Routine_History] = []
+    var selectedRoutineHistory:Routine_History!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var popUpVC:PopUpCalenderVC?
     lazy var days: [Date] = {
-        let beginDate = Date().dateFromDays(-3)
-        let endDate = Date().dateFromDays(15)
-        return self.generateDays(beginDate, endDate: endDate)
+        let beginnDate = beginDate
+        let enddDate = endDate
+        return self.generateDays(beginnDate, endDate: enddDate)
     }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+//        popUpVC = PopUpCalenderVC
+       // popUpVC?.delegate = self
         
-        request.returnsObjectsAsFaults = false
+        days = generateDays(beginDate, endDate: endDate)
+        let requestSchedule = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+        if(fromPopUp == 1)
+        {
+            DispatchQueue.main.async {
+                let indexPath = IndexPath(item: 0, section: 0)
+                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            }
+        }
+        requestSchedule.returnsObjectsAsFaults = false
         do {
-            let result = try context.fetch(request) as! [Schedule]
+            let result = try context.fetch(requestSchedule) as! [Schedule]
             
             scheduleArr = result
             
         } catch {
+            
+            print("Failed")
+        }
+        let requestRoutineHistory = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine_History")
+        requestRoutineHistory.returnsObjectsAsFaults = false
+        do{
+            let result = try context.fetch(requestRoutineHistory) as! [Routine_History]
+            
+            routineHistoryArr = result
+        }
+        catch {
             
             print("Failed")
         }
@@ -130,7 +187,10 @@ class CalendarViewController: UIViewController {
         dateFormatterCell.dateFormat = "E dd"
         dateFormatterTitle.dateFormat = "MMMM yyyy"
         self.title = dateFormatterTitle.string(from: days.first!)
-       
+        
+        DispatchQueue.main.async{
+            self.tableView.reloadData()
+        }
         
        // let newSchedule = Schedule(context: context)
         
@@ -243,78 +303,108 @@ extension CalendarViewController: UITableViewDataSource {
         let dateFormatter = DateFormatter()
         cell.dayOfWeek.text = dateArray.first?.uppercased()
         cell.dayOfMonth.text = dateArray.last?.uppercased()
+        cell.detailCollectionView.isHidden = true
+    
+        isSchedule = 0
         switch dateArray[0] {
             case "Mon":
                 if(mondayRoutine.count != 0)
                 {
-                cell.routineName.text = mondayRoutine[0]
+             //   cell.routineName.text = mondayRoutine[0]
                 }
             break
             case "Tue":
                 if(tuesdayRoutine.count != 0){
-                cell.routineName.text = tuesdayRoutine[0]
+               // cell.routineName.text = tuesdayRoutine[0]
                 }
             break
             case "Wed":
                 if(wednesdayRoutine.count != 0)
                 {
-                cell.routineName.text = wednesdayRoutine[0]
+             //   cell.routineName.text = wednesdayRoutine[0]
                 }
             break
             case "Thu":
                 if(thursdayRoutine.count != 0)
                 {
-                cell.routineName.text = thursdayRoutine[0]
+              //  cell.routineName.text = thursdayRoutine[0]
                 }
             break
             case "Fri":
                 if(fridayRoutine.count != 0)
                 {
-                cell.routineName.text = fridayRoutine[0]
+              //  cell.routineName.text = fridayRoutine[0]
                 }
             break
             case "Sat":
                 if(saturdayRoutine.count != 0)
                 {
-                cell.routineName.text = saturdayRoutine[0]
+               // cell.routineName.text = saturdayRoutine[0]
                 }
             break
             case "Sun":
                 if(sundayRoutine.count != 0)
                 {
-                cell.routineName.text = sundayRoutine[0]
+              //  cell.routineName.text = sundayRoutine[0]
                 }
             break
         default:
             print("err")
-            
+
         }
         if( dateArray.last == "thu")
         {
             print("Thursday come")
         }
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        
+
         let today = Date()
-        
+
         if dateFormatter.string(from: today) == dateFormatter.string(from: days[(indexPath as NSIndexPath).row]) {
-            
+
             cell.dayOfMonth.textColor = UIColor.white
             cell.dayOfWeek.textColor = UIColor.white
             cell.todayMarker.isHidden = false
+
             
-            cell.routineName.text = " "
-            cell.timeImageView.isHidden = true
-            cell.exerciseImageView.isHidden = true
         }
         else{
             cell.dayOfMonth.textColor = UIColor.black
             cell.dayOfWeek.textColor = UIColor.black
             cell.todayMarker.isHidden = true
-            cell.routineName.text = " "
-            cell.timeImageView.isHidden = true
-            cell.exerciseImageView.isHidden = true
+          
         }
+        scheduleHistoryFlag = 0
+        numberOfViewsInCollectionCell = 0
+        for i in routineHistoryArr{
+            if (dateFormatter.string(from: days[indexPath.row]) == dateFormatter.string(from: i.start!))
+            {
+                
+                numberOfViewsInCollectionCell = numberOfViewsInCollectionCell + 1
+                isSchedule = 1
+            print(i.end!)
+                print((i.exerciseHistory![0] as! Exercise_History).name!)
+            print(i.totalCalorie)
+                print(i.totalWeight)
+                cell.detailCollectionView.isHidden = false
+              
+                routineName.append(i.name!)
+                routineHistoryObj.append(i)
+                estimatedTime.append(String(i.totalCalorie) + " kcal")
+                totalExercise.append(String(i.totalWeight) + " lb")
+                let formatter =  DateFormatter()
+                formatter.dateFormat = "h:mm a"
+
+                startedTime.append(formatter.string(from: i.end!))
+                scheduleHistoryFlag = 1
+                
+                
+            }
+            
+        }
+        
+        if(scheduleHistoryFlag == 0)
+        {
         for i in scheduleArr
         {
 //            if let s = i.schdule {
@@ -352,42 +442,215 @@ extension CalendarViewController: UITableViewDataSource {
                 {
                     tableCellScheduleArr.append(i)
                 }
-                
+
                 wholetableScheduleArr.append(tableCellScheduleArr)
                 if(tableCellScheduleArr == [])
                 {
-                    
+
                 }
                 else{
                     let s = tableCellScheduleArr[0].schdule
                     var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
-
-                    singleRoutineName =  singleRoutineName.components(separatedBy: .whitespacesAndNewlines).joined()
+                    collectionDidSelectDate = days[indexPath.row]
+                    singleRoutineName =  singleRoutineName.components(separatedBy: "\n").joined()
                     singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
                     singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
-                    singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
-                    cell.routineName.text = singleRoutineName
-                    cell.timeImageView.isHidden = false
-                    cell.exerciseImageView.isHidden = false
-                    cell.totalExercise.text = "\(getNumberOfExercise(scheduleName:tableCellScheduleArr))"
                     
+                    singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
+                    
+                    singleRoutineName = singleRoutineName.replacingOccurrences(of: "\"", with: "")
+                    singleRoutineName = String(singleRoutineName.dropFirst(4))
+                    isSchedule = 2
+                    cell.detailCollectionView.isHidden = false
+                    numberOfViewsInCollectionCell = 1
+                    routineName.append(singleRoutineName)
+                   
+                    totalExercise.append("\(getNumberOfExercise(scheduleName:tableCellScheduleArr))")
+                   
+
                 }
                 tableCellScheduleArr = []
-                
+
             }
             else{
                 wholetableScheduleArr.append(tableCellScheduleArr)
             }
         }
-        
-        
+
+
         // Configure the cell...
-        
-        return cell
-    }
+
+       
+        }
+        cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+         return cell
+   }
     
 }
 
+extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return numberOfViewsInCollectionCell
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCollectionCell", for: indexPath) as! DetailCollectionViewCell
+        cell.routineName.text = " "
+        cell.timeImageView.isHidden = true
+     //   cell.exerciseImageView.isHidden = true
+        if(estimatedTime.count > 0)
+        {
+        if(isSchedule == 1)
+        {
+            //apply routine_history theme
+            cell.detailView.backgroundColor = lightRedColor
+            cell.timeImageView.isHidden = true
+            cell.detailView.isHidden = false
+            cell.dumbellImage.isHidden = true
+            cell.detailView.layer.borderWidth = 0
+            cell.estimatedTime.text = estimatedTime[indexPath.row]
+            cell.routineName.text = routineName[indexPath.row]
+            cell.startedTime.text = startedTime[indexPath.row]
+            cell.totalExercise.text = totalExercise[indexPath.row]
+            cell.routineObj = routineHistoryObj[indexPath.row]
+        }
+        else if (isSchedule == 2){
+            //apply schedule theme
+            cell.timeImageView.isHidden = false
+            cell.detailView.layer.borderWidth = 1.5
+            cell.detailView.layer.cornerRadius = 6
+            cell.dumbellImage.isHidden = false
+            cell.detailView.layer.borderColor = boarderColor
+            cell.detailView.backgroundColor = UIColor.clear
+            cell.startedTime.text = ""
+            cell.estimatedTime.text = estimatedTime[indexPath.row]
+            
+            cell.routineName.text = routineName[indexPath.row]
+            cell.totalExercise.text = totalExercise[indexPath.row]
+            cell.didSelectDay = collectionDidSelectDate
+        }
+        }
+        return cell
+    }
+     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+   
+       let cell = collectionView.cellForItem(at: indexPath) as! DetailCollectionViewCell
+       
+        if(cell.routineObj == nil)
+        {
+            if(cell.didSelectDay != nil)
+            {
+            var flag:Int = 0
+            startedTime = []
+            estimatedTime = []
+            totalExercise = []
+            routineName = []
+            routineHistoryObj = []
+            
+            for i in scheduleArr
+            {
+                //            if let s = i.schdule {
+                //                print(s.value(forKey: "name"))
+                //            }
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM/dd/yyyy"
+                let dateArray : [String] = dateFormatterCell.string(from: cell.didSelectDay).components(separatedBy: " ")
+                let day = dateArray.first?.uppercased()
+                if (cell.didSelectDay > i.date! || dateFormatter.string(from: cell.didSelectDay) == dateFormatter.string(from: i.date!))
+                {
+                    
+                    if(day == "MON" && i.monday == true)
+                    {
+                        tableCellScheduleArr.append(i)
+                        flag = 1
+                        //cell.routineName.text = i.schedule
+                    }
+                    else if(day == "TUE" && i.tuesday == true)
+                    {
+                        tableCellScheduleArr.append(i)
+                        flag = 1
+                    }
+                    else if(day == "WED" && i.wednesday == true)
+                    {
+                        tableCellScheduleArr.append(i)
+                        flag = 1
+                    }
+                    else if(day == "FRI" && i.friday == true)
+                    {
+                        tableCellScheduleArr.append(i)
+                        flag = 1
+                    }
+                    else if(day == "THU" && i.thursday == true)
+                    {
+                        tableCellScheduleArr.append(i)
+                        flag = 1
+                    }
+                    else if(day == "SAT" && i.saturday == true)
+                    {
+                        tableCellScheduleArr.append(i)
+                        flag = 1
+                    }
+                    else if(day == "SUN" && i.sunday == true)
+                    {
+                        tableCellScheduleArr.append(i)
+                        flag = 1
+                    }
+                    
+                    //selectedRowScheduleArr.append(tableCellScheduleArr)
+                    if(tableCellScheduleArr == [])
+                    {
+                        //inside here
+                        
+                        
+                    }
+                        
+                    else{
+                        //                    let s = tableCellScheduleArr[0].schdule
+                        //                    var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
+                        //
+                        //                    singleRoutineName =  singleRoutineName.components(separatedBy: .whitespacesAndNewlines).joined()
+                        //                    singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
+                        //                    singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
+                        //                    singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
+                        //                    cell.routineName.text = singleRoutineName
+                        flag = 1
+                        
+                    }
+                    // tableCellScheduleArr = []
+                    
+                }
+                else{
+                    //  wholetableScheduleArr.append(tableCellScheduleArr)
+                }
+            }
+            if(flag == 1)
+            {
+                print(tableCellScheduleArr)
+                selectedDate = days[indexPath.row]
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM/dd/yyyy"
+                let dateArray : [String] = dateFormatterCell.string(from: days[(indexPath as NSIndexPath).row]).components(separatedBy: " ")
+                selectedDay = dateArray.first?.uppercased()
+                performSegue(withIdentifier: "goToScheduleDetail", sender: self)
+            }
+            tableView.deselectRow(at: indexPath, animated: true)
+            tableCellScheduleArr = []
+            
+            print(indexPath.row)
+            }
+        }
+        else
+        {
+        selectedRoutineHistory = cell.routineObj
+        performSegue(withIdentifier: "goToRoutineHistoryDetail", sender: self)
+        }
+        
+        
+    }
+   override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+}
 extension CalendarViewController: UITableViewDelegate {
     func getNumberOfExercise(scheduleName:[Schedule]) -> Int{
         var totalExercise:Int = 0
@@ -396,10 +659,11 @@ extension CalendarViewController: UITableViewDelegate {
             let s = i.schdule
             let e = s!.value(forKey: "routineExercises")
             var singleExerciseName = "\(String(describing: (e as AnyObject).value(forKey: "name") ?? ""))"
-            singleExerciseName = singleExerciseName.components(separatedBy: .whitespacesAndNewlines).joined()
+            singleExerciseName = singleExerciseName.components(separatedBy: "\n").joined()
             singleExerciseName = singleExerciseName.replacingOccurrences(of: "{(", with: "")
             singleExerciseName = singleExerciseName.replacingOccurrences(of: ")}", with: "")
             singleExerciseName = singleExerciseName.components(separatedBy: ",").first!
+            singleExerciseName = singleExerciseName.replacingOccurrences(of: "\"", with: "")
             for i in singleExerciseName.components(separatedBy: ","){
                 
                 exerciseList.append(i)
@@ -469,97 +733,6 @@ extension CalendarViewController: UITableViewDelegate {
     //
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       //  tableView.deselectRow(at: indexPath, animated: true)
-        var flag:Int = 0
-        for i in scheduleArr
-        {
-            //            if let s = i.schdule {
-            //                print(s.value(forKey: "name"))
-            //            }
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyyy"
-            let dateArray : [String] = dateFormatterCell.string(from: days[(indexPath as NSIndexPath).row]).components(separatedBy: " ")
-            let day = dateArray.first?.uppercased()
-            if (days[indexPath.row] > i.date! || dateFormatter.string(from: days[indexPath.row]) == dateFormatter.string(from: i.date!))
-            {
-                
-                if(day == "MON" && i.monday == true)
-                {
-                    tableCellScheduleArr.append(i)
-                    flag = 1
-                    //cell.routineName.text = i.schedule
-                }
-                else if(day == "TUE" && i.tuesday == true)
-                {
-                    tableCellScheduleArr.append(i)
-                    flag = 1
-                }
-                else if(day == "WED" && i.wednesday == true)
-                {
-                    tableCellScheduleArr.append(i)
-                    flag = 1
-                }
-                else if(day == "FRI" && i.friday == true)
-                {
-                    tableCellScheduleArr.append(i)
-                    flag = 1
-                }
-                else if(day == "THU" && i.thursday == true)
-                {
-                    tableCellScheduleArr.append(i)
-                    flag = 1
-                }
-                else if(day == "SAT" && i.saturday == true)
-                {
-                    tableCellScheduleArr.append(i)
-                    flag = 1
-                }
-                else if(day == "SUN" && i.sunday == true)
-                {
-                    tableCellScheduleArr.append(i)
-                    flag = 1
-                }
-                
-                //selectedRowScheduleArr.append(tableCellScheduleArr)
-                if(tableCellScheduleArr == [])
-                {
-                 //inside here
-                    
-                    
-                }
-                    
-                else{
-//                    let s = tableCellScheduleArr[0].schdule
-//                    var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
-//
-//                    singleRoutineName =  singleRoutineName.components(separatedBy: .whitespacesAndNewlines).joined()
-//                    singleRoutineName = singleRoutineName.replacingOccurrences(of: "{(", with: "")
-//                    singleRoutineName = singleRoutineName.replacingOccurrences(of: ")}", with: "")
-//                    singleRoutineName = singleRoutineName.components(separatedBy: ",").first!
-//                    cell.routineName.text = singleRoutineName
-                   flag = 1
-                    
-                }
-               // tableCellScheduleArr = []
-                
-            }
-            else{
-              //  wholetableScheduleArr.append(tableCellScheduleArr)
-            }
-        }
-        if(flag == 1)
-        {
-        print(tableCellScheduleArr)
-          selectedDate = days[indexPath.row]
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let dateArray : [String] = dateFormatterCell.string(from: days[(indexPath as NSIndexPath).row]).components(separatedBy: " ")
-        selectedDay = dateArray.first?.uppercased()
-        performSegue(withIdentifier: "goToScheduleDetail", sender: self)
-        }
-        tableView.deselectRow(at: indexPath, animated: true)
-        tableCellScheduleArr = []
-        
-        print(indexPath.row)
        
       //  print(wholetableScheduleArr[indexPath.row])
     }
@@ -576,7 +749,14 @@ extension CalendarViewController: UITableViewDelegate {
         if(segue.identifier == "popUpCalender")
         {
             //assign date
+            let detailSmallCalVC = segue.destination as! PopUpCalenderVC
+            detailSmallCalVC.delegate = self
             
+        }
+        if(segue.identifier == "goToRoutineHistoryDetail")
+        {
+            let recentDetailVC = segue.destination as! RecentWorkoutDetailsTableViewController
+            recentDetailVC.selectedRoutineHistory = selectedRoutineHistory
         }
         
     }
