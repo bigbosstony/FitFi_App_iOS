@@ -8,6 +8,9 @@
 
 import UIKit
 
+let baseURL : String = "http://192.168.2.25/api/"
+let loginURL : String = "BebKW9Eu2rWGeDjoepKk26IQDjFtGRTYdeh2knhMWdJitEZBUeJIt291WavlWhTKUnWeZ8SISl0oGubwuSKVJvE5sXfuJ22n1UVSQgWmasocXlOo6Os7/fitfi_credentails$$$$$$$$$$$$$$$$$$$/E5sXfuJ22n1UVSQgWmasocXlOo6Os7V6seRX83pL4hdJBZEV5NPmvPU5np1NBpcNjtPwgfxlCJFjs/login"
+
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var backGroundView: UIView!
@@ -43,7 +46,7 @@ class LoginViewController: UIViewController {
         
 //        self.view.layer.insertSublayer(gradient, at: 0)
     }
-    //
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         print("login view will dissapear")
@@ -62,6 +65,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginPressed(_ sender: UIButton) {
         print("Login Pressed")
+        
+        makePostCall()
+        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarViewController
         self.present(newViewController, animated: true, completion: nil)
@@ -87,6 +93,7 @@ extension LoginViewController: UITextFieldDelegate {
         {
             movement = -movementDistance
         }
+        
         UIView.beginAnimations("animateTextField", context: nil)
         UIView.setAnimationBeginsFromCurrentState(true)
         UIView.setAnimationDuration(movementDuration)
@@ -112,5 +119,69 @@ extension LoginViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+}
+
+extension LoginViewController {
+    
+    func makePostCall() {
+//        let url: String = baseURL + loginURL
+        let url = "https://jsonplaceholder.typicode.com/posts"
+        guard let fullURL = URL(string: url) else {
+            print("Error: cannot create URL")
+            return
+        }
+        
+        var loginURLRequest = URLRequest(url: fullURL)
+        loginURLRequest.httpMethod = "POST"
+        
+//        let userInfoData: [String: Any] = ["email": "navjotbabrah27@gmail.com", "password": "12121"]
+//        let userJSONData: Data
+//
+//        do {
+//            userJSONData = try JSONSerialization.data(withJSONObject: userInfoData, options: [])
+//            loginURLRequest.httpBody = userJSONData
+//        } catch {
+//            print("Error: cannot create JSON from todo")
+//            return
+//        }
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: loginURLRequest) {
+            (data, response, error) in
+            guard error == nil else {
+                print("error calling POST on /todos/1")
+                print(error!)
+                return
+            }
+            
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            
+            // parse the result as JSON, since that's what the API provides
+            do {
+                guard let receivedToken = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else { print("Could not get JSON from responseData as dictionary")
+                    return
+                }
+                
+                print("The todo is: " + receivedToken.description)
+                
+                guard let token = receivedToken["id"] as? Int else {
+                    print("Could not get todoID as int from JSON")
+                    return
+                }
+                
+                print(token)
+                
+//                print("The ID is: \(todoID)")
+            } catch  {
+                print("error parsing response from POST on /todos")
+                return
+            }
+        }
+        task.resume()
     }
 }

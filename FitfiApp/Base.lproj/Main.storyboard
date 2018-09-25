@@ -2936,11 +2936,10 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzJ-dC-iAV">
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzJ-dC-iAV">
                                 <rect key="frame" x="32" y="339" width="311" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="l8i-wR-dvf"/>
                                     <constraint firstAttribute="height" constant="1" id="ywV-8E-9NH"/>
                                 </constraints>
                             </view>
@@ -2955,13 +2954,11 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmL-eo-Ura">
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmL-eo-Ura">
                                 <rect key="frame" x="32" y="394" width="311" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="60N-kA-g8L"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="AZx-y5-oTA"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="NrS-cM-ZuV"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="FIRST NAME" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xni-oD-ssF" userLabel="first name">
@@ -2976,14 +2973,11 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XE8-ml-VRD">
+                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XE8-ml-VRD">
                                 <rect key="frame" x="32" y="449" width="311" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="1U0-xC-BK7"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="DUX-7n-HxJ"/>
                                     <constraint firstAttribute="height" constant="1" id="Hkp-Cr-KB3"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="Hu8-g6-aLQ"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="LAST NAME" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3xb-0y-EJa" userLabel="last name">
@@ -2999,14 +2993,11 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vD-st-SQ5">
+                            <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vD-st-SQ5">
                                 <rect key="frame" x="32" y="504" width="311" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="1CH-Uh-xBG"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="JtN-eF-qua"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="cB9-JV-kPN"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="qT3-Cn-VPv"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4GV-Dc-Xjy">
@@ -3082,14 +3073,19 @@
                     <navigationItem key="navigationItem" id="YYI-jE-yiE"/>
                     <connections>
                         <outlet property="email" destination="uK0-zW-xdw" id="hBY-4W-JOJ"/>
+                        <outlet property="emailLineView" destination="fzJ-dC-iAV" id="hmP-rv-Yy0"/>
+                        <outlet property="emailLineViewHeight" destination="ywV-8E-9NH" id="XVy-Fv-RBc"/>
                         <outlet property="firstName" destination="Xni-oD-ssF" id="VQ1-wd-PYA"/>
+                        <outlet property="firstNameLineView" destination="XE8-ml-VRD" id="MQ9-Ta-Ki7"/>
                         <outlet property="lastName" destination="3xb-0y-EJa" id="4uH-x6-Llz"/>
+                        <outlet property="lastNameLineView" destination="3vD-st-SQ5" id="2Kf-XI-vGU"/>
                         <outlet property="password" destination="KIy-J8-8e5" id="Kuv-KB-Nky"/>
+                        <outlet property="passwordLineView" destination="wmL-eo-Ura" id="ar8-4J-gjd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efr-dp-veG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10679" y="3545"/>
+            <point key="canvasLocation" x="10677.6" y="3544.6776611694154"/>
         </scene>
         <!--Social-->
         <scene sceneID="LgK-xf-Gfp">

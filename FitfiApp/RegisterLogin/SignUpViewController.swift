@@ -15,20 +15,34 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     
+    @IBOutlet weak var emailLineView: UIView!
+    @IBOutlet weak var passwordLineView: UIView!
+    @IBOutlet weak var firstNameLineView: UIView!
+    @IBOutlet weak var lastNameLineView: UIView!
+    
+    @IBOutlet weak var emailLineViewHeight: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        email.attributedPlaceholder = NSAttributedString(string: "EMAIL ADDRESS", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
-        password.attributedPlaceholder = NSAttributedString(string: "PASSWORD", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
-        firstName.attributedPlaceholder = NSAttributedString(string: "FIRST NAME", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
-        lastName.attributedPlaceholder = NSAttributedString(string: "LAST NAME", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+        email.attributedPlaceholder = NSAttributedString(string: "EMAIL ADDRESS", attributes: [NSAttributedStringKey.foregroundColor : UIColor.gray])
+        password.attributedPlaceholder = NSAttributedString(string: "PASSWORD", attributes: [NSAttributedStringKey.foregroundColor : UIColor.gray])
+        firstName.attributedPlaceholder = NSAttributedString(string: "FIRST NAME", attributes: [NSAttributedStringKey.foregroundColor : UIColor.gray])
+        lastName.attributedPlaceholder = NSAttributedString(string: "LAST NAME", attributes: [NSAttributedStringKey.foregroundColor : UIColor.gray])
+        
         // Do any additional setup after loading the view.
         
         email.delegate = self
         password.delegate = self
         firstName.delegate = self
         lastName.delegate = self
+        
+        email.autocorrectionType = .no
+        password.autocorrectionType = .no
+        firstName.autocorrectionType = .no
+        lastName.autocorrectionType = .no
+        
     }
 
 }
@@ -58,10 +72,14 @@ extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.animateTextField(textField: textField, up: true)
+        self.view.viewWithTag(textField.tag + 1)?.constraints.first?.constant = 2
+        self.view.viewWithTag(textField.tag + 1)?.updateConstraints()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.animateTextField(textField: textField, up: false)
+        self.view.viewWithTag(textField.tag + 1)?.constraints.first?.constant = 1
+        self.view.viewWithTag(textField.tag + 1)?.updateConstraints()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
