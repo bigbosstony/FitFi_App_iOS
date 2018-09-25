@@ -11,6 +11,7 @@ import UIKit
 import SwiftCharts
 import CoreData
 
+//MARK: for collapse table view
 struct Seection {
     var category: String
     var exercise: [String]
@@ -79,7 +80,7 @@ private let decimalFormatter: NumberFormatter = {
     
     return numberFormatter
 }()
-
+//MARK: For volume graph
 private var glucosePoints: [ChartPoint] = [("2016-02-28T07:26:38", 95), ("2016-02-28T07:31:38", 93), ("2016-02-28T07:41:39", 92), ("2016-02-28T07:51:42", 92), ("2016-02-28T07:56:38", 94), ("2016-02-28T08:01:39", 94), ("2016-02-28T08:06:38", 95), ("2016-02-28T08:11:37", 95), ("2016-02-28T08:16:40", 100), ("2016-02-28T08:21:39", 99), ("2016-02-28T08:26:39", 99), ("2016-02-28T08:31:38", 97), ("2016-02-28T08:51:43", 101), ("2016-02-28T08:56:39", 105), ("2016-02-28T09:01:43", 101), ("2016-02-28T09:06:37", 102), ("2016-02-28T09:11:37", 107), ("2016-02-28T09:16:38", 109), ("2016-02-28T09:21:37", 113), ("2016-02-28T09:26:41", 114), ("2016-02-28T09:31:37", 112), ("2016-02-28T09:36:39", 111), ("2016-02-28T09:41:40", 111), ("2016-02-28T09:46:43", 112), ("2016-02-28T09:51:38", 113), ("2016-02-28T09:56:43", 112), ("2016-02-28T10:01:38", 111), ("2016-02-28T10:06:42", 112), ("2016-02-28T10:11:37", 115), ("2016-02-28T10:16:42", 119), ("2016-02-28T10:21:42", 121), ("2016-02-28T10:26:38", 127), ("2016-02-28T10:31:36", 129), ("2016-02-28T10:36:37", 132), ("2016-02-28T10:41:38", 135), ("2016-02-28T10:46:37", 138), ("2016-02-28T10:51:36", 137), ("2016-02-28T10:56:38", 141), ("2016-02-28T11:01:37", 146), ("2016-02-28T11:06:40", 151), ("2016-02-28T11:16:37", 163), ("2016-02-28T11:21:36", 169), ("2016-02-28T11:26:37", 177), ("2016-02-28T11:31:37", 183), ("2016-02-28T11:36:37", 187), ("2016-02-28T11:41:36", 190), ("2016-02-28T11:46:36", 192), ("2016-02-28T11:51:36", 194), ("2016-02-28T11:56:36", 194), ("2016-02-28T12:01:37", 192), ("2016-02-28T12:06:41", 192), ("2016-02-28T12:11:36", 183), ("2016-02-28T12:16:38", 176), ("2016-02-28T12:21:39", 165), ("2016-02-28T12:26:38", 156), ("2016-02-28T12:31:37", 144), ("2016-02-28T12:36:36", 138), ("2016-02-28T12:41:37", 131), ("2016-02-28T12:46:37", 125), ("2016-02-28T12:51:36", 118), ("2016-02-28T13:01:43", 104), ("2016-02-28T13:06:45", 97), ("2016-02-28T13:11:39", 92), ("2016-02-28T13:16:37", 88), ("2016-02-28T13:21:36", 88)].map {
     return ChartPoint(
         x: ChartAxisValueDate(date: localDateFormatter.date(from: $0.0)!, formatter: threeMonthformatter),
@@ -160,6 +161,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
         
         exerciseTable.deselectRow(at: indexPath, animated: true)
     }
+    //MARK: for workOut bar chart
     var workoutBarChart:BarsChart!
     fileprivate lazy private(set) var axisLineColor = UIColor.clear
     private let axisLabelSettings: ChartLabelSettings = ChartLabelSettings()
@@ -192,9 +194,9 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     }
     fileprivate var bottomChart: Chart?
     fileprivate lazy private(set) var chartLongPressGestureRecognizer = UILongPressGestureRecognizer()
-    
+    //MARK: ImageViews for Muscle Engagement
     @IBOutlet weak var F1: UIImageView!
-    //var volumeAreaGraph:IOB
+    
     @IBOutlet weak var F2: UIImageView!
     
     @IBOutlet weak var F3: UIImageView!
@@ -244,7 +246,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     
     
     
-    
+    //MARK: 1 month / 3 month / 1 year selected segment
     
     @IBAction func timeSegments(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -253,21 +255,21 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
             workOutLabel.text = "01"
             volumeLabel.text = "01"
             exerciseLabel.text = "05"
-            timeSelected(index: 0)
+            timeSelected(index: 0) // function that will be called to calculate and display graphs
             break
         case 1:
             print("3 months")
             workOutLabel.text = "03"
             volumeLabel.text = "02"
             exerciseLabel.text = "06"
-            timeSelected(index: 1)
+            timeSelected(index: 1) // function that will be called to calculate and display graphs
             break
         case 2:
             print("1 year")
             workOutLabel.text = "04"
             volumeLabel.text = "03"
             exerciseLabel.text = "07"
-            timeSelected(index: 2)
+            timeSelected(index: 2) // function that will be called to calculate and display graphs
             break
         default:
             break
@@ -296,7 +298,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
      var metricFlag:Int = 0// to get ton know if weight is low than it will be 0 to print lb instead of tone
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       //Just for testing purpose
        F1.image = (F1.image?.withRenderingMode(.alwaysTemplate))!
         F1.tintColor = FitFiColor
         F2.image = (F2.image?.withRenderingMode(.alwaysTemplate))!
@@ -365,7 +367,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     }
     
     
-    
+    //MARK: part of volume graph
     fileprivate func generateXAxisValues() {
         let points = glucosePoints
         
@@ -484,9 +486,9 @@ extension StatisticsViewController{
                 
             }
             
-            //print(exHistoryDict.count) number of exercise
+            //exHistoryDict.count number of exercise
             exerciseLabel.text = "\(Int(totalExercise))"
-            //print(exVolume) Volume
+         
             if(totalVolume < 1)
             {
                 metricFlag = 0
@@ -499,10 +501,9 @@ extension StatisticsViewController{
                 
             }
 
-            //print(exWorkOuts.count) total routines
+            
             workOutLabel.text = "\(Int(totalWorkOut))"
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
-            //            barsArray.append("\(currentDateString)/\(currentDateString),150")
             if(totalExercise > 0){
             oneMonthchart = BarsChart(
                 frame: frame,
@@ -579,7 +580,6 @@ extension StatisticsViewController{
                 BarsArray[i] = ("\(previousDateString)",tmp[0])
                 GraphArray[i] = ("\(previousDate)",tmp[1])
                 Graph1Array[i] = ("\(previousDate)",tmp[1])
-                print(previousDate)
                 totalExercise = totalExercise + tmp[0]
                 totalVolume = totalVolume + tmp[1]
                 totalWorkOut = totalWorkOut + tmp[2]
@@ -626,7 +626,6 @@ extension StatisticsViewController{
             workOutGraphView.addSubview(threeMonthchart.view)
             workoutBarChart = threeMonthchart
             
-            print(GraphArray)
             IOBPoints = GraphArray.map {
                 return ChartPoint(
                     x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: oneMonth),
@@ -641,7 +640,6 @@ extension StatisticsViewController{
             }
             print(IOBPoints)
             generateXAxisValues()
-//            print(xAxisValues)
             let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
             bottomChart = generateIOBChartWithFrame(frame: frame)
             for view in volumeGraphView.subviews {
@@ -674,7 +672,7 @@ extension StatisticsViewController{
             var totalVolume:Double = 0
             var totalWorkOut:Double = 0
             for i in 0...11{
-               // var tt:TimeInterval = -1764000
+               
                 
                 let oneDay:TimeInterval = -90000
                 
@@ -979,6 +977,7 @@ extension StatisticsViewController{
     
     
 }
+//for genrating volume graph
 private extension ChartPointsTouchHighlightLayer {
     
     convenience init(
@@ -1146,27 +1145,6 @@ extension StatisticsViewController{
             }
         }
     }
-//    func oneMonthSelected()
-//    {
-//        //for calculate seven days
-//        let calendar = NSCalendar.current
-//
-//        let now = NSDate()
-//
-//        // let sevenDaysAgo = calendar.dateByAddingUnit(.Day, value: -7, toDate: now, options: NSCalendar.Options())!
-//        // let startDate = calendar.startOfDayForDate(sevenDaysAgo)
-//        let predicate = NSPredicate(format:"(end >= %@) AND (start < %@)", now, now)
-//
-//        //        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-//        //        fetchRequest.sortDescriptors = [sortDescriptor]
-//
-//        do {
-//            exerciseHistoryArray = try context.fetch(Exercise_History.fetchRequest())
-//
-//        } catch {
-//            print("Loading Exercises Error: \(error)")
-//        }
-//    }
 }
 
 
