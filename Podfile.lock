@@ -8,12 +8,6 @@ DEPENDENCIES:
   - JTAppleCalendar (~> 7.0)
   - SwiftCharts (~> 0.6.1)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - JTAppleCalendar
-    - SwiftCharts
-
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   JTAppleCalendar: abb30678f42a4ef8a340a932b1dcb8c85a33dac2
@@ -21,4 +15,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 50e5e06e32daffec240e2bbee3d1af51b4c06219
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.4.0
