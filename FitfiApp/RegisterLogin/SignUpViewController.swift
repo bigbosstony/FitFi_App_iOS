@@ -20,8 +20,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var firstNameLineView: UIView!
     @IBOutlet weak var lastNameLineView: UIView!
     
-    @IBOutlet weak var emailLineViewHeight: NSLayoutConstraint!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +49,11 @@ extension SignUpViewController: UITextFieldDelegate {
     
     func animateTextField(textField: UITextField, up: Bool)
     {
-        let movementDistance:CGFloat = -210
+        let movementDistance:CGFloat = -140
         let movementDuration: Double = 0.3
         
         var movement:CGFloat = 0
+        
         if up
         {
             movement = movementDistance
@@ -63,6 +62,7 @@ extension SignUpViewController: UITextFieldDelegate {
         {
             movement = -movementDistance
         }
+        
         UIView.beginAnimations("animateTextField", context: nil)
         UIView.setAnimationBeginsFromCurrentState(true)
         UIView.setAnimationDuration(movementDuration)
@@ -72,19 +72,20 @@ extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.animateTextField(textField: textField, up: true)
-        self.view.viewWithTag(textField.tag + 1)?.constraints.first?.constant = 2
-        self.view.viewWithTag(textField.tag + 1)?.updateConstraints()
+//        self.view.viewWithTag(textField.tag + 1)?.constraints.first?.constant = 2
+//        self.view.viewWithTag(textField.tag + 1)?.updateConstraints()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.animateTextField(textField: textField, up: false)
-        self.view.viewWithTag(textField.tag + 1)?.constraints.first?.constant = 1
-        self.view.viewWithTag(textField.tag + 1)?.updateConstraints()
+//        self.view.viewWithTag(textField.tag + 1)?.constraints.first?.constant = 1
+//        self.view.viewWithTag(textField.tag + 1)?.updateConstraints()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            
             nextField.becomeFirstResponder()
         } else {
             // Not found, so remove keyboard.

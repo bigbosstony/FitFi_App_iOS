@@ -2752,7 +2752,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0Mf-Cq-XfV" firstAttribute="trailing" secondItem="IhI-8R-amu" secondAttribute="trailing" constant="32" id="16J-FB-2F0"/>
                             <constraint firstItem="0Mf-Cq-XfV" firstAttribute="trailing" secondItem="lnG-BX-mcv" secondAttribute="trailing" constant="32" id="4jp-ti-J1o"/>
@@ -2855,15 +2855,15 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="EMAIL ADDRESS" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPh-oF-wub">
-                                        <rect key="frame" x="32" y="230" width="311" height="46"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="EMAIL ADDRESS" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPh-oF-wub">
+                                        <rect key="frame" x="32" y="229" width="311" height="46"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="mJu-Al-Pqu"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2936,7 +2936,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzJ-dC-iAV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzJ-dC-iAV">
                                 <rect key="frame" x="32" y="339" width="311" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2954,7 +2954,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmL-eo-Ura">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmL-eo-Ura">
                                 <rect key="frame" x="32" y="394" width="311" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2973,7 +2973,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XE8-ml-VRD">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XE8-ml-VRD">
                                 <rect key="frame" x="32" y="449" width="311" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2993,7 +2993,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vD-st-SQ5">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vD-st-SQ5">
                                 <rect key="frame" x="32" y="504" width="311" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -3036,7 +3036,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uSV-Py-hdw" firstAttribute="trailing" secondItem="4GV-Dc-Xjy" secondAttribute="trailing" constant="32" id="4l6-aD-H6C"/>
                             <constraint firstItem="uSV-Py-hdw" firstAttribute="trailing" secondItem="KIy-J8-8e5" secondAttribute="trailing" constant="32" id="7tT-K9-ZP9"/>
@@ -3074,7 +3074,6 @@
                     <connections>
                         <outlet property="email" destination="uK0-zW-xdw" id="hBY-4W-JOJ"/>
                         <outlet property="emailLineView" destination="fzJ-dC-iAV" id="hmP-rv-Yy0"/>
-                        <outlet property="emailLineViewHeight" destination="ywV-8E-9NH" id="XVy-Fv-RBc"/>
                         <outlet property="firstName" destination="Xni-oD-ssF" id="VQ1-wd-PYA"/>
                         <outlet property="firstNameLineView" destination="XE8-ml-VRD" id="MQ9-Ta-Ki7"/>
                         <outlet property="lastName" destination="3xb-0y-EJa" id="4uH-x6-Llz"/>
