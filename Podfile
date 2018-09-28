@@ -10,7 +10,7 @@ target 'FitfiApp' do
 	 pod 'JTAppleCalendar', '~> 7.0'
 
     pod 'Alamofire', '~> 4.7'
-
+	pod 'Charts'
 
   # Pods for FitfiApp
 

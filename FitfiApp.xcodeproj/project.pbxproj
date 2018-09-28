@@ -117,9 +117,6 @@
 		EA890FB5215576EB00B56BAD /* classify_model_0_4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA890FB1215576EB00B56BAD /* classify_model_0_4.mlmodel */; };
 		EA890FB6215576EB00B56BAD /* classify_model_0_4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA890FB1215576EB00B56BAD /* classify_model_0_4.mlmodel */; };
 		EA890FB7215576EB00B56BAD /* classify_model_0_4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA890FB1215576EB00B56BAD /* classify_model_0_4.mlmodel */; };
-		EA890FB92155A22C00B56BAD /* counting_model_0_4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA890FB82155A22C00B56BAD /* counting_model_0_4.mlmodel */; };
-		EA890FBA2155A22C00B56BAD /* counting_model_0_4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA890FB82155A22C00B56BAD /* counting_model_0_4.mlmodel */; };
-		EA890FBB2155A22C00B56BAD /* counting_model_0_4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA890FB82155A22C00B56BAD /* counting_model_0_4.mlmodel */; };
 		EA8C64A120D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */; };
 		EA8C64A220D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */; };
 		EA8C64A320D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */; };
@@ -206,6 +203,12 @@
 		F16E8E182135DD9400455C87 /* scheduleSelectedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */; };
 		F16E8E192135DD9400455C87 /* scheduleSelectedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */; };
 		F178F2752141B64E001D3DB6 /* CoustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F178F2742141B64E001D3DB6 /* CoustomCell.swift */; };
+		F17BE796215D42890027E1C2 /* counting_model_0_4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F17BE795215D42880027E1C2 /* counting_model_0_4.mlmodel */; };
+		F17BE797215D42890027E1C2 /* counting_model_0_4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F17BE795215D42880027E1C2 /* counting_model_0_4.mlmodel */; };
+		F17BE798215D42890027E1C2 /* counting_model_0_4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F17BE795215D42880027E1C2 /* counting_model_0_4.mlmodel */; };
+		F17BE79D215D8DB90027E1C2 /* ChartStringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17BE79C215D8DB90027E1C2 /* ChartStringFormatter.swift */; };
+		F17BE79E215D8DB90027E1C2 /* ChartStringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17BE79C215D8DB90027E1C2 /* ChartStringFormatter.swift */; };
+		F17BE79F215D8DB90027E1C2 /* ChartStringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17BE79C215D8DB90027E1C2 /* ChartStringFormatter.swift */; };
 		F1A88B1E214165B90076063E /* PopUpCalenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A88B1D214165B90076063E /* PopUpCalenderVC.swift */; };
 		F1C3B25721481A5D0088E944 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA98E51B20FE569F002B2A70 /* StatisticsViewController.swift */; };
 		F1C7AE3621232EFF001FB415 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */; };
@@ -282,7 +285,6 @@
 		EA855DE820F64C50000D7EA5 /* NewRoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoutineTableViewCell.swift; sourceTree = "<group>"; };
 		EA855DEC20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		EA890FB1215576EB00B56BAD /* classify_model_0_4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = classify_model_0_4.mlmodel; sourceTree = "<group>"; };
-		EA890FB82155A22C00B56BAD /* counting_model_0_4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = counting_model_0_4.mlmodel; sourceTree = "<group>"; };
 		EA8C64A020D2BD94005B8859 /* ExerciseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewController.swift; sourceTree = "<group>"; };
 		EA8C64A420D2BEEC005B8859 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		EA94BB4C211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorkoutDetailCVCell.swift; sourceTree = "<group>"; };
@@ -314,6 +316,8 @@
 		F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsibleTableViewCell.swift; sourceTree = "<group>"; };
 		F16E8E162135DD9400455C87 /* scheduleSelectedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleSelectedVC.swift; sourceTree = "<group>"; };
 		F178F2742141B64E001D3DB6 /* CoustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoustomCell.swift; sourceTree = "<group>"; };
+		F17BE795215D42880027E1C2 /* counting_model_0_4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = counting_model_0_4.mlmodel; sourceTree = "<group>"; };
+		F17BE79C215D8DB90027E1C2 /* ChartStringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartStringFormatter.swift; sourceTree = "<group>"; };
 		F1A88B1D214165B90076063E /* PopUpCalenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpCalenderVC.swift; sourceTree = "<group>"; };
 		F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleViewController.swift; path = Calendar/ScheduleViewController.swift; sourceTree = "<group>"; };
 		F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectRoutineCell.swift; sourceTree = "<group>"; };
@@ -452,6 +456,7 @@
 				EA3090E620C6DA4000E09DDF /* AppDelegate.swift */,
 				EA99105820D85DA4003D6D6E /* TabBarViewController.swift */,
 				EA98E51B20FE569F002B2A70 /* StatisticsViewController.swift */,
+				F17BE79B215D8D8D0027E1C2 /* Chart */,
 				F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */,
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
@@ -579,7 +584,7 @@
 				EA98E50F20FD9B25002B2A70 /* MaxTrackingViewController.swift */,
 				EA98E51020FD9B25002B2A70 /* MaxTrackingViewController.xib */,
 				EA890FB1215576EB00B56BAD /* classify_model_0_4.mlmodel */,
-				EA890FB82155A22C00B56BAD /* counting_model_0_4.mlmodel */,
+				F17BE795215D42880027E1C2 /* counting_model_0_4.mlmodel */,
 			);
 			path = "Auto Tracking";
 			sourceTree = "<group>";
@@ -599,6 +604,14 @@
 			children = (
 			);
 			path = Front;
+			sourceTree = "<group>";
+		};
+		F17BE79B215D8D8D0027E1C2 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				F17BE79C215D8DB90027E1C2 /* ChartStringFormatter.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		F1DA28822152EE1C00B1CE41 /* Back */ = {
@@ -680,6 +693,7 @@
 				TargetAttributes = {
 					EA3090E220C6DA4000E09DDF = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -688,10 +702,12 @@
 					};
 					EA3090F920C6DA4300E09DDF = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 						TestTargetID = EA3090E220C6DA4000E09DDF;
 					};
 					EA30910420C6DA4300E09DDF = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
 						TestTargetID = EA3090E220C6DA4000E09DDF;
 					};
 				};
@@ -828,12 +844,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftCharts/SwiftCharts.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCharts.framework",
 			);
@@ -880,7 +898,6 @@
 				EA283D3A2152D15300F71461 /* FirstViewController.swift in Sources */,
 				EA8C64A520D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
 				EA7C92CB20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
-				EA890FB92155A22C00B56BAD /* counting_model_0_4.mlmodel in Sources */,
 				EA98E51120FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
 				EAABE9E320CB05EF0024B222 /* TodayCollectionViewCell.swift in Sources */,
 				EA94BB4D211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift in Sources */,
@@ -904,6 +921,8 @@
 				EA77604E20E4498A0052774F /* Data.xcdatamodeld in Sources */,
 				EA855DED20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
 				EA64311721135788000EAED5 /* Extensions.swift in Sources */,
+				F17BE79D215D8DB90027E1C2 /* ChartStringFormatter.swift in Sources */,
+				F17BE796215D42890027E1C2 /* counting_model_0_4.mlmodel in Sources */,
 				EA3090E920C6DA4000E09DDF /* HomeViewController.swift in Sources */,
 				EA3090E720C6DA4000E09DDF /* AppDelegate.swift in Sources */,
 				EA77605820E484410052774F /* ProfileViewController.swift in Sources */,
@@ -923,6 +942,7 @@
 				EA64310721121A16000EAED5 /* NewExerciseNameTableViewCell.swift in Sources */,
 				EAA11D29213852CE005D9FE4 /* scheduleDetailViewController.swift in Sources */,
 				EA77604F20E4498A0052774F /* Data.xcdatamodeld in Sources */,
+				F17BE79E215D8DB90027E1C2 /* ChartStringFormatter.swift in Sources */,
 				EA94BB52211D4DC3002E8875 /* RecentWorkoutDetailTVCell.swift in Sources */,
 				F13CA496213733BA00E10A0E /* ScheduleViewController.swift in Sources */,
 				EA283D3B2152D15300F71461 /* FirstViewController.swift in Sources */,
@@ -946,6 +966,7 @@
 				EA98E51220FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
 				EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EA77604820E43D320052774F /* RoutinesTableViewCell.swift in Sources */,
+				F17BE797215D42890027E1C2 /* counting_model_0_4.mlmodel in Sources */,
 				EA40F9F720EDCC35009F2CCB /* LoginViewController.swift in Sources */,
 				EADD315521236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift in Sources */,
 				EA855DE220F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
@@ -960,7 +981,6 @@
 				EA77604420E43D280052774F /* RoutineCollectionViewCell.swift in Sources */,
 				EA855DEE20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
 				EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
-				EA890FBA2155A22C00B56BAD /* counting_model_0_4.mlmodel in Sources */,
 				EA77604620E43D2D0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EADD314F212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */,
@@ -990,6 +1010,7 @@
 				EA30910A20C6DA4300E09DDF /* FitfiAppUITests.swift in Sources */,
 				EA64310821121A16000EAED5 /* NewExerciseNameTableViewCell.swift in Sources */,
 				EA77605020E4498A0052774F /* Data.xcdatamodeld in Sources */,
+				F17BE79F215D8DB90027E1C2 /* ChartStringFormatter.swift in Sources */,
 				EA94BB53211D4DC3002E8875 /* RecentWorkoutDetailTVCell.swift in Sources */,
 				EA97D96020E1733000BE4C60 /* ExerciseProgressViewController.swift in Sources */,
 				EA283D3C2152D15300F71461 /* FirstViewController.swift in Sources */,
@@ -1013,6 +1034,7 @@
 				EA77605A20E484410052774F /* ProfileViewController.swift in Sources */,
 				EA98E51320FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
 				EA99105B20D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
+				F17BE798215D42890027E1C2 /* counting_model_0_4.mlmodel in Sources */,
 				EA77604920E43D330052774F /* RoutinesTableViewCell.swift in Sources */,
 				EA40F9F820EDCC35009F2CCB /* LoginViewController.swift in Sources */,
 				EADD315621236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.swift in Sources */,
@@ -1027,7 +1049,6 @@
 				EA6431222114F7BE000EAED5 /* CollapsibleTableViewHeader.swift in Sources */,
 				EA8C64A320D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
 				EA77604520E43D290052774F /* RoutineCollectionViewCell.swift in Sources */,
-				EA890FBB2155A22C00B56BAD /* counting_model_0_4.mlmodel in Sources */,
 				EA855DEF20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
 				EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EA77604720E43D2E0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
@@ -1208,7 +1229,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1227,7 +1248,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1248,7 +1269,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitfiApp.app/FitfiApp";
 			};
@@ -1270,7 +1291,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FitfiApp.app/FitfiApp";
 			};
@@ -1291,7 +1312,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = FitfiApp;
 			};
@@ -1312,7 +1333,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = FitfiApp;
 			};

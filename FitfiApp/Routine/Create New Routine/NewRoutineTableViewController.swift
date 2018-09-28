@@ -135,7 +135,7 @@ class NewRoutineTableViewController: UITableViewController {
             cell.repTextField.text = String(currentRoutineExerciseArray[indexPath.row].reps)
         }
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         // Configure the cell...
         return cell
     }
@@ -274,7 +274,7 @@ extension NewRoutineTableViewController {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
 //            routineExercises.remove(at: indexPath.row)
             exerciseToDelete.append(currentRoutineExerciseArray[indexPath.row])

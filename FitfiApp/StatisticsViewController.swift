@@ -10,6 +10,7 @@
 import UIKit
 import SwiftCharts
 import CoreData
+import Charts
 
 //MARK: for collapse table view
 struct Seection {
@@ -98,7 +99,7 @@ private var IOBPoints: [ChartPoint] = [("2016-02-28T07:25:00", 0.0), ("2016-02-2
 }
 
 private let axisLabelSettings: ChartLabelSettings = ChartLabelSettings()
-class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource{
+class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UITableViewDelegate,UITableViewDataSource ,ChartViewDelegate{
     var exerciseList:[String] = ["h ","j "]
     var exerciseObject:Exercise? = nil
     public var sectionData:[Seection] = [
@@ -130,7 +131,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     }
     
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     // Header
@@ -244,7 +245,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     
     @IBOutlet weak var R12: UIImageView!
     
-    
+  
     
     //MARK: 1 month / 3 month / 1 year selected segment
     
@@ -278,8 +279,8 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     
     @IBOutlet weak var timeSegmentOutlet: UISegmentedControl!
     
-    @IBOutlet weak var workOutGraphView: UIView!
-    @IBOutlet weak var volumeGraphView: UIView!
+    @IBOutlet weak var barChartView: BarChartView!
+    @IBOutlet weak var volumeGraphView: LineChartView!
     
     @IBOutlet weak var exerciseLabel: UILabel!
     @IBOutlet weak var workOutLabel: UILabel!
@@ -298,6 +299,10 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
      var metricFlag:Int = 0// to get ton know if weight is low than it will be 0 to print lb instead of tone
     override func viewDidLoad() {
         super.viewDidLoad()
+        barChartView.delegate = self
+        barChartView.noDataText = "No data Available"
+        volumeGraphView.delegate = self
+        volumeGraphView.noDataText = "No data Available"
        //Just for testing purpose
        F1.image = (F1.image?.withRenderingMode(.alwaysTemplate))!
         F1.tintColor = FitFiColor
@@ -343,16 +348,16 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
         exerciseTable.delegate = self
         exerciseTable.dataSource = self
         exerciseTable.estimatedRowHeight = 44.0
-        exerciseTable.rowHeight = UITableViewAutomaticDimension
+        exerciseTable.rowHeight = UITableView.automaticDimension
         chartLongPressGestureRecognizer.minimumPressDuration = 0.01
-        volumeGraphView.addGestureRecognizer(chartLongPressGestureRecognizer)
+//        volumeGraphView.addGestureRecognizer(chartLongPressGestureRecognizer)
         generateXAxisValues()
         let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
         bottomChart = generateIOBChartWithFrame(frame: frame)
         
         for chart in [bottomChart]{
             if let view = chart?.view {
-                volumeGraphView.addSubview(view)
+               // volumeGraphView.addSubview(view)
             }
         }
         //        UIApplication.shared.keyWindow?.addSubview(containerView)
@@ -408,7 +413,7 @@ extension StatisticsViewController{
     {
         let chartConfigg = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: 100,by: 10))
         
-        let frame = CGRect(x:0,y:10,width:workOutGraphView.bounds.width,height:workOutGraphView.bounds.height - 10)
+        let frame = CGRect(x:0,y:10,width:barChartView.bounds.width,height:barChartView.bounds.height - 10)
         var oneMonthchart = BarsChart(
             frame: frame,
             chartConfig: chartConfigg,
@@ -450,6 +455,9 @@ extension StatisticsViewController{
             let n:Double = 110
             var currrentDate = Date()
             var previousDate = Date()
+            let stringFormatter = ChartStringFormatter()
+            var barChartDataEntries: [BarChartDataEntry] = []
+            var lineChartDataEntries: [ChartDataEntry] = []
             var BarsArray = [("JUN",n),("JUN",n),("JUN",n),("JUN",n)]
             var GraphArray = [("JUN",n),("JUN",n),("JUN",n),("JUN",n)]
             var Graph1Array = [("JUN",n),("JUN",n),("JUN",n),("JUN",n)]
@@ -457,6 +465,10 @@ extension StatisticsViewController{
             var totalExercise:Double = 0
             var totalVolume:Double = 0
             var totalWorkOut:Double = 0
+            var barValues: [Double] = [n,n,n,n]
+            var barLabels: [String] = ["JUN","JUN","JUN","JUN"]
+            var lineValues: [Double] = [n,n,n,n]
+            var lineLabels: [String] = ["JUN","JUN","JUN","JUN"]
             for i in 0...3{
                 let tt:TimeInterval = -630000
                 let oneDay:TimeInterval = -90000
@@ -473,9 +485,14 @@ extension StatisticsViewController{
                 previousDateString = oneMonthformatter.string(from: previousDate)
                 nextCurrentDate = previousDate.addingTimeInterval(oneDay)
                // BarsArray[i] = ("\(previousDateString)-\(currentDateString)",tmp[0])
+                
                 BarsArray[i] = ("Week \(4 - (i))",tmp[2])
                 GraphArray[i] = ("\(previousDate)",tmp[1])
+                barValues[i] = tmp[2]
+                barLabels[i] = "Week \(4 - (i))"
                 Graph1Array[i] = ("\(previousDate)",tmp[1])
+                lineValues[i] = tmp[1]
+                lineLabels[i] = "Week \(4 - (i))"
                 totalExercise = totalExercise + tmp[0]
                 totalVolume = totalVolume + tmp[1]
                 totalWorkOut = totalWorkOut + tmp[2]
@@ -505,45 +522,143 @@ extension StatisticsViewController{
             workOutLabel.text = "\(Int(totalWorkOut))"
             let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
             if(totalExercise > 0){
-            oneMonthchart = BarsChart(
-                frame: frame,
-                chartConfig: chartConfig,
-                xTitle: "Week",
-                yTitle:"workOut",
-                bars:BarsArray,
-                color: FitFiColor,
-                barWidth: 10)
-            for view in workOutGraphView.subviews {
-                view.removeFromSuperview()
-            }
-            workOutGraphView.addSubview(oneMonthchart.view)
+                barChartView.translatesAutoresizingMaskIntoConstraints = false
+                barChartView.centerYAnchor.constraint(
+                    equalTo: barChartView.centerYAnchor).isActive = true
+                barChartView.leftAnchor.constraint(
+                    equalTo: barChartView.leftAnchor, constant: 10).isActive = true
+                barChartView.rightAnchor.constraint(
+                    equalTo: barChartView.rightAnchor, constant: -10).isActive = true
+                barChartView.heightAnchor.constraint(
+                    equalToConstant: 300.0).isActive = true
+                // formatting the bar chart
+                stringFormatter.nameValues = barLabels
+                barChartView.xAxis.valueFormatter = stringFormatter
+                barChartView.xAxis.setLabelCount(stringFormatter.nameValues.count, force: false)
+                
+                barChartView.xAxis.drawGridLinesEnabled = false
+                barChartView.xAxis.drawAxisLineEnabled = false
+                barChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+                
+                barChartView.rightAxis.enabled = false
+                barChartView.leftAxis.enabled = true
+                
+                barChartView.animate(xAxisDuration: 0.0, yAxisDuration: 0.6)
+                barChartView.legend.enabled = false
+                barChartView.chartDescription?.enabled = false
+                barChartView.drawValueAboveBarEnabled = false
+                
+                
+                // create the datapoints
+                for (index, dataPoint) in barValues.enumerated() {
+                    let dataEntry = BarChartDataEntry(x: Double(index),
+                                                      y: dataPoint)
+                    barChartDataEntries.append(dataEntry)
+                }
+                
+                // create the chartDataSet
+                let chartDataSet = BarChartDataSet(values: barChartDataEntries,
+                                                   label: "")
+                chartDataSet.colors = [FitFiColor]
+                chartDataSet.valueTextColor = UIColor.white
+                let chartData = BarChartData(dataSet: chartDataSet)
+                self.barChartView.data = chartData
+                
+                
+               
+//            oneMonthchart = BarsChart(
+//                frame: frame,
+//                chartConfig: chartConfig,
+//                xTitle: "Week",
+//                yTitle:"workOut",
+//                bars:BarsArray,
+//                color: FitFiColor,
+//                barWidth: 10)
+//            for view in workOutGraphView.subviews {
+//                view.removeFromSuperview()
+//            }
+//            workOutGraphView.addSubview(oneMonthchart.view)
             workoutBarChart = oneMonthchart
             print(GraphArray)
-            IOBPoints = GraphArray.map {
-                return ChartPoint(
-                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: oneMonth),
-                    y: ChartAxisValueDouble($0.1, formatter: decimalFormatter)
-                )
-            }
-            glucosePoints = Graph1Array.map {
-                return ChartPoint(
-                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: dateFormatter),
-                    y: ChartAxisValueInt(Int($0.1 * 100))
-                )
-            }
-            print(IOBPoints)
-            generateXAxisValues()
-            //print(xAxisValues)
-            let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
-            bottomChart = generateIOBChartWithFrame(frame: frame)
-            for view in volumeGraphView.subviews {
-                view.removeFromSuperview()
-            }
-            for chart in [bottomChart]{
-                if let view = chart?.view {
-                    volumeGraphView.addSubview(view)
+                volumeGraphView.translatesAutoresizingMaskIntoConstraints = false
+                volumeGraphView.centerYAnchor.constraint(
+                    equalTo: volumeGraphView.centerYAnchor).isActive = true
+                volumeGraphView.leftAnchor.constraint(
+                    equalTo: volumeGraphView.leftAnchor, constant: 10).isActive = true
+                volumeGraphView.rightAnchor.constraint(
+                    equalTo: volumeGraphView.rightAnchor, constant: -10).isActive = true
+                volumeGraphView.heightAnchor.constraint(
+                    equalToConstant: 300.0).isActive = true
+                // formatting the bar chart
+                stringFormatter.nameValues = lineLabels
+                volumeGraphView.xAxis.valueFormatter = stringFormatter
+                volumeGraphView.xAxis.setLabelCount(stringFormatter.nameValues.count, force: false)
+                
+                volumeGraphView.xAxis.drawGridLinesEnabled = false
+                volumeGraphView.xAxis.drawAxisLineEnabled = false
+                volumeGraphView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+                
+                volumeGraphView.rightAxis.enabled = false
+                volumeGraphView.leftAxis.enabled = true
+                
+                volumeGraphView.animate(xAxisDuration: 0.0, yAxisDuration: 0.6)
+                volumeGraphView.legend.enabled = false
+                volumeGraphView.chartDescription?.enabled = false
+                
+                // create the datapoints
+                for (index, dataPoint) in lineValues.enumerated() {
+                    let dataEntry = ChartDataEntry(x: Double(index),
+                                                      y: dataPoint)
+                    lineChartDataEntries.append(dataEntry)
                 }
-            }
+                
+                // create the chartDataSet
+                let lineDataSet = LineChartDataSet(values: lineChartDataEntries,
+                                                   label: "")
+                lineDataSet.colors = [FitFiColor]
+                // Setting fill gradient color
+                let coloTop = UIColor(red: 213/255, green: 95/255, blue: 31/255, alpha: 0.8).cgColor
+                let colorBottom = UIColor(red: 230/255, green: 155/255, blue: 210/255, alpha: 0.1).cgColor
+                // Colors of the gradient
+                let gradientColors = [coloTop, colorBottom] as CFArray
+                // Positioning of the gradient
+                let colorLocations: [CGFloat] = [0.7, 0.0]
+                // Gradient Object
+                let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations)!
+                lineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
+                lineDataSet.drawFilledEnabled = true
+                lineDataSet.valueTextColor = UIColor.white
+                let lineData = LineChartData(dataSet: lineDataSet)
+                self.volumeGraphView.data = lineData
+                
+                
+                
+//            IOBPoints = GraphArray.map {
+//                return ChartPoint(
+//                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: oneMonth),
+//                    y: ChartAxisValueDouble($0.1, formatter: decimalFormatter)
+//                )
+//            }
+//            glucosePoints = Graph1Array.map {
+//                return ChartPoint(
+//                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: dateFormatter),
+//                    y: ChartAxisValueInt(Int($0.1 * 100))
+//                )
+//            }
+//            print(IOBPoints)
+//            generateXAxisValues()
+//            //print(xAxisValues)
+//            let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
+//            bottomChart = generateIOBChartWithFrame(frame: frame)
+//            for view in volumeGraphView.subviews {
+//                view.removeFromSuperview()
+//            }
+//            for chart in [bottomChart]{
+//                if let view = chart?.view {
+//                    volumeGraphView.addSubview(view)
+//                }
+//            }
+                exerciseTable.reloadData()
             }
             else{
                 print("No data")
@@ -556,9 +671,17 @@ extension StatisticsViewController{
             let n:Double = 110
             var currrentDate = Date()
             var previousDate = Date()
+            let stringFormatter = ChartStringFormatter()
+            var dataEntries: [BarChartDataEntry] = []
+            var lineChartDataEntries: [ChartDataEntry] = []
             var BarsArray = [("JUN",n),("JUN",n),("JUN",n)]
+            var barValues: [Double] = [n,n,n]
+            var barLabels: [String] = ["JUN","JUN","JUN"]
+            var lineValues: [Double] = [n,n,n]
+            var lineLabels: [String] = ["JUN","JUN","JUN"]
             var GraphArray = [("JUN",n),("JUN",n),("JUN",n)]
             var Graph1Array = [("JUN",n),("JUN",n),("JUN",n)]
+            
             var maxWorkOut:Double = 0
             var totalExercise:Double = 0
             var totalVolume:Double = 0
@@ -578,8 +701,12 @@ extension StatisticsViewController{
                 previousDateString = formatter.string(from: previousDate)
                 nextCurrentDate = previousDate.addingTimeInterval(oneDay)
                 BarsArray[i] = ("\(previousDateString)",tmp[0])
+                barValues[i] = tmp[2]
+                barLabels[i] = "\(formatter.string(from:previousDate))"
                 GraphArray[i] = ("\(previousDate)",tmp[1])
                 Graph1Array[i] = ("\(previousDate)",tmp[1])
+                lineValues[i] = tmp[1]
+                lineLabels[i] = "\(formatter.string(from:previousDate))"
                 totalExercise = totalExercise + tmp[0]
                 totalVolume = totalVolume + tmp[1]
                 totalWorkOut = totalWorkOut + tmp[2]
@@ -608,48 +735,141 @@ extension StatisticsViewController{
             workOutLabel.text = "\(Int(totalWorkOut))"
             if(totalExercise > 0)
             {
-            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
-            
-            //            barsArray.append("\(currentDateString)/\(currentDateString),150")
-            threeMonthchart = BarsChart(
-                frame: frame,
-                chartConfig: chartConfig,
-                xTitle: "Week",
-                yTitle:"workOut",
-                bars:BarsArray,
-                color: FitFiColor,
-                barWidth: 10)
-            //for graph
-            for view in workOutGraphView.subviews {
-                view.removeFromSuperview()
-            }
-            workOutGraphView.addSubview(threeMonthchart.view)
-            workoutBarChart = threeMonthchart
-            
-            IOBPoints = GraphArray.map {
-                return ChartPoint(
-                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: oneMonth),
-                    y: ChartAxisValueDouble($0.1, formatter: decimalFormatter)
-                )
-            }
-            glucosePoints = Graph1Array.map {
-                return ChartPoint(
-                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: dateFormatter),
-                    y: ChartAxisValueInt(Int($0.1 * 100))
-                )
-            }
-            print(IOBPoints)
-            generateXAxisValues()
-            let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
-            bottomChart = generateIOBChartWithFrame(frame: frame)
-            for view in volumeGraphView.subviews {
-                view.removeFromSuperview()
-            }
-            for chart in [bottomChart]{
-                if let view = chart?.view {
-                    volumeGraphView.addSubview(view)
+                barChartView.translatesAutoresizingMaskIntoConstraints = false
+                barChartView.centerYAnchor.constraint(
+                    equalTo: barChartView.centerYAnchor).isActive = true
+                barChartView.leftAnchor.constraint(
+                    equalTo: barChartView.leftAnchor, constant: 10).isActive = true
+                barChartView.rightAnchor.constraint(
+                    equalTo: barChartView.rightAnchor, constant: -10).isActive = true
+                barChartView.heightAnchor.constraint(
+                    equalToConstant: 300.0).isActive = true
+                // formatting the bar chart
+                stringFormatter.nameValues = barLabels
+                barChartView.xAxis.valueFormatter = stringFormatter
+                barChartView.xAxis.setLabelCount(stringFormatter.nameValues.count, force: false)
+                
+                barChartView.xAxis.drawGridLinesEnabled = false
+                barChartView.xAxis.drawAxisLineEnabled = false
+                barChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+                
+                barChartView.rightAxis.enabled = false
+                barChartView.leftAxis.enabled = true
+                
+                barChartView.animate(xAxisDuration: 0.0, yAxisDuration: 0.6)
+                barChartView.legend.enabled = false
+                barChartView.chartDescription?.enabled = false
+                barChartView.drawValueAboveBarEnabled = false
+                
+                
+                // create the datapoints
+                for (index, dataPoint) in barValues.enumerated() {
+                    let dataEntry = BarChartDataEntry(x: Double(index),
+                                                      y: dataPoint)
+                    dataEntries.append(dataEntry)
                 }
-            }
+                
+                // create the chartDataSet
+                let chartDataSet = BarChartDataSet(values: dataEntries,
+                                                   label: "")
+                chartDataSet.colors = [FitFiColor]
+                chartDataSet.valueTextColor = UIColor.white
+                let chartData = BarChartData(dataSet: chartDataSet)
+                self.barChartView.data = chartData
+//            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
+//
+//            //            barsArray.append("\(currentDateString)/\(currentDateString),150")
+//            threeMonthchart = BarsChart(
+//                frame: frame,
+//                chartConfig: chartConfig,
+//                xTitle: "Week",
+//                yTitle:"workOut",
+//                bars:BarsArray,
+//                color: FitFiColor,
+//                barWidth: 10)
+//            //for graph
+//            for view in workOutGraphView.subviews {
+//                view.removeFromSuperview()
+//            }
+//            workOutGraphView.addSubview(threeMonthchart.view)
+            workoutBarChart = threeMonthchart
+                volumeGraphView.translatesAutoresizingMaskIntoConstraints = false
+                volumeGraphView.centerYAnchor.constraint(
+                    equalTo: volumeGraphView.centerYAnchor).isActive = true
+                volumeGraphView.leftAnchor.constraint(
+                    equalTo: volumeGraphView.leftAnchor, constant: 10).isActive = true
+                volumeGraphView.rightAnchor.constraint(
+                    equalTo: volumeGraphView.rightAnchor, constant: -10).isActive = true
+                volumeGraphView.heightAnchor.constraint(
+                    equalToConstant: 300.0).isActive = true
+                // formatting the bar chart
+                stringFormatter.nameValues = lineLabels
+                volumeGraphView.xAxis.valueFormatter = stringFormatter
+                volumeGraphView.xAxis.setLabelCount(stringFormatter.nameValues.count, force: false)
+                
+                volumeGraphView.xAxis.drawGridLinesEnabled = false
+                volumeGraphView.xAxis.drawAxisLineEnabled = false
+                volumeGraphView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+                
+                volumeGraphView.rightAxis.enabled = false
+                volumeGraphView.leftAxis.enabled = true
+                
+                volumeGraphView.animate(xAxisDuration: 0.0, yAxisDuration: 0.6)
+                volumeGraphView.legend.enabled = false
+                volumeGraphView.chartDescription?.enabled = false
+                
+                // create the datapoints
+                for (index, dataPoint) in lineValues.enumerated() {
+                    let dataEntry = ChartDataEntry(x: Double(index),
+                                                   y: dataPoint)
+                    lineChartDataEntries.append(dataEntry)
+                }
+                
+                // create the chartDataSet
+                let lineDataSet = LineChartDataSet(values: lineChartDataEntries,
+                                                   label: "")
+                lineDataSet.colors = [FitFiColor]
+                // Setting fill gradient color
+                let coloTop = UIColor(red: 213/255, green: 95/255, blue: 31/255, alpha: 0.8).cgColor
+                let colorBottom = UIColor(red: 230/255, green: 155/255, blue: 210/255, alpha: 0.1).cgColor
+                // Colors of the gradient
+                let gradientColors = [coloTop, colorBottom] as CFArray
+                // Positioning of the gradient
+                let colorLocations: [CGFloat] = [0.7, 0.0]
+                // Gradient Object
+                let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations)!
+                lineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
+                lineDataSet.drawFilledEnabled = true
+                lineDataSet.valueTextColor = UIColor.white
+                let lineData = LineChartData(dataSet: lineDataSet)
+                self.volumeGraphView.data = lineData
+                
+                
+//            IOBPoints = GraphArray.map {
+//                return ChartPoint(
+//                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: oneMonth),
+//                    y: ChartAxisValueDouble($0.1, formatter: decimalFormatter)
+//                )
+//            }
+//            glucosePoints = Graph1Array.map {
+//                return ChartPoint(
+//                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: dateFormatter),
+//                    y: ChartAxisValueInt(Int($0.1 * 100))
+//                )
+//            }
+//            print(IOBPoints)
+//            generateXAxisValues()
+//            let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
+//            bottomChart = generateIOBChartWithFrame(frame: frame)
+//            for view in volumeGraphView.subviews {
+//                view.removeFromSuperview()
+//            }
+//            for chart in [bottomChart]{
+//                if let view = chart?.view {
+//                    volumeGraphView.addSubview(view)
+//                }
+//            }
+                exerciseTable.reloadData()
             }
             else{
                 print("No Data")
@@ -664,9 +884,16 @@ extension StatisticsViewController{
             let n:Double = 110
             var currrentDate = Date()
             var previousDate = Date()
+            let stringFormatter = ChartStringFormatter()
+            var dataEntries: [BarChartDataEntry] = []
+            var lineChartDataEntries: [ChartDataEntry] = []
             var BarsArray = [("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n)]
+            var barValues: [Double] = [n,n,n,n,n,n,n,n,n,n,n,n]
+            var barLabels: [String] = ["JUN","JUN","JUN","JUN","JUN","JUN","JUN","JUN","JUN","JUN","JUN","JUN"]
             var GraphArray = [("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n)]
             var Graph1Array = [("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n),("JUN",n)]
+            var lineValues: [Double] = [n,n,n,n,n,n,n,n,n,n,n,n]
+            var lineLabels: [String] = ["JUN","JUN","JUN","JUN","JUN","JUN","JUN","JUN","JUN","JUN","JUN","JUN"]
             var maxWorkOut:Double = 0
             var totalExercise:Double = 0
             var totalVolume:Double = 0
@@ -687,8 +914,12 @@ extension StatisticsViewController{
                 previousDateString = formatter.string(from: previousDate)
                 nextCurrentDate = previousDate.addingTimeInterval(oneDay)
                 BarsArray[i] = ("\(currentDateString)",tmp[0])
+                barValues[i] = tmp[2]
+                barLabels[i] = "\(formatter.string(from:previousDate))"
                 GraphArray[i] = ("\(previousDate)",tmp[1])
                 Graph1Array[i] = ("\(previousDate)",tmp[1])
+                lineValues[i] = tmp[1]
+                lineLabels[i] = "\(formatter.string(from:previousDate))"
                 totalExercise = totalExercise + tmp[0]
                 totalVolume = totalVolume + tmp[1]
                 totalWorkOut = totalWorkOut + tmp[2]
@@ -717,49 +948,141 @@ extension StatisticsViewController{
             workOutLabel.text = "\(Int(totalWorkOut))"
             if(totalExercise > 0)
             {
-            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
-            
-            //            barsArray.append("\(currentDateString)/\(currentDateString),150")
-            oneYearChart = BarsChart(
-                frame: frame,
-                chartConfig: chartConfig,
-                xTitle: "Week",
-                yTitle:"workOut",
-                bars:BarsArray,
-                color: FitFiColor,
-                barWidth: 10)
-            //for graph
-            for view in workOutGraphView.subviews {
-                view.removeFromSuperview()
-            }
-            workOutGraphView.addSubview(oneYearChart.view)
-            workoutBarChart = oneYearChart
-            IOBPoints = GraphArray.map {
-                return ChartPoint(
-                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: oneMonth),
-                    y: ChartAxisValueDouble($0.1, formatter: decimalFormatter)
-                )
-            }
-            glucosePoints = Graph1Array.map {
-                return ChartPoint(
-                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: dateFormatter),
-                    y: ChartAxisValueInt(Int($0.1 * 100))
-                )
-            }
-            print(IOBPoints)
-            generateXAxisValues()
-          //  print(xAxisValues)
-                let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
-
-            bottomChart = generateIOBChartWithFrame(frame: frame)
-            for view in volumeGraphView.subviews {
-                view.removeFromSuperview()
-            }
-            for chart in [bottomChart]{
-                if let view = chart?.view {
-                    volumeGraphView.addSubview(view)
+                barChartView.translatesAutoresizingMaskIntoConstraints = false
+                barChartView.centerYAnchor.constraint(
+                    equalTo: barChartView.centerYAnchor).isActive = true
+                barChartView.leftAnchor.constraint(
+                    equalTo: barChartView.leftAnchor, constant: 10).isActive = true
+                barChartView.rightAnchor.constraint(
+                    equalTo: barChartView.rightAnchor, constant: -10).isActive = true
+                barChartView.heightAnchor.constraint(
+                    equalToConstant: 300.0).isActive = true
+                // formatting the bar chart
+                stringFormatter.nameValues = barLabels
+                barChartView.xAxis.valueFormatter = stringFormatter
+                barChartView.xAxis.setLabelCount(stringFormatter.nameValues.count, force: false)
+                
+                barChartView.xAxis.drawGridLinesEnabled = false
+                barChartView.xAxis.drawAxisLineEnabled = false
+                barChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+                
+                barChartView.rightAxis.enabled = false
+                barChartView.leftAxis.enabled = true
+                
+                barChartView.animate(xAxisDuration: 0.0, yAxisDuration: 0.6)
+                barChartView.legend.enabled = false
+                barChartView.chartDescription?.enabled = false
+                barChartView.drawValueAboveBarEnabled = false
+                
+                
+                // create the datapoints
+                for (index, dataPoint) in barValues.enumerated() {
+                    let dataEntry = BarChartDataEntry(x: Double(index),
+                                                      y: dataPoint)
+                    dataEntries.append(dataEntry)
                 }
-            }
+                
+                // create the chartDataSet
+                let chartDataSet = BarChartDataSet(values: dataEntries,
+                                                   label: "")
+                chartDataSet.colors = [FitFiColor]
+                chartDataSet.valueTextColor = UIColor.white
+                let chartData = BarChartData(dataSet: chartDataSet)
+                self.barChartView.data = chartData
+//            let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0,to: maxWorkOut + 1,by: 1))
+//
+//            //            barsArray.append("\(currentDateString)/\(currentDateString),150")
+//            oneYearChart = BarsChart(
+//                frame: frame,
+//                chartConfig: chartConfig,
+//                xTitle: "Week",
+//                yTitle:"workOut",
+//                bars:BarsArray,
+//                color: FitFiColor,
+//                barWidth: 10)
+//            //for graph
+//            for view in workOutGraphView.subviews {
+//                view.removeFromSuperview()
+//            }
+            //workOutGraphView.addSubview(oneYearChart.view)
+            workoutBarChart = oneYearChart
+                volumeGraphView.translatesAutoresizingMaskIntoConstraints = false
+                volumeGraphView.centerYAnchor.constraint(
+                    equalTo: volumeGraphView.centerYAnchor).isActive = true
+                volumeGraphView.leftAnchor.constraint(
+                    equalTo: volumeGraphView.leftAnchor, constant: 10).isActive = true
+                volumeGraphView.rightAnchor.constraint(
+                    equalTo: volumeGraphView.rightAnchor, constant: -10).isActive = true
+                volumeGraphView.heightAnchor.constraint(
+                    equalToConstant: 300.0).isActive = true
+                // formatting the bar chart
+                stringFormatter.nameValues = lineLabels
+                volumeGraphView.xAxis.valueFormatter = stringFormatter
+                volumeGraphView.xAxis.setLabelCount(stringFormatter.nameValues.count, force: false)
+                
+                volumeGraphView.xAxis.drawGridLinesEnabled = false
+                volumeGraphView.xAxis.drawAxisLineEnabled = false
+                volumeGraphView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+                
+                volumeGraphView.rightAxis.enabled = false
+                volumeGraphView.leftAxis.enabled = true
+                
+                volumeGraphView.animate(xAxisDuration: 0.0, yAxisDuration: 0.6)
+                volumeGraphView.legend.enabled = false
+                volumeGraphView.chartDescription?.enabled = false
+                
+                // create the datapoints
+                for (index, dataPoint) in lineValues.enumerated() {
+                    let dataEntry = ChartDataEntry(x: Double(index),
+                                                   y: dataPoint)
+                    lineChartDataEntries.append(dataEntry)
+                }
+                
+                // create the chartDataSet
+                let lineDataSet = LineChartDataSet(values: lineChartDataEntries,
+                                                   label: "")
+                lineDataSet.colors = [FitFiColor]
+                // Setting fill gradient color
+                let coloTop = UIColor(red: 213/255, green: 95/255, blue: 31/255, alpha: 0.8).cgColor
+                let colorBottom = UIColor(red: 230/255, green: 155/255, blue: 210/255, alpha: 0.1).cgColor
+                // Colors of the gradient
+                let gradientColors = [coloTop, colorBottom] as CFArray
+                // Positioning of the gradient
+                let colorLocations: [CGFloat] = [0.7, 0.0]
+                // Gradient Object
+                let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations)!
+                lineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
+                lineDataSet.drawFilledEnabled = true
+                lineDataSet.valueTextColor = UIColor.white
+                let lineData = LineChartData(dataSet: lineDataSet)
+                self.volumeGraphView.data = lineData
+                
+//            IOBPoints = GraphArray.map {
+//                return ChartPoint(
+//                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: oneMonth),
+//                    y: ChartAxisValueDouble($0.1, formatter: decimalFormatter)
+//                )
+//            }
+//            glucosePoints = Graph1Array.map {
+//                return ChartPoint(
+//                    x: ChartAxisValueDate(date: localDateFormatterr.date(from: $0.0)!, formatter: dateFormatter),
+//                    y: ChartAxisValueInt(Int($0.1 * 100))
+//                )
+//            }
+//            print(IOBPoints)
+//            generateXAxisValues()
+//          //  print(xAxisValues)
+//                let frame = StatisticsViewController.chartFrame(volumeGraphView.bounds)
+//
+//            bottomChart = generateIOBChartWithFrame(frame: frame)
+//            for view in volumeGraphView.subviews {
+//                view.removeFromSuperview()
+//            }
+//            for chart in [bottomChart]{
+//                if let view = chart?.view {
+//                    volumeGraphView.addSubview(view)
+//                }
+//            }
             exerciseTable.reloadData()
             }
             else{
@@ -1174,6 +1497,11 @@ extension StatisticsViewController:CollapsibleTableViewHeaderDelegate {
         exerciseTable.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
     }
     
+}
+extension StatisticsViewController{
+    func chartValueSelected(_ chartView: ChartViewBase, ﻿entry: ChartDataEntry, highlight: Highlight) {
+        //chartView.xAxis
+    }
 }
 
 

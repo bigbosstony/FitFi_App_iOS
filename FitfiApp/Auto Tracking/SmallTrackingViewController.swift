@@ -105,7 +105,44 @@ class SmallTrackingViewController: UIViewController {
         print("Device: ", UIDevice.modelName)
         print("BLE Version: \(bleVersion)")
 //        dateFormatter.dateFormat = "yyyyMMddHHmmss"
+        globalCounter = 0
+        while(globalCounter < sampleSensorData.count)
+        {
+            dataArray = sampleSensorData[globalCounter]
         
+        globalCounter += 1
+        
+        //MARK: Add CoreML, Create CoreML Properties
+        let sensorInputData = try! MLMultiArray(shape: [9], dataType: .double)
+        //                    var outputArray = [Double]()
+        
+        for (index, data) in dataArray.enumerated() {
+            sensorInputData[index] = NSNumber(value: data)
+        }
+        
+        
+        //MARK: Input
+        //                    let input2 = tracking_model_0_2Input(input1: sensorInputData)
+        let input4Counting = counting_model_0_4Input(input1: sensorInputData)
+        
+        let input4Classify = classify_model_0_4Input(input1: sensorInputData)
+        
+        
+        if let predictionOutput4Counting = try? countingModel.prediction(input: input4Counting) {
+            
+            let output4Counting = predictionOutput4Counting.output1
+            
+            print(output4Counting)
+        }
+        
+        
+        if let predictionOutput4Classify = try? classifyModel.prediction(input: input4Classify) {
+            
+            let output4Counting = predictionOutput4Classify.output1
+            
+            //                        print("Prediction Classify Output: ", output4Counting)
+        }
+        }
         centralManager = CBCentralManager(delegate: self, queue: nil)
         //Register nib file to collection view
         collectionView.register(UINib.init(nibName: "SmallTrackingVCCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "smallTrackingVCCVCell")
