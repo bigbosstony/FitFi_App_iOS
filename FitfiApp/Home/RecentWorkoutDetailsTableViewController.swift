@@ -65,10 +65,9 @@ class RecentWorkoutDetailsTableViewController: UITableViewController {
         return currentExerciseHistory.count
     }
     
-    
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RecentWorkoutDetailTVCell
-        
+
         cell.name.text = currentExerciseHistory[indexPath.row].name
         cell.oneRM.text = "1RM "//currentExerciseHistory[indexPath.row]
         
@@ -136,8 +135,8 @@ extension RecentWorkoutDetailsTableViewController {
         dateFormatter.dateFormat = "EEEE MMM dd HH:mm a"
         let dateString = dateFormatter.string(from: date).uppercased()
         //MARK: Build multiple lines with different color and text size for nav bar title
-        let attrs1 = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14, weight: .semibold), NSAttributedStringKey.foregroundColor : UIColor.black]
-        let attrs2 = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12, weight: .regular), NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.8352941176, green: 0.3725490196, blue: 0.1215686275, alpha: 1)] as [NSAttributedStringKey : Any]
+        let attrs1 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14, weight: .semibold), NSAttributedString.Key.foregroundColor : UIColor.black]
+        let attrs2 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12, weight: .regular), NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.8352941176, green: 0.3725490196, blue: 0.1215686275, alpha: 1)] as [NSAttributedString.Key : Any]
         //Routine Name
         let attributedString1 = NSMutableAttributedString(string: name.capitalized + "\n", attributes:attrs1)
         //Routine Start Time

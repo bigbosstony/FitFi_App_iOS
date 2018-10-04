@@ -146,7 +146,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
             }
             }
             }
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
         } else {
             if(indexPath.row == 0)
@@ -168,7 +168,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 cell.routinePreviewLabel.text = "\(Date())"
                 }
                 }
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
             }
             else{
@@ -231,7 +231,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 }
                 }
                 }
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 return cell
             }
         }

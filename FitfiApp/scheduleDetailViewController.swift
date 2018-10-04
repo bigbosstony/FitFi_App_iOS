@@ -102,11 +102,11 @@ class scheduleDetailViewController:UIViewController,UITableViewDelegate,UITableV
         
         if(checked[indexPath.row] == 0)
         {
-            cell.accessoryType = UITableViewCellAccessoryType.none
+            cell.accessoryType = UITableViewCell.AccessoryType.none
         }
         else
         {
-            cell.accessoryType = UITableViewCellAccessoryType.checkmark
+            cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         }
         
         return cell
@@ -144,7 +144,7 @@ class scheduleDetailViewController:UIViewController,UITableViewDelegate,UITableV
         
     }
     
-    override func didMove(toParentViewController parent: UIViewController?) {
+    override func didMove(toParent parent: UIViewController?) {
         if parent == nil {
             
            performSegue(withIdentifier: "backToTheSchedule", sender: self)

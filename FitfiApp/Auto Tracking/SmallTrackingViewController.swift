@@ -87,6 +87,7 @@ class SmallTrackingViewController: UIViewController {
 
     var dataArrayCounter = 0
     var dataArray = [Double]()
+    var dataArrayString = [String]()
     let dateFormatter = DateFormatter()
     let dataArrayCounterDictionary = [0: "A", 1: "G", 2: "M"]
     
@@ -98,6 +99,22 @@ class SmallTrackingViewController: UIViewController {
     var currentExerciseArray = [CurrentExercise]()
     var counter = 0
     var tempExercise = "Biceps"
+
+    
+    //MARK: URL
+    let machineLearningURL : String = "http://54.146.215.174:5000"
+    
+    lazy var requestURL = {
+       return URL(string: machineLearningURL)
+    }()
+    
+    lazy var machineLearningURLRequest = {
+        return URLRequest(url: requestURL ?? URL(string: "https://www.google.com")!)
+    }()
+    
+//    var machineLearningURLRequest = URLRequest(url: requestURL)
+//    machineLearningURLRequest.httpMethod = "POST"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,6 +141,11 @@ class SmallTrackingViewController: UIViewController {
 //        currentExercise.reps = 9
 //        currentExercise.sets = 2
 //        currentExerciseArray.append(currentExercise)
+//        for i in 0..<y.count {
+//            sleep(1)
+//
+//            postRequest(request: machineLearningURL, sensor: y[i])
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -225,6 +247,11 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         //MARK: Make Small TrackingVC Hidden
         //        smallTrackingVC.remove()
         self.view.isHidden = true
+        //MARK: Clean Counter and Exercise
+        counter = 0
+        exerciseCountingLabel.text = String(counter)
+        exerciseTypeLabel.text = ""
+        
         switch central.state {
         case .poweredOn:
             print("central.state is .poweredOn again")
@@ -280,8 +307,7 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
         case bleMainServiceCharacteristicCBUUID:
             //                let realData = String(data!.suffix(17))
              guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
-             print(data)
-            
+//             print(data)            
 
 //             guard String(data: characteristic.value!, encoding: .utf8) != nil else { return }
             let newData = data.replacingOccurrences(of: "-", with: "+-")
@@ -299,10 +325,42 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
 //                    dataArray.append(round(1000 * Double(i)!) / 1000)
 //                }
                 for i in managedData[1...3] {
-                    dataArray.append(round(1000 * Double(i)!) / 1000)
+//                    dataArray.append(round(1000 * Double(i)!) / 1000)
+                    dataArrayString.append(String(i))
                 }
                 
                 if dataArrayCounter == 2 {
+                    print("Original: ", dataArrayString)
+                    
+                    globalCounter += 1
+//                    print(globalCounter)
+
+                    //Data 2 JSON
+//                    let sensorData: [String : Any] = ["data": dataArrayString]
+//
+//                    do {
+//                        let sensorJSONData : Data = try JSONSerialization.data(withJSONObject: sensorData, options: [])
+//                        machineLearningURLRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//                        machineLearningURLRequest.httpBody = sensorJSONData
+//                        machineLearningURLRequest.httpMethod = "POST"
+//                        print("Add JSON Data")
+//                    } catch {
+//                        print("Error: Can Not Create JSON Data")
+//                    }
+//
+//                    let session = URLSession.shared
+//
+//                    let task = session.dataTask(with: machineLearningURLRequest) { (data, urlResponse, error) in
+//
+//                        guard error == nil else { print("Error Calling POST \(String(describing: error))") ; return }
+//
+//                    }
+//                    task.resume()
+                    
+                    let resultFromML = postRequest(request: machineLearningURL, sensor: dataArrayString)
+                    updateUI(with: resultFromML)
+                    
+                    //Sensor Data 9 Double Array
                     //MARK: Testing Collection View Cell
 //                    counter += 1
 //
@@ -318,71 +376,72 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
 //
 //                    collectionView.reloadData()
 //                    exerciseTypeLabel.text = currentExerciseArray.last?.name
-                    if globalCounter < sampleSensorData.count {
-                        dataArray = sampleSensorData[globalCounter]
-                    }
+//                    if globalCounter < sampleSensorData.count {
+//                        dataArray = sampleSensorData[globalCounter]
+//                    }
+//
+//                    globalCounter += 1
+//
+//                    //MARK: Add CoreML, Create CoreML Properties
+//                    let sensorInputData = try! MLMultiArray(shape: [9], dataType: .double)
+////                    var outputArray = [Double]()
+//
+//                    for (index, data) in dataArray.enumerated() {
+//                        sensorInputData[index] = NSNumber(value: data)
+//                    }
+//
+//
+//                    //MARK: Input
+////                    let input2 = tracking_model_0_2Input(input1: sensorInputData)
+//                    let input4Counting = counting_model_0_4Input(input1: sensorInputData)
+//
+//                    let input4Classify = classify_model_0_4Input(input1: sensorInputData)
+//
+//
+//                    if let predictionOutput4Counting = try? countingModel.prediction(input: input4Counting) {
+//
+//                        let output4Counting = predictionOutput4Counting.output1
+//
+//                        print("Prediction Counting Output: ", output4Counting)
+//
+////                        for count in 0..<7 {
+////                            outputArray.append(output[count].doubleValue)
+////                        }
+////                        let highestPrediction = outputArray.index(of: outputArray.max()!)!
+////                        let highestExercise = exercise[highestPrediction]
+////                        let highestExercisePrecetage = Double(round(1000 * outputArray.max()!) / 1000) * 100
+////                        print(highestExercise!, highestExercisePrecetage)
+////                        exerciseTypeLabel.text = highestExercise! + " " + String(highestExercisePrecetage) + "%"
+//                    }
                     
-                    globalCounter += 1
                     
-                    //MARK: Add CoreML, Create CoreML Properties
-                    let sensorInputData = try! MLMultiArray(shape: [9], dataType: .double)
-//                    var outputArray = [Double]()
-                    
-                    for (index, data) in dataArray.enumerated() {
-                        sensorInputData[index] = NSNumber(value: data)
-                    }
-                    
-                    
-                    //MARK: Input
-//                    let input2 = tracking_model_0_2Input(input1: sensorInputData)
-                    let input4Counting = counting_model_0_4Input(input1: sensorInputData)
-                    
-                    let input4Classify = classify_model_0_4Input(input1: sensorInputData)
-                    
-                    
-                    if let predictionOutput4Counting = try? countingModel.prediction(input: input4Counting) {
-                        
-                        let output4Counting = predictionOutput4Counting.output1
-                        
-                        print("Prediction Counting Output: ", output4Counting)
-                    
-//                        for count in 0..<7 {
-//                            outputArray.append(output[count].doubleValue)
-//                        }
-//                        let highestPrediction = outputArray.index(of: outputArray.max()!)!
-//                        let highestExercise = exercise[highestPrediction]
-//                        let highestExercisePrecetage = Double(round(1000 * outputArray.max()!) / 1000) * 100
-//                        print(highestExercise!, highestExercisePrecetage)
-//                        exerciseTypeLabel.text = highestExercise! + " " + String(highestExercisePrecetage) + "%"
-                    }
-                    
-                    
-                    if let predictionOutput4Classify = try? classifyModel.prediction(input: input4Classify) {
-                        
-                        let output4Counting = predictionOutput4Classify.output1
-                        
-//                        print("Prediction Classify Output: ", output4Counting)
-                    }
+//                    if let predictionOutput4Classify = try? classifyModel.prediction(input: input4Classify) {
+//
+//                        let output4Counting = predictionOutput4Classify.output1
+//
+////                        print("Prediction Classify Output: ", output4Counting)
+//                    }
                     
 //                    print(dataArray)
                     
                     
-                    dataArray.removeAll()
+                    
+//                    dataArray.removeAll()
+                    dataArrayString.removeAll()
                     dataArrayCounter = 0
                 } else {
                     dataArrayCounter += 1
                 }
             }
             
-        case bleBattery:
-
-            print("Battery Level value: ", [UInt8](characteristic.value!))
+        //MARK: Battery Level
+//        case bleBattery:
+//            print("Battery Level value: ", [UInt8](characteristic.value!))
+            
         default:
-           print(characteristic.service.uuid)
+            print(characteristic.service.uuid)
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
             let data = String(data: characteristic.value!, encoding: .utf8)
-            print(data)
-            
         }
     }
 }
@@ -427,7 +486,6 @@ extension SmallTrackingViewController {
             } else {
                 currentExerciseArray[indexOfExercise].counts.append(1)
             }
-            
             print("2: ", currentExerciseArray.last!)
         } else {
             let newExercise = CurrentExercise(name: name, counts: [1])
@@ -437,23 +495,75 @@ extension SmallTrackingViewController {
     }
 }
 
-//extension SmallTrackingViewController {
-//    func uploadCSVFile() {
-//        let fileURL: String = "http://192.168.5.29/work/upload.php"
-//        guard let url = URL(string: fileURL) else {
-//            print("Error: cannot create URL")
-//            return
+
+extension SmallTrackingViewController {
+    
+    func postRequest(request url: String, sensor data: [String]) -> [String : String] {
+        
+        guard let requestURL = URL(string: url) else { print("URL Error"); return ["Non-Valid" : "Fail"]}
+        
+        var recievedData: [String: String] = ["" : ""]
+        var machineLearningURLRequest = URLRequest(url: requestURL)
+        machineLearningURLRequest.httpMethod = "POST"
+        
+        let sensorData: [String : Any] = ["data": data]
+        
+        do {
+            let sensorJSONData : Data = try JSONSerialization.data(withJSONObject: sensorData, options: [])
+            machineLearningURLRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            machineLearningURLRequest.httpBody = sensorJSONData
+            print("Add JSON Data")
+        } catch {
+            print("Error: Can Not Create JSON Data")
+        }
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: machineLearningURLRequest) { (data, urlResponse, error) in
+            guard error == nil else { print("Error Calling POST \(String(describing: error))") ; return }
+            
+            guard let responseData = data else { print("Error Response Data"); return}
+            
+            do {
+                guard let responseJSONData = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String : String] else { print("Can not get JSON as Dictionary") ; return }
+                recievedData = responseJSONData
+                
+                if let exercise = recievedData["exercise"] {
+                    print(exercise)
+                    DispatchQueue.main.async {
+                        self.exerciseTypeLabel.text = exercise
+                        self.counter += 1
+                        self.exerciseCountingLabel.text = String(self.counter)
+                    }
+                }
+
+            } catch {
+                print("Error parsing response from POST")
+                return
+            }
+        }
+        
+        task.resume()
+        
+        return recievedData
+    }
+    
+    
+    func updateUI(with data: [String : String]) {
+//        if let counter = data["counter"] {
+//            exerciseCountingLabel.text = counter
 //        }
-//        var urlRequest = URLRequest(url: url)
-//        urlRequest.httpMethod = "POST"
-//    }
-//}
-
-
-//MARK: Convert Data Format
-
-//MARK: CoreML
-/*
- 1. Counting
- 2. Classify
- */
+        
+        
+        if let exercise = data["exercise"] {
+            if exercise != "" {
+                exerciseTypeLabel.text = exercise
+                counter += 1
+                exerciseCountingLabel.text = String(counter)
+            }
+            
+            
+        }
+    }
+    
+}

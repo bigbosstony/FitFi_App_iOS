@@ -52,7 +52,7 @@ class NewExerciseTableViewController: UITableViewController {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "name", for: indexPath) as! NewExerciseNameTableViewCell
             cell.newExerciseName.delegate = self
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
             return cell
         } else {

@@ -129,7 +129,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
     }
     
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     // Header
@@ -341,7 +341,7 @@ class StatisticsViewController: UIViewController ,UIGestureRecognizerDelegate,UI
         exerciseTable.delegate = self
         exerciseTable.dataSource = self
         exerciseTable.estimatedRowHeight = 44.0
-        exerciseTable.rowHeight = UITableViewAutomaticDimension
+        exerciseTable.rowHeight = UITableView.automaticDimension
         chartLongPressGestureRecognizer.minimumPressDuration = 0.01
         volumeGraphView.addGestureRecognizer(chartLongPressGestureRecognizer)
         generateXAxisValues()
