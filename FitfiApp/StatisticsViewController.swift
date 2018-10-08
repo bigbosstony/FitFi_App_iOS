@@ -547,20 +547,19 @@ extension StatisticsViewController{
             var currrentDate = Date()
             var previousDate = Date()
             let stringFormatter = ChartStringFormatter()
-            var dataEntries: [BarChartDataEntry] = []
+            var barChartDataEntries: [BarChartDataEntry] = []
             var lineChartDataEntries: [ChartDataEntry] = []
             var BarsArray = [("JUN",n),("JUN",n),("JUN",n)]
+            var GraphArray = [("JUN",n),("JUN",n),("JUN",n)]
+            var Graph1Array = [("JUN",n),("JUN",n),("JUN",n)]
+            var maxWorkOut:Double = 0
+            var totalExercise:Double = 0
+            var totalWorkOut:Double = 0
             var barValues: [Double] = [n,n,n]
             var barLabels: [String] = ["JUN","JUN","JUN"]
             var lineValues: [Double] = [n,n,n]
             var lineValuesLb: [Double] = [n,n,n]
             var lineLabels: [String] = ["JUN","JUN","JUN"]
-            var GraphArray = [("JUN",n),("JUN",n),("JUN",n)]
-            var Graph1Array = [("JUN",n),("JUN",n),("JUN",n)]
-            
-            var maxWorkOut:Double = 0
-            var totalExercise:Double = 0
-            var totalWorkOut:Double = 0
             for i in 0...2{
                 //let tt:TimeInterval = -252000
                 let oneDay:TimeInterval = -90000
@@ -575,7 +574,7 @@ extension StatisticsViewController{
                 currentDateString = formatter.string(from: currrentDate)
                 previousDateString = formatter.string(from: previousDate)
                 nextCurrentDate = previousDate.addingTimeInterval(oneDay)
-                BarsArray[i] = ("\(previousDateString)",tmp[0])
+                BarsArray[i] = ("\(previousDateString)",tmp[2])
                 barValues[i] = tmp[2]
                 barLabels[i] = "\(formatter.string(from:previousDate))"
                 GraphArray[i] = ("\(previousDate)",tmp[1])
@@ -587,9 +586,9 @@ extension StatisticsViewController{
                 totalVolume = totalVolume + tmp[1]
                 totalVolumeLb = totalVolumeLb + tmp[3]
                 totalWorkOut = totalWorkOut + tmp[2]
-                if(tmp[0] >  maxWorkOut)
+                if(tmp[2] >  maxWorkOut)
                 {
-                    maxWorkOut = tmp[0]
+                    maxWorkOut = tmp[2]
                 }
                 
             }
@@ -607,7 +606,7 @@ extension StatisticsViewController{
                 volumeLabel.text = "\(totalVolume) t"
                 
             }
-
+            
             //print(exWorkOuts.count) total routines
             workOutLabel.text = "\(Int(totalWorkOut))"
             if(totalExercise > 0)
@@ -640,88 +639,92 @@ extension StatisticsViewController{
                 
                 
                 // create the datapoints
-                if(metricFlag == 0)
-                {
-                    for (index, dataPoint) in lineValuesLb.enumerated() {
-                        let dataEntry = ChartDataEntry(x: Double(index),
-                                                       y: dataPoint)
-                        lineChartDataEntries.append(dataEntry)
-                    }
+                for (index, dataPoint) in barValues.enumerated() {
+                    let dataEntry = BarChartDataEntry(x: Double(index),
+                                                      y: dataPoint)
+                    barChartDataEntries.append(dataEntry)
+                 }
+            
+            // create the chartDataSet
+            let chartDataSet = BarChartDataSet(values: barChartDataEntries,
+                                               label: "")
+            chartDataSet.colors = [FitFiColor]
+            chartDataSet.valueTextColor = UIColor.white
+            let chartData = BarChartData(dataSet: chartDataSet)
+            self.barChartView.data = chartData
+            
+            
+            
+            print(GraphArray)
+            volumeGraphView.translatesAutoresizingMaskIntoConstraints = false
+            volumeGraphView.centerYAnchor.constraint(
+                equalTo: volumeGraphView.centerYAnchor).isActive = true
+            volumeGraphView.leftAnchor.constraint(
+                equalTo: volumeGraphView.leftAnchor, constant: 10).isActive = true
+            volumeGraphView.rightAnchor.constraint(
+                equalTo: volumeGraphView.rightAnchor, constant: 0).isActive = true
+            volumeGraphView.heightAnchor.constraint(
+                equalToConstant: 300.0).isActive = true
+            // formatting the bar chart
+            stringFormatter.nameValues = lineLabels
+            volumeGraphView.xAxis.valueFormatter = stringFormatter
+            volumeGraphView.xAxis.setLabelCount(stringFormatter.nameValues.count, force: false)
+            volumeGraphView.xAxis.axisMinimum = 0.0
+            
+            volumeGraphView.xAxis.drawGridLinesEnabled = false
+            volumeGraphView.xAxis.drawAxisLineEnabled = false
+            volumeGraphView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+            volumeGraphView.rightAxis.axisMinimum = 0.0
+            volumeGraphView.leftAxis.axisMinimum = 0.0
+            volumeGraphView.rightAxis.enabled = false
+            volumeGraphView.leftAxis.enabled = true
+            
+            volumeGraphView.animate(xAxisDuration: 0.0, yAxisDuration: 0.6)
+            volumeGraphView.legend.enabled = false
+            volumeGraphView.chartDescription?.enabled = false
+            
+            // create the datapoints
+            if(metricFlag == 0)
+            {
+                for (index, dataPoint) in lineValuesLb.enumerated() {
+                    let dataEntry = ChartDataEntry(x: Double(index),
+                                                   y: dataPoint)
+                    lineChartDataEntries.append(dataEntry)
                 }
-                else{
-                    for (index, dataPoint) in lineValues.enumerated() {
-                        let dataEntry = ChartDataEntry(x: Double(index),
-                                                       y: dataPoint)
-                        lineChartDataEntries.append(dataEntry)
-                    }
-                }
-                
-                // create the chartDataSet
-                let chartDataSet = BarChartDataSet(values: dataEntries,
-                                                   label: "")
-                chartDataSet.colors = [FitFiColor]
-                chartDataSet.valueTextColor = UIColor.white
-                let chartData = BarChartData(dataSet: chartDataSet)
-                self.barChartView.data = chartData
-                volumeGraphView.centerYAnchor.constraint(
-                    equalTo: volumeGraphView.centerYAnchor).isActive = true
-                volumeGraphView.leftAnchor.constraint(
-                    equalTo: volumeGraphView.leftAnchor, constant: 10).isActive = true
-                volumeGraphView.rightAnchor.constraint(
-                    equalTo: volumeGraphView.rightAnchor, constant: -10).isActive = true
-                volumeGraphView.heightAnchor.constraint(
-                    equalToConstant: 300.0).isActive = true
-                // formatting the bar chart
-                stringFormatter.nameValues = lineLabels
-                volumeGraphView.xAxis.valueFormatter = stringFormatter
-                volumeGraphView.xAxis.setLabelCount(stringFormatter.nameValues.count, force: false)
-                
-                volumeGraphView.xAxis.drawGridLinesEnabled = false
-                volumeGraphView.xAxis.drawAxisLineEnabled = false
-                volumeGraphView.xAxis.labelPosition = XAxis.LabelPosition.bottom
-                volumeGraphView.rightAxis.axisMinimum = 0.0
-                volumeGraphView.leftAxis.axisMinimum = 0.0
-                volumeGraphView.rightAxis.enabled = false
-                volumeGraphView.leftAxis.enabled = true
-                
-                volumeGraphView.animate(xAxisDuration: 0.0, yAxisDuration: 0.6)
-                volumeGraphView.legend.enabled = false
-                volumeGraphView.chartDescription?.enabled = false
-                
-                // create the datapoints
+            }
+            else{
                 for (index, dataPoint) in lineValues.enumerated() {
                     let dataEntry = ChartDataEntry(x: Double(index),
                                                    y: dataPoint)
                     lineChartDataEntries.append(dataEntry)
                 }
-                
-                // create the chartDataSet
-                let lineDataSet = LineChartDataSet(values: lineChartDataEntries,
-                                                   label: "")
-                lineDataSet.colors = [FitFiColor]
-                // Setting fill gradient color
-                let coloTop = UIColor(red: 213/255, green: 95/255, blue: 31/255, alpha: 0.8).cgColor
-                let colorBottom = UIColor(red: 230/255, green: 155/255, blue: 210/255, alpha: 0.1).cgColor
-                // Colors of the gradient
-                let gradientColors = [coloTop, colorBottom] as CFArray
-                // Positioning of the gradient
-                let colorLocations: [CGFloat] = [0.7, 0.0]
-                // Gradient Object
-                let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations)!
-                lineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
-                lineDataSet.drawFilledEnabled = true
-                lineDataSet.valueTextColor = UIColor.white
-                let lineData = LineChartData(dataSet: lineDataSet)
-                self.volumeGraphView.data = lineData
-                
-                
-                exerciseTable.reloadData()
             }
-            else{
-                print("No Data")
-            }
-        break
+            // create the chartDataSet
+            let lineDataSet = LineChartDataSet(values: lineChartDataEntries,
+                                               label: "")
+            lineDataSet.colors = [FitFiColor]
+            // Setting fill gradient color
+            let coloTop = UIColor(red: 213/255, green: 95/255, blue: 31/255, alpha: 0.8).cgColor
+            let colorBottom = UIColor(red: 230/255, green: 155/255, blue: 210/255, alpha: 0.1).cgColor
+            // Colors of the gradient
+            let gradientColors = [coloTop, colorBottom] as CFArray
+            // Positioning of the gradient
+            let colorLocations: [CGFloat] = [0.7, 0.0]
+            // Gradient Object
+            let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations)!
+            lineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
+            lineDataSet.drawFilledEnabled = true
+            lineDataSet.valueTextColor = UIColor.white
+            let lineData = LineChartData(dataSet: lineDataSet)
+            self.volumeGraphView.data = lineData
             
+            
+            exerciseTable.reloadData()
+        }
+        else{
+            print("No Data")
+        }
+        break
         case 2:
             totalVolumeLb = 0
             totalVolume = 0
