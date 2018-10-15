@@ -26,8 +26,9 @@ let exercise = [
 
 
 let devices = [
-    true : "Dumnbell 5lb",
-    false : "Dumbbell 20lb"
+    "97EDD176-7D5B-9EC9-2950-7D759A5D8C6C" : "Dumnbell 3lb",
+    "C436C684-9C69-BF4E-EFD6-789DB0BB8E2C" : "Dumbbell 5lb",
+    "31F588FB-5E81-2261-FFC5-0887653932E3" : "Dumbbell 8lb",
 ]
 
 //MARK: Testing
@@ -98,11 +99,14 @@ class SmallTrackingViewController: UIViewController {
     //MARK: Testing
     var currentExerciseArray = [CurrentExercise]()
     var counter = 0
-    var tempExercise = "Biceps"
+    var currentExercise = ""
 
     
     //MARK: URL
-    let machineLearningURL : String = "http://54.146.215.174:5000"
+//    let machineLearningURL : String = "http://35.173.192.211:5000"
+    let machineLearningURL : String = "http://192.168.2.37:5005"
+//    let machineLearningURL : String = "http://192.168.2.37:5005"
+
     
     lazy var requestURL = {
        return URL(string: machineLearningURL)
@@ -194,7 +198,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         print("name: ", peripheral.name!)
         print("identifier: ", peripheral.identifier)
         print("state: ", peripheral.state.rawValue)
-        print("Services: ", peripheral.services)
+        print("Services: ", peripheral.services as Any)
         print("AdvertisementData Description: ", advertisementData.description)
         print("AdvertisementData Keys: ", advertisementData.keys)
         print("RSSI = \(RSSI)")
@@ -215,10 +219,12 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             }
         case 5.0:
             print("BLE: 5.0")
-            if RSSI.intValue > -35 {
+            if RSSI.intValue > -40 {
                 blePeripheral = peripheral
                 blePeripheral.delegate = self
                 //                centralManager.stopScan()
+//                identifier = peripheral.identifier.uuidString
+
                 centralManager.connect(blePeripheral)
             } else {
                 centralManager.scanForPeripherals(withServices: [bleMainServiceCBUUID], options: nil)
@@ -233,12 +239,16 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
     //MARK: Did Connect Peripheral
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Did Connect to Peripheral")
+        
+        userLogin(with: "tony", url: machineLearningURL)
+        
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         //        MARK: Make Small TrackingVC Visable
         self.view.isHidden = false
         //MARK: IMPORTANT SERVICE UUID
         blePeripheral.discoverServices(nil) // CHANGE THIS VALUE
-        
+        exerciseDeviceLabel.text = devices[peripheral.identifier.uuidString]
+
     }
     
     //MARK: Did Disconnect Peripheral
@@ -247,11 +257,15 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         //MARK: Make Small TrackingVC Hidden
         //        smallTrackingVC.remove()
         self.view.isHidden = true
+        
+        userLogout(from: machineLearningURL)
+
         //MARK: Clean Counter and Exercise
         counter = 0
         exerciseCountingLabel.text = String(counter)
         exerciseTypeLabel.text = ""
-        
+        exerciseDeviceLabel.text = ""
+
         switch central.state {
         case .poweredOn:
             print("central.state is .poweredOn again")
@@ -259,6 +273,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         default:
             print("bluetooth unavailable")
         }
+        
     }
 }
 
@@ -305,134 +320,20 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         switch characteristic.uuid {
         case bleMainServiceCharacteristicCBUUID:
-            //                let realData = String(data!.suffix(17))
-             guard let data = String(data: characteristic.value!, encoding: .utf8) else { return }
-//             print(data)            
-
-//             guard String(data: characteristic.value!, encoding: .utf8) != nil else { return }
-            let newData = data.replacingOccurrences(of: "-", with: "+-")
-            let managedData = newData.replacingOccurrences(of: "\r\n\n", with: "").split{ [":", "\0", " ", "+"].contains($0.description) }
-
             
-//            print("Sensor Data: ", managedData)
-
-            //Array of Data
-//            if Int(String(data[0])) == dataArrayCounter {
-            if String(data[0]) == dataArrayCounterDictionary[dataArrayCounter] {
-
-//                let currentDataArray = String(managedData[1]).split(by: 6)
-//                for i in currentDataArray {
-//                    dataArray.append(round(1000 * Double(i)!) / 1000)
-//                }
-                for i in managedData[1...3] {
-//                    dataArray.append(round(1000 * Double(i)!) / 1000)
-                    dataArrayString.append(String(i))
-                }
-                
-                if dataArrayCounter == 2 {
-                    print("Original: ", dataArrayString)
-                    
-                    globalCounter += 1
-//                    print(globalCounter)
-
-                    //Data 2 JSON
-//                    let sensorData: [String : Any] = ["data": dataArrayString]
-//
-//                    do {
-//                        let sensorJSONData : Data = try JSONSerialization.data(withJSONObject: sensorData, options: [])
-//                        machineLearningURLRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//                        machineLearningURLRequest.httpBody = sensorJSONData
-//                        machineLearningURLRequest.httpMethod = "POST"
-//                        print("Add JSON Data")
-//                    } catch {
-//                        print("Error: Can Not Create JSON Data")
-//                    }
-//
-//                    let session = URLSession.shared
-//
-//                    let task = session.dataTask(with: machineLearningURLRequest) { (data, urlResponse, error) in
-//
-//                        guard error == nil else { print("Error Calling POST \(String(describing: error))") ; return }
-//
-//                    }
-//                    task.resume()
-                    
-                    let resultFromML = postRequest(request: machineLearningURL, sensor: dataArrayString)
-                    updateUI(with: resultFromML)
-                    
-                    //Sensor Data 9 Double Array
-                    //MARK: Testing Collection View Cell
-//                    counter += 1
-//
-//                    if counter > 240 {
-//                        tempExercise = "Triceps"
-//                    }
-//
-//                    if counter % 30 == 0 {
-//                        print(counter)
-//
-//                        collectingController(exercise: tempExercise)
-//                    }
-//
-//                    collectionView.reloadData()
-//                    exerciseTypeLabel.text = currentExerciseArray.last?.name
-//                    if globalCounter < sampleSensorData.count {
-//                        dataArray = sampleSensorData[globalCounter]
-//                    }
-//
-//                    globalCounter += 1
-//
-//                    //MARK: Add CoreML, Create CoreML Properties
-//                    let sensorInputData = try! MLMultiArray(shape: [9], dataType: .double)
-////                    var outputArray = [Double]()
-//
-//                    for (index, data) in dataArray.enumerated() {
-//                        sensorInputData[index] = NSNumber(value: data)
-//                    }
-//
-//
-//                    //MARK: Input
-////                    let input2 = tracking_model_0_2Input(input1: sensorInputData)
-//                    let input4Counting = counting_model_0_4Input(input1: sensorInputData)
-//
-//                    let input4Classify = classify_model_0_4Input(input1: sensorInputData)
-//
-//
-//                    if let predictionOutput4Counting = try? countingModel.prediction(input: input4Counting) {
-//
-//                        let output4Counting = predictionOutput4Counting.output1
-//
-//                        print("Prediction Counting Output: ", output4Counting)
-//
-////                        for count in 0..<7 {
-////                            outputArray.append(output[count].doubleValue)
-////                        }
-////                        let highestPrediction = outputArray.index(of: outputArray.max()!)!
-////                        let highestExercise = exercise[highestPrediction]
-////                        let highestExercisePrecetage = Double(round(1000 * outputArray.max()!) / 1000) * 100
-////                        print(highestExercise!, highestExercisePrecetage)
-////                        exerciseTypeLabel.text = highestExercise! + " " + String(highestExercisePrecetage) + "%"
-//                    }
-                    
-                    
-//                    if let predictionOutput4Classify = try? classifyModel.prediction(input: input4Classify) {
-//
-//                        let output4Counting = predictionOutput4Classify.output1
-//
-////                        print("Prediction Classify Output: ", output4Counting)
-//                    }
-                    
-//                    print(dataArray)
-                    
-                    
-                    
-//                    dataArray.removeAll()
-                    dataArrayString.removeAll()
-                    dataArrayCounter = 0
-                } else {
-                    dataArrayCounter += 1
-                }
+            let sensorData = getSensorData(from: characteristic, fA: 0.000061, fG: 0.00875, fM: 0.00014)
+            
+            dataArrayString = []
+            
+            for i in sensorData {
+                dataArrayString.append("\(i)")
             }
+            
+            print(dataArrayString)
+            
+            let resultFromMLServer = postRequest(request: machineLearningURL, sensor: dataArrayString)
+            
+            updateUI(with: resultFromMLServer)
             
         //MARK: Battery Level
 //        case bleBattery:
@@ -441,7 +342,7 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
         default:
             print(characteristic.service.uuid)
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
-            let data = String(data: characteristic.value!, encoding: .utf8)
+//            let data = String(data: characteristic.value!, encoding: .utf8)
         }
     }
 }
@@ -506,18 +407,20 @@ extension SmallTrackingViewController {
         var machineLearningURLRequest = URLRequest(url: requestURL)
         machineLearningURLRequest.httpMethod = "POST"
         
-        let sensorData: [String : Any] = ["data": data]
+        let sensorData: [String : Any] = ["username": "tony" ,"data": data]
+        print("Sensor Data: ", sensorData)
         
         do {
             let sensorJSONData : Data = try JSONSerialization.data(withJSONObject: sensorData, options: [])
             machineLearningURLRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             machineLearningURLRequest.httpBody = sensorJSONData
-            print("Add JSON Data")
         } catch {
             print("Error: Can Not Create JSON Data")
         }
         
-        let session = URLSession.shared
+        let defaultSessionConfiguration = URLSessionConfiguration.default
+
+        let session = URLSession(configuration: defaultSessionConfiguration)
         
         let task = session.dataTask(with: machineLearningURLRequest) { (data, urlResponse, error) in
             guard error == nil else { print("Error Calling POST \(String(describing: error))") ; return }
@@ -527,13 +430,22 @@ extension SmallTrackingViewController {
             do {
                 guard let responseJSONData = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String : String] else { print("Can not get JSON as Dictionary") ; return }
                 recievedData = responseJSONData
-                
+                print("Recieved Data: ", recievedData)
                 if let exercise = recievedData["exercise"] {
-                    print(exercise)
+                    print("Exercise: ", exercise)
+
                     DispatchQueue.main.async {
-                        self.exerciseTypeLabel.text = exercise
-                        self.counter += 1
-                        self.exerciseCountingLabel.text = String(self.counter)
+                        if self.currentExercise == exercise {
+                            self.exerciseTypeLabel.text = exercise
+                            self.counter += 1
+                            self.exerciseCountingLabel.text = String(self.counter)
+                        } else {
+                            self.currentExercise = exercise
+                            self.counter = 0
+                            self.exerciseTypeLabel.text = exercise
+                            self.counter += 1
+                            self.exerciseCountingLabel.text = String(self.counter)
+                        }
                     }
                 }
 
@@ -545,15 +457,52 @@ extension SmallTrackingViewController {
         
         task.resume()
         
+        
         return recievedData
     }
     
     
-    func updateUI(with data: [String : String]) {
-//        if let counter = data["counter"] {
-//            exerciseCountingLabel.text = counter
-//        }
+    
+    
+    func userLogin(with username: String, url: String) {
         
+        guard let requestURL = URL(string: url + "/login") else { return }
+        var loginRequestURL = URLRequest(url: requestURL)
+        loginRequestURL.httpMethod = "POST"
+        
+        let username: [String : Any] = ["username": username]
+        
+        do {
+            let usernameJSONData : Data = try JSONSerialization.data(withJSONObject: username, options: [])
+            loginRequestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            loginRequestURL.httpBody = usernameJSONData
+        } catch {
+            print("Error: Can Not Create JSON Data")
+        }
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: loginRequestURL) { (data, urlResponse, error) in
+            guard error == nil else { print("Error Calling POST \(String(describing: error))") ; return }
+            
+        }
+        task.resume()
+    }
+    
+    func userLogout(from url: String) {
+        guard let requestURL = URL(string: url + "/logout") else { return }
+        let logoutRequestURL = URLRequest(url: requestURL)
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: logoutRequestURL)
+        task.resume()
+    }
+    
+    
+    
+    
+    func updateUI(with data: [String : String]) {
         
         if let exercise = data["exercise"] {
             if exercise != "" {
@@ -561,9 +510,38 @@ extension SmallTrackingViewController {
                 counter += 1
                 exerciseCountingLabel.text = String(counter)
             }
-            
-            
         }
     }
+}
+
+extension SmallTrackingViewController {
+    
+    func getSensorData(from characteristic: CBCharacteristic ,fA: Float , fG: Float , fM: Float) -> [Float] {
+        guard let characteristicData = characteristic.value else { return [1] }
+        let byteArray = [UInt8](characteristicData)
+        var accelerometerDataXYZ : [Float] = [0,0,0,0,0,0,0,0,0]
+        var j = 0
+        
+        for i in 0...17 {
+            
+            if ( i % 2 == 0) {
+                
+                if ( i < 6) {
+                    accelerometerDataXYZ[j] = Float((Int16(byteArray[i+1]) << 8) | (Int16(byteArray[i]))) * fA
+                    j += 1
+                }
+                else if (i < 12 && i > 5) {
+                    accelerometerDataXYZ[j] = Float((Int16(byteArray[i+1]) << 8) | (Int16(byteArray[i]))) * fG
+                    j += 1
+                }
+                else if (i < 19 && i > 11) {
+                    accelerometerDataXYZ[j] = Float((Int16(byteArray[i+1]) << 8) | (Int16(byteArray[i]))) * fM
+                    j += 1
+                }
+            }
+        }
+        return accelerometerDataXYZ
+    }
+    
     
 }
