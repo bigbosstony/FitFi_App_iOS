@@ -10,6 +10,9 @@
 		4A5CF20F88B3C7B9F5432B59 /* Pods_FitfiAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1AF7AA39FB682387C66EC0A /* Pods_FitfiAppUITests.framework */; };
 		4EA0BEC2F71359488060E077 /* Pods_FitfiApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9FA51E545770CF22847997 /* Pods_FitfiApp.framework */; };
 		E1111293C39D910C4E18CB7B /* Pods_FitfiAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC458A20BCED6A5DD649F8 /* Pods_FitfiAppTests.framework */; };
+		EA098B9821752C2400E723BC /* SocialWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA098B9721752C2400E723BC /* SocialWebViewController.swift */; };
+		EA098B9921752C2400E723BC /* SocialWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA098B9721752C2400E723BC /* SocialWebViewController.swift */; };
+		EA098B9A21752C2400E723BC /* SocialWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA098B9721752C2400E723BC /* SocialWebViewController.swift */; };
 		EA283D3A2152D15300F71461 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA283D392152D15300F71461 /* FirstViewController.swift */; };
 		EA283D3B2152D15300F71461 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA283D392152D15300F71461 /* FirstViewController.swift */; };
 		EA283D3C2152D15300F71461 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA283D392152D15300F71461 /* FirstViewController.swift */; };
@@ -243,6 +246,7 @@
 		CB5DCCDA13EC783CEBA3BC46 /* Pods-FitfiAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitfiAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CEFBAD3A4C803EB99A1247F2 /* Pods-FitfiApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitfiApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp.release.xcconfig"; sourceTree = "<group>"; };
 		DB9FA51E545770CF22847997 /* Pods_FitfiApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitfiApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA098B9721752C2400E723BC /* SocialWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialWebViewController.swift; sourceTree = "<group>"; };
 		EA283D392152D15300F71461 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		EA283D3D2152EF6500F71461 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EA3090E320C6DA4000E09DDF /* FitfiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitfiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -382,6 +386,14 @@
 			path = ExerciseDetailsTab;
 			sourceTree = "<group>";
 		};
+		EA098B9B21752C3900E723BC /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				EA098B9721752C2400E723BC /* SocialWebViewController.swift */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
 		EA283D382152D0FD00F71461 /* RegisterLogin */ = {
 			isa = PBXGroup;
 			children = (
@@ -466,6 +478,7 @@
 				EAC0DD4820D3106500AC7A1E /* Routine */,
 				EA3008C420D1ADAA001E7743 /* Exercise */,
 				EA855DDF20F5114B000D7EA5 /* Calendar */,
+				EA098B9B21752C3900E723BC /* Social */,
 				EA7C92CE20F9401E006DBFF0 /* Profile */,
 				EA77603120E436EE0052774F /* Data Module */,
 				EA3090F220C6DA4300E09DDF /* LaunchScreen.storyboard */,
@@ -962,6 +975,7 @@
 				F1A88B1E214165B90076063E /* PopUpCalenderVC.swift in Sources */,
 				EA855DE920F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				F1C7AE3C21236293001FB415 /* selectRoutineCell.swift in Sources */,
+				EA098B9821752C2400E723BC /* SocialWebViewController.swift in Sources */,
 				EA283D3A2152D15300F71461 /* FirstViewController.swift in Sources */,
 				EA8C64A520D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
 				EA7C92CB20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
@@ -1037,6 +1051,7 @@
 				EA77604A20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				EAC0DD4F20D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				F11FA576214AE5F200AAB38F /* DetailCollectionViewCell.swift in Sources */,
+				EA098B9921752C2400E723BC /* SocialWebViewController.swift in Sources */,
 				EA77603820E43CA80052774F /* AppDelegate.swift in Sources */,
 				EA98E50920FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */,
 				EA84FCBF20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
@@ -1104,6 +1119,7 @@
 				EA855DE320F51A6B000D7EA5 /* CalendarTableViewCell.swift in Sources */,
 				EA77604B20E43D370052774F /* RoutineDetailsTableViewController.swift in Sources */,
 				F11FA577214AE5F200AAB38F /* DetailCollectionViewCell.swift in Sources */,
+				EA098B9A21752C2400E723BC /* SocialWebViewController.swift in Sources */,
 				F16E8E152135DBC900455C87 /* CollapsibleTableViewCell.swift in Sources */,
 				EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA77603920E43CA90052774F /* AppDelegate.swift in Sources */,
@@ -1287,7 +1303,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1303,7 +1322,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1320,7 +1342,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1338,7 +1364,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1355,7 +1385,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1372,7 +1406,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

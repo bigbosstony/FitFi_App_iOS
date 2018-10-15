@@ -209,7 +209,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             print("BLE: 4.0")
         case 4.2:
             print("BLE: 4.2")
-            if -45...0 ~= RSSI.intValue {
+            if RSSI.intValue > -45 {
                 blePeripheral = peripheral
                 blePeripheral.delegate = self
                 //                centralManager.stopScan()
@@ -219,7 +219,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             }
         case 5.0:
             print("BLE: 5.0")
-            if RSSI.intValue > -40 {
+            if -45...0 ~= RSSI.intValue {
                 blePeripheral = peripheral
                 blePeripheral.delegate = self
                 //                centralManager.stopScan()
@@ -246,9 +246,8 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         //        MARK: Make Small TrackingVC Visable
         self.view.isHidden = false
         //MARK: IMPORTANT SERVICE UUID
-        blePeripheral.discoverServices(nil) // CHANGE THIS VALUE
+        blePeripheral.discoverServices(nil) // CHANGE THIS VALUE IF NEEDED, nil == SEARCH FOR ALL SERVICES
         exerciseDeviceLabel.text = devices[peripheral.identifier.uuidString]
-
     }
     
     //MARK: Did Disconnect Peripheral
@@ -294,22 +293,30 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
         
         for characteristic in characteristics {
             print("All Characteristic: ", characteristic)
+            
             if characteristic.properties.contains(.notify) {
                 print("\(characteristic.uuid): properties contains .notify")
                 peripheral.setNotifyValue(true, for: characteristic)
-            } else if characteristic.uuid == bleManufacturerNameString {
+            }
+                
+            //TODO: Need some changes
+            if characteristic.uuid == bleManufacturerNameString {
                 if let value = characteristic.value {
                     print("Manufacturer Name String: ", String(data: value, encoding: .utf8) ?? "None")
                 }
-            } else if characteristic.uuid == bleModelNumberString {
+            }
+            
+            if characteristic.uuid == bleModelNumberString {
                 if let value = characteristic.value {
                     print("Model Number String: ", String(data: value, encoding: .utf8) ?? "None")
                 }
-            } else if characteristic.uuid == bleSystemID {
+            }
+            
+            if characteristic.uuid == bleSystemID {
                 if let value = characteristic.value {
                     print("System ID: ", [UInt8](value))
                 }
-                
+
 //                print("RSSI: ", peripheral.readRSSI())
 //                print("System ID: ", String.init(String(data: characteristic.value!, encoding: .utf8)!))
             }
@@ -335,9 +342,9 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
             
             updateUI(with: resultFromMLServer)
             
-        //MARK: Battery Level
-//        case bleBattery:
-//            print("Battery Level value: ", [UInt8](characteristic.value!))
+//        MARK: Battery Level
+        case bleBattery:
+            print("Battery Level value: ", [UInt8](characteristic.value!))
             
         default:
             print(characteristic.service.uuid)
