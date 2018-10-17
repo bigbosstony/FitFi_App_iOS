@@ -26,8 +26,11 @@ let exercise = [
 
 
 let devices = [
-    true : "Dumnbell 5lb",
-    false : "Dumbbell 20lb"
+    "97EDD176-7D5B-9EC9-2950-7D759A5D8C6C" : "Dumnbell 3lb",
+    "C436C684-9C69-BF4E-EFD6-789DB0BB8E2C": "Dumnbell 5b"
+    ,
+    "A7CFE275-B28D-7946-2ECB-CF77B016440C" : "Black Sticker",
+    "31F588FB-5E81-2261-FFC5-0887653932E3" : "Dumbbell 8lb",
 ]
 
 //MARK: Testing
@@ -46,7 +49,7 @@ struct CurrentExercise {
 class SmallTrackingViewController: UIViewController {
     
     var maxTrackingVC: MaxTrackingViewController?
-    var currentExercise:String = ""
+    
     @IBOutlet weak var exerciseTypeLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var exerciseCountingLabel: UILabel!
@@ -82,6 +85,7 @@ class SmallTrackingViewController: UIViewController {
     let bleManufacturerNameString = CBUUID(string: "2A29")
     let bleModelNumberString = CBUUID(string: "2A24")
     
+    var identifier: String?
     //>>>>>>>>
     var globalCounter = 0
     
@@ -98,9 +102,23 @@ class SmallTrackingViewController: UIViewController {
     //MARK: Testing
     var currentExerciseArray = [CurrentExercise]()
     var counter = 0
-    var tempExercise = "Biceps"
+    var currentExercise = ""
     
-    let machineLearningURL : String = "http://54.146.215.174:5000/"
+    
+    //MARK: URL
+    let machineLearningURL : String = "http://fitfi.vbjdqpfgmj.us-west-2.elasticbeanstalk.com"
+    
+    lazy var requestURL = {
+        return URL(string: machineLearningURL)
+    }()
+    
+    lazy var machineLearningURLRequest = {
+        return URLRequest(url: requestURL ?? URL(string: "https://www.google.com")!)
+    }()
+    
+    //    var machineLearningURLRequest = URLRequest(url: requestURL)
+    //    machineLearningURLRequest.httpMethod = "POST"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,6 +145,11 @@ class SmallTrackingViewController: UIViewController {
         //        currentExercise.reps = 9
         //        currentExercise.sets = 2
         //        currentExerciseArray.append(currentExercise)
+        //        for i in 0..<y.count {
+        //            sleep(1)
+        //
+        //            postRequest(request: machineLearningURL, sensor: y[i])
+        //        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -155,8 +178,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             view.isHidden = true
         case .unsupported:
             print("central.state is .unsupported")
-            callThisForSimulation()
-            view.isHidden = false
+            view.isHidden = true
         case .unauthorized:
             print("central.state is .unauthorized")
             view.isHidden = true
@@ -170,20 +192,16 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         }
     }
     
-    func callThisForSimulation()
-    {
-        for i in y{
-        let resultFromML = postRequest(request: machineLearningURL, sensor: i)
-        updateUI(with: resultFromML)
-        }
-    }
     //MARK: Did Discover Peipheral
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("\nDid Discover Peripheral")
         print("name: ", peripheral.name!)
         print("identifier: ", peripheral.identifier)
+        
+        identifier = peripheral.identifier.uuidString
+        
         print("state: ", peripheral.state.rawValue)
-        print("Services: ", peripheral.services)
+        print("Services: ", peripheral.services as Any)
         print("AdvertisementData Description: ", advertisementData.description)
         print("AdvertisementData Keys: ", advertisementData.keys)
         print("RSSI = \(RSSI)")
@@ -194,7 +212,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             print("BLE: 4.0")
         case 4.2:
             print("BLE: 4.2")
-            if -45...0 ~= RSSI.intValue {
+            if -70...0 ~= RSSI.intValue {
                 blePeripheral = peripheral
                 blePeripheral.delegate = self
                 //                centralManager.stopScan()
@@ -204,7 +222,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             }
         case 5.0:
             print("BLE: 5.0")
-            if RSSI.intValue > -35 {
+            if RSSI.intValue > -40 {
                 blePeripheral = peripheral
                 blePeripheral.delegate = self
                 //                centralManager.stopScan()
@@ -222,20 +240,32 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
     //MARK: Did Connect Peripheral
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Did Connect to Peripheral")
+        exerciseDeviceLabel.text = devices[peripheral.identifier.uuidString]
+        
+               userLogin(with: "harsh123", url: machineLearningURL)
+        
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         //        MARK: Make Small TrackingVC Visable
         self.view.isHidden = false
         //MARK: IMPORTANT SERVICE UUID
         blePeripheral.discoverServices(nil) // CHANGE THIS VALUE
+        exerciseDeviceLabel.text = devices[identifier!]
         
     }
     
     //MARK: Did Disconnect Peripheral
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Did Disconnected Peripheral")
+        userLogout(from: machineLearningURL)
+        exerciseDeviceLabel.text = ""
         //MARK: Make Small TrackingVC Hidden
         //        smallTrackingVC.remove()
         self.view.isHidden = true
+        //MARK: Clean Counter and Exercise
+        counter = 0
+        exerciseCountingLabel.text = String(counter)
+        exerciseTypeLabel.text = ""
+        
         switch central.state {
         case .poweredOn:
             print("central.state is .poweredOn again")
@@ -289,32 +319,29 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         switch characteristic.uuid {
         case bleMainServiceCharacteristicCBUUID:
-            //print(characteristic.value!)
-            let characteristicFloatData = getAccelerometerData(from: characteristic, fA: 0.000061, fG: 0.00875, fM: 0.00014)
-            print(characteristicFloatData)
-            //                let realData = String(data!.suffix(17))
-           //             print(data)
+            
+            let sensorData = getSensorData(from: characteristic, fA: 0.000061, fG: 0.00875, fM: 0.00014)
+            
             dataArrayString = []
-            for i in characteristicFloatData{
-                
-                 dataArrayString.append("\(i)")
+            
+            for i in sensorData {
+                dataArrayString.append("\(i)")
             }
             
+            print(dataArrayString)
             
-            let resultFromML = postRequest(request: machineLearningURL, sensor: dataArrayString)
+            let resultFromMLServer = postRequest(request: machineLearningURL, sensor: dataArrayString)
             
-            updateUI(with: resultFromML)
+            updateUI(with: resultFromMLServer)
             
+            //MARK: Battery Level
+            //        case bleBattery:
+            //            print("Battery Level value: ", [UInt8](characteristic.value!))
             
-            
-        case bleBattery:
-            
-            print("Battery Level value: ", [UInt8](characteristic.value!))
         default:
             print(characteristic.service.uuid)
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
-            let data = String(data: characteristic.value!, encoding: .utf8)
-            
+            //            let data = String(data: characteristic.value!, encoding: .utf8)
         }
     }
 }
@@ -368,28 +395,6 @@ extension SmallTrackingViewController {
     }
 }
 
-//extension SmallTrackingViewController {
-//    func uploadCSVFile() {
-//        let fileURL: String = "http://192.168.5.29/work/upload.php"
-//        guard let url = URL(string: fileURL) else {
-//            print("Error: cannot create URL")
-//            return
-//        }
-//        var urlRequest = URLRequest(url: url)
-//        urlRequest.httpMethod = "POST"
-//    }
-//}
-
-
-//MARK: Convert Data Format
-
-//MARK: CoreML
-/*
- 1. Counting
- 2. Classify
- */
-
-
 
 extension SmallTrackingViewController {
     
@@ -401,13 +406,13 @@ extension SmallTrackingViewController {
         var machineLearningURLRequest = URLRequest(url: requestURL)
         machineLearningURLRequest.httpMethod = "POST"
         
-        let sensorData: [String : Any] = ["data": data]
+        let sensorData: [String : Any] = ["username":"harsh123","data": data]
         
         do {
             let sensorJSONData : Data = try JSONSerialization.data(withJSONObject: sensorData, options: [])
             machineLearningURLRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             machineLearningURLRequest.httpBody = sensorJSONData
-            //print("Add JSON Data")
+            print("Add JSON Data")
         } catch {
             print("Error: Can Not Create JSON Data")
         }
@@ -438,16 +443,13 @@ extension SmallTrackingViewController {
                             self.counter += 1
                             self.exerciseCountingLabel.text = String(self.counter)
                         }
-                        
                     }
                 }
                 
             } catch {
-               // print("Error parsing response from POST")
+                print("Error parsing response from POST")
                 return
             }
-            
-            
         }
         
         task.resume()
@@ -457,69 +459,118 @@ extension SmallTrackingViewController {
     
     
     
-   
+    
+    func userLogin(with username: String, url: String) {
+        
+        guard let requestURL = URL(string: url + "/login") else { return }
+        var loginRequestURL = URLRequest(url: requestURL)
+        loginRequestURL.httpMethod = "POST"
+        
+        let username: [String : Any] = ["username": username]
+        
+        do {
+            let usernameJSONData : Data = try JSONSerialization.data(withJSONObject: username, options: [])
+            loginRequestURL.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            loginRequestURL.httpBody = usernameJSONData
+        } catch {
+            print("Error: Can Not Create JSON Data")
+        }
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: loginRequestURL) { (data, urlResponse, error) in
+            guard error == nil else { print("Error Calling POST \(String(describing: error))") ; return }
+            
+        }
+        task.resume()
+    }
+    
+    func userLogout(from url: String) {
+        guard let requestURL = URL(string: url + "/logout") else { return }
+        let logoutRequestURL = URLRequest(url: requestURL)
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: logoutRequestURL)
+        task.resume()
+    }
+    
+    
     
     
     func updateUI(with data: [String : String]) {
-        if let counter = data["counter"] {
-            exerciseCountingLabel.text = counter
-        }
         
         if let exercise = data["exercise"] {
-            exerciseTypeLabel.text = exercise
+            if exercise != "" {
+                exerciseTypeLabel.text = exercise
+                counter += 1
+                exerciseCountingLabel.text = String(counter)
+            }
         }
     }
-    
 }
+
 extension SmallTrackingViewController {
     
-    
-    
-    
-    
-    
-    
-    func getAccelerometerData(from characteristic: CBCharacteristic ,fA:Float , fG:Float , fM: Float) -> [Float] {
+    func getSensorData(from characteristic: CBCharacteristic ,fA: Float , fG: Float , fM: Float) -> [Float] {
         guard let characteristicData = characteristic.value else { return [1] }
         let byteArray = [UInt8](characteristicData)
-        var accelerometerDataXYZ:[Float] = [0,0,0,0,0,0,0,0,0]
+        var accelerometerDataXYZ : [Float] = [0,0,0,0,0,0,0,0,0]
         var j = 0
-        //print("Array: \(byteArray)")
-       
-        //Add X
-            for i in 0...17
-            {
+        
+        for i in 0...17 {
             
-            if(i % 2 == 0)
-            {
-                if(i < 6)
-                {
+            if ( i % 2 == 0) {
+                
+                if ( i < 6) {
                     accelerometerDataXYZ[j] = Float((Int16(byteArray[i+1]) << 8) | (Int16(byteArray[i]))) * fA
                     j += 1
                 }
                 else if (i < 12 && i > 5) {
                     accelerometerDataXYZ[j] = Float((Int16(byteArray[i+1]) << 8) | (Int16(byteArray[i]))) * fG
                     j += 1
-                   
                 }
                 else if (i < 19 && i > 11) {
                     accelerometerDataXYZ[j] = Float((Int16(byteArray[i+1]) << 8) | (Int16(byteArray[i]))) * fM
                     j += 1
                 }
-                
             }
-                
         }
-        
-        
-        
-        
-        
         return accelerometerDataXYZ
     }
+    
+    
 }
-extension Data {
-    var hexDescription: String {
-        return reduce("") {$0 + String(format: "%02x", $1)}
-    }
-}
+////First Request, Get Code
+//curl ’https://api.authy.com/protected/json/phones/verification/start' \
+//-d api_key=CjqvmmdoUkVUyc12YZbwG4gIz8RyIJi3 \
+//-d via=sms \
+//-d phone_number=6476865007 \
+//-d country_code=1
+//
+//
+////Response
+////{
+////    “message”: “Text message sent to +1 647-686-5007.“,
+////    “seconds_to_expire”: 599,
+////    “uuid”: “9f09edc0-b3b0-0136-a6eb-12f5b40cad06”,
+////    “success”: true
+////}
+//
+//
+//
+//
+////Second Request, Verify Code
+//curl -GET ‘https://api.authy.com/protected/json/phones/verification/check’ \
+//-d api_key=[AuthToken] \
+//-d verification_code= \
+//-d phone_number=6476865007 \
+//-d country_code=1
+//
+//
+//
+////Response
+////{
+////    “message”: “Verification code is correct.“,
+////    “success”: true
+////}

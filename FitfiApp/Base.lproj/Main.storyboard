@@ -3094,29 +3094,11 @@
         <!--Social-->
         <scene sceneID="LgK-xf-Gfp">
             <objects>
-                <tableViewController id="M0l-Li-Kby" userLabel="Social" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UXR-E4-JTu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Qip-sb-Ycx">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qip-sb-Ycx" id="8cE-mP-AFe">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="M0l-Li-Kby" id="wsH-py-h6F"/>
-                            <outlet property="delegate" destination="M0l-Li-Kby" id="n8n-qs-bWj"/>
-                        </connections>
-                    </tableView>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bzW-dP-9hF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarItem title="Social" image="TabBarIcons/Social" selectedImage="TabBarIcons/Social Active" id="VCh-xw-gNN"/>
+                <tableViewController id="M0l-Li-Kby" userLabel="Social" customClass="Social" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Social" image="TabBarIcons/Social" selectedImage="TabBarIcons/Social Active" id="9lZ-OQ-WLe"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bzW-dP-9hF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8233.3333333333339" y="-16.304347826086957"/>
         </scene>
@@ -3904,6 +3886,21 @@ CgoKA
             </objects>
             <point key="canvasLocation" x="2705" y="-998"/>
         </scene>
+        <!--SocialVC-->
+        <scene sceneID="MJv-nY-Atr">
+            <objects>
+                <viewController id="lHg-ws-gNl" customClass="SocialVC" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="drr-sw-Z5D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rzC-ye-7sA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TZl-w3-8wq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3384" y="-844"/>
+        </scene>
         <!--Workout-->
         <scene sceneID="bcl-44-3Mr">
             <objects>
@@ -4588,7 +4585,7 @@ CgoKA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2j-sf-I4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6358.3999999999996" y="-53.073463268365821"/>
+            <point key="canvasLocation" x="6171" y="279"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="C52-XL-vYf">
