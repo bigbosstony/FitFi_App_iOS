@@ -12,7 +12,7 @@ import CoreData
 var beginDate:Date = Date().dateFromDays(-3)
 var endDate:Date = Date().dateFromDays(15)
 var fromPopUp:Int = 0
-
+var fromScheduleVC:Int = 0
 protocol fromPopUpVCDelegate:class {
     // Classes that adopt this protocol MUST define
     // this method -- and hopefully do something in
@@ -232,27 +232,31 @@ class CalendarViewController: UIViewController,fromPopUpVCDelegate {
     override func viewDidAppear(_ animated: Bool)
     {
         //MARK: can remove beloved lines
-//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
-//        
-//        request.returnsObjectsAsFaults = false
-//        do {
-//            let result = try context.fetch(request) as! [Schedule]
-//            
-//            scheduleArr = result
-//            
-//        } catch {
-//            
-//            print("Failed")
-//        }
-//        
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
-//        do {
-//            routineArr = try context.fetch(fetchRequest) as! [Routine]
-//            
-//        } catch {
-//            print("Loading Exercises Error: \(error)")
-//        }
-//        
+        if(fromScheduleVC == 1)
+        {
+            fromScheduleVC = 0
+        print("hi")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
+        
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request) as! [Schedule]
+            
+            scheduleArr = result
+            
+        } catch {
+            
+            print("Failed")
+        }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
+        do {
+            routineArr = try context.fetch(fetchRequest) as! [Routine]
+            
+        } catch {
+            print("Loading Exercises Error: \(error)")
+        }
+        }
     }
     
     func generateDays(_ beginDate: Date, endDate: Date) -> [Date] {
@@ -473,7 +477,7 @@ extension CalendarViewController: UITableViewDataSource {
                     routineName.append(singleRoutineName)
                    
                     totalExercise.append("\(getNumberOfExercise(scheduleName:tableCellScheduleArr))")
-                   
+                    estimatedTime.append("~45m")
 
                 }
                 tableCellScheduleArr = []
@@ -524,6 +528,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             cell.totalExercise.text = totalExercise[indexPath.row]
             cell.routineObj = routineHistoryObj[indexPath.row]
         }
+        
         else if (isSchedule == 2){
             //apply schedule theme
             cell.timeImageView.isHidden = false

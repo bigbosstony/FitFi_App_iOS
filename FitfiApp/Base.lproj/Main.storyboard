@@ -2308,10 +2308,10 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYN-W2-eZF">
                                                                         <rect key="frame" x="0.0" y="0.0" width="290" height="53"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RoutineName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="LpM-gt-Mgg">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RoutineName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="LpM-gt-Mgg">
                                                                                 <rect key="frame" x="22" y="8" width="189" height="21"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -2322,7 +2322,7 @@
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="~30m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SIm-re-L1h">
                                                                                 <rect key="frame" x="30" y="32" width="88" height="21"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -2341,7 +2341,7 @@
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="c8f-5J-WRm">
                                                                                 <rect key="frame" x="247" y="27" width="11" height="21"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -3094,11 +3094,11 @@
         <!--Social-->
         <scene sceneID="LgK-xf-Gfp">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bzW-dP-9hF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarItem title="Social" image="TabBarIcons/Social" selectedImage="TabBarIcons/Social Active" id="VCh-xw-gNN"/>
                 <tableViewController id="M0l-Li-Kby" userLabel="Social" customClass="Social" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Social" image="TabBarIcons/Social" selectedImage="TabBarIcons/Social Active" id="9lZ-OQ-WLe"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bzW-dP-9hF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarItem title="Social" image="TabBarIcons/Social" selectedImage="TabBarIcons/Social Active" id="VCh-xw-gNN"/>
             </objects>
             <point key="canvasLocation" x="8233.3333333333339" y="-16.304347826086957"/>
         </scene>
@@ -4913,7 +4913,8 @@ CgoKA
         <image name="pic" width="250" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Iro-ut-YEF"/>
+        <segue reference="f08-6I-aOm"/>
+        <segue reference="dX0-mi-e4F"/>
         <segue reference="GN5-Aq-Wdx"/>
         <segue reference="Kf4-Hr-3xz"/>
         <segue reference="05Y-6i-say"/>
