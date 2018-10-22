@@ -387,6 +387,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
         schedule.friday = friday
         schedule.saturday = saturday
         schedule.sunday = sunday
+        fromScheduleVC = 1
         //        let entity = NSEntityDescription.entity(forEntityName: "Schedule", in: context)
         //        let newUser = NSManagedObject(entity: entity!, insertInto: context)
         //        newUser.setValue(date, forKey: "date")

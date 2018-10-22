@@ -26,7 +26,11 @@ let exercise = [
 
 let devices = [
     "97EDD176-7D5B-9EC9-2950-7D759A5D8C6C" : "Dumnbell 3lb",
-    "C436C684-9C69-BF4E-EFD6-789DB0BB8E2C" : "Dumbbell 5lb",
+
+    "C436C684-9C69-BF4E-EFD6-789DB0BB8E2C": "Dumnbell 5b"
+    ,
+    "A7CFE275-B28D-7946-2ECB-CF77B016440C" : "Black Sticker",
+
     "31F588FB-5E81-2261-FFC5-0887653932E3" : "Dumbbell 8lb",
 ]
 
@@ -73,19 +77,22 @@ class SmallTrackingViewController: UIViewController {
     //Setup Core Bluetooth Properties
     var centralManager: CBCentralManager!
     var blePeripheral: CBPeripheral!
-
+    
     let bleMainServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E
+
     let bleMainServiceCharacteristic2WCBUUID = CBUUID(string: "6E400003-B5A2-F393-E0A9-E50E24DCCA9E")
     let bleMainServiceCharacteristic3NCBUUID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
+
 
     let bleBattery = CBUUID(string: "2A19")
     let bleSystemID = CBUUID(string: "2A23")
     let bleManufacturerNameString = CBUUID(string: "2A29")
     let bleModelNumberString = CBUUID(string: "2A24")
     
+    var identifier: String?
     //>>>>>>>>
     var globalCounter = 0
-
+    
     var dataArrayCounter = 0
     var dataArray = [Double]()
     var dataArrayString = [String]()
@@ -103,6 +110,7 @@ class SmallTrackingViewController: UIViewController {
     var counter = 0
     var currentExercise = ""
 
+
     
     //MARK: URL
 //    let machineLearningURL : String = "http://35.173.192.211:5000"
@@ -112,14 +120,17 @@ class SmallTrackingViewController: UIViewController {
     
     lazy var requestURL = {
        return URL(string: machineLearningURL)
+
     }()
     
     lazy var machineLearningURLRequest = {
         return URLRequest(url: requestURL ?? URL(string: "https://www.google.com")!)
     }()
     
+
 //    var machineLearningURLRequest = URLRequest(url: requestURL)
 //    machineLearningURLRequest.httpMethod = "POST"
+
     
     
     override func viewDidLoad() {
@@ -127,22 +138,23 @@ class SmallTrackingViewController: UIViewController {
         print("Small Tracking View Did Load")
         print("Device: ", UIDevice.modelName)
         print("BLE Version: \(bleVersion)")
-//        dateFormatter.dateFormat = "yyyyMMddHHmmss"
+        //        dateFormatter.dateFormat = "yyyyMMddHHmmss"
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
         //Register nib file to collection view
         collectionView.register(UINib.init(nibName: "SmallTrackingVCCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "smallTrackingVCCVCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        layout.minimumInteritemSpacing = 6
-//        collectionView.collectionViewLayout = layout
+        //        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        //        layout.minimumInteritemSpacing = 6
+        //        collectionView.collectionViewLayout = layout
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(expandTrackingSmallView)) //Change This If Needed
         self.view.addGestureRecognizer(tap)
         self.view.isUserInteractionEnabled = true
         
         //MARK: Testing
+
 //        var currentExercise = CurrentExercise(name: "Biceps")
 //        currentExercise.reps = 9
 //        currentExercise.sets = 2
@@ -152,8 +164,9 @@ class SmallTrackingViewController: UIViewController {
 //
 //            postRequest(request: machineLearningURL, sensor: y[i])
 //        }
-    }
 
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -197,6 +210,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
     //MARK: Did Discover Peipheral
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("\nDid Discover Peripheral")
+
 //        print("name: ", peripheral.name!)
 //        print("identifier: ", peripheral.identifier)
 //        print("state: ", peripheral.state.rawValue)
@@ -206,6 +220,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
 //        print("AdvertisementData Description: ", advertisementData.description)
         
 //        print("AdvertisementData Keys: ", advertisementData.keys)
+
         print("RSSI = \(RSSI)")
         print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
         
@@ -214,7 +229,9 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             print("BLE: 4.0")
         case 4.2:
             print("BLE: 4.2")
+
             if RSSI.intValue > -45 {
+
                 blePeripheral = peripheral
                 blePeripheral.delegate = self
                 //                centralManager.stopScan()
@@ -224,8 +241,10 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             }
         case 5.0:
             print("BLE: 5.0")
+
             if -45...0 ~= RSSI.intValue {
                 
+
                 blePeripheral = peripheral
                 blePeripheral.delegate = self
                 
@@ -244,13 +263,16 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
     //MARK: Did Connect Peripheral
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Did Connect to Peripheral")
+
         
         userLogin(with: username, url: machineLearningURL)
+
         
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         //        MARK: Make Small TrackingVC Visable
         self.view.isHidden = false
         //MARK: IMPORTANT SERVICE UUID
+
         blePeripheral.discoverServices(nil) // CHANGE THIS VALUE IF NEEDED, nil == SEARCH FOR ALL SERVICES
         exerciseDeviceLabel.text = devices[peripheral.identifier.uuidString]
         
@@ -258,6 +280,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
 //        central.stopScan()
         print("+++++")
         print(centralManager.retrieveConnectedPeripherals(withServices: [bleMainServiceCBUUID]))
+
         
         print("«««««««««««««««««««««««««««««««««««")
         print("identifier: ", peripheral.identifier)
@@ -270,17 +293,23 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
     //MARK: Did Disconnect Peripheral
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Did Disconnected Peripheral")
+        userLogout(from: machineLearningURL)
+        exerciseDeviceLabel.text = ""
         //MARK: Make Small TrackingVC Hidden
         //        smallTrackingVC.remove()
         self.view.isHidden = true
+
         
         userLogout(from: machineLearningURL)
+
 
         //MARK: Clean Counter and Exercise
         counter = 0
         exerciseCountingLabel.text = String(counter)
         exerciseTypeLabel.text = ""
+
         exerciseDeviceLabel.text = ""
+
 
         switch central.state {
         case .poweredOn:
@@ -336,12 +365,14 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                 if let value = characteristic.value {
                     print("System ID: ", [UInt8](value))
                 }
+
             }
             
             if characteristic.uuid == bleBattery {
                 if let value = characteristic.value {
                     print("Battery Level: ",  [UInt8](value))
                 }
+
             }
         }
     }
@@ -349,7 +380,9 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
     //MARK: Update Characteristic Value
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         switch characteristic.uuid {
+
         case bleMainServiceCharacteristic3NCBUUID:
+
             
             let sensorData = getSensorData(from: characteristic, fA: 0.000061, fG: 0.00875, fM: 0.00014)
             
@@ -361,17 +394,21 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
             
             print(dataArrayString)
             
+
             postRequest(request: machineLearningURL, sensor: dataArrayString)
             
 
 //        MARK: Battery Level
         case bleBattery:
             print("Battery Level value: ", [UInt8](characteristic.value!))
+
             
         default:
             print(characteristic.service.uuid)
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
+
 //            let data = String(data: characteristic.value!, encoding: .utf8)
+
         }
     }
 }
@@ -429,28 +466,35 @@ extension SmallTrackingViewController {
 
 extension SmallTrackingViewController {
     
+
     func postRequest(request url: String, sensor data: [String]) {
         
         guard let requestURL = URL(string: url) else { print("URL Error"); return }
+
         
         var recievedData: [String: String] = ["" : ""]
         var machineLearningURLRequest = URLRequest(url: requestURL)
         machineLearningURLRequest.httpMethod = "POST"
         
+
         let sensorData: [String : Any] = ["username": username ,"data": data]
         print("Sensor Data: ", sensorData)
+
         
         do {
             let sensorJSONData : Data = try JSONSerialization.data(withJSONObject: sensorData, options: [])
             machineLearningURLRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             machineLearningURLRequest.httpBody = sensorJSONData
+
         } catch {
             print("Error: Can Not Create JSON Data")
         }
         
+
         let defaultSessionConfiguration = URLSessionConfiguration.default
 
         let session = URLSession(configuration: defaultSessionConfiguration)
+
         
         let task = session.dataTask(with: machineLearningURLRequest) { (data, urlResponse, error) in
             guard error == nil else { print("Error Calling POST \(String(describing: error))") ; return }
@@ -460,6 +504,7 @@ extension SmallTrackingViewController {
             do {
                 guard let responseJSONData = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String : String] else { print("Can not get JSON as Dictionary") ; return }
                 recievedData = responseJSONData
+
                 print("Recieved Data: ", recievedData)
                 
                 //Update Label
@@ -471,6 +516,7 @@ extension SmallTrackingViewController {
                         self.collectingController(exercise: exercise)
                         self.collectionView.reloadData()
                         
+
                         if self.currentExercise == exercise {
                             self.exerciseTypeLabel.text = exercise
                             self.counter += 1
@@ -484,6 +530,7 @@ extension SmallTrackingViewController {
                         }
                     }
                 }
+
 
             } catch {
                 print("Error parsing response from POST")
@@ -548,6 +595,7 @@ extension SmallTrackingViewController {
 //    }
 }
 
+
 extension SmallTrackingViewController {
     
     func getSensorData(from characteristic: CBCharacteristic ,fA: Float , fG: Float , fM: Float) -> [Float] {
@@ -579,3 +627,4 @@ extension SmallTrackingViewController {
     
     
 }
+
