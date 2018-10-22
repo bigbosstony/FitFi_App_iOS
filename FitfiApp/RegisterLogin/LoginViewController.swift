@@ -98,7 +98,7 @@ class LoginViewController: UIViewController {
                 print(error!)
                 return
             }
-            
+       
             guard let responseData = data else {
                 print("Error: did not receive data")
                 return
@@ -116,6 +116,7 @@ class LoginViewController: UIViewController {
                 
                 if token != nil {
                     self.hasToken = true
+                    
                 }
                     
             } catch  {
@@ -123,6 +124,7 @@ class LoginViewController: UIViewController {
                 return
             }
         }
+        
         task.resume()
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

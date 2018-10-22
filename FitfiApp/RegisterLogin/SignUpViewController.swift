@@ -95,3 +95,42 @@ extension SignUpViewController: UITextFieldDelegate {
         return true
     }
 }
+
+
+
+
+
+
+//First Request, Get Code
+//curl 'https://api.authy.com/protected/json/phones/verification/start' \
+//-d api_key=CjqvmmdoUkVUyc12YZbwG4gIz8RyIJi3 \
+//-d via=sms \
+//-d phone_number=6476865007 \
+//-d country_code=1
+
+
+//Response
+//{
+//    "message": "Text message sent to +1 647-686-5007.",
+//    "seconds_to_expire": 599,
+//    "uuid": "9f09edc0-b3b0-0136-a6eb-12f5b40cad06",
+//    "success": true
+//}
+
+
+
+
+//Second Request, Verify Code
+//curl -GET 'https://api.authy.com/protected/json/phones/verification/check' \
+//-d api_key=[AuthToken] \
+//-d verification_code= \
+//-d phone_number=6476865007 \
+//-d country_code=1
+
+
+
+//Response
+//{
+//    "message": "Verification code is correct.",
+//    "success": true
+//}
