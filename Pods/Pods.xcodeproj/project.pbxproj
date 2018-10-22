@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		00ACB5CD1B102B7563E382654DA9AA64 /* ChartViewSelectorAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D76E0E0CF5796DE967E9B2D338C0EC /* ChartViewSelectorAlpha.swift */; };
 		0155CE168ACAFB2FB917592C5DE9CD25 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A840588633A313C2309BEF1A2EDCEBD /* Transformer.swift */; };
 		0192E23BF313753684EB685E62539EC5 /* BarLineScatterCandleBubbleChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF862B1535F2DF096D9F3125BFACDEB /* BarLineScatterCandleBubbleChartData.swift */; };
@@ -339,16 +340,11 @@
 			remoteGlobalIDString = 4D5B8B1BE64F80268007C79821DDDC20;
 			remoteInfo = JTAppleCalendar;
 		};
-		A56F9F4F7828FCE9A7F96796B77DDBBB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE7FAE7CA16E568AF5B48B37824156C8;
-			remoteInfo = SwiftCharts;
-		};
+	
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+
 		0085E6BE31EAE3FF522F172ACB2E40C1 /* YAxisRendererRadarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxisRendererRadarChart.swift; path = Source/Charts/Renderers/YAxisRendererRadarChart.swift; sourceTree = "<group>"; };
 		02018A59541F285BF69D95D9810D6969 /* AnimatedMoveViewJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedMoveViewJob.swift; path = Source/Charts/Jobs/AnimatedMoveViewJob.swift; sourceTree = "<group>"; };
 		02396B7853412D01331002DA1D21E43B /* Charts-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Charts-prefix.pch"; sourceTree = "<group>"; };
@@ -699,6 +695,8 @@
 		FDB796064F0F933BEB5B3BDEEDD7579E /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		FDF19DC2588E1DD0A0D770D7D41BD722 /* ChartAxisValuesGeneratorFixed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartAxisValuesGeneratorFixed.swift; path = SwiftCharts/Axis/ChartAxisValuesGeneratorFixed.swift; sourceTree = "<group>"; };
 		FFBEBD199993E5994799B7DCDBF1E43A /* Chart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Chart.swift; path = SwiftCharts/Chart.swift; sourceTree = "<group>"; };
+
+	
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -710,11 +708,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		360D69E79C7289204A62E2B72CA6617F /* Frameworks */ = {
+
+		3082E22DF09B907BD8CC639C234FDE38 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBD7F4B2BB50B0E0485E227A8D56A598 /* Foundation.framework in Frameworks */,
+				D29CAAAE8D0D6ACFE22E3D9942CC59AD /* Foundation.framework in Frameworks */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,21 +726,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		48CB46152227F7AABC0337EDBE0FED34 /* Frameworks */ = {
+
+		72ED77DF8A44D237FEBFBC41A91EF9CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2688C4E0159CF3083F335DA78C448DCA /* CoreGraphics.framework in Frameworks */,
-				CA14506A06678E7D7DA925A44B39F054 /* Foundation.framework in Frameworks */,
-				C65C2493AEA8372AD80D11B2A980B3B8 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		51C20F3883524CAE435FAD6C1000AA07 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				314DBA50252CBE0CB34B3B830804F8CF /* Foundation.framework in Frameworks */,
+				EF90AA74264A14B64C055BC5ECE6F6C9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,149 +743,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C68CA68451668E120DB6DD3CD0718908 /* Frameworks */ = {
+		A2C9610DBE1AA081C18A7946DD377019 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88F0545662A86C5A46E5BB15F532B2D3 /* Foundation.framework in Frameworks */,
+				1CA2AA0BF0A1B7EC68B0A2973D525652 /* Foundation.framework in Frameworks */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				93FD095B5FC2A2BCC81B8E3CFC167E67 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		16259FABF4F64826B3522A7E8A1FEE3D /* SwiftCharts */ = {
-			isa = PBXGroup;
-			children = (
-				FBCC896209F52D65F077C471D5F94F17 /* Array_String.swift */,
-				24370384E06E629C6D0F5F3D0F0777D6 /* BarsChart.swift */,
-				0BC323D6D3A1A95BABA49BC4BBBEA998 /* CatmullPathGenerator.swift */,
-				D3BB8958789281D1C8FC3F1DBE16DA97 /* CGPoint.swift */,
-				CDFBB4270CB762E9FF6BE5B291E6F66E /* CGRect.swift */,
-				FFBEBD199993E5994799B7DCDBF1E43A /* Chart.swift */,
-				FCD6A07F3729960B55DEFC85C68088EF /* ChartAreasView.swift */,
-				04688E5A8BB9DE821015E7959BA8C315 /* ChartAxis.swift */,
-				3C0157A94DC1A9070FDEC9AF31282864 /* ChartAxisGeneratorMultiplier.swift */,
-				17853D903EC9ABF776E0F36527504B3C /* ChartAxisLabel.swift */,
-				85AF8CFDF57262D5F30BA5BF29BA9836 /* ChartAxisLabelGeneratorDate.swift */,
-				92B08A92F9F3E7761A3A63F735A44759 /* ChartAxisLabelsConflictSolver.swift */,
-				2B13C5218A3E2C66F6080FB47E36CD1E /* ChartAxisLabelsConflictSolverMoveUpDown.swift */,
-				FB93E7BE48B2C5A4A5812FF6026A0801 /* ChartAxisLabelsGenerator.swift */,
-				02F0090CD44D847AAAB7AFBB3BCCC288 /* ChartAxisLabelsGeneratorBase.swift */,
-				D3D6307CB2B567BA1534C442861C7A39 /* ChartAxisLabelsGeneratorBasic.swift */,
-				4F32F9296392175D012027074D1D9270 /* ChartAxisLabelsGeneratorFixed.swift */,
-				62C1A6879E99E7C528D504B63C14C05C /* ChartAxisLabelsGeneratorFunc.swift */,
-				C40309155B3DBC46D544E44ACC7822C1 /* ChartAxisLabelsGeneratorNumber.swift */,
-				75E6FEF3241E636637BA574F70B13C99 /* ChartAxisLabelsGeneratorNumberSuffix.swift */,
-				BB2B9615F8AFA2342715CBEF450E7FC5 /* ChartAxisLayer.swift */,
-				CD174D4F2AC2574F149FE184DFEA6CED /* ChartAxisLayerDefault.swift */,
-				07F8EE8FDD77A80186F666E829E76B64 /* ChartAxisModel.swift */,
-				B21AC5A6BFB1CCA969FBE5FE6ACCC679 /* ChartAxisValue.swift */,
-				73C586860CA1C018973C48F796FB4DA1 /* ChartAxisValueArray.swift */,
-				21AF848272A61CB53031D52D506DCF1E /* ChartAxisValueDate.swift */,
-				28AA76D52CBE24CA8C487EC1FFE59AA2 /* ChartAxisValueDouble.swift */,
-				E9D28D66C2931A11BC99C753D9E807CB /* ChartAxisValueDoubleScreenLoc.swift */,
-				E8C81874E6218050116577343FD6B6A2 /* ChartAxisValueFloat.swift */,
-				21BC981F0673C4F46B09F3400922BD64 /* ChartAxisValueFloatScreenLoc.swift */,
-				276575D5931CD5D5FE86F490BD7B75C0 /* ChartAxisValueInt.swift */,
-				8525813FC6792AC721BFEB21473E3EBB /* ChartAxisValuesGenerator.swift */,
-				5A13E3BA5493C74F58FAD2F67ADC3EC4 /* ChartAxisValuesGeneratorDate.swift */,
-				FDF19DC2588E1DD0A0D770D7D41BD722 /* ChartAxisValuesGeneratorFixed.swift */,
-				A2453EC28D7CE02C3FB0A473E83DEE65 /* ChartAxisValuesGeneratorFixedNonOverlapping.swift */,
-				9131BBA34769BA646842B7C442EDD1B4 /* ChartAxisValuesGeneratorNice.swift */,
-				B86E86DBDB7C94BE4865F664BB8A806A /* ChartAxisValuesGeneratorXDividers.swift */,
-				CC74736FF4D70D9F7A32521BC8557E54 /* ChartAxisValuesGeneratorXFixedNonOverlapping.swift */,
-				E4BEED689A6B7E0CC0EB2D5125FB0F67 /* ChartAxisValuesGeneratorYFixedNonOverlapping.swift */,
-				B67B43EED403B8F5F97C9ECE55D7F4EC /* ChartAxisValueStaticGenerator.swift */,
-				75E4BFF12027A1041036981086060061 /* ChartAxisValueString.swift */,
-				E0A6568BE38771E6738006492ECFDA9A /* ChartAxisX.swift */,
-				7E3BBA1657F6DB9C381A6723D41E7B3B /* ChartAxisXHighLayerDefault.swift */,
-				7BE5A885585FDFB57FE39F2267288AA7 /* ChartAxisXLayerDefault.swift */,
-				078802181AE7F6FD3C76BCDEE5693930 /* ChartAxisXLowLayerDefault.swift */,
-				5C1F1F9A75588BE1FE2052764EA9AA62 /* ChartAxisY.swift */,
-				6DD5AC8786F02336497825FE1526F471 /* ChartAxisYHighLayerDefault.swift */,
-				2E6A15F092547C86FDE3C2389AB838D4 /* ChartAxisYLayerDefault.swift */,
-				6289CB6C79312E62A82D6EB3A21F35E0 /* ChartAxisYLowLayerDefault.swift */,
-				4FC6E956C7A47585835CE500D8A899D0 /* ChartBarsLayer.swift */,
-				0C914CE0E875720B49617DD2A9F9EA66 /* ChartCandleStickLayer.swift */,
-				0DED98495E5E264788CD3848D2162054 /* ChartCandleStickView.swift */,
-				0B9A8D8275BA797BBC0D99039AE14425 /* ChartConfig.swift */,
-				D8364F6CFCFF2CC38ECE49C74AC4F0BE /* ChartContextDrawer.swift */,
-				57F6072DE589878063ABCB281DA282FF /* ChartCoordsSpace.swift */,
-				BF8D42BBBD9D145E3E5DAD3A2F2C4D16 /* ChartCoordsSpaceLayer.swift */,
-				5D9F59FE5071126CFB8B70FC40A38538 /* ChartDividersLayer.swift */,
-				F229632584484A3759197AFAA8D738D5 /* ChartDrawerFunctions.swift */,
-				64361BEA52147D10B6E0383679943E08 /* ChartGroupedBarsLayer.swift */,
-				6807B8A8F08E92E8BD086CCF8A379BCD /* ChartGuideLinesLayer.swift */,
-				999B14DB7C72008D3136B930E10842D6 /* ChartLabelDrawer.swift */,
-				063D4235F1F3D035F798C94F349830B4 /* ChartLayer.swift */,
-				F509C46E1029C7ECD52AFCC8EA28119C /* ChartLayerBase.swift */,
-				7B1A97B49A50F5E9CCE1259D53730D33 /* ChartLineDrawer.swift */,
-				9700A4B4D4B64D9E80754E3C93A50651 /* ChartLineModel.swift */,
-				C6B96F4AC9AD7C1AB7106DA63B25526C /* ChartLinesView.swift */,
-				E3ED6EB0F2C44F3660C0BF6389887731 /* ChartNiceNumberCalculator.swift */,
-				27693DB3B7A053E175E11625E447322D /* ChartPoint.swift */,
-				DC8C833946C8928D151461E182919527 /* ChartPointBubble.swift */,
-				0369D3D36B915E6B81E99B6B4B20C48F /* ChartPointCandleStick.swift */,
-				E78ECA1517D0FED280B10848ED982DCE /* ChartPointEllipseView.swift */,
-				874B5207340942837B1B129400867985 /* ChartPointsAreaLayer.swift */,
-				41F9F6DFC2EBD61640CEFD2478F19DFF /* ChartPointsBubbleLayer.swift */,
-				41A15CF4A6439E99EC0A97C666D458D3 /* ChartPointsCandleStickViewsLayer.swift */,
-				8AF93A17E4358F899ADBCDA757B73569 /* ChartPointsLayer.swift */,
-				74272314626960B1D3106F72D54AC36D /* ChartPointsLineLayer.swift */,
-				F66FCC31C12207F7B11EEF0E0D4CDE46 /* ChartPointsLineTrackerLayer.swift */,
-				035BC520400E5E2FB01FCFA162A9B6B1 /* ChartPointsScatterLayer.swift */,
-				5254B35DA90E8848C38A8589F7263FA1 /* ChartPointsSingleViewLayer.swift */,
-				B0B63C4A915D746E1CD9C6060528624B /* ChartPointsTouchHighlightLayer.swift */,
-				2945479D4C6FCA44E36029B6BBE27FD7 /* ChartPointsTrackerLayer.swift */,
-				061A9A2E5C370D8AB63E2300DC5CC8B0 /* ChartPointsViewsLayer.swift */,
-				AB3FC4F7F2462056C91D7EE7D63A6605 /* ChartPointTargetingView.swift */,
-				5FCF868B46FDCDB62048ACBFC35B0BA6 /* ChartPointTextCircleView.swift */,
-				6D6DEEB7A83BD46893A16E4697C1609D /* ChartPointViewBar.swift */,
-				45230DF9A9FD9B3503F65641B88DA548 /* ChartPointViewBarGreyOut.swift */,
-				A838F3149F73E0E54E6280D86D0F05F9 /* ChartPointViewBarStacked.swift */,
-				E0F84A18E741DC3F80FD2F0695A5C4B3 /* ChartShowCoordsLinesLayer.swift */,
-				41ED387C1971E250670F11E71ECFD67B /* ChartStackedBarsLayer.swift */,
-				F023966958E1FE8A04EA6D6C6AF7F830 /* ChartTextUtils.swift */,
-				892E65B2090A06A36A1ABF0FDA912192 /* ChartTimeUtils.swift */,
-				90B0C3E45F252D861F51E77EA0180EE1 /* ChartViewAlphaAnimator.swift */,
-				6747FC71682A24F656B49F5E963BF30D /* ChartViewAnimator.swift */,
-				200CCD94481A959DD091301C61DE3390 /* ChartViewAnimators.swift */,
-				858DA7D61BD5FE3305D1ADC35D2AE4E6 /* ChartViewGrowAnimator.swift */,
-				99D2FF492E5918A589E4CFBFE7649A5A /* ChartViewsConflictSolver.swift */,
-				E0608CC31D7827612781F61BE2FE1AF7 /* ChartViewSelector.swift */,
-				A9D76E0E0CF5796DE967E9B2D338C0EC /* ChartViewSelectorAlpha.swift */,
-				486B99B86ED2D15CF9BE5D92D672D583 /* ChartViewSelectorBrightness.swift */,
-				8D4FEC29FB2F6A3467CCDB3326F93F86 /* CubicLinePathGenerator.swift */,
-				651874273A6F3C4E8C765EDF31964DA3 /* Globals.swift */,
-				3A90BF47679737885CBD309060959D3D /* GroupedBarsCompanionsLayer.swift */,
-				3F1D171F2CDC6F8A65219BCD97891212 /* HandlingLabel.swift */,
-				1F45A38D7292161D8DADBE447B228379 /* HandlingView.swift */,
-				A290E3A4D5F757628C086D5CE5A66724 /* InfoBubble.swift */,
-				C755398C145555AD42C4C326EC25F7AB /* Int.swift */,
-				77977174494030086BB9096AAC44E9A8 /* LineChart.swift */,
-				7F6500435B7A7A9D0BC585F94AB3840B /* NSDate.swift */,
-				DFFC8412EBAED7F845C67715E1DA821D /* Operators.swift */,
-				A73F57895B0C9D17F5E48A1FC7A2F5C8 /* Optional.swift */,
-				579EED2CE85281624A729F992F8B49C6 /* Pannable.swift */,
-				BC7A81CE1DA3DA86A114D9CEE174ACE4 /* StraightLinePathGenerator.swift */,
-				C75D4B01A89D08D570606A2BD39C56BA /* String.swift */,
-				337052C82FBFC024E0125C6BD8D472A8 /* TrendlineGenerator.swift */,
-				434CF96DD52061BC5C87335036131899 /* UIColor.swift */,
-				83F9734903B029FB48922DF7E565F361 /* Zoomable.swift */,
-				9E9DCAFBC127BDB96398D6EF6C5CF750 /* Support Files */,
-			);
-			path = SwiftCharts;
-			sourceTree = "<group>";
-		};
+
 		1A7D6B1940A6BE3C69AFC40B4CDF0EC2 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -905,29 +766,20 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		35CB7CAC21B9AC63B3C6546F28306315 /* Pods */ = {
+
+		2DFC659CD700CC5D408E9A07C3C06E52 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A81C30A851168A78BBEDC79D71DA9F26 /* Alamofire */,
-				A47243A45D2EF0598E54CBB0D68C85DB /* Charts */,
-				BDBA6346304CC6180EFB58130A35EB1C /* JTAppleCalendar */,
-				16259FABF4F64826B3522A7E8A1FEE3D /* SwiftCharts */,
+				3022F64D4A759C040B339A1CED987B94 /* Charts.modulemap */,
+				B0469BD288C5BB4147DD0A377F294DF3 /* Charts.xcconfig */,
+				BA8DA91188539EE36B431B17287E83F4 /* Charts-dummy.m */,
+				32F1A965E10FBEBF321849626B663619 /* Charts-prefix.pch */,
+				8FCE3AC4EC1E8C7207D6DA02818F7778 /* Charts-umbrella.h */,
+				EBA62E1E8BA8551B756BBF69569D84DC /* Info.plist */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		430A53425570FFADB67424AAF13F702D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4310BCE9BEE07C2F2760C48B0D00278E /* Alamofire.framework */,
-				923EF0294B6A974CE7E2833FAADAA7D6 /* Charts.framework */,
-				DDE081CF02CC5D7BC1D9B082C46F04AD /* JTAppleCalendar.framework */,
-				41C8D38C69BE70551689121DA1ED11E6 /* Pods_FitfiApp.framework */,
-				490B1B4626A708983A7F003917641FA7 /* Pods_FitfiAppTests.framework */,
-				5470405D16BA4F48459DFD8B8FE772BA /* Pods_FitfiAppUITests.framework */,
-				9EACB065139AFAD94B4D2439A3C95581 /* SwiftCharts.framework */,
-			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/Charts";
+
 			sourceTree = "<group>";
 		};
 		4C6C61FC6EE301B5F730EB873F739FC4 /* Pods-FitfiAppTests */ = {
@@ -948,31 +800,59 @@
 			path = "Target Support Files/Pods-FitfiAppTests";
 			sourceTree = "<group>";
 		};
-		6491FF6BF0B4E926E406877FA2C93AEB /* Support Files */ = {
+
+		525F501B2E1752A428D1695A7C1EC0ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5AD471AED7BBCE105C9CB767F8BECC3A /* Info.plist */,
-				7A3C3C8707754261E58FB53874EC6172 /* JTAppleCalendar.modulemap */,
-				DECE55C0754971AEB24FEEEC6B2C9782 /* JTAppleCalendar.xcconfig */,
-				5E3189A9EA45E2157E40EB113E0D190E /* JTAppleCalendar-dummy.m */,
-				B7FE5003520215A19002827A2E7A532D /* JTAppleCalendar-prefix.pch */,
-				7238EE0516175121A370C36FBD628F2E /* JTAppleCalendar-umbrella.h */,
+				7593F2D8620A65453FD4848B44A4819B /* Alamofire.framework */,
+				51A3B4125D24B95A5A71730A91F3A939 /* Charts.framework */,
+				89E324C642CC67B83DB018F68FA0A0C2 /* JTAppleCalendar.framework */,
+				0F79764185D068E3A2C03FF8DC7E19EF /* Pods_FitfiApp.framework */,
+				CB701F889E79BB34DEC0241C0E293594 /* Pods_FitfiAppTests.framework */,
+				42DEB26E7E60B274BCE9FF06EFC731C9 /* Pods_FitfiAppUITests.framework */,
+
 			);
-			name = "Support Files";
-			path = "../Target Support Files/JTAppleCalendar";
+			name = Products;
+			sourceTree = "<group>";
+		};
+
+		79D8169084C0E2D35F6B5448002E1923 /* JTAppleCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				99C41B8474BE6E7E192DEFEE9AC64FDA /* CalendarEnums.swift */,
+				3DE80BD1ACA26E7061FCD010F9C8CCB4 /* CalendarStructs.swift */,
+				DB15734E5D51F98E4FA242C87088BE13 /* GlobalFunctionsAndExtensions.swift */,
+				0661F176BEE045AB012BD7043D71420C /* InternalActionFunctions.swift */,
+				74C821C24E85CA66C5EFF788FBA947C8 /* InternalQueryFunctions.swift */,
+				DA1F34B25BF8500B085A135FF0A86F21 /* JTAppleCalendarDelegateProtocol.swift */,
+				E4D30D1F0CB43A8C2794867F947B085B /* JTAppleCalendarLayout.swift */,
+				F817B9B226CD7A9518E0234935C576E4 /* JTAppleCalendarLayoutProtocol.swift */,
+				7FB0FD7A95B797717485FE9B2B37F7F6 /* JTAppleCalendarVariables.swift */,
+				F299F01776C4000DBD41588CDB5DF202 /* JTAppleCalendarView.swift */,
+				450C09ACE1B646788D638788DE429B86 /* JTAppleCell.swift */,
+				9E30BE91F1CE6819C686C35B9B815391 /* JTAppleCollectionReusableView.swift */,
+				96C1412D9CB2A0518310B113BD36E6B5 /* JTCalendarProtocols.swift */,
+				472F479E0633DFD1892288869511C1EE /* UICollectionViewDelegates.swift */,
+				AD1F1E1166C0274E526FF17A904AFF94 /* UIScrollViewDelegates.swift */,
+				7B57BAF2EDC07EEEB2DD2A23D8ECF670 /* UserInteractionFunctions.swift */,
+				BD978FCCC7D32A06B882B08C545FF404 /* Support Files */,
+			);
+			name = JTAppleCalendar;
+			path = JTAppleCalendar;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				35CB7CAC21B9AC63B3C6546F28306315 /* Pods */,
-				430A53425570FFADB67424AAF13F702D /* Products */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				A561BE84B86558BDBF92625A6B23BD3B /* Pods */,
+				525F501B2E1752A428D1695A7C1EC0ED /* Products */,
 				1A7D6B1940A6BE3C69AFC40B4CDF0EC2 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
+
 		91D1BBD76365EB8F8194BF4B055FEF98 /* Pods-FitfiAppUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -991,257 +871,101 @@
 			path = "Target Support Files/Pods-FitfiAppUITests";
 			sourceTree = "<group>";
 		};
-		93FD095B5FC2A2BCC81B8E3CFC167E67 /* iOS */ = {
+
+		A561BE84B86558BDBF92625A6B23BD3B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				99C06B1B209CA23EC16EBF65CF890313 /* CoreGraphics.framework */,
-				CE59B0D97841C2542CA3D20540685C26 /* Foundation.framework */,
-				A5224A726D9EABB2D5F18E4597390EF3 /* UIKit.framework */,
+				A569B7C8C4A75D19E9F568FB95485181 /* Alamofire */,
+				E006B6A4AB522EAE9F5420CF9CC72CFF /* Charts */,
+				79D8169084C0E2D35F6B5448002E1923 /* JTAppleCalendar */,
 			);
-			name = iOS;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		98C23131897214BAA3DCAC2893A0ACB8 /* Support Files */ = {
+		A569B7C8C4A75D19E9F568FB95485181 /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
-				88A77B38ED1DB3066539F4FCAE496C14 /* Charts.modulemap */,
-				947D4013D00B665F0D450057424195BC /* Charts.xcconfig */,
-				7BD28021D804FBA9E95CEC0D2D2E3DB6 /* Charts-dummy.m */,
-				02396B7853412D01331002DA1D21E43B /* Charts-prefix.pch */,
-				6F5188B37683C637F5013D53031C096E /* Charts-umbrella.h */,
-				1395366A32F541FD9EA3628FF82068EC /* Info.plist */,
+				85206E210582DC24E7D230C516A7C575 /* AFError.swift */,
+				808D97A2F52C7BAEB0F90CEBF44667DF /* Alamofire.swift */,
+				0146265585E25AEB53FDE25A7D4BB6DF /* DispatchQueue+Alamofire.swift */,
+				10BE6D25539FDD96D86D05FB6049BBD6 /* MultipartFormData.swift */,
+				E38BE01102D2DB0720373A46062E0609 /* NetworkReachabilityManager.swift */,
+				A3A30141442C50CD5F86078C94AA6F50 /* Notifications.swift */,
+				59F6AE74C5324E3A5D585ECB827697E7 /* ParameterEncoding.swift */,
+				FF201BFFF52769BE8340BCDBC3DB65C2 /* Request.swift */,
+				3C2E56BF763ABDDB19E1682040976514 /* Response.swift */,
+				9B1DCEA1A933DC66BE4F6F0B63CE2A30 /* ResponseSerialization.swift */,
+				82E4822DE2DC74ADFD374EDB3C740A4F /* Result.swift */,
+				13C1918D54EA83DB3B3732D6FDAA90DB /* ServerTrustPolicy.swift */,
+				095E14D5A3D306128D2C7835FCB586CD /* SessionDelegate.swift */,
+				345561FC1CD29DA2772B8182CFE32390 /* SessionManager.swift */,
+				C87D8ABBE1569E7190ED11B9A3FCB9AB /* TaskDelegate.swift */,
+				88050FF9E5827800802DE4BC72BF0D78 /* Timeline.swift */,
+				8DC6E6EE118A70215902756E043BB851 /* Validation.swift */,
+				A685ADDD2FC44EC0BEEC5837B7A1329A /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Charts";
-			sourceTree = "<group>";
-		};
-		9E9DCAFBC127BDB96398D6EF6C5CF750 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				1D8F0CF487E7AE7687955F155AD96133 /* Info.plist */,
-				25084204A79C6B97E556D2C8E447D043 /* SwiftCharts.modulemap */,
-				1EA4ADE79C01F0E64B3966B4C9626406 /* SwiftCharts.xcconfig */,
-				4CC9325291D1E0D7691CCD83C2E85588 /* SwiftCharts-dummy.m */,
-				502CA75BDEDB7B5E92928F96710687D6 /* SwiftCharts-prefix.pch */,
-				738ADFA5248563AE9CA680CAFBE15FFE /* SwiftCharts-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftCharts";
-			sourceTree = "<group>";
-		};
-		A47243A45D2EF0598E54CBB0D68C85DB /* Charts */ = {
-			isa = PBXGroup;
-			children = (
-				D633B972D803A14BBF9D9B6E5B140E49 /* Core */,
-				98C23131897214BAA3DCAC2893A0ACB8 /* Support Files */,
-			);
-			path = Charts;
-			sourceTree = "<group>";
-		};
-		A81C30A851168A78BBEDC79D71DA9F26 /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				7A0AC886CC9145DA25B54F5330F62682 /* AFError.swift */,
-				F1413DE17B916134507131CBD625023D /* Alamofire.swift */,
-				C54E91232A42F8601FBFDC71F3A08B2F /* DispatchQueue+Alamofire.swift */,
-				699073EB4DCB36A8B11617ED23821E95 /* MultipartFormData.swift */,
-				B2C82353E6CDC61CB2567EB306569B89 /* NetworkReachabilityManager.swift */,
-				11425B52323A892C99A66142379D3AE4 /* Notifications.swift */,
-				A2D5CB3A964D8A9856C37DCBABA319CA /* ParameterEncoding.swift */,
-				22DBB301F56BE5B209802686C31E3AE6 /* Request.swift */,
-				C1FFE1FFEEFCDADF8436D70369D02229 /* Response.swift */,
-				C8DF22540EBC97EF4E2CE40A49C20152 /* ResponseSerialization.swift */,
-				6CEC9F7DBC86FC9FADAB382E30482E2E /* Result.swift */,
-				5C7A3DBE41F52C3322497C69FE62065B /* ServerTrustPolicy.swift */,
-				52E2513E26845263E353C1C3133591FE /* SessionDelegate.swift */,
-				639F253C2DED26FF961D80C2F3BF5456 /* SessionManager.swift */,
-				0975BA3FE0D9D0D24F6602CC5A6AF271 /* TaskDelegate.swift */,
-				C1F30F58D34F840C75FB0CC29DC362AB /* Timeline.swift */,
-				D73CD356CB6F965F0FFAA801C7FB237B /* Validation.swift */,
-				C8ECFA900357D2D658F5D7BD4D38C1BB /* Support Files */,
-			);
+			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
-		BDBA6346304CC6180EFB58130A35EB1C /* JTAppleCalendar */ = {
+		A685ADDD2FC44EC0BEEC5837B7A1329A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7D99CF0DC27BCE25FD3E43990B0FA609 /* CalendarEnums.swift */,
-				B8851FE5FC0F8F4ADDFAE40E8414F4B0 /* CalendarStructs.swift */,
-				AEBACDC98BA414F6D5B6CF5388083045 /* GlobalFunctionsAndExtensions.swift */,
-				681185DDB13F28B7FFF098B9284AF67A /* InternalActionFunctions.swift */,
-				04EC139DB30C7B7792AAD91751B4B7B8 /* InternalQueryFunctions.swift */,
-				801475BF18429410CD5B716644710046 /* JTAppleCalendarDelegateProtocol.swift */,
-				D39AB28FFB1D6D7C9D9D23FB4F513276 /* JTAppleCalendarLayout.swift */,
-				5F134463E190FA96B76AE9350B21666E /* JTAppleCalendarLayoutProtocol.swift */,
-				EDF5AE66D665039B2D496C1B0F57EC84 /* JTAppleCalendarVariables.swift */,
-				BF3288AF6A58CF60648E6B37374B63C5 /* JTAppleCalendarView.swift */,
-				C40DEA1B71B03187E90CF8567BE902F3 /* JTAppleCell.swift */,
-				F85F9DD818A53B6DEB243B35EF5A4F7F /* JTAppleCollectionReusableView.swift */,
-				3A934F64B598E21376AB3663AD2D1861 /* JTCalendarProtocols.swift */,
-				E559FF62239A669B0ED8206277609342 /* UICollectionViewDelegates.swift */,
-				9093CE604180DC12DFBB3FB1A1AF10BD /* UIScrollViewDelegates.swift */,
-				2DACCDA623CDB822B0C7994F5F8689BD /* UserInteractionFunctions.swift */,
-				6491FF6BF0B4E926E406877FA2C93AEB /* Support Files */,
-			);
-			path = JTAppleCalendar;
-			sourceTree = "<group>";
-		};
-		C8ECFA900357D2D658F5D7BD4D38C1BB /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				258D4D207A9B5DBDEE2A143FC5F34E47 /* Alamofire.modulemap */,
-				1B6E6CFADE1D95FFA366424C78A29EAE /* Alamofire.xcconfig */,
-				029EA60F2DBE8F4339B847F5D87EFE2E /* Alamofire-dummy.m */,
-				FDB796064F0F933BEB5B3BDEEDD7579E /* Alamofire-prefix.pch */,
-				65AE47156D63CFF97573D0E464FCC29F /* Alamofire-umbrella.h */,
-				68278470E6642167CB8364F119D6FBE3 /* Info.plist */,
+				75028DE49986AF54D5FB28D599D6D75F /* Alamofire.modulemap */,
+				4CDCC1CAAB486D6CAAD81E8A0227AA6A /* Alamofire.xcconfig */,
+				42AF0EBBD332386E9ADB87AAF63628B3 /* Alamofire-dummy.m */,
+				6E02CC911251953183E703072F8D81AE /* Alamofire-prefix.pch */,
+				AF783709DE4B7B9EEE293CEDE2F81921 /* Alamofire-umbrella.h */,
+				7F68D63FC895064C9ED1772E98EC91D1 /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Alamofire";
 			sourceTree = "<group>";
 		};
-		D633B972D803A14BBF9D9B6E5B140E49 /* Core */ = {
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				02018A59541F285BF69D95D9810D6969 /* AnimatedMoveViewJob.swift */,
-				B85B93C8032E58EF0444958EB6FCDAE7 /* AnimatedViewPortJob.swift */,
-				BAEEE8ED7A5F0F6B70E21B089FBE41F0 /* AnimatedZoomViewJob.swift */,
-				7F7B0DCD296AAF91EDA272DC5648751C /* Animator.swift */,
-				36E542B6E83A2B799C69B2F264AFBD3C /* AxisBase.swift */,
-				53480073DDA3D8DFAB9B65D34D116E8C /* AxisRendererBase.swift */,
-				9BCF2DCFC57660B4493F2BB31931FD0C /* BarChartData.swift */,
-				100DD3B913434900F3E22AD97A6C8DBA /* BarChartDataEntry.swift */,
-				16880E08BA014DFDB48F9D2FC4845D41 /* BarChartDataProvider.swift */,
-				4D03E8A2BDC4784869D74269AE106268 /* BarChartDataSet.swift */,
-				6C3F1CBC72D85810984FEB6A9C539738 /* BarChartRenderer.swift */,
-				ADE679DA2D9EC18EB29B53EAD26FD9E0 /* BarChartView.swift */,
-				DA65C29A3AFF13D4961525DEE6352FC7 /* BarHighlighter.swift */,
-				2D033A911075221BDB676988E0161CCD /* BarLineChartViewBase.swift */,
-				1FF862B1535F2DF096D9F3125BFACDEB /* BarLineScatterCandleBubbleChartData.swift */,
-				780A77D004B8DFBC4E96C03CE5AD9923 /* BarLineScatterCandleBubbleChartDataProvider.swift */,
-				C380F34FAE2B43321EF869A0A57CE5BF /* BarLineScatterCandleBubbleChartDataSet.swift */,
-				BAE2D963F98C435580F4967DE31F0CC3 /* BarLineScatterCandleBubbleRenderer.swift */,
-				CECEB759B792AA3259517093111D312A /* BubbleChartData.swift */,
-				216A1AEDF02A1D1FCE9071BA914F87F3 /* BubbleChartDataEntry.swift */,
-				DC597D5B4F97D721AAF0089705104EFA /* BubbleChartDataProvider.swift */,
-				68CB67D5DEBC06BBC82E00806C0DFBFB /* BubbleChartDataSet.swift */,
-				18199C6F4878401CE72F4B91D59AC80F /* BubbleChartRenderer.swift */,
-				0424379675CFE628DD218860DF9EB213 /* BubbleChartView.swift */,
-				4B3B39E660C358F6E15FF5788781821D /* CandleChartData.swift */,
-				F40344BB12E1B53474FD1225ED6EA822 /* CandleChartDataEntry.swift */,
-				EC207FDA9B5562963E06646DFB53F130 /* CandleChartDataProvider.swift */,
-				AAE0B32DB31722DC5B0669680F961B32 /* CandleChartDataSet.swift */,
-				3C393C67FFEF50666D74E45D1CC3FA0F /* CandleStickChartRenderer.swift */,
-				E8E2E0EE8CE5E9B1AA6C0642A8575B5D /* CandleStickChartView.swift */,
-				6B806E9FAA26FAB514C4D273FC60EF1C /* ChartAnimationEasing.swift */,
-				B47F30149DA029863DF0AEB8E10BD7A0 /* ChartBaseDataSet.swift */,
-				C7A2969F0657B37D120D9FA3A92BFD74 /* ChartColorTemplates.swift */,
-				C2848405DB867093987B282C98FB9C71 /* ChartData.swift */,
-				B047C88836E941003755EDAB2301EA3D /* ChartDataEntry.swift */,
-				D5455F4A7455CFF866CA032BEB2DBA97 /* ChartDataEntryBase.swift */,
-				9F49666D02E234B4B3FD714A26865B2E /* ChartDataProvider.swift */,
-				89C4CC590C755CB9F695031EE3EFECB9 /* ChartDataRendererBase.swift */,
-				BB3635F26A4F67EF5AC0DEFE8B65774C /* ChartDataSet.swift */,
-				D5A5825AC80BF883BD152CDFF9D6904C /* ChartHighlighter.swift */,
-				047E914F544C0F218B6B5C350921F305 /* ChartLimitLine.swift */,
-				05DEBEBD4AD1623D1E2D1338CE986568 /* ChartUtils.swift */,
-				EF7A59C5D097AB6E71C681D73C54814E /* ChartViewBase.swift */,
-				45E27B8C1295C00C969F99BE8831DA74 /* ChevronDownShapeRenderer.swift */,
-				E64161FAFC996B000AC61C9AC9E04C55 /* ChevronUpShapeRenderer.swift */,
-				DBC4A5465BA1A9418277A93CA07C6AB6 /* CircleShapeRenderer.swift */,
-				B6647B427C262914449D2AB2BE5C4DCF /* CombinedChartData.swift */,
-				66F09F5B9CD29A54EDA9800CADEF43CF /* CombinedChartDataProvider.swift */,
-				BD9A82F98D1DBA9BD97D5B6A2BB85F97 /* CombinedChartRenderer.swift */,
-				88B15C872D8C3A66F9A7A8786F1854CA /* CombinedChartView.swift */,
-				5AEF42098D505A8C91A4A56419D5872A /* CombinedHighlighter.swift */,
-				17E2DCC315B23E26392FEACC72AA3252 /* ComponentBase.swift */,
-				DC1F233DD0E0E93CAB7248DE4F995EF4 /* CrossShapeRenderer.swift */,
-				53054BA2016D4B34D1622EE05CF90F59 /* DataApproximator.swift */,
-				D8A160C99FA8A8FE5F6E9C4164EB6A64 /* DataApproximator+N.swift */,
-				C2025C856F2C15AE0D73AB58F1C27D06 /* DefaultAxisValueFormatter.swift */,
-				6F9C3256726774C8868327701AF1A1B9 /* DefaultFillFormatter.swift */,
-				392808E17C46594817B752754F486899 /* DefaultValueFormatter.swift */,
-				F35D6E0CB93BCE8608F876C43396B068 /* Description.swift */,
-				DCAC842D07A6E7B5DE15AEDC7F0476FC /* Fill.swift */,
-				62D71DB736C33C46FEF7140D3A613994 /* Highlight.swift */,
-				CF3EEFF614872F3E847DA0476C8D6DA3 /* HorizontalBarChartRenderer.swift */,
-				2DFD69DDEF783EB9C15272DB31DB09AA /* HorizontalBarChartView.swift */,
-				10EB188F65E136D9F6624EF61026FB4C /* HorizontalBarHighlighter.swift */,
-				4E6A07D5E76C16B4E79E634E68AF5A90 /* IAxisValueFormatter.swift */,
-				76A0F418297D234B7522DA92F6199A23 /* IBarChartDataSet.swift */,
-				55B8B552DE698A4849C97477C1D0F9AB /* IBarLineScatterCandleBubbleChartDataSet.swift */,
-				9255EC67384DDDAB536A8A31EB3498FE /* IBubbleChartDataSet.swift */,
-				21E66240B1B84F082BBD78A0FB2C204E /* ICandleChartDataSet.swift */,
-				C8960825C1F538AEE0036902BAC804F3 /* IChartDataSet.swift */,
-				495ACE2D9C8D5B8C9D99E1621CB72F5A /* IFillFormatter.swift */,
-				9C09F3F8A96A22A394C08B8482B48749 /* IHighlighter.swift */,
-				08F8606BE9F69EDA01162C66BD7CAC95 /* ILineChartDataSet.swift */,
-				B4382E4A03D1D6E227D1F12DA438A061 /* ILineRadarChartDataSet.swift */,
-				A94AE59C43AC0218555BB5F50C2B41CA /* ILineScatterCandleRadarChartDataSet.swift */,
-				ACCA97EA520AD9BFFA4506D1568F229B /* IMarker.swift */,
-				ADE1313E21AEB16A325B897C6EF60873 /* IndexAxisValueFormatter.swift */,
-				BA9F3A4A52AE431D6A0EFCF37CFE4B92 /* IPieChartDataSet.swift */,
-				CEEADBA0610E6F8FAAE9780BDFD157FF /* IRadarChartDataSet.swift */,
-				A053863FA17969936A8CA4D784A81A62 /* IScatterChartDataSet.swift */,
-				907533C2EB72644BF8214DD7720CF59B /* IShapeRenderer.swift */,
-				41109AE334B7D0847D463E09D136EF53 /* IValueFormatter.swift */,
-				04B05CE08D205572CA475730EB0068BD /* Legend.swift */,
-				203859A2236FD8193B34F475701D091A /* LegendEntry.swift */,
-				70960BE5A91FE84572DFE70A5EED3D6C /* LegendRenderer.swift */,
-				E4928F1A602AE6EA7C613B72E55596C9 /* LineChartData.swift */,
-				0A8017DA8744DC00FBFF8A6E21985E2D /* LineChartDataProvider.swift */,
-				19521B9C361E6A557D759A7ED403479A /* LineChartDataSet.swift */,
-				6E28BB811F9E0158B5603FDB7DF27DC3 /* LineChartRenderer.swift */,
-				9683121329FB32FF025E2B08639F78C6 /* LineChartView.swift */,
-				0272A5EBD33999BB76BB96652504186B /* LineRadarChartDataSet.swift */,
-				40B734441B4D08D4150845A438E22E80 /* LineRadarRenderer.swift */,
-				2D20E58FEFF9A59263E0EA098893A9AB /* LineScatterCandleRadarChartDataSet.swift */,
-				E0A45178E430CBF651B71AF1D2BBE7BA /* LineScatterCandleRadarRenderer.swift */,
-				53B6635530A2B2AECC440FE341EEEE55 /* MarkerImage.swift */,
-				C13417715F36B7A6127C856740B22182 /* MarkerView.swift */,
-				262C1BCCFD293539D0E934CFED8B95B9 /* MoveViewJob.swift */,
-				29D21465C73643D00C458B40C1A4FC23 /* PieChartData.swift */,
-				DEC34E2F025AF61CE43100B106ADF6A1 /* PieChartDataEntry.swift */,
-				38AA6E84561348D8B9624C567885285C /* PieChartDataSet.swift */,
-				38D5C790D60E0B0231E07DF4C7CF6A05 /* PieChartRenderer.swift */,
-				71B4C39FC3FFFB0CF716EAAA1B5AFCE9 /* PieChartView.swift */,
-				C8E9C13DA5348A6B8621DE9E95908EFD /* PieHighlighter.swift */,
-				7E038AA8BE685041D1EF46B72DFC4460 /* PieRadarChartViewBase.swift */,
-				EF929464D7876ACD4867210789468D30 /* PieRadarHighlighter.swift */,
-				E1C723E23401D279ABFD238E1E020F2D /* Platform.swift */,
-				2355AF9FDD8F75965B31D8C7D6297118 /* Platform+Accessibility.swift */,
-				36F7F7DD98F1EF6BA97B95AFDBC2962E /* RadarChartData.swift */,
-				2F1329331D058F5BDB317CFA89E5AB2B /* RadarChartDataEntry.swift */,
-				528C1547D7FA831607F2AF7CA0F71D29 /* RadarChartDataSet.swift */,
-				2FEC3AB8BBD26F9809A43D2E5F1D6156 /* RadarChartRenderer.swift */,
-				AD0148AEF866320D0AB731364B9F6FC4 /* RadarChartView.swift */,
-				C54B2B6D5ECD1BC2DF1ADE8779F37A52 /* RadarHighlighter.swift */,
-				579D4BAC290FD215B609416482E781BA /* Range.swift */,
-				3842CEA615286B778904CF516157AFF1 /* Renderer.swift */,
-				CE90EB1B08925CEEAFF0C471806377FC /* ScatterChartData.swift */,
-				B55A22AC65748D2D78D313A35329349E /* ScatterChartDataProvider.swift */,
-				C8A4639A19292024833796D1BE4429DF /* ScatterChartDataSet.swift */,
-				FC33852A2BF7D517640900E5E578377F /* ScatterChartRenderer.swift */,
-				B7C54D738B0DAAF28FACFD90CF602D0B /* ScatterChartView.swift */,
-				0F4B90784937196AFF7E5FA79F3E59BB /* SquareShapeRenderer.swift */,
-				2A840588633A313C2309BEF1A2EDCEBD /* Transformer.swift */,
-				B0A11F1654FF9ADC4E3A939BAAEFC43E /* TransformerHorizontalBarChart.swift */,
-				115C7D3C94F3F0DA844FB434119A4E5E /* TriangleShapeRenderer.swift */,
-				994C87471D1BB5A8C4D240A7D3E09664 /* ViewPortHandler.swift */,
-				EC3B54961FE423FF7AED763B3776C1F8 /* ViewPortJob.swift */,
-				5A7EFB6930092547E382CE7BB39FBB98 /* XAxis.swift */,
-				1ACCABD62DD3813AB9C42E28F8B862F7 /* XAxisRenderer.swift */,
-				A931D5724C11BA0AC8F34663B71C05BB /* XAxisRendererHorizontalBarChart.swift */,
-				9D30237D1CEE4BDA845DD5C798962D9E /* XAxisRendererRadarChart.swift */,
-				4DEC79BEC0F3333C9C31C2191ED5D5D8 /* XShapeRenderer.swift */,
-				AB0273E7B5D3949F95CA5BAA339E7BF8 /* YAxis.swift */,
-				C6499806E6D1FB342664D7D20235A8F3 /* YAxisRenderer.swift */,
-				8FDCC73B7EF8944935D5B14823216115 /* YAxisRendererHorizontalBarChart.swift */,
-				0085E6BE31EAE3FF522F172ACB2E40C1 /* YAxisRendererRadarChart.swift */,
-				D483A501CBDDF7D64906F4E8E626E30C /* ZoomViewJob.swift */,
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
 			);
-			name = Core;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD978FCCC7D32A06B882B08C545FF404 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2CA785D95979DA766C9B375B4FBBE08E /* Info.plist */,
+				0435D400575682C006209E5720181A9B /* JTAppleCalendar.modulemap */,
+				7BE7C11F2F8A525AB33F32D4A4B010B8 /* JTAppleCalendar.xcconfig */,
+				BF2315B3A3C687E70114FCEF24AFC88A /* JTAppleCalendar-dummy.m */,
+				A48593CC2AD407122499B632777F3991 /* JTAppleCalendar-prefix.pch */,
+				99A4686DE3099DF28413CDF89069EDEB /* JTAppleCalendar-umbrella.h */,
+
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Charts";
+			sourceTree = "<group>";
+		};
+
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftCharts";
+			sourceTree = "<group>";
+		};
+
+		E006B6A4AB522EAE9F5420CF9CC72CFF /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				FE70CDF0988502EE34C45E0AF3D5E217 /* Core */,
+				2DFC659CD700CC5D408E9A07C3C06E52 /* Support Files */,
+			);
+			name = Charts;
+			path = Charts;
+
 			sourceTree = "<group>";
 		};
 		FE5CF6C694F2C4CFC7393D55F7478EF4 /* Pods-FitfiApp */ = {
@@ -1262,14 +986,166 @@
 			path = "Target Support Files/Pods-FitfiApp";
 			sourceTree = "<group>";
 		};
+		FE70CDF0988502EE34C45E0AF3D5E217 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A0D1AF653535B1AE74B934077E0A0860 /* AnimatedMoveViewJob.swift */,
+				EEBB00D6843A8E8D75F68B3827FDD6F4 /* AnimatedViewPortJob.swift */,
+				3D52C6F5D9C11BA7904DF3D30CFCE778 /* AnimatedZoomViewJob.swift */,
+				D299EF78808C8BB9CF07730E5B25CB4F /* Animator.swift */,
+				D95F262986BB90D9C8F4E8FAF987598A /* AxisBase.swift */,
+				CC0FB4EAA29C9FCEA64A8CEBC3E7C6A1 /* AxisRendererBase.swift */,
+				415E3606526C25709D9574257FF4468A /* BarChartData.swift */,
+				4E22300F8E9FFFC12FE22B47F002AEA0 /* BarChartDataEntry.swift */,
+				C2234653763EB0F1679E52CFEF499155 /* BarChartDataProvider.swift */,
+				A4DBFCC1EE56FB52D16DB502C2AABC9D /* BarChartDataSet.swift */,
+				292C21A60CA37635CEF40FACBD292EF4 /* BarChartRenderer.swift */,
+				497938283AA91A6DDBA2C50086C7A744 /* BarChartView.swift */,
+				214787A238DB81FC88A555D05961C65D /* BarHighlighter.swift */,
+				5521B04B82885B7E02455C8BE94E7EBF /* BarLineChartViewBase.swift */,
+				204F89B6ABB298CB56DE239FCF2CD31C /* BarLineScatterCandleBubbleChartData.swift */,
+				A8614F1B56D8D97F941A0295B5EB7CFF /* BarLineScatterCandleBubbleChartDataProvider.swift */,
+				B39B06F03DC9C84FEA14DB8191BCE3EA /* BarLineScatterCandleBubbleChartDataSet.swift */,
+				A61929A1F9F813D2AB0FD9DE3BA8E47F /* BarLineScatterCandleBubbleRenderer.swift */,
+				D1B391167A389230F56D654A12F1CAE6 /* BubbleChartData.swift */,
+				08ECD3409A1E6DFE912C1A1C2EFB88F5 /* BubbleChartDataEntry.swift */,
+				271B780D6D0478FF58B7B772E19D1A60 /* BubbleChartDataProvider.swift */,
+				FF6056D7C45AE97DDA13FC2A70F654DE /* BubbleChartDataSet.swift */,
+				7122BF5ADBCA034EFCA153E9E8888472 /* BubbleChartRenderer.swift */,
+				34EF49CB8FFB205FDC178BEB85398EE7 /* BubbleChartView.swift */,
+				93289288E572AE77407A44EB2E2229D7 /* CandleChartData.swift */,
+				76861EF014AB7D1975875C82FF05DCD5 /* CandleChartDataEntry.swift */,
+				22AD2529443093140766D9F870A325FE /* CandleChartDataProvider.swift */,
+				20AC86EF00F1D31A148DE21C4D14EFF7 /* CandleChartDataSet.swift */,
+				4A06684FDE87AB441C46704384CE81AA /* CandleStickChartRenderer.swift */,
+				AC6107E04AEF721A7A72731195741A00 /* CandleStickChartView.swift */,
+				12B798CB97AADA57468030256268FE62 /* ChartAnimationEasing.swift */,
+				76784F1E2EDE8A5927066E1028AAC472 /* ChartBaseDataSet.swift */,
+				176789F919521DB3FD959A3D166C1B7B /* ChartColorTemplates.swift */,
+				39DABB2C0A155419FDCB7FB1EA947EFF /* ChartData.swift */,
+				43A24C87DB6BDBEE3BF5BA84552AF9F3 /* ChartDataEntry.swift */,
+				DC4385AA87FAA66B9E9620CD2C9BAC19 /* ChartDataEntryBase.swift */,
+				F3D01DA567D6613B8977D27421991FA8 /* ChartDataProvider.swift */,
+				D8A15915B3024382CA07E50015D155D8 /* ChartDataRendererBase.swift */,
+				C4D0E58CA8C763D818FA98F84142914E /* ChartDataSet.swift */,
+				C99D0D82AC2BA0BA96CFE2E62271A8F0 /* ChartHighlighter.swift */,
+				38F05238872187EAD7CD8846EB18BB04 /* ChartLimitLine.swift */,
+				549737A00FA24327BC740A4D6EF4280D /* ChartUtils.swift */,
+				59BE551DD60EA3BB31C78324CA41647E /* ChartViewBase.swift */,
+				2A6408BBC7BFD745018421837730F7F0 /* ChevronDownShapeRenderer.swift */,
+				7575C2DFF239442C993899FE0C213018 /* ChevronUpShapeRenderer.swift */,
+				5E555C2C2D6F953A5EDAC257B89FE17F /* CircleShapeRenderer.swift */,
+				E2F4C76793B3E0A15529A7AADE94B735 /* CombinedChartData.swift */,
+				D9C38D760F1C0C3CE08BC14782466DFD /* CombinedChartDataProvider.swift */,
+				CBC8301AEF3CCF878116C2915D62CFF4 /* CombinedChartRenderer.swift */,
+				CDA6A2E14AEE2D067978890E505933B2 /* CombinedChartView.swift */,
+				BA68C84109197B161FFACC2E1D0F5DBE /* CombinedHighlighter.swift */,
+				DB302767C96BE34F0FE2598F372C8805 /* ComponentBase.swift */,
+				D2604B61B8D0C25C7887971A578EF885 /* CrossShapeRenderer.swift */,
+				6367EC0788A04180B844B367E47515BF /* DataApproximator.swift */,
+				652450D5663456A43C79F235D493CBEB /* DataApproximator+N.swift */,
+				C75F52A818DE501A590B4A266C514163 /* DefaultAxisValueFormatter.swift */,
+				D7294631A7BC714622B6F97332644162 /* DefaultFillFormatter.swift */,
+				4139B7052F2D6AB6EEE3AE09AEB334BE /* DefaultValueFormatter.swift */,
+				6B9006DA5FD851953EF2D012B1A0C2AA /* Description.swift */,
+				E1F4F4C73AEC45D7A30C9D607114B2AC /* Fill.swift */,
+				4FA587C242D6C4C655596DB3CAE53557 /* Highlight.swift */,
+				1EB017ADCA901638D575BF7DDD31A952 /* HorizontalBarChartRenderer.swift */,
+				26CFDFCAEB5A17AD9EFFF3815C916747 /* HorizontalBarChartView.swift */,
+				F7E18E6B87F675A302E634267E9B5D8D /* HorizontalBarHighlighter.swift */,
+				9F5C61D54737F4058B6852D54B9260FB /* IAxisValueFormatter.swift */,
+				3D81B294DDE1ED72601EDB7DEFC560A8 /* IBarChartDataSet.swift */,
+				DE0F80BEF7E34871DEF9E3DFC7D14210 /* IBarLineScatterCandleBubbleChartDataSet.swift */,
+				A49360312F28D2A6A1F4259BE004E866 /* IBubbleChartDataSet.swift */,
+				6108C4DE01A5D7029156FFF5BBAD3658 /* ICandleChartDataSet.swift */,
+				47E1EE60ED624BF6F5EB1C9E31A6B8E7 /* IChartDataSet.swift */,
+				6687598558D1EFBE2E6F633E1874B734 /* IFillFormatter.swift */,
+				104AA658DCDF5C3F2E8FEC9DB7D85D84 /* IHighlighter.swift */,
+				029B969529F6C188128EA25078C66F45 /* ILineChartDataSet.swift */,
+				43358DA4C4D76D35C7FB59E736CF3935 /* ILineRadarChartDataSet.swift */,
+				286491020F873FA2BB3160D61BB84EBF /* ILineScatterCandleRadarChartDataSet.swift */,
+				24FCE6B1D2FC5CBB96DB4F9BCA55C052 /* IMarker.swift */,
+				C8746AE73A36087DBD2702E74E8BFD38 /* IndexAxisValueFormatter.swift */,
+				10E38DF336EF084E1F1F95CB9D95E21A /* IPieChartDataSet.swift */,
+				CA1C7B4CD48343CD07F57C624BE2D5B3 /* IRadarChartDataSet.swift */,
+				CCDBE7D7CD1A162D99F70423E626A6D3 /* IScatterChartDataSet.swift */,
+				A3D998CA8901F928BFFAA12646896408 /* IShapeRenderer.swift */,
+				0AB57CE2D3AB40F2E8831D9FFB5715CE /* IValueFormatter.swift */,
+				439DDBC74E28493D95B5BAE491ABA5F4 /* Legend.swift */,
+				56782A4F1EDEAEF8ECB64B1D367EA246 /* LegendEntry.swift */,
+				1AD799D69F2A61A32446FC0599E00D8F /* LegendRenderer.swift */,
+				66331D77A375E4D012443720C813BE97 /* LineChartData.swift */,
+				75C40CA18CC099AFC85A034D8694810B /* LineChartDataProvider.swift */,
+				45EFD2252CC25EE97A160E357EEAD49F /* LineChartDataSet.swift */,
+				F5849ABD0F31883AC0905D743880A9BE /* LineChartRenderer.swift */,
+				3F115BF32D3E456B72C1A6B79708534E /* LineChartView.swift */,
+				4ED581572D3C15953273C53801BEF711 /* LineRadarChartDataSet.swift */,
+				CB5DA83C851864CB424D618FC02FE476 /* LineRadarRenderer.swift */,
+				123B1FC792A7D8A60DE1D272A53227BD /* LineScatterCandleRadarChartDataSet.swift */,
+				56A4000887A726BABF55FF70FA42184E /* LineScatterCandleRadarRenderer.swift */,
+				171C4C7D44A95B70CF90262474EB95FC /* MarkerImage.swift */,
+				A12DEA29E610820BAE38ED4C36AF2336 /* MarkerView.swift */,
+				EB538A4D4E2E10A87AF2556382724BF0 /* MoveViewJob.swift */,
+				E6A913FAFCAC365CFA4714C099384DE4 /* PieChartData.swift */,
+				16D7E5695010895D5764ABD63F0CADCD /* PieChartDataEntry.swift */,
+				2E82F879AEE02CAD6BE5EBAF6B92E2D8 /* PieChartDataSet.swift */,
+				86885B63F82D70C2B75EF0909B17F8D4 /* PieChartRenderer.swift */,
+				3F8136DD06FA812A258EE1D8C1DBBE9D /* PieChartView.swift */,
+				72ACA61674B97FEA9ABABA6D076E0859 /* PieHighlighter.swift */,
+				98234FAB7CDB87CF339374DEB27DA457 /* PieRadarChartViewBase.swift */,
+				D34F944B2E583F9792131B99F3FB328C /* PieRadarHighlighter.swift */,
+				27E6D2F1B4709C9A669D472C6CA13A7B /* Platform.swift */,
+				7933EF47630710F485A99EA36DA656EA /* Platform+Accessibility.swift */,
+				4CC13A9852617070D491EEBA76ABEA1A /* RadarChartData.swift */,
+				05080481E921CEB49499CF48D18B2903 /* RadarChartDataEntry.swift */,
+				3FB1416DB102E273828E2CFC7EFC6EF8 /* RadarChartDataSet.swift */,
+				599508DAD10D3EE25604E6C639858967 /* RadarChartRenderer.swift */,
+				7724C3A5540C05EDBBA43FD6FC1E254D /* RadarChartView.swift */,
+				6601735BCFD191171F57F3319EA9A89D /* RadarHighlighter.swift */,
+				5A9585F3E43EFB12AD1AD755297B8D8B /* Range.swift */,
+				08E6A5A8FF0597D97AE67A25FAA5369E /* Renderer.swift */,
+				FED6E39BFC2CE585FDD79256D160EB5A /* ScatterChartData.swift */,
+				F0EFA1A73718C7B20B04F568EA81F544 /* ScatterChartDataProvider.swift */,
+				E5204701508B7DC65D217735E4CA2E59 /* ScatterChartDataSet.swift */,
+				9B940CB22A042592DB42D0CF1D555E26 /* ScatterChartRenderer.swift */,
+				EA789D5D934550CA577E02C7D024D9A0 /* ScatterChartView.swift */,
+				135CF0C2E4A6CDB8D4C2D73DD241DC00 /* SquareShapeRenderer.swift */,
+				634CBB6039906BAA9D9CE0CA7CD4D9B2 /* Transformer.swift */,
+				4903BACA5270C84343291C3B15B2E0BF /* TransformerHorizontalBarChart.swift */,
+				74D0C3E2F8FD7757BDD3E50236C079FC /* TriangleShapeRenderer.swift */,
+				2506949B3B471095D2BDB2B5A838E532 /* ViewPortHandler.swift */,
+				F78F7D531F3BDEA67EC630A2C2A4FE1C /* ViewPortJob.swift */,
+				1C454BE68094199FDFAA73775963C314 /* XAxis.swift */,
+				51B1B652B95CDE514614ABE1CF36DE4D /* XAxisRenderer.swift */,
+				CD9FCE9CCB53497C28DE2EA78041972B /* XAxisRendererHorizontalBarChart.swift */,
+				3558A350F434FFF9901CE13754A52DAC /* XAxisRendererRadarChart.swift */,
+				B7D893C9C8CD7EBFC444B771D5507658 /* XShapeRenderer.swift */,
+				ABFBB2060612C2D4379EB94AA06E851B /* YAxis.swift */,
+				7D4209DA680690C1AA5961811DFC2569 /* YAxisRenderer.swift */,
+				46A69081B31EBC5DA52CE11221606432 /* YAxisRendererHorizontalBarChart.swift */,
+				977D0A21829A5F27AED0421B299CD5FD /* YAxisRendererRadarChart.swift */,
+				B572FCA5A423FD1FAAEAC2B161A7E025 /* ZoomViewJob.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		032BC0945273A0BCA0F603F184F707DA /* Headers */ = {
+
+		1002479F32309C601A825E26542F5651 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				997FE787FBD9962E9DCFE024779AF303 /* Pods-FitfiAppUITests-umbrella.h in Headers */,
+				BCD831BC370DFE1A2C0FC29295C41E63 /* Pods-FitfiAppUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		491FDA388C631991086086CCE32F564A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A3CF269CBFD793DA002F64BD80A6CC0 /* Pods-FitfiApp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1281,27 +1157,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		546BEDD406BD8C642A10C27133FB8038 /* Headers */ = {
+		57FF4E161237CDC643F48EE56CC1F4FA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCA44AAA4977016B3DD5EF5A7B8316FF /* Pods-FitfiAppTests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		69F7171E83B639FF6AC922046F72092D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF6E14312188DA31D372B6B9133B1BCD /* Pods-FitfiApp-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A35548463441A46BD320556FDAE441D0 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB70F0CF0DC1C66F65508FE77DF2F6C7 /* SwiftCharts-umbrella.h in Headers */,
+				8375494B4E42DB019DC754D327CA480A /* Pods-FitfiAppTests-umbrella.h in Headers */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1324,44 +1185,7 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0ACC63A8ED3D1B4DFE9CF718CF012436 /* Pods-FitfiApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F85014ADF6F32DA14F90D1E242699C3A /* Build configuration list for PBXNativeTarget "Pods-FitfiApp" */;
-			buildPhases = (
-				0A0F046FABE408B8EA24D064C9646D34 /* Sources */,
-				51C20F3883524CAE435FAD6C1000AA07 /* Frameworks */,
-				69F7171E83B639FF6AC922046F72092D /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				447AD8ADAD7C141FC57AB46FB18271EE /* PBXTargetDependency */,
-				32C5481484CF22123A402043EE34FE3C /* PBXTargetDependency */,
-				44ACBBBF98ACE8DB79682EC097D05761 /* PBXTargetDependency */,
-				2C9233FF7E3851ADE69DF10D426660F2 /* PBXTargetDependency */,
-			);
-			name = "Pods-FitfiApp";
-			productName = "Pods-FitfiApp";
-			productReference = 41C8D38C69BE70551689121DA1ED11E6 /* Pods_FitfiApp.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		375F8F55DD62CB395D422ABF05ECA8C4 /* Pods-FitfiAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F3FA26C367DA7C14AE955BDA9A221E9A /* Build configuration list for PBXNativeTarget "Pods-FitfiAppUITests" */;
-			buildPhases = (
-				054B3455310ED148674A853995978866 /* Sources */,
-				C68CA68451668E120DB6DD3CD0718908 /* Frameworks */,
-				032BC0945273A0BCA0F603F184F707DA /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-FitfiAppUITests";
-			productName = "Pods-FitfiAppUITests";
-			productReference = 5470405D16BA4F48459DFD8B8FE772BA /* Pods_FitfiAppUITests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
+
 		4D5B8B1BE64F80268007C79821DDDC20 /* JTAppleCalendar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E78F0AF2A8CFF29D1235D29F58A4E06 /* Build configuration list for PBXNativeTarget "JTAppleCalendar" */;
@@ -1369,14 +1193,16 @@
 				9061D192B467744C06DC862BE82F57A5 /* Sources */,
 				1F52A51717EA007CD32A41E453CDF459 /* Frameworks */,
 				D072C17A9D7E22B25810B81A357DAE56 /* Headers */,
+
 			);
 			buildRules = (
 			);
 			dependencies = (
+
 			);
 			name = JTAppleCalendar;
 			productName = JTAppleCalendar;
-			productReference = DDE081CF02CC5D7BC1D9B082C46F04AD /* JTAppleCalendar.framework */;
+			productReference = 89E324C642CC67B83DB018F68FA0A0C2 /* JTAppleCalendar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */ = {
@@ -1386,48 +1212,36 @@
 				32B9974868188C4803318E36329C87FE /* Sources */,
 				99195E4207764744AEC07ECCBCD550EB /* Frameworks */,
 				B4002B6E97835FDCCAA5963EFE09A3E0 /* Headers */,
+
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+
 			name = Alamofire;
 			productName = Alamofire;
-			productReference = 4310BCE9BEE07C2F2760C48B0D00278E /* Alamofire.framework */;
+			productReference = 7593F2D8620A65453FD4848B44A4819B /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9AE39FDFDC9BD660345FDF43AB754299 /* Pods-FitfiAppTests */ = {
+		9B1E4ADAA83E78D20B65652CCDE9CA7E /* Pods-FitfiAppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1BD2781B06F77FD324107E2DB593370B /* Build configuration list for PBXNativeTarget "Pods-FitfiAppTests" */;
+			buildConfigurationList = 10CDB885C6B999ADE6DFAED50CE2AEE0 /* Build configuration list for PBXNativeTarget "Pods-FitfiAppUITests" */;
 			buildPhases = (
-				258ABF38CC8340A1E30EDF81BA1CD0E9 /* Sources */,
-				360D69E79C7289204A62E2B72CA6617F /* Frameworks */,
-				546BEDD406BD8C642A10C27133FB8038 /* Headers */,
+				34F136F0AF8AC6DC1214E5FDEA7CDE2E /* Sources */,
+				A2C9610DBE1AA081C18A7946DD377019 /* Frameworks */,
+				1002479F32309C601A825E26542F5651 /* Headers */,
+
 			);
 			buildRules = (
 			);
 			dependencies = (
+
+				FF35809F0D44ADAF56853F57D5AB37BD /* PBXTargetDependency */,
 			);
-			name = "Pods-FitfiAppTests";
-			productName = "Pods-FitfiAppTests";
-			productReference = 490B1B4626A708983A7F003917641FA7 /* Pods_FitfiAppTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CE7FAE7CA16E568AF5B48B37824156C8 /* SwiftCharts */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B2E2AED7276A5B15A5776FC4FB976787 /* Build configuration list for PBXNativeTarget "SwiftCharts" */;
-			buildPhases = (
-				1FD99621940A9C44E59219C9133D0CA6 /* Sources */,
-				48CB46152227F7AABC0337EDBE0FED34 /* Frameworks */,
-				A35548463441A46BD320556FDAE441D0 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwiftCharts;
-			productName = SwiftCharts;
-			productReference = 9EACB065139AFAD94B4D2439A3C95581 /* SwiftCharts.framework */;
+			name = "Pods-FitfiAppUITests";
+			productName = "Pods-FitfiAppUITests";
+			productReference = 42DEB26E7E60B274BCE9FF06EFC731C9 /* Pods_FitfiAppUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DF6D5DB0A4A0B571DE6C03CBED1FB972 /* Charts */ = {
@@ -1437,14 +1251,59 @@
 				D28A743BCFB9A688CBD20C1132A350DF /* Sources */,
 				394289C33C9589E8530A9A8E88A48B50 /* Frameworks */,
 				4DD759DDF8564F40E5209D04212BBBCC /* Headers */,
+
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+
 			name = Charts;
 			productName = Charts;
-			productReference = 923EF0294B6A974CE7E2833FAADAA7D6 /* Charts.framework */;
+			productReference = 51A3B4125D24B95A5A71730A91F3A939 /* Charts.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F26D8907B8A9D101D0F00B6A537ECAB1 /* Pods-FitfiAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9247CFBDC5495AFBF3A93AA905EAF857 /* Build configuration list for PBXNativeTarget "Pods-FitfiAppTests" */;
+			buildPhases = (
+				8CD4830EEE4BBEF42E667464ED5F4B82 /* Sources */,
+				3082E22DF09B907BD8CC639C234FDE38 /* Frameworks */,
+				57FF4E161237CDC643F48EE56CC1F4FA /* Headers */,
+
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80DF594BB69C3C50BF8AF7D649B1AF75 /* PBXTargetDependency */,
+			);
+
+			name = "Pods-FitfiAppTests";
+			productName = "Pods-FitfiAppTests";
+			productReference = CB701F889E79BB34DEC0241C0E293594 /* Pods_FitfiAppTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F49930A9281A6EF42273411486805D39 /* Pods-FitfiApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3B7396388B8A470408FFE26F15765DF /* Build configuration list for PBXNativeTarget "Pods-FitfiApp" */;
+			buildPhases = (
+				762A40395802903085927111619A9BF6 /* Sources */,
+				72ED77DF8A44D237FEBFBC41A91EF9CB /* Frameworks */,
+				491FDA388C631991086086CCE32F564A /* Headers */,
+
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C99A31F60FBCF071D9F8D51A4EA027F /* PBXTargetDependency */,
+				7600DEABA5879ADD064D6F7CBE6DB202 /* PBXTargetDependency */,
+				176321650780E4C0CF967F08F34201B4 /* PBXTargetDependency */,
+			);
+
+			name = "Pods-FitfiApp";
+			productName = "Pods-FitfiApp";
+			productReference = 0F79764185D068E3A2C03FF8DC7E19EF /* Pods_FitfiApp.framework */;
+
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1464,170 +1323,26 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 430A53425570FFADB67424AAF13F702D /* Products */;
+
+			productRefGroup = 525F501B2E1752A428D1695A7C1EC0ED /* Products */;
+
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */,
 				DF6D5DB0A4A0B571DE6C03CBED1FB972 /* Charts */,
 				4D5B8B1BE64F80268007C79821DDDC20 /* JTAppleCalendar */,
-				0ACC63A8ED3D1B4DFE9CF718CF012436 /* Pods-FitfiApp */,
-				9AE39FDFDC9BD660345FDF43AB754299 /* Pods-FitfiAppTests */,
-				375F8F55DD62CB395D422ABF05ECA8C4 /* Pods-FitfiAppUITests */,
-				CE7FAE7CA16E568AF5B48B37824156C8 /* SwiftCharts */,
+
+				F49930A9281A6EF42273411486805D39 /* Pods-FitfiApp */,
+				F26D8907B8A9D101D0F00B6A537ECAB1 /* Pods-FitfiAppTests */,
+				9B1E4ADAA83E78D20B65652CCDE9CA7E /* Pods-FitfiAppUITests */,
+
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		054B3455310ED148674A853995978866 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F10EC7E94DB729A8B9645693C215E60E /* Pods-FitfiAppUITests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0A0F046FABE408B8EA24D064C9646D34 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A14A8EFFB45875925772B7F654DFB8C9 /* Pods-FitfiApp-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1FD99621940A9C44E59219C9133D0CA6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D06A9B4EE255FE4405722309C7C1EED3 /* Array_String.swift in Sources */,
-				5F268C10CE4730E61DA7376625DED622 /* BarsChart.swift in Sources */,
-				9B8C9CB7CB196A3E32B0DB2AAE96A867 /* CatmullPathGenerator.swift in Sources */,
-				E761840A6A95D732D53350537F344039 /* CGPoint.swift in Sources */,
-				682802FAE0E3A558993296B4F819D02F /* CGRect.swift in Sources */,
-				05EBEE794C46C1361B7574D35A3CF764 /* Chart.swift in Sources */,
-				3914C6474F367DB48590264C0349E2A4 /* ChartAreasView.swift in Sources */,
-				A8E9535C984A97F47B1A84C107FAEF91 /* ChartAxis.swift in Sources */,
-				667DFAC71885867F5D9A0CF2CF3E3EFE /* ChartAxisGeneratorMultiplier.swift in Sources */,
-				84A9010D1786CF1F6FFA269DB49E5F48 /* ChartAxisLabel.swift in Sources */,
-				7A0902ACE58F4CCB60BFD4FA04F67EA0 /* ChartAxisLabelGeneratorDate.swift in Sources */,
-				457A801D11EFB74E79C7768CF5037FB3 /* ChartAxisLabelsConflictSolver.swift in Sources */,
-				E7B9DA617A108FEC4B486273594A5A95 /* ChartAxisLabelsConflictSolverMoveUpDown.swift in Sources */,
-				FDBCAFF11C04C66DE031DE1B9C52E33E /* ChartAxisLabelsGenerator.swift in Sources */,
-				649BE9CFD2EB2C74221FCC143011BC01 /* ChartAxisLabelsGeneratorBase.swift in Sources */,
-				E8E3198678FA4860F67FA7C0B9EC3C27 /* ChartAxisLabelsGeneratorBasic.swift in Sources */,
-				FA23695FC6BFE01C2055E5470FEB1251 /* ChartAxisLabelsGeneratorFixed.swift in Sources */,
-				7A8D29393BB6C3986B8F8245C9EDB77A /* ChartAxisLabelsGeneratorFunc.swift in Sources */,
-				6366C31C90D37FE0F9EBB389BE773711 /* ChartAxisLabelsGeneratorNumber.swift in Sources */,
-				685A8CF470CE6D12631D9574F4B2265A /* ChartAxisLabelsGeneratorNumberSuffix.swift in Sources */,
-				0FB5660A6B1B15CF7BCA6EA0456CA096 /* ChartAxisLayer.swift in Sources */,
-				BBB4153F039937FBAA498B448850353E /* ChartAxisLayerDefault.swift in Sources */,
-				54D27A9AA888D0258E4ED6FBB9D80BFF /* ChartAxisModel.swift in Sources */,
-				9736D02161A21E10A47EB25AB4BDFEC8 /* ChartAxisValue.swift in Sources */,
-				FDD9C2216A5E56F1FEF307E8CB0D3EEC /* ChartAxisValueArray.swift in Sources */,
-				2F6F072DA84BD58F46085D31409A9B98 /* ChartAxisValueDate.swift in Sources */,
-				18C7D45FEE5E7A4CE300E1AF135DBEF2 /* ChartAxisValueDouble.swift in Sources */,
-				6EC15B7A369AB29FF80FE7D4E7B4BF57 /* ChartAxisValueDoubleScreenLoc.swift in Sources */,
-				D7B3A1B2815B14100C0534059EE17204 /* ChartAxisValueFloat.swift in Sources */,
-				C3544AF5E4F0AF9B28FB6096333164E3 /* ChartAxisValueFloatScreenLoc.swift in Sources */,
-				14C5477286B6A1A86D84E524B9A59A93 /* ChartAxisValueInt.swift in Sources */,
-				D705F8DA0979CF14DF51DFD44EF722A9 /* ChartAxisValuesGenerator.swift in Sources */,
-				CEEA14CEE8C49BDB77C85BC0E68480C5 /* ChartAxisValuesGeneratorDate.swift in Sources */,
-				152B0EC32C3836E5E2F051243A8CD3DD /* ChartAxisValuesGeneratorFixed.swift in Sources */,
-				1DD0857598694C6291DB63D840A7ACC8 /* ChartAxisValuesGeneratorFixedNonOverlapping.swift in Sources */,
-				9AB764CEC78162FAD8DE427EFEDEF53D /* ChartAxisValuesGeneratorNice.swift in Sources */,
-				FAA5F9EAD8B2545EF3B90350DD574F4C /* ChartAxisValuesGeneratorXDividers.swift in Sources */,
-				C7A8A56B41BB1910661245215E8FE236 /* ChartAxisValuesGeneratorXFixedNonOverlapping.swift in Sources */,
-				74D479E87CA02092766C2F451351FA54 /* ChartAxisValuesGeneratorYFixedNonOverlapping.swift in Sources */,
-				8577A5B5AD92F86FF72C0CFCBF602ED0 /* ChartAxisValueStaticGenerator.swift in Sources */,
-				4907105F2E4813903106AACC2C58BC2E /* ChartAxisValueString.swift in Sources */,
-				FE4FE400C5E46CA84BE0868498624293 /* ChartAxisX.swift in Sources */,
-				27DDEDE53CEC467A8E89E2246ABD8DD3 /* ChartAxisXHighLayerDefault.swift in Sources */,
-				F14E6A7C7CBA013C8D61AE5F6BB23DDD /* ChartAxisXLayerDefault.swift in Sources */,
-				0E06676C16BA11CAF87BD94CA5305B0E /* ChartAxisXLowLayerDefault.swift in Sources */,
-				B6BFCF76ED1F1D5E2576329FDE8E4318 /* ChartAxisY.swift in Sources */,
-				2C733374D4FB35989204415ED74CD5BF /* ChartAxisYHighLayerDefault.swift in Sources */,
-				AA248E73570FA472C204C53978149664 /* ChartAxisYLayerDefault.swift in Sources */,
-				EA0660F558058872DA23C9421E3BDD37 /* ChartAxisYLowLayerDefault.swift in Sources */,
-				63C98127A39FD0670292C7FB3EED10AD /* ChartBarsLayer.swift in Sources */,
-				7C3DC9967173A51E50412458082D3730 /* ChartCandleStickLayer.swift in Sources */,
-				9B48B922CF3ADD01EA833688D761F6F9 /* ChartCandleStickView.swift in Sources */,
-				C7967542235DD82842A5FFD8093288D0 /* ChartConfig.swift in Sources */,
-				EE5645597149717A12653425F9AAC864 /* ChartContextDrawer.swift in Sources */,
-				1BB6946AE5D14ADB53DC7673AFABFF54 /* ChartCoordsSpace.swift in Sources */,
-				CDE0BCBC4CD702557C582EB5EDE9F54E /* ChartCoordsSpaceLayer.swift in Sources */,
-				55ECFD0D04CF7326CD24E5548BFD64D4 /* ChartDividersLayer.swift in Sources */,
-				BF5CAC6B83FB35E1CEA1B58885AE2141 /* ChartDrawerFunctions.swift in Sources */,
-				9F655A4F2B63FB660DD9D9EB1FFF2E9F /* ChartGroupedBarsLayer.swift in Sources */,
-				FE9D1AE11C2FDFB8960160240F839BC1 /* ChartGuideLinesLayer.swift in Sources */,
-				AC1DFCA4C0EEBC86432983FE4F5BA4E4 /* ChartLabelDrawer.swift in Sources */,
-				219AE3844ABB9167FDE9A3E640C63E20 /* ChartLayer.swift in Sources */,
-				394AFE2DDAACC3456781100CCEC856C3 /* ChartLayerBase.swift in Sources */,
-				15EB2112C968F563D78D482F55037226 /* ChartLineDrawer.swift in Sources */,
-				85181AD590B29F7988FC1D74A387F7B3 /* ChartLineModel.swift in Sources */,
-				72AF60750A2EDC980249ACDE0D917EB1 /* ChartLinesView.swift in Sources */,
-				6C105EB6586EA7E28BA58F72CD8B568F /* ChartNiceNumberCalculator.swift in Sources */,
-				E214564613659B5EC203815CA942447F /* ChartPoint.swift in Sources */,
-				62CB167F1F1A05D38D031E93249D951D /* ChartPointBubble.swift in Sources */,
-				E90AC77BAD2BFE31E988BB5E2CDBF819 /* ChartPointCandleStick.swift in Sources */,
-				A053C4AA3A582D36D49808BD874D142D /* ChartPointEllipseView.swift in Sources */,
-				28BB632B20C1EE4B9C97DA44671DCA34 /* ChartPointsAreaLayer.swift in Sources */,
-				6029A2E23BD781189C41C9E52501A87B /* ChartPointsBubbleLayer.swift in Sources */,
-				91BBD77D2C0F1E7CA1E3360119BCD88C /* ChartPointsCandleStickViewsLayer.swift in Sources */,
-				8C347584F3A2893B523D7F309C2BB344 /* ChartPointsLayer.swift in Sources */,
-				FB9A6F6F14C3D15C4F5F2ADE217EAA82 /* ChartPointsLineLayer.swift in Sources */,
-				C5DE7D1230ABE27DA597C33CA45E234D /* ChartPointsLineTrackerLayer.swift in Sources */,
-				767F7FA4BF76B9C6937D2C2F116F90E8 /* ChartPointsScatterLayer.swift in Sources */,
-				C7B6D264ABA91BD9D8F7FD7565BFE6BD /* ChartPointsSingleViewLayer.swift in Sources */,
-				17C9EEBDDE848AA2387A47B5E4F98D02 /* ChartPointsTouchHighlightLayer.swift in Sources */,
-				95EBDC7539FF0C562D02E1331C4CBDB0 /* ChartPointsTrackerLayer.swift in Sources */,
-				2AE1BA4A0063084D192C1923CEF8B9B2 /* ChartPointsViewsLayer.swift in Sources */,
-				7F2C9F63493643DDBF346BD3682B6FB1 /* ChartPointTargetingView.swift in Sources */,
-				9B0739F67DCE0792FA36A3FBEE8E0D81 /* ChartPointTextCircleView.swift in Sources */,
-				39DA8858643DA5DBA3C7799BA4B44EA1 /* ChartPointViewBar.swift in Sources */,
-				B7C86C5122FEE57E2E5A3CD2AAC55F07 /* ChartPointViewBarGreyOut.swift in Sources */,
-				4ADB7042EA13EEA90628CB601EBB0A4B /* ChartPointViewBarStacked.swift in Sources */,
-				D33F644BCAB665D6615AFBC2179161E5 /* ChartShowCoordsLinesLayer.swift in Sources */,
-				FF35036A704AA025F7DA5D2E06B29554 /* ChartStackedBarsLayer.swift in Sources */,
-				47967D054344B768B72DCFF466DFB6AC /* ChartTextUtils.swift in Sources */,
-				A0B7DB22E1B3F0D4230B9CAB2E556311 /* ChartTimeUtils.swift in Sources */,
-				3E4136E921E310578B16F9CF0E7AC718 /* ChartViewAlphaAnimator.swift in Sources */,
-				61233EC942AD8E4F894C3CF3442362F9 /* ChartViewAnimator.swift in Sources */,
-				0B8B796B0E2F04526DA38197526F4E09 /* ChartViewAnimators.swift in Sources */,
-				DC0C3CF2A2F340B49AF76410BF0D57D6 /* ChartViewGrowAnimator.swift in Sources */,
-				3FB8D0045512B6935721DE3896E42D9F /* ChartViewsConflictSolver.swift in Sources */,
-				3B991EB2F028615A7969A8103C46B7DE /* ChartViewSelector.swift in Sources */,
-				00ACB5CD1B102B7563E382654DA9AA64 /* ChartViewSelectorAlpha.swift in Sources */,
-				4CAC1A86BCB6BB921752BA5DAE0CEBED /* ChartViewSelectorBrightness.swift in Sources */,
-				72D7F43060FAE841B9F3CCD510514971 /* CubicLinePathGenerator.swift in Sources */,
-				1963ABC8EEB43FA7164295A89E107FB3 /* Globals.swift in Sources */,
-				BF1BFCFFAC6E19C4B9DE697184C80787 /* GroupedBarsCompanionsLayer.swift in Sources */,
-				85EE1A9D53EF20EF9C01E53D42C32BFE /* HandlingLabel.swift in Sources */,
-				C226A8F7E73E02C158488F779CD73BA0 /* HandlingView.swift in Sources */,
-				BC6EBF74BFB5D104CA866F12A696F2F1 /* InfoBubble.swift in Sources */,
-				633D284F655B62402666D972F2C07651 /* Int.swift in Sources */,
-				5ABEEAC41E76EE72EE7A2D1D4D60792B /* LineChart.swift in Sources */,
-				B77BA78F45DDCB5DE2CA529E126C0375 /* NSDate.swift in Sources */,
-				706A0FF6AA24154313322734FA82D5EC /* Operators.swift in Sources */,
-				8E8E96AE0F4397D4A2C31AAA02AE435F /* Optional.swift in Sources */,
-				B295D5A0160C6A3F348E84A8D9717F63 /* Pannable.swift in Sources */,
-				44517037B4D43FC7E09F02E78746A9B0 /* StraightLinePathGenerator.swift in Sources */,
-				F21632ACBA8F78F8483006225B336D09 /* String.swift in Sources */,
-				0533F5DCD4F819A08175B8D879A6A0CD /* SwiftCharts-dummy.m in Sources */,
-				981FFA37E7BA27EA7264AE249F4410DA /* TrendlineGenerator.swift in Sources */,
-				5BDC44F01AE09A9B85A7274C877A4BE1 /* UIColor.swift in Sources */,
-				B0FC7E475693CB8BE37661B4DBBE772F /* Zoomable.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		258ABF38CC8340A1E30EDF81BA1CD0E9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				19DAB4D515EAF38586E52B9774650F6C /* Pods-FitfiAppTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
+
 		32B9974868188C4803318E36329C87FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1650,6 +1365,31 @@
 				3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */,
 				10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */,
 				BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34F136F0AF8AC6DC1214E5FDEA7CDE2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EBC2CF6CA2A7F4DE4B381B031181DF8 /* Pods-FitfiAppUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		762A40395802903085927111619A9BF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9533DAC5A9E66808B2F025D6CAA88C95 /* Pods-FitfiApp-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CD4830EEE4BBEF42E667464ED5F4B82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1247C0A170CF5CC12B8E0CCE1DB0C4DA /* Pods-FitfiAppTests-dummy.m in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1824,95 +1564,80 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2C9233FF7E3851ADE69DF10D426660F2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftCharts;
-			target = CE7FAE7CA16E568AF5B48B37824156C8 /* SwiftCharts */;
-			targetProxy = A56F9F4F7828FCE9A7F96796B77DDBBB /* PBXContainerItemProxy */;
-		};
-		32C5481484CF22123A402043EE34FE3C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Charts;
-			target = DF6D5DB0A4A0B571DE6C03CBED1FB972 /* Charts */;
-			targetProxy = 5380430E0132E02164504C2740DECAB0 /* PBXContainerItemProxy */;
-		};
-		447AD8ADAD7C141FC57AB46FB18271EE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
-			targetProxy = 15ABE409DD46465BA4B108A4BB17B744 /* PBXContainerItemProxy */;
-		};
-		44ACBBBF98ACE8DB79682EC097D05761 /* PBXTargetDependency */ = {
+
+		176321650780E4C0CF967F08F34201B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = JTAppleCalendar;
 			target = 4D5B8B1BE64F80268007C79821DDDC20 /* JTAppleCalendar */;
-			targetProxy = 8E954433A49DCBE083DB4BEF17534259 /* PBXContainerItemProxy */;
+			targetProxy = 036C214BA4AB7281EB3D8EDC6F5AF349 /* PBXContainerItemProxy */;
+		};
+		3C99A31F60FBCF071D9F8D51A4EA027F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
+			targetProxy = 6E4929829003E02F6A194442BF6FD90D /* PBXContainerItemProxy */;
+		};
+		7600DEABA5879ADD064D6F7CBE6DB202 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			target = DF6D5DB0A4A0B571DE6C03CBED1FB972 /* Charts */;
+			targetProxy = 319785A8C0AEF4D1F88A78A3A613C09E /* PBXContainerItemProxy */;
+		};
+		80DF594BB69C3C50BF8AF7D649B1AF75 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-FitfiApp";
+			target = F49930A9281A6EF42273411486805D39 /* Pods-FitfiApp */;
+			targetProxy = 079BB10569C954EC3F6CE131B5348745 /* PBXContainerItemProxy */;
+		};
+		FF35809F0D44ADAF56853F57D5AB37BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-FitfiApp";
+			target = F49930A9281A6EF42273411486805D39 /* Pods-FitfiApp */;
+			targetProxy = 84001E28EB01E2D1AD1CDE27406896EB /* PBXContainerItemProxy */;
+
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		09A3DF62C6DA698D65EA36C3BE9FDCB2 /* Release */ = {
+
+		01A53CBF46D75D017525C1CC49F467BF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25204211220E37D55B268BE237F643B4 /* Pods-FitfiAppUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-FitfiAppUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SYMROOT = "${SRCROOT}/../build";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		3348D8E9D7E219D342F1DC599905F249 /* Release */ = {
+		34E77E2E24311F3D2D8A6311074F3DC3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 382E6DAC0E7213B9052BA0E9929C123F /* Pods-FitfiApp.release.xcconfig */;
+			baseConfigurationReference = 4CDCC1CAAB486D6CAAD81E8A0227AA6A /* Alamofire.xcconfig */;
+
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -1926,6 +1651,43 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-FitfiApp/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				PRODUCT_MODULE_NAME = Alamofire;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+
+		4105AA751849BDF350EFCB89151EC9C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 382E6DAC0E7213B9052BA0E9929C123F /* Pods-FitfiApp.release.xcconfig */;
+
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+
+				INFOPLIST_FILE = "Target Support Files/Pods-FitfiApp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
@@ -1934,10 +1696,11 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FitfiApp;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1945,9 +1708,11 @@
 			};
 			name = Release;
 		};
-		433C3DFE293ADAF4CAE2DB6D0DA8244A /* Release */ = {
+
+		52A1868CC001C7F2C38F5F2A2F0D424C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DECE55C0754971AEB24FEEEC6B2C9782 /* JTAppleCalendar.xcconfig */;
+			baseConfigurationReference = B0469BD288C5BB4147DD0A377F294DF3 /* Charts.xcconfig */;
+
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1958,81 +1723,20 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/JTAppleCalendar/JTAppleCalendar-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/JTAppleCalendar/Info.plist";
+
+				GCC_PREFIX_HEADER = "Target Support Files/Charts/Charts-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Charts/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/JTAppleCalendar/JTAppleCalendar.modulemap";
-				PRODUCT_NAME = JTAppleCalendar;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		44F53948C55E06BBCD580E274F78F70C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1EA4ADE79C01F0E64B3966B4C9626406 /* SwiftCharts.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftCharts/SwiftCharts-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftCharts/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftCharts/SwiftCharts.modulemap";
-				PRODUCT_NAME = SwiftCharts;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		52093081329F6AC31A5D8BD70DB27D6B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1EA4ADE79C01F0E64B3966B4C9626406 /* SwiftCharts.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftCharts/SwiftCharts-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftCharts/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftCharts/SwiftCharts.modulemap";
-				PRODUCT_NAME = SwiftCharts;
+				MODULEMAP_FILE = "Target Support Files/Charts/Charts.modulemap";
+				PRODUCT_MODULE_NAME = Charts;
+				PRODUCT_NAME = Charts;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2040,9 +1744,11 @@
 			};
 			name = Debug;
 		};
-		5234FA4861ECF6118C6331B35CE0EA93 /* Debug */ = {
+
+		57AC9743841DE27D298407FFC8EFF463 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DECE55C0754971AEB24FEEEC6B2C9782 /* JTAppleCalendar.xcconfig */;
+			baseConfigurationReference = 7BE7C11F2F8A525AB33F32D4A4B010B8 /* JTAppleCalendar.xcconfig */;
+
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -2071,7 +1777,9 @@
 			};
 			name = Debug;
 		};
-		5382765BAF96C71A7AA23867E0297779 /* Release */ = {
+
+		5F6E78136448EC900EDD3E7FA70F0A7E /* Debug */ = {
+
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 947D4013D00B665F0D450057424195BC /* Charts.xcconfig */;
 			buildSettings = {
@@ -2087,10 +1795,17 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Charts/Charts-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Charts/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Charts/Charts.modulemap";
-				PRODUCT_NAME = Charts;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -2103,7 +1818,203 @@
 			};
 			name = Release;
 		};
-		62FF89F00ED9838E2988AD30FA89E414 /* Debug */ = {
+
+		803D1EDD6C23B2779A48FAC95394B759 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB1489666738C79E2FEA8890AE9CD54A /* Pods-FitfiApp.debug.xcconfig */;
+
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+
+				INFOPLIST_FILE = "Target Support Files/Pods-FitfiApp/Info.plist";
+
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+
+				MODULEMAP_FILE = "Target Support Files/Pods-FitfiApp/Pods-FitfiApp.modulemap";
+
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FitfiAppTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+
+		A7C49D7B1A03565B5C29C202E9408F3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BE7C11F2F8A525AB33F32D4A4B010B8 /* JTAppleCalendar.xcconfig */;
+
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JTAppleCalendar/JTAppleCalendar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JTAppleCalendar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+
+				MODULEMAP_FILE = "Target Support Files/JTAppleCalendar/JTAppleCalendar.modulemap";
+				PRODUCT_MODULE_NAME = JTAppleCalendar;
+				PRODUCT_NAME = JTAppleCalendar;
+
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+
+		AF682D70A89863F059361B5BFAC5B3D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B57AC13E8D734A0CB14712CF1D0E44DA /* Pods-FitfiAppTests.release.xcconfig */;
+
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+
+				INFOPLIST_FILE = "Target Support Files/Pods-FitfiAppTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+
+		B0458084D7AAD3336BB88C17177BDF22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CED9C50CEF4C672452DBE42B3AE1E7C /* Pods-FitfiAppUITests.release.xcconfig */;
+
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+
+				INFOPLIST_FILE = "Target Support Files/Pods-FitfiAppUITests/Info.plist";
+
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+
+				MODULEMAP_FILE = "Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests.modulemap";
+
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FitfiAppTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+
+		C18155DB6746473143748B65E6B3CD05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CDCC1CAAB486D6CAAD81E8A0227AA6A /* Alamofire.xcconfig */;
+			buildSettings = {
+
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				PRODUCT_MODULE_NAME = Alamofire;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+
+		};
+		CD76D91FBB3569774B6E7AB023932D1D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2135,6 +2046,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2159,16 +2071,74 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		65B95F2380E969B4FEDA43AE74883F79 /* Release */ = {
+		D004329E236DC147B97EF965D57304EA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B57AC13E8D734A0CB14712CF1D0E44DA /* Pods-FitfiAppTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		E844FF9039F83B27415BCBDE58AD381C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0469BD288C5BB4147DD0A377F294DF3 /* Charts.xcconfig */;
+
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -2180,147 +2150,21 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-FitfiAppTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FitfiAppTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		7B34F346B30F73A2633FB77AF26769D3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B6E6CFADE1D95FFA366424C78A29EAE /* Alamofire.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
-				PRODUCT_NAME = Alamofire;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		902A89C9810FA29DC00B9E10BD86FBC7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B6E6CFADE1D95FFA366424C78A29EAE /* Alamofire.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
-				PRODUCT_NAME = Alamofire;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		957D90E812E33ED32239CCF23D8BDD92 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 947D4013D00B665F0D450057424195BC /* Charts.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
+
 				GCC_PREFIX_HEADER = "Target Support Files/Charts/Charts-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Charts/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Charts/Charts.modulemap";
+				PRODUCT_MODULE_NAME = Charts;
 				PRODUCT_NAME = Charts;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		995F99462B65FE6FCF78E6FF6D55D092 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CED9C50CEF4C672452DBE42B3AE1E7C /* Pods-FitfiAppUITests.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-FitfiAppUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FitfiAppUITests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2328,178 +2172,82 @@
 			};
 			name = Release;
 		};
-		AC1C38DBE3FD33FC262C1CA62A65EE6E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79B3077877BAF2451799FF7BB861C58D /* Pods-FitfiAppTests.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-FitfiAppTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FitfiAppTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D2D7B25699EC54F20CBD60143A6E98B4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB1489666738C79E2FEA8890AE9CD54A /* Pods-FitfiApp.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-FitfiApp/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FitfiApp/Pods-FitfiApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FitfiApp;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		FAD78131B8DB8CA9F7BD2ED1F0BF63DA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25204211220E37D55B268BE237F643B4 /* Pods-FitfiAppUITests.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-FitfiAppUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FitfiAppUITests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1BD2781B06F77FD324107E2DB593370B /* Build configuration list for PBXNativeTarget "Pods-FitfiAppTests" */ = {
+
+		10CDB885C6B999ADE6DFAED50CE2AEE0 /* Build configuration list for PBXNativeTarget "Pods-FitfiAppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AC1C38DBE3FD33FC262C1CA62A65EE6E /* Debug */,
-				65B95F2380E969B4FEDA43AE74883F79 /* Release */,
+				01A53CBF46D75D017525C1CC49F467BF /* Debug */,
+				B0458084D7AAD3336BB88C17177BDF22 /* Release */,
+
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		1E78F0AF2A8CFF29D1235D29F58A4E06 /* Build configuration list for PBXNativeTarget "JTAppleCalendar" */ = {
+
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5234FA4861ECF6118C6331B35CE0EA93 /* Debug */,
-				433C3DFE293ADAF4CAE2DB6D0DA8244A /* Release */,
+				57AC9743841DE27D298407FFC8EFF463 /* Debug */,
+				A7C49D7B1A03565B5C29C202E9408F3A /* Release */,
+
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				62FF89F00ED9838E2988AD30FA89E414 /* Debug */,
-				09A3DF62C6DA698D65EA36C3BE9FDCB2 /* Release */,
+				CD76D91FBB3569774B6E7AB023932D1D /* Debug */,
+				D004329E236DC147B97EF965D57304EA /* Release */,
+
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+
 		419E5D95491847CD79841B971A8A3277 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7B34F346B30F73A2633FB77AF26769D3 /* Debug */,
-				902A89C9810FA29DC00B9E10BD86FBC7 /* Release */,
+				C18155DB6746473143748B65E6B3CD05 /* Debug */,
+				34E77E2E24311F3D2D8A6311074F3DC3 /* Release */,
+
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+
+		9247CFBDC5495AFBF3A93AA905EAF857 /* Build configuration list for PBXNativeTarget "Pods-FitfiAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F6E78136448EC900EDD3E7FA70F0A7E /* Debug */,
+				AF682D70A89863F059361B5BFAC5B3D0 /* Release */,
+
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+
+
 		A1F837D325A381AC400B4725B0DEE350 /* Build configuration list for PBXNativeTarget "Charts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				957D90E812E33ED32239CCF23D8BDD92 /* Debug */,
-				5382765BAF96C71A7AA23867E0297779 /* Release */,
+				52A1868CC001C7F2C38F5F2A2F0D424C /* Debug */,
+				E844FF9039F83B27415BCBDE58AD381C /* Release */,
+
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2E2AED7276A5B15A5776FC4FB976787 /* Build configuration list for PBXNativeTarget "SwiftCharts" */ = {
+
+		C3B7396388B8A470408FFE26F15765DF /* Build configuration list for PBXNativeTarget "Pods-FitfiApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				52093081329F6AC31A5D8BD70DB27D6B /* Debug */,
-				44F53948C55E06BBCD580E274F78F70C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F3FA26C367DA7C14AE955BDA9A221E9A /* Build configuration list for PBXNativeTarget "Pods-FitfiAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FAD78131B8DB8CA9F7BD2ED1F0BF63DA /* Debug */,
-				995F99462B65FE6FCF78E6FF6D55D092 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F85014ADF6F32DA14F90D1E242699C3A /* Build configuration list for PBXNativeTarget "Pods-FitfiApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D2D7B25699EC54F20CBD60143A6E98B4 /* Debug */,
-				3348D8E9D7E219D342F1DC599905F249 /* Release */,
+				803D1EDD6C23B2779A48FAC95394B759 /* Debug */,
+				4105AA751849BDF350EFCB89151EC9C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

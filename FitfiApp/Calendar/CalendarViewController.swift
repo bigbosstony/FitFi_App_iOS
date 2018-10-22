@@ -12,7 +12,7 @@ import CoreData
 var beginDate:Date = Date().dateFromDays(-3)
 var endDate:Date = Date().dateFromDays(15)
 var fromPopUp:Int = 0
-
+var fromScheduleVC:Int = 0
 protocol fromPopUpVCDelegate:class {
     // Classes that adopt this protocol MUST define
     // this method -- and hopefully do something in
@@ -231,7 +231,11 @@ class CalendarViewController: UIViewController,fromPopUpVCDelegate {
     }
     override func viewDidAppear(_ animated: Bool)
     {
-        
+        //MARK: can remove beloved lines
+        if(fromScheduleVC == 1)
+        {
+            fromScheduleVC = 0
+        print("hi")
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Schedule")
         
         request.returnsObjectsAsFaults = false
@@ -252,7 +256,7 @@ class CalendarViewController: UIViewController,fromPopUpVCDelegate {
         } catch {
             print("Loading Exercises Error: \(error)")
         }
-        
+        }
     }
     
     func generateDays(_ beginDate: Date, endDate: Date) -> [Date] {
@@ -293,11 +297,12 @@ extension CalendarViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print(self.days.count)
+        print("numberOfRowsTableView")
         return self.days.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("cellForRowsTableView")
         let cell = tableView.dequeueReusableCell(withIdentifier: "calendarCell", for: indexPath) as! CalendarTableViewCell
         let dateArray : [String] = dateFormatterCell.string(from: days[(indexPath as NSIndexPath).row]).components(separatedBy: " ")
         let dateFormatter = DateFormatter()
@@ -377,6 +382,8 @@ extension CalendarViewController: UITableViewDataSource {
         scheduleHistoryFlag = 0
         numberOfViewsInCollectionCell = 0
         for i in routineHistoryArr{
+            print(dateFormatter.string(from: days[indexPath.row]))
+            print(dateFormatter.string(from: i.start!))
             if (dateFormatter.string(from: days[indexPath.row]) == dateFormatter.string(from: i.start!))
             {
                 
@@ -410,6 +417,10 @@ extension CalendarViewController: UITableViewDataSource {
 //            if let s = i.schdule {
 //                print(s.value(forKey: "name"))
 //            }
+            print(dateFormatter.string(from: days[indexPath.row]))
+            print(dateFormatter.string(from: i.date!))
+            if(days[indexPath.row] > today)
+            {
             if (days[indexPath.row] > i.date! || dateFormatter.string(from: days[indexPath.row]) == dateFormatter.string(from: i.date!))
             {
                 
@@ -443,13 +454,13 @@ extension CalendarViewController: UITableViewDataSource {
                     tableCellScheduleArr.append(i)
                 }
 
-                wholetableScheduleArr.append(tableCellScheduleArr)
+                
                 if(tableCellScheduleArr == [])
                 {
 
                 }
                 else{
-                    let s = tableCellScheduleArr[0].schdule
+                    let s = tableCellScheduleArr.last!.schdule
                     var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
                     collectionDidSelectDate = days[indexPath.row]
                     singleRoutineName =  singleRoutineName.components(separatedBy: "\n").joined()
@@ -462,22 +473,25 @@ extension CalendarViewController: UITableViewDataSource {
                     singleRoutineName = String(singleRoutineName.dropFirst(4))
                     isSchedule = 2
                     cell.detailCollectionView.isHidden = false
-                    numberOfViewsInCollectionCell = 1
+                    numberOfViewsInCollectionCell = numberOfViewsInCollectionCell + 1
                     routineName.append(singleRoutineName)
                    
                     totalExercise.append("\(getNumberOfExercise(scheduleName:tableCellScheduleArr))")
-                   
+                    estimatedTime.append("~45m")
 
                 }
-                tableCellScheduleArr = []
+                
 
+                }
+               wholetableScheduleArr.append(tableCellScheduleArr)
             }
+            
             else{
                 wholetableScheduleArr.append(tableCellScheduleArr)
             }
         }
-
-
+        
+        tableCellScheduleArr = []
         // Configure the cell...
 
        
@@ -490,9 +504,12 @@ extension CalendarViewController: UITableViewDataSource {
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource{
       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("numberOfItemsCollectionView")
+        print("\(numberOfViewsInCollectionCell)yup")
     return numberOfViewsInCollectionCell
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("cellForItemCollectionView")
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCollectionCell", for: indexPath) as! DetailCollectionViewCell
         cell.routineName.text = " "
         cell.timeImageView.isHidden = true
@@ -513,6 +530,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             cell.totalExercise.text = totalExercise[indexPath.row]
             cell.routineObj = routineHistoryObj[indexPath.row]
         }
+        
         else if (isSchedule == 2){
             //apply schedule theme
             cell.timeImageView.isHidden = false
@@ -653,6 +671,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 }
 extension CalendarViewController: UITableViewDelegate {
     func getNumberOfExercise(scheduleName:[Schedule]) -> Int{
+        print("getNumberOfExercise")
         var totalExercise:Int = 0
         var exerciseList:[String] = []
         for i in scheduleName{
@@ -683,18 +702,18 @@ extension CalendarViewController: UITableViewDelegate {
         let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
         let scrollPosition = scrollView.contentOffset.y
         
-        print("Content Size: ", scrollView.contentSize.height, "Frame Size: ", scrollView.frame.size.height)
-        print("Scroll Position, Y: ", scrollPosition)
-        print("Bottom: ", bottom)
+//        print("Content Size: ", scrollView.contentSize.height, "Frame Size: ", scrollView.frame.size.height)
+//        print("Scroll Position, Y: ", scrollPosition)
+//        print("Bottom: ", bottom)
         // Set Title on Nav Bar
         let topVisibleIndexPath:IndexPath = self.tableView.indexPathsForVisibleRows![0]
-        print("Top Cell: ", topVisibleIndexPath)
+       // print("Top Cell: ", topVisibleIndexPath)
         self.title = dateFormatterTitle.string(from: days[topVisibleIndexPath.row])
         //
-        
+        print("view scrolled")
         // Reached the bottom of the list
         if scrollPosition > bottom {    //- buffer {
-            print("scrollPosition > bottom")
+           // print("scrollPosition > bottom")
             // Add more dates to the bottom
             let lastDate = self.days.last!
             let additionalDays = self.generateDays(
@@ -708,7 +727,7 @@ extension CalendarViewController: UITableViewDelegate {
             wholetableScheduleArr = []
             self.tableView.reloadData()
             //            self.tableView.contentOffset.y -= CGFloat(self.daysToAdd) * self.cellHeight
-            print("Days: ", days)
+            //print("Days: ", days)
         }
             
         else if scrollPosition < top { // + buffer {
@@ -725,8 +744,8 @@ extension CalendarViewController: UITableViewDelegate {
             wholetableScheduleArr = []
             self.tableView.reloadData()
             self.tableView.contentOffset.y = CGFloat(self.daysToAdd) * self.cellHeight
-            print("Reset Y:", self.tableView.contentOffset.y)
-            print("Days: ", days)
+//            print("Reset Y:", self.tableView.contentOffset.y)
+//            print("Days: ", days)
         }
     }
     
