@@ -145,7 +145,7 @@ extension RoutineDetailsTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routinedetailsCell", for: indexPath) as! RoutineDetailsTableViewCell
         cell.textLabel?.text = routineExerciseArray[indexPath.row].name
         cell.setRepLabel.attributedText = setRepString(routineExerciseArray[indexPath.row].sets, routineExerciseArray[indexPath.row].reps)
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
     }
 }
@@ -186,8 +186,8 @@ extension RoutineDetailsTableViewController {
         let repLabel = String(rep)
         
         //MARK: Build multiple lines with different color and text size for nav bar title
-        let attrs1 = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12, weight: .regular), NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.6078431373, green: 0.6078431373, blue: 0.6078431373, alpha: 1)] as [NSAttributedStringKey : Any]
-        let attrs2 = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12, weight: .regular), NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.8352941176, green: 0.3725490196, blue: 0.1215686275, alpha: 1)] as [NSAttributedStringKey : Any]
+        let attrs1 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12, weight: .regular), NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.6078431373, green: 0.6078431373, blue: 0.6078431373, alpha: 1)] as [NSAttributedString.Key : Any]
+        let attrs2 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12, weight: .regular), NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.8352941176, green: 0.3725490196, blue: 0.1215686275, alpha: 1)] as [NSAttributedString.Key : Any]
         
         let attributedString1 = NSMutableAttributedString(string: setLabel + " SET", attributes:attrs2)
         let attributedString2 = NSMutableAttributedString(string: " X ", attributes:attrs1)

@@ -69,13 +69,13 @@ class ExerciseDetailsViewController: UIViewController {
         super.viewWillAppear(true)
         self.title = selectedExercise?.name
         if(navFlag == 1){
-             viewContainer.bringSubview(toFront: views[2])
+             viewContainer.bringSubviewToFront(views[2])
              segment.selectedSegmentIndex = 2
             
             
         }
         else{
-             viewContainer.bringSubview(toFront: views[0])
+             viewContainer.bringSubviewToFront(views[0])
         }
         
         favButton.image = (selectedExercise?.favorite)! ? UIImage(named: "Glyphs/Favorited") : UIImage(named: "Glyphs/Favorite")
@@ -117,7 +117,7 @@ class ExerciseDetailsViewController: UIViewController {
     
     // Segmented Control, change views
     @IBAction func switchViewAction(_ sender: UISegmentedControl) {
-        self.viewContainer.bringSubview(toFront: views[sender.selectedSegmentIndex])
+        self.viewContainer.bringSubviewToFront(views[sender.selectedSegmentIndex])
 
     }
 }
@@ -160,7 +160,7 @@ extension ExerciseDetailsViewController: UITableViewDelegate, UITableViewDataSou
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "aboutInstructionCell", for: indexPath) as! AboutInstructionTableViewCell
             //Remove the style
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
 
             return cell
         }
@@ -171,11 +171,11 @@ extension ExerciseDetailsViewController: UITableViewDelegate, UITableViewDataSou
             if indexPath.row == 0 {
                 return 230.0
             } else {
-                return UITableViewAutomaticDimension
+                return UITableView.automaticDimension
             }
         }
         else {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
 }

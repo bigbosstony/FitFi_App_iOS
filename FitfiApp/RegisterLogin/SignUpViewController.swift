@@ -19,10 +19,10 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        email.attributedPlaceholder = NSAttributedString(string: "EMAIL ADDRESS", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
-        password.attributedPlaceholder = NSAttributedString(string: "PASSWORD", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
-        firstName.attributedPlaceholder = NSAttributedString(string: "FIRST NAME", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
-        lastName.attributedPlaceholder = NSAttributedString(string: "LAST NAME", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+        email.attributedPlaceholder = NSAttributedString(string: "EMAIL ADDRESS", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        password.attributedPlaceholder = NSAttributedString(string: "PASSWORD", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        firstName.attributedPlaceholder = NSAttributedString(string: "FIRST NAME", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        lastName.attributedPlaceholder = NSAttributedString(string: "LAST NAME", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         // Do any additional setup after loading the view.
         
         email.delegate = self

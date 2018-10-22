@@ -172,7 +172,7 @@ class ManualTrackingVC: UIViewController {
                 currentWorkoutExerciseIndex += 1
                 currentWorkoutExerciseSetIndex = 0
                 
-                self.exerciseCollectionView.scrollToItem(at: IndexPath(item: currentWorkoutExerciseIndex, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+                self.exerciseCollectionView.scrollToItem(at: IndexPath(item: currentWorkoutExerciseIndex, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
                 currentExerciseCounterLabel.text = "\(currentWorkoutExerciseIndex + 1)/\(currentWorkoutExerciseArray.count)"
                 
                 if currentWorkoutExerciseIndex + 1 == currentWorkoutExerciseArray.count {
@@ -274,8 +274,8 @@ extension ManualTrackingVC {
         dateFormatter.dateFormat = "EEEE MMM dd HH:mm a"
         let date = Date()
         let dateString = dateFormatter.string(from: date).uppercased()
-        let attrs1 = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14, weight: .semibold), NSAttributedStringKey.foregroundColor : UIColor.black]
-        let attrs2 = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12, weight: .regular), NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.8352941176, green: 0.3725490196, blue: 0.1215686275, alpha: 1)] as [NSAttributedStringKey : Any]
+        let attrs1 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14, weight: .semibold), NSAttributedString.Key.foregroundColor : UIColor.black]
+        let attrs2 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12, weight: .regular), NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.8352941176, green: 0.3725490196, blue: 0.1215686275, alpha: 1)] as [NSAttributedString.Key : Any]
         
         let attributedString1 = NSMutableAttributedString(string: routineName.capitalized + "\n", attributes:attrs1)
         let attributedString2 = NSMutableAttributedString(string: dateString, attributes:attrs2)
