@@ -454,13 +454,13 @@ extension CalendarViewController: UITableViewDataSource {
                     tableCellScheduleArr.append(i)
                 }
 
-                wholetableScheduleArr.append(tableCellScheduleArr)
+                
                 if(tableCellScheduleArr == [])
                 {
 
                 }
                 else{
-                    let s = tableCellScheduleArr[0].schdule
+                    let s = tableCellScheduleArr.last!.schdule
                     var singleRoutineName = "\(String(describing: s!.value(forKey: "name") ?? ""))"
                     collectionDidSelectDate = days[indexPath.row]
                     singleRoutineName =  singleRoutineName.components(separatedBy: "\n").joined()
@@ -473,24 +473,25 @@ extension CalendarViewController: UITableViewDataSource {
                     singleRoutineName = String(singleRoutineName.dropFirst(4))
                     isSchedule = 2
                     cell.detailCollectionView.isHidden = false
-                    numberOfViewsInCollectionCell = 1
+                    numberOfViewsInCollectionCell = numberOfViewsInCollectionCell + 1
                     routineName.append(singleRoutineName)
                    
                     totalExercise.append("\(getNumberOfExercise(scheduleName:tableCellScheduleArr))")
                     estimatedTime.append("~45m")
 
                 }
-                tableCellScheduleArr = []
+                
 
                 }
-                
+               wholetableScheduleArr.append(tableCellScheduleArr)
             }
+            
             else{
                 wholetableScheduleArr.append(tableCellScheduleArr)
             }
         }
-
-
+        
+        tableCellScheduleArr = []
         // Configure the cell...
 
        
@@ -504,6 +505,7 @@ extension CalendarViewController: UITableViewDataSource {
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource{
       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("numberOfItemsCollectionView")
+        print("\(numberOfViewsInCollectionCell)yup")
     return numberOfViewsInCollectionCell
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -242,7 +242,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         print("Did Connect to Peripheral")
         exerciseDeviceLabel.text = devices[peripheral.identifier.uuidString]
         
-               userLogin(with: "harsh123", url: machineLearningURL)
+               userLogin(with: "harsh", url: machineLearningURL)
         
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         //        MARK: Make Small TrackingVC Visable
@@ -406,7 +406,7 @@ extension SmallTrackingViewController {
         var machineLearningURLRequest = URLRequest(url: requestURL)
         machineLearningURLRequest.httpMethod = "POST"
         
-        let sensorData: [String : Any] = ["username":"harsh123","data": data]
+        let sensorData: [String : Any] = ["username":"harsh","data": data]
         
         do {
             let sensorJSONData : Data = try JSONSerialization.data(withJSONObject: sensorData, options: [])
