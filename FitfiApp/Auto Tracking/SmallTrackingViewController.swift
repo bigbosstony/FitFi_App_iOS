@@ -557,20 +557,6 @@ extension SmallTrackingViewController {
         let task = session.dataTask(with: logoutRequestURL)
         task.resume()
     }
-    
-    
-    
-    
-//    func updateUI(with data: [String : String]) {
-//
-//        if let exercise = data["exercise"] {
-//            if exercise != "" {
-//                exerciseTypeLabel.text = exercise
-//                counter += 1
-//                exerciseCountingLabel.text = String(counter)
-//            }
-//        }
-//    }
 }
 
 
