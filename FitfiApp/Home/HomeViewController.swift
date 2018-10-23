@@ -61,10 +61,11 @@ class HomeViewController: UIViewController {
         showAllExercisesTableView.delegate = self
         showAllExercisesTableView.dataSource = self
         
-        let window = UIApplication.shared.keyWindow!
-        let v = UIView(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
-        window.addSubview(v)
-        v.backgroundColor = UIColor.black
+        //Window
+//        let window = UIApplication.shared.keyWindow!
+//        let v = UIView(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
+//        window.addSubview(v)
+//        v.backgroundColor = UIColor.black
     }
 
     override func didReceiveMemoryWarning() {

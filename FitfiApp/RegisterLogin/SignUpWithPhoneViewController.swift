@@ -48,7 +48,7 @@ extension SignUpWithPhoneViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("begin")
+
     }
 }
 
