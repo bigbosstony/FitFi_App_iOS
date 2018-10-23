@@ -23,11 +23,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     var hasToken: Bool = false
     
+    var placeholder1 = "EMAIL ADDRESS"
+    var placeholder2 = "PASSWORD"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        email.attributedPlaceholder = NSAttributedString(string: "EMAIL ADDRESS", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        password.attributedPlaceholder = NSAttributedString(string: "PASSWORD", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        email.attributedPlaceholder = NSAttributedString(string: placeholder1, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        password.attributedPlaceholder = NSAttributedString(string: placeholder2, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         
         gradient.frame = view.bounds
         gradient.colors = [camoGreen, fadedOrange]

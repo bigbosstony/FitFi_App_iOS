@@ -35,7 +35,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         print("Home View Loaded")
-        
+        print(UserDefaults.standard.value(forKey: "phoneNumber")!)
 //// Ignore This Mark   MARK: window and trackingVC
 //        trackingVC = TrackingSViewController.init(nibName: "TrackingSViewController", bundle: nil)
 //        trackingVC.view.frame = CGRect(x: 0, y: 497.5, width: 375, height: 120)
@@ -60,6 +60,11 @@ class HomeViewController: UIViewController {
         showAllRoutinesTableView.dataSource = self
         showAllExercisesTableView.delegate = self
         showAllExercisesTableView.dataSource = self
+        
+        let window = UIApplication.shared.keyWindow!
+        let v = UIView(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
+        window.addSubview(v)
+        v.backgroundColor = UIColor.black
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,7 +80,6 @@ class HomeViewController: UIViewController {
         loadRecentWorkout()
         
         dateFormatter.dateFormat = "EEEE,MMM dd,HH:mm a"
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -99,7 +99,7 @@ class SmallTrackingViewController: UIViewController {
     let dateFormatter = DateFormatter()
     let dataArrayCounterDictionary = [0: "A", 1: "G", 2: "M"]
     
-    let username = "ton1"
+    var username = ""
     
     //MARK: Create Core ML Model
     let countingModel = counting_model_0_4()
@@ -109,7 +109,6 @@ class SmallTrackingViewController: UIViewController {
     var currentExerciseArray = [CurrentExercise]()
     var counter = 0
     var currentExercise = ""
-
 
     
     //MARK: URL
@@ -153,6 +152,8 @@ class SmallTrackingViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         self.view.isUserInteractionEnabled = true
         
+        username = UserDefaults.standard.value(forKey: "phoneNumber") as! String
+//        print("ST", username)
         //MARK: Testing
 
 //        var currentExercise = CurrentExercise(name: "Biceps")
@@ -244,7 +245,6 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
 
             if -45...0 ~= RSSI.intValue {
                 
-
                 blePeripheral = peripheral
                 blePeripheral.delegate = self
                 
@@ -263,8 +263,9 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
     //MARK: Did Connect Peripheral
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Did Connect to Peripheral")
-
         
+        username = UserDefaults.standard.value(forKey: "phoneNumber") as! String
+
         userLogin(with: username, url: machineLearningURL)
 
         
@@ -277,11 +278,10 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         exerciseDeviceLabel.text = devices[peripheral.identifier.uuidString]
         
 //        centralManager.cancelPeripheralConnection(<#T##peripheral: CBPeripheral##CBPeripheral#>)
-//        central.stopScan()
+        central.stopScan()
         print("+++++")
         print(centralManager.retrieveConnectedPeripherals(withServices: [bleMainServiceCBUUID]))
 
-        
         print("«««««««««««««««««««««««««««««««««««")
         print("identifier: ", peripheral.identifier)
         print("Local Name: ", peripheral.name ?? "")
@@ -298,10 +298,8 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         //MARK: Make Small TrackingVC Hidden
         //        smallTrackingVC.remove()
         self.view.isHidden = true
-
         
         userLogout(from: machineLearningURL)
-
 
         //MARK: Clean Counter and Exercise
         counter = 0
@@ -309,7 +307,6 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         exerciseTypeLabel.text = ""
 
         exerciseDeviceLabel.text = ""
-
 
         switch central.state {
         case .poweredOn:
@@ -365,7 +362,6 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                 if let value = characteristic.value {
                     print("System ID: ", [UInt8](value))
                 }
-
             }
             
             if characteristic.uuid == bleBattery {
@@ -382,7 +378,6 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
         switch characteristic.uuid {
 
         case bleMainServiceCharacteristic3NCBUUID:
-
             
             let sensorData = getSensorData(from: characteristic, fA: 0.000061, fG: 0.00875, fM: 0.00014)
             
@@ -394,21 +389,17 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
             
             print(dataArrayString)
             
-
             postRequest(request: machineLearningURL, sensor: dataArrayString)
-            
 
 //        MARK: Battery Level
         case bleBattery:
             print("Battery Level value: ", [UInt8](characteristic.value!))
-
-            
+ 
         default:
             print(characteristic.service.uuid)
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
 
 //            let data = String(data: characteristic.value!, encoding: .utf8)
-
         }
     }
 }
@@ -466,7 +457,6 @@ extension SmallTrackingViewController {
 
 extension SmallTrackingViewController {
     
-
     func postRequest(request url: String, sensor data: [String]) {
         
         guard let requestURL = URL(string: url) else { print("URL Error"); return }

@@ -155,6 +155,12 @@
 		EA99105920D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
 		EA99105A20D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
 		EA99105B20D85DA4003D6D6E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA99105820D85DA4003D6D6E /* TabBarViewController.swift */; };
+		EA9E0628217E34940099887E /* SignUpWithPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9E0627217E34940099887E /* SignUpWithPhoneViewController.swift */; };
+		EA9E0629217E34940099887E /* SignUpWithPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9E0627217E34940099887E /* SignUpWithPhoneViewController.swift */; };
+		EA9E062A217E34940099887E /* SignUpWithPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9E0627217E34940099887E /* SignUpWithPhoneViewController.swift */; };
+		EA9E062C217E3E7B0099887E /* SignUpWithEnterOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9E062B217E3E7B0099887E /* SignUpWithEnterOTPViewController.swift */; };
+		EA9E062D217E3E7B0099887E /* SignUpWithEnterOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9E062B217E3E7B0099887E /* SignUpWithEnterOTPViewController.swift */; };
+		EA9E062E217E3E7B0099887E /* SignUpWithEnterOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9E062B217E3E7B0099887E /* SignUpWithEnterOTPViewController.swift */; };
 		EAA11D26213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA11D25213846BC005D9FE4 /* ManualTrackingVC.swift */; };
 		EAA11D27213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA11D25213846BC005D9FE4 /* ManualTrackingVC.swift */; };
 		EAA11D28213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA11D25213846BC005D9FE4 /* ManualTrackingVC.swift */; };
@@ -304,6 +310,8 @@
 		EA98E51020FD9B25002B2A70 /* MaxTrackingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MaxTrackingViewController.xib; sourceTree = "<group>"; };
 		EA98E51B20FE569F002B2A70 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		EA99105820D85DA4003D6D6E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		EA9E0627217E34940099887E /* SignUpWithPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWithPhoneViewController.swift; sourceTree = "<group>"; };
+		EA9E062B217E3E7B0099887E /* SignUpWithEnterOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWithEnterOTPViewController.swift; sourceTree = "<group>"; };
 		EAA11D25213846BC005D9FE4 /* ManualTrackingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualTrackingVC.swift; sourceTree = "<group>"; };
 		EAABE9E120CB05EF0024B222 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
 		EAABE9E220CB05EF0024B222 /* TodayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -407,6 +415,8 @@
 			children = (
 				EA283D392152D15300F71461 /* FirstViewController.swift */,
 				EA283D3D2152EF6500F71461 /* SignUpViewController.swift */,
+				EA9E0627217E34940099887E /* SignUpWithPhoneViewController.swift */,
+				EA9E062B217E3E7B0099887E /* SignUpWithEnterOTPViewController.swift */,
 				EA40F9F520EDCC35009F2CCB /* LoginViewController.swift */,
 			);
 			path = RegisterLogin;
@@ -472,7 +482,6 @@
 				EA3090E620C6DA4000E09DDF /* AppDelegate.swift */,
 				EA99105820D85DA4003D6D6E /* TabBarViewController.swift */,
 				EA98E51B20FE569F002B2A70 /* StatisticsViewController.swift */,
-				F17BE79B215D8D8D0027E1C2 /* Chart */,
 				F13E2D2D211E238D005A0AAF /* CollapsibleTableViewCell.swift */,
 				EA64311621135788000EAED5 /* Extensions.swift */,
 				EA3090EA20C6DA4000E09DDF /* Main.storyboard */,
@@ -480,6 +489,7 @@
 				F1C7AE3D21237281001FB415 /* scheduleDetailViewController.swift */,
 				F1C7AE3B21236293001FB415 /* selectRoutineCell.swift */,
 				F1C7AE3521232EFF001FB415 /* ScheduleViewController.swift */,
+				F17BE79B215D8D8D0027E1C2 /* Chart */,
 				F101658C21751E2F007A8767 /* Social */,
 				EA283D382152D0FD00F71461 /* RegisterLogin */,
 				EAC0DD5120D4045300AC7A1E /* Auto Tracking */,
@@ -659,7 +669,6 @@
 				EA3090E020C6DA4000E09DDF /* Frameworks */,
 				EA3090E120C6DA4000E09DDF /* Resources */,
 				FC972BED72C4CED59DFE67E9 /* [CP] Embed Pods Frameworks */,
-				4EDEC821B801FFF01B16EF89 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -678,8 +687,6 @@
 				EA3090F620C6DA4300E09DDF /* Sources */,
 				EA3090F720C6DA4300E09DDF /* Frameworks */,
 				EA3090F820C6DA4300E09DDF /* Resources */,
-				7D2F4A982D504F2204685A4F /* [CP] Embed Pods Frameworks */,
-				82208FA45D2BD4770A866EA6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -699,8 +706,6 @@
 				EA30910120C6DA4300E09DDF /* Sources */,
 				EA30910220C6DA4300E09DDF /* Frameworks */,
 				EA30910320C6DA4300E09DDF /* Resources */,
-				AFB732CC36AA940DDEE021E0 /* [CP] Embed Pods Frameworks */,
-				5C00A21DC5F46299DE26629B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -831,36 +836,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4EDEC821B801FFF01B16EF89 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5C00A21DC5F46299DE26629B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7A02E8E77323562E195CBD06 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -879,36 +854,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7D2F4A982D504F2204685A4F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		82208FA45D2BD4770A866EA6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppTests/Pods-FitfiAppTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		97DDA61C9A319A0BAEB3F4AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -925,21 +870,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AFB732CC36AA940DDEE021E0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC972BED72C4CED59DFE67E9 /* [CP] Embed Pods Frameworks */ = {
@@ -993,6 +923,7 @@
 				EA78F3D720EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EA99105920D85DA4003D6D6E /* TabBarViewController.swift in Sources */,
 				EAABE9EA20CB16EC0024B222 /* RoutineDetailsTableViewController.swift in Sources */,
+				EA9E0628217E34940099887E /* SignUpWithPhoneViewController.swift in Sources */,
 				EA61DE7920C8913300075FCE /* RoutinesTableViewCell.swift in Sources */,
 				EA98E51C20FE569F002B2A70 /* StatisticsViewController.swift in Sources */,
 				EA84FCAE20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
@@ -1005,6 +936,7 @@
 				EA8C64A520D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
 				EA7C92CB20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
 				EA98E51120FD9B25002B2A70 /* MaxTrackingViewController.swift in Sources */,
+				EA9E062C217E3E7B0099887E /* SignUpWithEnterOTPViewController.swift in Sources */,
 				EAABE9E320CB05EF0024B222 /* TodayCollectionViewCell.swift in Sources */,
 				EA94BB4D211D4CB2002E8875 /* RecentWorkoutDetailCVCell.swift in Sources */,
 				EAA11D26213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */,
@@ -1057,6 +989,7 @@
 				F11A86AA2152AEE90060B7D5 /* PopUpCalenderVC.swift in Sources */,
 				EAA11D27213846BC005D9FE4 /* ManualTrackingVC.swift in Sources */,
 				EA855DEA20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
+				EA9E062D217E3E7B0099887E /* SignUpWithEnterOTPViewController.swift in Sources */,
 				EA77603620E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
 				EA77604020E43D1F0052774F /* TodayCollectionViewCell.swift in Sources */,
 				F16E8E182135DD9400455C87 /* scheduleSelectedVC.swift in Sources */,
@@ -1089,6 +1022,7 @@
 				EA855DEE20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
 				EA84FCAF20E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EA77604620E43D2D0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
+				EA9E0629217E34940099887E /* SignUpWithPhoneViewController.swift in Sources */,
 				EA78F3D820EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
 				EADD314F212326C000E9A3C7 /* ExerciseCollectionViewCell.swift in Sources */,
 				EA4ACA302141B5E600FD1D59 /* SetCollectionViewCell.swift in Sources */,
@@ -1127,6 +1061,7 @@
 				F11A86AB2152AEE90060B7D5 /* PopUpCalenderVC.swift in Sources */,
 				EA855DEB20F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				EA77603720E43CA30052774F /* ExerciseDetailsViewController.swift in Sources */,
+				EA9E062E217E3E7B0099887E /* SignUpWithEnterOTPViewController.swift in Sources */,
 				EA4ACA312141B5E600FD1D59 /* SetCollectionViewCell.swift in Sources */,
 				EA77604120E43D1F0052774F /* TodayCollectionViewCell.swift in Sources */,
 				EA6431102112334E000EAED5 /* ExerciseCategoryTableViewController.swift in Sources */,
@@ -1159,6 +1094,7 @@
 				EA8C64A320D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
 				EA77604520E43D290052774F /* RoutineCollectionViewCell.swift in Sources */,
 				EA855DEF20F6B298000D7EA5 /* RoutineDetailsTableViewCell.swift in Sources */,
+				EA9E062A217E34940099887E /* SignUpWithPhoneViewController.swift in Sources */,
 				EA84FCB020E2DB05007E4487 /* AboutImageTableViewCell.swift in Sources */,
 				EA77604720E43D2E0052774F /* ShowAllExercisesTableViewCell.swift in Sources */,
 				EA78F3D920EC2B31007825F7 /* NewRoutineTableViewController.swift in Sources */,
@@ -1333,10 +1269,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1352,10 +1285,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1372,11 +1302,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1394,11 +1320,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1415,11 +1337,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1436,11 +1354,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W238KMYFQL;
 				INFOPLIST_FILE = FitfiAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.bigbosstony.FitfiAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

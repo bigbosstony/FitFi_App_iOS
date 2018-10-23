@@ -91,6 +91,7 @@ class ProfileSettingsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
@@ -103,6 +104,11 @@ class ProfileSettingsTableViewController: UITableViewController {
         let initialViewController : UINavigationController = mainStoryboardIpad.instantiateViewController(withIdentifier: "rootLoginNC") as UIViewController as! UINavigationController
         self.present(initialViewController, animated:true, completion:nil)
         UserDefaults.standard.set(false, forKey: "hasLoginKey")
+        UserDefaults.standard.set("", forKey: "phoneNumber")
+        
+//        let smallTrackingVC = SmallTrackingViewController()
+//        smallTrackingVC.willMove(toParent: nil)
+//        smallTrackingVC.view.removeFromSuperview()
+//        smallTrackingVC.removeFromParent()
     }
-    
 }
