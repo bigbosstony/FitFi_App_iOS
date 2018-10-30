@@ -7,11 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
 class ProfileSettingsTableViewController: UITableViewController {
 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+    
+//    let persistentStoreCoordinator = NSPersistentStoreCoordinator()
+//    let fileManager = FileManager.default
+    
+    
+//    let url: URL = URL(string: "Users/tony/Library/Developer/CoreSimulator/Devices/6CC01E08-1965-4C0F-8047-05B15A365240/data/Containers/Data/Application/773F6CA6-3894-430F-A03B-85B052E77E77/Library/Application Support/Data.sqlite")!
+
+
+//    let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true) as [URL]
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -110,5 +124,16 @@ class ProfileSettingsTableViewController: UITableViewController {
 //        smallTrackingVC.willMove(toParent: nil)
 //        smallTrackingVC.view.removeFromSuperview()
 //        smallTrackingVC.removeFromParent()
+        
+        
+//        let persistenContainer = NSPersistentContainer(name: "Data")
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        do {
+            try context.execute(request)
+            print("Cleaned")
+        } catch {
+            print(error)
+        }
     }
 }

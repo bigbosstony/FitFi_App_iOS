@@ -12,27 +12,7 @@ import AudioToolbox
 import Alamofire
 import CoreML
 
-//Exercise Type Dictionary
-let exercise = [
-    0 : "Triceps",
-    1 : "Shoulder Press",
-    2 : "Biceps",
-    3 : "Lateral Raise",
-    4 : "Triceps Kickback",
-    5 : "Stationary Lunge",
-    6 : "None"
-]
 
-
-let devices = [
-    "97EDD176-7D5B-9EC9-2950-7D759A5D8C6C" : "Dumnbell 3lb",
-
-    "C436C684-9C69-BF4E-EFD6-789DB0BB8E2C": "Dumnbell 5b",
-    
-    "A7CFE275-B28D-7946-2ECB-CF77B016440C" : "Black Sticker",
-
-    "31F588FB-5E81-2261-FFC5-0887653932E3" : "Dumbbell 8lb",
-]
 
 //MARK: Testing
 struct CurrentExercise {
@@ -44,8 +24,6 @@ struct CurrentExercise {
         self.counts = counts
     }
 }
-
-
 
 class SmallTrackingViewController: UIViewController {
     
@@ -82,7 +60,6 @@ class SmallTrackingViewController: UIViewController {
 
     let bleMainServiceCharacteristic2WCBUUID = CBUUID(string: "6E400003-B5A2-F393-E0A9-E50E24DCCA9E")
     let bleMainServiceCharacteristic3NCBUUID = CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
-
 
     let bleBattery = CBUUID(string: "2A19")
     let bleSystemID = CBUUID(string: "2A23")
@@ -277,7 +254,6 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         blePeripheral.discoverServices(nil) // CHANGE THIS VALUE IF NEEDED, nil == SEARCH FOR ALL SERVICES
         exerciseDeviceLabel.text = devices[peripheral.identifier.uuidString]
         
-//        centralManager.cancelPeripheralConnection(<#T##peripheral: CBPeripheral##CBPeripheral#>)
         central.stopScan()
         print("+++++")
         print(centralManager.retrieveConnectedPeripherals(withServices: [bleMainServiceCBUUID]))
@@ -371,6 +347,7 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
     
     //MARK: Update Characteristic Value
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        print("Did Update Value For Characterristic")
         
         let hasLoginKey = UserDefaults.standard.bool(forKey: "hasLoginKey")
         
@@ -398,6 +375,9 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                 print("Unhandled Characteristic UUID: \(characteristic.uuid)")
     //            let data = String(data: characteristic.value!, encoding: .utf8)
             }
+        } else {
+            centralManager.cancelPeripheralConnection(peripheral)
+            print("cancel connection")
         }
     }
 }
@@ -459,9 +439,9 @@ extension SmallTrackingViewController {
         guard let requestURL = URL(string: url) else { print("URL Error"); return }
         
         var recievedData: [String: String] = ["" : ""]
+        
         var machineLearningURLRequest = URLRequest(url: requestURL)
         machineLearningURLRequest.httpMethod = "POST"
-        
 
         let sensorData: [String : Any] = ["username": username ,"data": data]
         print("Sensor Data: ", sensorData)
@@ -474,7 +454,6 @@ extension SmallTrackingViewController {
         } catch {
             print("Error: Can Not Create JSON Data")
         }
-        
 
         let defaultSessionConfiguration = URLSessionConfiguration.default
 
@@ -521,7 +500,6 @@ extension SmallTrackingViewController {
         task.resume()
     }
     
-    
     func userLogin(with username: String, url: String) {
         
         guard let requestURL = URL(string: url + "/login") else { return }
@@ -547,7 +525,6 @@ extension SmallTrackingViewController {
         task.resume()
     }
     
-    
     func userLogout(from url: String) {
         guard let requestURL = URL(string: url + "/logout") else { return }
         let logoutRequestURL = URLRequest(url: requestURL)
@@ -558,7 +535,6 @@ extension SmallTrackingViewController {
         task.resume()
     }
 }
-
 
 extension SmallTrackingViewController {
     
@@ -588,7 +564,8 @@ extension SmallTrackingViewController {
         }
         return accelerometerDataXYZ
     }
-    
-    
 }
 
+extension SmallTrackingViewController: URLSessionDelegate, URLSessionTaskDelegate {
+    
+}

@@ -68,7 +68,6 @@ class ManualTrackingVC: UIViewController {
     }
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -205,63 +204,8 @@ class ManualTrackingVC: UIViewController {
             }
 
         default:
-            print("d")
+            print("default")
         }
-        
-//
-//        if nextButton.titleLabel?.text == "Finish" {
-//            //MARK: Save
-//
-//            if currentWorkoutExerciseArray.last?.weightArray.last == 0 {
-//                let alert = UIAlertController(title: "Oops", message: "Add Weight To Your Set", preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-//                    print("Add Weight")
-//                }))
-//                self.present(alert, animated: true, completion: nil)
-//            } else {
-//                currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
-//                currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
-//
-//                print("Finish Button On Bottom: ", currentWorkoutExerciseArray)
-//
-//                saveWorkoutResult(from: currentWorkoutExerciseArray)
-//                self.dismiss(animated: true, completion: nil)
-//            }
-//
-//        } else if currentWorkoutExerciseIndex < currentWorkoutExerciseArray.count {
-//
-//            if currentWorkoutExerciseSetIndex < currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
-//                nextButton.setTitle("Next Set", for: .normal)
-//                if currentWorkoutExerciseArray[currentWorkoutExerciseIndex].weightArray[currentWorkoutExerciseSetIndex] == 0 {
-//                    let alert = UIAlertController(title: "Oops", message: "Add Weight To Your Set", preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-//                        print("Add Weight")
-//                    }))
-//                    self.present(alert, animated: true, completion: nil)
-//                } else {
-//                    currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setDoneArray[currentWorkoutExerciseSetIndex] = true
-//                    currentWorkoutExerciseSetIndex += 1
-//                }
-//
-//                if currentWorkoutExerciseSetIndex == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count {
-//                    currentWorkoutExerciseArray[currentWorkoutExerciseIndex].done = true
-//                    print("Flow To Next")
-//
-//                    currentWorkoutExerciseIndex += 1
-//                    currentWorkoutExerciseSetIndex = 0
-//
-//                    self.exerciseCollectionView.scrollToItem(at: IndexPath(item: currentWorkoutExerciseIndex, section: 0), at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
-//                    currentExerciseCounterLabel.text = "\(currentWorkoutExerciseIndex + 1)/\(currentWorkoutExerciseArray.count)"
-//
-//                } else if currentWorkoutExerciseSetIndex == currentWorkoutExerciseArray[currentWorkoutExerciseIndex].setArray.count - 1 {
-//                    if currentWorkoutExerciseIndex == currentWorkoutExerciseArray.count - 1 {
-//                        nextButton.setTitle("Finish", for: .normal)
-//                    } else {
-//                        nextButton.setTitle("Next Exercise", for: .normal)
-//                    }
-//                }
-//            }
-//        }
         
         print(currentWorkoutExerciseArray)
         exerciseCollectionView.reloadData()
@@ -362,6 +306,7 @@ extension ManualTrackingVC {
         }
     }
 }
+
 
 extension ManualTrackingVC: UICollectionViewDelegate, UICollectionViewDataSource {
     

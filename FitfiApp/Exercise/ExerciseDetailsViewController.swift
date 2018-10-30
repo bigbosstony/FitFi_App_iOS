@@ -92,7 +92,7 @@ class ExerciseDetailsViewController: UIViewController {
     func loadInfo() {
         if selectedExercise?.instructions != nil {
             instructionIsProvided = true
-            instructionArray = (selectedExercise?.instructions?.components(separatedBy: "\n"))!
+            instructionArray = (selectedExercise?.instructions?.components(separatedBy: "\\n"))!
         }
     }
     

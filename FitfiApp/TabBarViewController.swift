@@ -33,7 +33,7 @@ class TabBarViewController: UITabBarController {
         if !hasLaunchedBefore {
             print("First Time Launch The Application")
             //MARL: Save default Exercise and Schedule Template
-            saveExercises()
+//            saveExercises()
 
            // saveScheduleTemplate()
 

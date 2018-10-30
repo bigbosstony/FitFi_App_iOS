@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class SignUpWithEnterOTPViewController: UIViewController {
 
     var phoneNumber: String!
     let fitfiOTPKey = "hpyDZSO9CVjQ66YmmMIcsXcOUONmmIsM"
+    let sampleExerciseURL = "http://192.168.2.25/api/sample_exercise"
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     @IBOutlet weak var OTPCodeTextField: UITextField!
     
@@ -49,8 +52,13 @@ extension SignUpWithEnterOTPViewController: UITextFieldDelegate {
                     {
                         //
                     }
+                        
                     else if(number == 1)
                     {
+                        //Download Exercise and save it to database
+
+                        self.downloadExercises(from: self.sampleExerciseURL)
+                        
                         //If Response Is Ture, Go to Main Screen
                         DispatchQueue.main.async {
                             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -66,5 +74,43 @@ extension SignUpWithEnterOTPViewController: UITextFieldDelegate {
             }
         }
         task.resume()
+    }
+}
+
+extension SignUpWithEnterOTPViewController {
+    func downloadExercises(from url: String) {
+        guard let url = URL(string: url) else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
+            guard let responseData = data else { return }
+            
+            do {
+                guard let responseJSONData = try JSONSerialization.jsonObject(with: responseData, options: []) as? [[String : Any]] else { return }
+                for exercise in responseJSONData {
+                    print(exercise)
+                    let newExercise = Exercise(context: self.context)
+                    newExercise.name = exercise["name"] as? String
+                    newExercise.instructions = exercise["details"] as? String
+                    newExercise.image = exercise["image"] as? String
+                    newExercise.category = exercise["category"] as? String
+                    newExercise.favorite = false
+                    self.save()
+                }
+            } catch {
+                print("error parsing json data")
+            }
+        }
+        task.resume()
+    }
+    
+    func save() {
+        do {
+            try context.save()
+        } catch {
+            print("\(error)")
+        }
     }
 }
