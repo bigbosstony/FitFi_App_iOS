@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import CoreBluetooth
 import AudioToolbox
+import Intents
 
 //It is first commit to harsh
 class TabBarViewController: UITabBarController {
@@ -60,6 +61,8 @@ class TabBarViewController: UITabBarController {
 //  MARK: After Adding frame it become activate
 //        smallTrackingVC.view.frame = CGRect(x: 0, y: 497.5, width: 375, height: 119)
 //        subView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        
+        setupIntents()
     }
 
     override func didReceiveMemoryWarning() {
@@ -140,5 +143,18 @@ extension UIViewController {
         willMove(toParent: nil)
         removeFromParent()
         view.removeFromSuperview()
+    }
+}
+
+extension TabBarViewController {
+    func setupIntents() {
+        let activity = NSUserActivity(activityType: "io.github.bigbosstony.FitFi.App.sayHi") // 1
+        activity.title = "Workout Schedule" // 2
+        activity.userInfo = ["speech" : "hi"] // 3
+        activity.isEligibleForSearch = true // 4
+        activity.isEligibleForPrediction = true // 5
+        activity.persistentIdentifier = NSUserActivityPersistentIdentifier("io.github.bigbosstony.FitFi.App.sayHi") // 6
+        view.userActivity = activity // 7
+        activity.becomeCurrent() // 8
     }
 }

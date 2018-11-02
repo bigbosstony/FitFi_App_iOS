@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w9c-bV-UAk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w9c-bV-UAk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1029,7 +1028,7 @@
         <!--Manual TrackingVC-->
         <scene sceneID="aUD-qx-DZi">
             <objects>
-                <viewController id="sH5-yi-bt0" customClass="ManualTrackingVC" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="manualVC" id="sH5-yi-bt0" customClass="ManualTrackingVC" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ucj-6X-YPT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1729,7 +1728,7 @@
             <objects>
                 <tableViewController id="Nge-bI-Zan" customClass="RoutineDetailsTableViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CZe-BZ-6rc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="J6J-hR-YLw">
@@ -1891,7 +1890,7 @@
             <objects>
                 <viewController id="6jD-YE-X1F" customClass="ExerciseDetailsViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BO0-y2-tTp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJy-2r-AFc" userLabel="SegmentedBackground">
@@ -3990,7 +3989,7 @@ CgoKA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TZl-w3-8wq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3384" y="-844"/>
+            <point key="canvasLocation" x="1812" y="-998"/>
         </scene>
         <!--Workout-->
         <scene sceneID="bcl-44-3Mr">
@@ -4020,7 +4019,7 @@ CgoKA
         <!--Exercise-->
         <scene sceneID="9na-G9-gQx">
             <objects>
-                <tableViewController id="vwh-bq-tAD" customClass="ExerciseTableViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ExerciseTableVC" id="vwh-bq-tAD" customClass="ExerciseTableViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="56" sectionFooterHeight="28" id="vQS-0g-RWH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5053,8 +5052,8 @@ CgoKA
         <segue reference="dX0-mi-e4F"/>
         <segue reference="GN5-Aq-Wdx"/>
         <segue reference="H4T-rS-dYU"/>
-        <segue reference="05Y-6i-say"/>
-        <segue reference="OR4-Ta-Iop"/>
+        <segue reference="udI-Ha-zQT"/>
+        <segue reference="14h-tr-23b"/>
         <segue reference="MUM-dk-kXR"/>
     </inferredMetricsTieBreakers>
 </document>

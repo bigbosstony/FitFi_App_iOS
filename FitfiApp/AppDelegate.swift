@@ -63,6 +63,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
     }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        
+        //Open Specific Tab From AppDelegate
+        let myTabBar = self.window?.rootViewController as! UITabBarController // Getting Tab Bar
+        myTabBar.selectedIndex = 2
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//
+//        // get the navigation controller from the window and instantiate the viewcontroller I need.
+//        if let viewController = storyBoard.instantiateViewController(withIdentifier: "ExerciseTableVC") as? ExerciseTableViewController,
+//            let nav = window?.rootViewController as? UINavigationController {
+//            print("Yes")
+//            nav.pushViewController(viewController, animated: true)//use the navigation controller to present this view.
+//        }
+        
+//        let exerciseVC = storyBoard.instantiateViewController(withIdentifier: "ExerciseTableVC") as! ExerciseTableViewController
+//        self.window?.rootViewController = exerciseVC
+        
+        return true
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
