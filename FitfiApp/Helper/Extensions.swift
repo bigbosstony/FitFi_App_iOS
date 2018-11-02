@@ -197,10 +197,6 @@ extension UIColor {
             alpha: alpha
         )
     }
-    
-
-    
-
 }
 
 
@@ -228,7 +224,4 @@ extension NSObject {
         let seconds = Int(time) % 60
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
-    
-
-
 }

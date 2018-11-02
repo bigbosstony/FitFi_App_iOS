@@ -300,6 +300,7 @@ class ScheduleViewController: UIViewController,UITableViewDelegate,UITableViewDa
 //        }
 //        )
     }
+    
     func saveDataToSchedule()
     {
         if(day == nil)

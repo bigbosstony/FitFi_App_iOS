@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import AVFoundation
+
 
 class HomeViewController: UIViewController {
     //Data and Outlet
@@ -31,6 +33,7 @@ class HomeViewController: UIViewController {
     var routineHistoryArray = [Routine_History]()
     var dateFormatter = DateFormatter()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,7 +100,13 @@ class HomeViewController: UIViewController {
 //            // Array of all viewcontroller after push
 //            print(viewControllers)
 //        }
+        
+        //Checking Headphone Connection
+        print("Headphone: ", Helper.bluetoothOrHeadphonesConnected())
     }
+    
+    
+    
 }
 
 //MARK: Load Data
