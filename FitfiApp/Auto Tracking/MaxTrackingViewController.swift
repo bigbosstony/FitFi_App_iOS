@@ -7,27 +7,67 @@
 //
 
 import UIKit
+import CoreData
 
-protocol MaxTrackingDelegate: class {
-    var message: Int { get }
-}
 
 class MaxTrackingViewController: UIViewController {
 
-    weak var delegate: MaxTrackingDelegate!
     var message: Int?
     
     var timer = Timer()
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    //Hide status bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    var whoIsOnTop = 0
+    
+    @IBOutlet weak var singleUserView: UIView!
+    @IBOutlet weak var dualUserView: UIView!
+    
+    
+    @IBOutlet weak var currentCountLabel: UILabel!
+    
+    
+    var currentWorkoutUpdater = CurrentWorkoutUpdater() {
+        didSet {
+            print("MAX updater: ", currentWorkoutUpdater)
+           
+//            currentCountLabel.text! = "T"
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Maxi Tracking VC Loaded")
+        
+        
+        currentCountLabel.text = "9"
         //MARK: Testing Timer
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateRandomInt), userInfo: nil, repeats: true)
-
-        // Do any additional setup after loading the view.
+//        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(updateRandomInt), userInfo: nil, repeats: true)
+//        delegate.update(with: 2)
+        
+    }
+    
+//    @IBAction func changeUserView(_ sender: UIButton) {
+//        if !flipStatus {
+//            UIView.transition(from: singleUserView, to: singleUserView, duration: 1, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+//            flipStatus = true
+//            number += 1
+//            testingLabel.text = String(number)
+//        } else {
+//            UIView.transition(from: singleUserView, to: singleUserView, duration: 1, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
+//            flipStatus = false
+//            number += 1
+//            testingLabel.text = String(number)
+//        }
+//
+//    }
+    
+    func updateMaxiView(with workoutData: CurrentWorkoutUpdater) -> Void {
+        currentCountLabel.text = String(workoutData.currentCount)
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,22 +75,59 @@ class MaxTrackingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func closeButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func closeButtonTapped(_ sender: Any) {
+//        dismiss(animated: true, completion: nil)
+//    }
     
     //MARK: Testing Function
     @objc func updateRandomInt() {
-        print(delegate.message)
+//        print("MAX: ", delegate.message)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
-    */
+    
+    @IBAction func finishButtonPressed(_ sender: UIButton) {
+        
+    }
+    
+    
+    
+    @IBAction func switchSingleUserViewButtonPressed(_ sender: UIButton) {
+        if whoIsOnTop == 0 {
+            UIView.transition(from: singleUserView, to: singleUserView, duration: 1, options: [.transitionCurlUp, .showHideTransitionViews], completion: nil)
+            whoIsOnTop = 1
+        } else if whoIsOnTop == 1 {
+            UIView.transition(from: singleUserView, to: singleUserView, duration: 1, options: [.transitionCurlDown, .showHideTransitionViews], completion: nil)
+            whoIsOnTop = 0
+        } else {
+            UIView.transition(from: dualUserView, to: singleUserView, duration: 1, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+            whoIsOnTop = 0
+        }
+        print("\(whoIsOnTop) is on top")
+    }
+    
+    
+    @IBAction func compareUserButtonPressed(_ sender: UIButton) {
+        switch whoIsOnTop {
+        case 2:
+            UIView.transition(from: dualUserView, to: singleUserView, duration: 1, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+            whoIsOnTop = 0
+        case 0:
+            UIView.transition(from: singleUserView, to: dualUserView, duration: 1, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
+            whoIsOnTop = 2
+        case 1:
+            UIView.transition(from: singleUserView, to: dualUserView, duration: 1, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
+            whoIsOnTop = 2
+        default:
+            print("error")
+        }
+        print("\(whoIsOnTop) is on top")
+    }
+    
 
 }
+
+

@@ -34,7 +34,7 @@ class TabBarViewController: UITabBarController {
         if !hasLaunchedBefore {
             print("First Time Launch The Application")
             //MARL: Save default Exercise and Schedule Template
-//            saveExercises()
+            saveExercises()
 
            // saveScheduleTemplate()
 
@@ -56,7 +56,7 @@ class TabBarViewController: UITabBarController {
 //        centralManager = CBCentralManager(delegate: self, queue: nil)
         //        MARK: Add to ParentVC
         add(smallTrackingVC)
-        smallTrackingVC.view.isHidden = true
+        smallTrackingVC.view.isHidden = false
 //        let trackingVC = SmallTrackingViewController()
 //  MARK: After Adding frame it become activate
 //        smallTrackingVC.view.frame = CGRect(x: 0, y: 497.5, width: 375, height: 119)

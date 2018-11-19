@@ -32,4 +32,9 @@ class SocialWebViewController: UIViewController {
         webView.reload()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        print("Social Page Did Appear")
+    }
+    
 }

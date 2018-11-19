@@ -38,30 +38,6 @@ let testingRoutine = [
 
 let Exercises = [
     [
-        "name": "Hip Abduction Machine",
-        "instructions": "1. Setup in an upright position with your back against the pad and your spine neutral. \n2. Exhale and push the legs apart as you open the pads. \n3. Once your hips are fully externally rotated, slowly return to the starting position. \n4. Repeat for the desired number of repetitions.",
-        "image": "1",
-        "category": "Core"
-    ],
-    [
-        "name": "Twisting Floor Crunch",
-        "instructions": "1. The twisting floor crunch works the abs and obliques. Position a mat on the floor and lie down on the mat flat on your back. \n2. Pull your left leg up until your knee joint is at around 90 degrees. \n3. Now take your right leg and rest your ankle on your left knee. \n4. Start the exercise by touching the side of your head with your fingertips and raising your shoulder blades slightly off the mat. \n5. Crunch up, bringing your left elbow up to your right knee. \n6. Slowly lower back to starting position without letting your shoulder blades touch the floor. \nRepeat set for the opposite side of the body.",
-        "image": "2",
-        "category": "Chest"
-    ],
-    [
-        "name": "Standing Wrist Curl Behind Back",
-        "instructions": "1. Begin the exercise by selecting a barbell weight and holding it behind your back using an underhand grip (palms facing out). Your hands should be placed around shoulder width apart. \n2. Stand straight up with your feet shoulder width apart and look straight forward. Bending only at the wrists, let the barbell drop as far as possible. This is the starting position for the exercise. \n3. Slowly raise the barbell up as far as possible squeezing the forearm muscles at the top of the movement. Only your wrists should be moving. \n4. Pause, and then slowly lower the barbell back to the starting position. \n5. Repeat for desired reps.",
-        "image": "3",
-        "category": "Shoulders"
-    ],
-    [
-        "name": "Straight Arm Lat Pull Down",
-        "instructions": "1. Attach a wide grip handle to a cable stack and assume a standing position. \n2. Grasp the handle with a pronated grip (double overhand) at roughly shoulder width and lean forward slightly by hinging at the hips. \n3. Keep the elbow slightly flexed and initiate the movement by depressing the shoulder blades and extending the shoulders. \n4. Pull the bar to your thigh until the lats are fully contracted and then slowly lower under control. \n5. Repeat for the desired number of repetitions.",
-        "image": "4",
-        "category": "Back"
-    ],
-    [
         "name": "Leg Extension",
         "instructions": "1. Select the desired resistance on the weight stack and insert the pin. \n2. Adjust the seat so that the knees are directly in line with the axis of the machine. \n3. Sit down and position your shins behind the pad at the base of the machine. \n4. Take a deep breath and extend your legs as you flex your quadriceps. \n5. As you lock out the knees, exhale to complete the repetition. \n6. Slowly lower your feet back to the starting position and repeat for the desired number of repetitions.",
         "image": "5",
@@ -97,6 +73,36 @@ let Exercises = [
         "instructions" : "1. The pec dec is a great machine for isolating the chest. Before you start, adjust the seat height so that the bottom of the arm pads are about level with your chest when you're sitting on the machine. \n2. Select the weight you want to use on the stack. \n3. Sit on the machine, grasp the handles and/or place your forearms on the padding. Take the weight off the stack slightly. This is the starting position for the exercise. \n4. Keeping your body fixed, slowly bring the forearm pads or handles together. Don't let them touch. \n5. Squeeze the chest muscles for a count of 1-3, then slowly lower back to the starting position. \n6. Repeat for desired reps.",
         "image" : "10",
         "category": "Arms"
+    ],
+    [
+        "name" : "Bicep Curl (Dumbbell)",
+        "instructions" : "",
+        "image" : "1",
+        "category": "Arms"
+    ],
+    [
+        "name" : "Triceps Extension (Dumbbell)",
+        "instructions" : "",
+        "image" : "1",
+        "category": "Arms"
+    ],
+    [
+        "name" : "Triceps KickBack (Dumbbell)",
+        "instructions" : "",
+        "image" : "1",
+        "category": "Arms"
+    ],
+    [
+        "name" : "Lateral Raise (Dumbbell)",
+        "instructions" : "",
+        "image" : "1",
+        "category": "Shoulders"
+    ],
+    [
+        "name" : "Stationary Lunge (Dumbbell)",
+        "instructions" : "",
+        "image" : "1",
+        "category": "Legs"
     ]
 ]
 
@@ -118,11 +124,11 @@ let exercise = [
 
 
 let devices = [
-    "97EDD176-7D5B-9EC9-2950-7D759A5D8C6C" : "Dumnbell 3lb",
+    "97EDD176-7D5B-9EC9-2950-7D759A5D8C6C" : "Dumnbell 5lb",
     
-    "C436C684-9C69-BF4E-EFD6-789DB0BB8E2C": "Dumnbell 5b",
+    "C436C684-9C69-BF4E-EFD6-789DB0BB8E2C": "Dumnbell 5lb",
     
     "A7CFE275-B28D-7946-2ECB-CF77B016440C" : "Black Sticker",
     
-    "31F588FB-5E81-2261-FFC5-0887653932E3" : "Dumbbell 8lb",
+    "31F588FB-5E81-2261-FFC5-0887653932E3" : "Dumbbell 5lb",
 ]

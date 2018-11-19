@@ -13,7 +13,7 @@ class SignUpWithEnterOTPViewController: UIViewController {
 
     var phoneNumber: String!
     let fitfiOTPKey = "hpyDZSO9CVjQ66YmmMIcsXcOUONmmIsM"
-    let sampleExerciseURL = "http://192.168.2.25/api/sample_exercise"
+    let sampleExerciseURL = "" //"http://192.168.2.25/api/sample_exercise" // URL for Sample
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     @IBOutlet weak var OTPCodeTextField: UITextField!

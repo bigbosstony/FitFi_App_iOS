@@ -9,15 +9,7 @@
 import UIKit
 import CoreData
 
-struct CurrentWorkoutExercise {
-    var name: String
-    var category: String
-    var calorie: Int16
-    var setArray: [Int16]
-    var setDoneArray: [Bool]
-    var weightArray: [Int16]
-    var done: Bool
-}
+
 
 
 class ManualTrackingVC: UIViewController {
@@ -429,6 +421,5 @@ extension ManualTrackingVC: UITextFieldDelegate {
             return newLength <= 3 // Bool
     }
 }
-
 
 

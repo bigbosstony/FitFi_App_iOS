@@ -90,7 +90,6 @@ class RecentWorkoutDetailsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("TableView: " ,indexPath)
     }
- 
 }
 
 //MARK: Collection View DataSource and Delegate

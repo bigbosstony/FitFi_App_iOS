@@ -127,6 +127,8 @@ class ProfileSettingsTableViewController: UITableViewController {
         
         
 //        let persistenContainer = NSPersistentContainer(name: "Data")
+        
+        //Delete Data From Database
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise")
         let request = NSBatchDeleteRequest(fetchRequest: fetch)
         do {
