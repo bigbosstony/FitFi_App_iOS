@@ -33,11 +33,12 @@ class TabBarViewController: UITabBarController {
         
         if !hasLaunchedBefore {
             print("First Time Launch The Application")
-            //MARL: Save default Exercise and Schedule Template
+            //MARK: Save default Exercise and Schedule Template
             saveExercises()
 
-           // saveScheduleTemplate()
-
+            //MARK: Save Demo Routine
+            saveDemoRoutine()
+            
             UserDefaults.standard.setValue(true, forKey: "hasLaunchedBefore")
         } else {
             print("Non-First Time Launch")
@@ -69,11 +70,6 @@ class TabBarViewController: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    }
 
 }
 
@@ -92,14 +88,6 @@ extension TabBarViewController {
             save()
         }
     }
-    
-//    func saveScheduleTemplate() {
-//        for day in dayOfWeek {
-//            let newSchedule = Schedule(context: context)
-//            newSchedule.dayOfWeek = day
-//            save()
-//        }
-//    }
     
     func save() {
         do {
@@ -156,5 +144,26 @@ extension TabBarViewController {
         activity.persistentIdentifier = NSUserActivityPersistentIdentifier("io.github.bigbosstony.FitFi.App.sayHi") // 6
         view.userActivity = activity // 7
         activity.becomeCurrent() // 8
+    }
+}
+
+
+
+extension TabBarViewController {
+    func saveDemoRoutine() {
+        
+        let newRoutine = Routine(context: context)
+        newRoutine.name = "alpha"
+        newRoutine.favorite = false
+        
+        for exercise in 0...1 {
+            let newRoutineExercise = Routine_Exercise(context: context)
+            newRoutineExercise.name = Exercises[exercise]["name"]
+            newRoutineExercise.category = Exercises[exercise]["category"]
+            newRoutineExercise.parentRoutine = newRoutine
+            newRoutineExercise.sets = 2
+            newRoutineExercise.reps = 3
+        }
+        save()
     }
 }

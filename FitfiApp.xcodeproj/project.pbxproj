@@ -10,6 +10,12 @@
 		4A5CF20F88B3C7B9F5432B59 /* Pods_FitfiAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1AF7AA39FB682387C66EC0A /* Pods_FitfiAppUITests.framework */; };
 		4EA0BEC2F71359488060E077 /* Pods_FitfiApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9FA51E545770CF22847997 /* Pods_FitfiApp.framework */; };
 		E1111293C39D910C4E18CB7B /* Pods_FitfiAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECC458A20BCED6A5DD649F8 /* Pods_FitfiAppTests.framework */; };
+		EA01A8AF21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01A8AD21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.swift */; };
+		EA01A8B021A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01A8AD21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.swift */; };
+		EA01A8B121A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA01A8AD21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.swift */; };
+		EA01A8B221A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA01A8AE21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.xib */; };
+		EA01A8B321A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA01A8AE21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.xib */; };
+		EA01A8B421A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA01A8AE21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.xib */; };
 		EA080AA121A31EAF00A50DA0 /* WorkoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA080AA021A31EAF00A50DA0 /* WorkoutHelper.swift */; };
 		EA080AA221A31EAF00A50DA0 /* WorkoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA080AA021A31EAF00A50DA0 /* WorkoutHelper.swift */; };
 		EA080AA321A31EAF00A50DA0 /* WorkoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA080AA021A31EAF00A50DA0 /* WorkoutHelper.swift */; };
@@ -265,6 +271,8 @@
 		CB5DCCDA13EC783CEBA3BC46 /* Pods-FitfiAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitfiAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitfiAppUITests/Pods-FitfiAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CEFBAD3A4C803EB99A1247F2 /* Pods-FitfiApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitfiApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitfiApp/Pods-FitfiApp.release.xcconfig"; sourceTree = "<group>"; };
 		DB9FA51E545770CF22847997 /* Pods_FitfiApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitfiApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA01A8AD21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxTVCCurrentExerciseCollectionVCell.swift; sourceTree = "<group>"; };
+		EA01A8AE21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MaxTVCCurrentExerciseCollectionVCell.xib; sourceTree = "<group>"; };
 		EA080AA021A31EAF00A50DA0 /* WorkoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHelper.swift; sourceTree = "<group>"; };
 		EA098B9721752C2400E723BC /* SocialWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialWebViewController.swift; sourceTree = "<group>"; };
 		EA203C93218A338E00B350CE /* FitfiApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitfiApp.entitlements; sourceTree = "<group>"; };
@@ -635,6 +643,8 @@
 				EADD315321236FB100E9A3C7 /* SmallTrackingVCCollectionViewCell.xib */,
 				EA98E50F20FD9B25002B2A70 /* MaxTrackingViewController.swift */,
 				EA98E51020FD9B25002B2A70 /* MaxTrackingViewController.xib */,
+				EA01A8AD21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.swift */,
+				EA01A8AE21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.xib */,
 				EA890FB1215576EB00B56BAD /* classify_model_0_4.mlmodel */,
 				F17BE795215D42880027E1C2 /* counting_model_0_4.mlmodel */,
 			);
@@ -793,6 +803,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA84FCC120E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
+				EA01A8B221A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.xib in Resources */,
 				EAABE9E620CB05EF0024B222 /* TodayCollectionViewCell.xib in Resources */,
 				EA98E50B20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */,
 				EA3090F420C6DA4300E09DDF /* LaunchScreen.storyboard in Resources */,
@@ -814,6 +825,7 @@
 				EA98E51520FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */,
 				EA84FCC220E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
 				F1EC02AF213727590030DBA8 /* Assets.xcassets in Resources */,
+				EA01A8B321A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.xib in Resources */,
 				EA98E50C20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */,
 				EA84FCB220E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
 			);
@@ -829,6 +841,7 @@
 				EA98E51620FD9B25002B2A70 /* MaxTrackingViewController.xib in Resources */,
 				EA84FCC320E2E241007E4487 /* AboutInstructionTableViewCell.xib in Resources */,
 				F1EC02B0213727590030DBA8 /* Assets.xcassets in Resources */,
+				EA01A8B421A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.xib in Resources */,
 				EA98E50D20FD6573002B2A70 /* SmallTrackingViewController.xib in Resources */,
 				EA84FCB320E2DB05007E4487 /* AboutImageTableViewCell.xib in Resources */,
 			);
@@ -953,6 +966,7 @@
 				EA855DE920F64C50000D7EA5 /* NewRoutineTableViewCell.swift in Sources */,
 				F1C7AE3C21236293001FB415 /* selectRoutineCell.swift in Sources */,
 				EA098B9821752C2400E723BC /* SocialWebViewController.swift in Sources */,
+				EA01A8AF21A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.swift in Sources */,
 				EA283D3A2152D15300F71461 /* FirstViewController.swift in Sources */,
 				EA8C64A520D2BEEC005B8859 /* ExerciseTableViewCell.swift in Sources */,
 				EA7C92CB20F94016006DBFF0 /* ProfileSettingsTableViewController.swift in Sources */,
@@ -1038,6 +1052,7 @@
 				EA77603820E43CA80052774F /* AppDelegate.swift in Sources */,
 				EA98E50920FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */,
 				EA84FCBF20E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
+				EA01A8B021A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.swift in Sources */,
 				EA6431212114F7BE000EAED5 /* CollapsibleTableViewHeader.swift in Sources */,
 				EA8C64A220D2BD94005B8859 /* ExerciseTableViewController.swift in Sources */,
 				EA77604420E43D280052774F /* RoutineCollectionViewCell.swift in Sources */,
@@ -1112,6 +1127,7 @@
 				F16E8E152135DBC900455C87 /* CollapsibleTableViewCell.swift in Sources */,
 				EAC0DD5020D3132300AC7A1E /* RoutinesTableViewController.swift in Sources */,
 				EA77603920E43CA90052774F /* AppDelegate.swift in Sources */,
+				EA01A8B121A472A4002948BC /* MaxTVCCurrentExerciseCollectionVCell.swift in Sources */,
 				EA98E50A20FD6573002B2A70 /* SmallTrackingViewController.swift in Sources */,
 				EA84FCC020E2E241007E4487 /* AboutInstructionTableViewCell.swift in Sources */,
 				EA6431222114F7BE000EAED5 /* CollapsibleTableViewHeader.swift in Sources */,

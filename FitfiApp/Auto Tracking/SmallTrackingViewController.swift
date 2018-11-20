@@ -13,23 +13,16 @@ import Alamofire
 import CoreML
 
 
-
-//MARK: Testing
-//struct CurrentExercise {
-//    var name: String
-//    var counts: [Int]
-//
-//    init(name: String, counts: [Int]) {
-//        self.name = name
-//        self.counts = counts
-//    }
-//}
-
 class SmallTrackingViewController: UIViewController {
     
     var testingData = 0
     
-    var maxTrackingVC: MaxTrackingViewController?
+//    var maxTrackingVC: MaxTrackingViewController?
+    
+    lazy var maxTrackingVC: MaxTrackingViewController = {
+        return MaxTrackingViewController.init(nibName: "MaxTrackingViewController", bundle: nil)
+    }()
+
     
     @IBOutlet weak var exerciseTypeLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -111,25 +104,12 @@ class SmallTrackingViewController: UIViewController {
     var currentWorkoutExerciseArray = [CurrentWorkoutExercise]()
     var currentWorkoutUpdater = CurrentWorkoutUpdater()
     
-    //TODO: Add to Struct
-//    var currentExerciseName = ""
-//    var currentExerciseIndex = 0
-//    var totalCurrentExercise = 0
-//
-//    var currentSetIndex = 0
-//    var totalSet4Exercise = 0
-//
-//    var currentCount = 0
-//    var currentRep4Set: Int16 = 0
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Small Tracking View Did Load")
         print("Device: ", UIDevice.modelName)
         print("BLE Version: \(bleVersion)")
         //        dateFormatter.dateFormat = "yyyyMMddHHmmss"
-        
         
         //MARK: Demo - Load CoreData to Struct
         if let demoRoutine = fetchHelper.loadDemoRoutine(with: "alpha").first {
@@ -150,13 +130,7 @@ class SmallTrackingViewController: UIViewController {
             currentWorkoutUpdater.currentRep4Set = currentWorkoutExerciseArray.first?.setArray.first ?? 0
             currentWorkoutUpdater.totalSet4Exercise = currentWorkoutExerciseArray.first?.setArray.count ?? 0
             currentWorkoutUpdater.totalCurrentExercise = currentWorkoutExerciseArray.count
-
-//            currentExerciseName = currentWorkoutExerciseArray.first?.name ?? "none"
-//            currentRep4Set = currentWorkoutExerciseArray.first?.setArray.first ?? 0
-//            totalSet4Exercise = currentWorkoutExerciseArray.first?.setArray.count ?? 0
-//            totalCurrentExercise = currentWorkoutExerciseArray.count
         }
-        
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
         //Register nib file to collection view
@@ -196,9 +170,11 @@ class SmallTrackingViewController: UIViewController {
     
     //MARK: Extend To MaxiTrackingView
     @objc func expandTrackingSmallView() {
-        maxTrackingVC = MaxTrackingViewController.init(nibName: "MaxTrackingViewController", bundle: nil)
+//        maxTrackingVC = MaxTrackingViewController.init(nibName: "MaxTrackingViewController", bundle: nil)
 //        maxTrackingVC?.delegate = self
-        present(maxTrackingVC!, animated: true, completion: nil)
+        maxTrackingVC.currentWorkoutUpdater = currentWorkoutUpdater
+
+        present(maxTrackingVC, animated: true, completion: nil)
     }
 }
 
@@ -450,51 +426,8 @@ extension SmallTrackingViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return currentExerciseArray.last?.counts.count ?? 0
-//        return currentWorkoutExerciseArray[currentExerciseIndex].setArray.count
         return currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].setArray.count
     }
-}
-
-//extension SmallTrackingViewController: MaxTrackingDelegate {
-//    func update(with number: Int) {
-//        self.testingData = number
-//    }
-//
-//
-//    //Testing
-//    var message: Int {
-//        let random = arc4random_uniform(100)
-//        return Int(random)
-//    }
-//
-//
-//}
-
-extension SmallTrackingViewController {
-//    func collectingController(exercise name: String) {
-//        if currentExerciseArray.count == 0 {
-//            print("Create and Add new exercise")
-//            let newExercise = CurrentExercise(name: name, counts: [1])
-//            currentExerciseArray.append(newExercise)
-//            print("1: ", newExercise)
-//
-//        } else if currentExerciseArray.last?.name == name {
-//            let indexOfExercise = currentExerciseArray.count - 1
-//            let indexOfCounts = currentExerciseArray[indexOfExercise].counts.count - 1
-//
-//            if currentExerciseArray[indexOfExercise].counts[indexOfCounts] <= 5 {
-//                currentExerciseArray[indexOfExercise].counts[indexOfCounts] += 1
-//            } else {
-//                currentExerciseArray[indexOfExercise].counts.append(1)
-//            }
-//            print("2: ", currentExerciseArray.last!)
-//        } else {
-//            let newExercise = CurrentExercise(name: name, counts: [1])
-//            currentExerciseArray.append(newExercise)
-//            print("3: ", currentExerciseArray.last!)
-//        }
-//    }
 }
 
 
@@ -543,27 +476,12 @@ extension SmallTrackingViewController {
                     
                     //MARK: Send to Maxi View
                     self.testingData += 1
-                    self.maxTrackingVC = MaxTrackingViewController.init(nibName: "MaxTrackingViewController", bundle: nil)
-                    self.maxTrackingVC?.currentWorkoutUpdater = self.currentWorkoutUpdater
+//                    self.maxTrackingVC = MaxTrackingViewController.init(nibName: "MaxTrackingViewController", bundle: nil)
+                    self.maxTrackingVC.currentWorkoutUpdater = self.currentWorkoutUpdater
                     
                     DispatchQueue.main.async {
 
                         self.updateCurrentWorkout(with: exercise)
-
-//                        self.collectingController(exercise: exercise)
-//                        self.collectionView.reloadData()
-//
-//                        if self.currentExercise == exercise {
-//                            self.exerciseTypeLabel.text = exercise
-//                            self.counter += 1
-//                            self.exerciseCountingLabel.text = String(self.counter)
-//                        } else {
-//                            self.currentExercise = exercise
-//                            self.counter = 0
-//                            self.exerciseTypeLabel.text = exercise
-//                            self.counter += 1
-//                            self.exerciseCountingLabel.text = String(self.counter)
-//                        }
                     }
                 }
             } catch {
