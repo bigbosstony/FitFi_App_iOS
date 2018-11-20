@@ -23,7 +23,9 @@ class MaxTrackingViewController: UIViewController {
     
     var whoIsOnTop = 0
     
-    
+    lazy var screenWidth = {
+        return self.view.frame.size.width
+    }()
     
     @IBOutlet weak var singleUserView: UIView!
     @IBOutlet weak var dualUserView: UIView!
@@ -62,6 +64,16 @@ class MaxTrackingViewController: UIViewController {
         currentExerciseTotalExerciseCollectionView.register(UINib.init(nibName: "MaxTVCCurrentExerciseCollectionVCell", bundle: nil), forCellWithReuseIdentifier: "MaxTVCCurrentExerciseCollectionVCell")
         
         
+        let exerciseCount = CGFloat(currentWorkoutUpdater.totalCurrentExercise)
+        let actualScreenWidth = screenWidth - (exerciseCount - 1) * 10
+        let cellWidth = actualScreenWidth / exerciseCount
+        
+        if let flowLayout = currentExerciseTotalExerciseCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            flowLayout.minimumInteritemSpacing = 3.0
+            flowLayout.estimatedItemSize = CGSize(width: cellWidth, height: 5)
+            currentExerciseTotalExerciseCollectionView.collectionViewLayout = flowLayout
+        }
+
         updateMaxiView(with: currentWorkoutUpdater)
         
         //MARK: Testing Timer
@@ -77,6 +89,7 @@ class MaxTrackingViewController: UIViewController {
         self.currentSetTotalSet.text = String(self.currentWorkoutUpdater.currentSetIndex + 1) + "/" + String(self.currentWorkoutUpdater.totalSet4Exercise)
         self.currentCountLabel.text! = String(self.currentWorkoutUpdater.currentCount)
         self.currentRep4Set.text = "/" + String(self.currentWorkoutUpdater.currentRep4Set)
+        
     }
     
     //MARK: Testing Function
@@ -131,19 +144,13 @@ class MaxTrackingViewController: UIViewController {
 
 extension MaxTrackingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return currentWorkoutUpdater.totalCurrentExercise
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MaxTVCCurrentExerciseCollectionVCell", for: indexPath) as! MaxTVCCurrentExerciseCollectionVCell
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: 70, height: 5)
-        
-        return cellSize
     }
 }
 

@@ -573,7 +573,7 @@ extension SmallTrackingViewController {
             if Int16(currentWorkoutUpdater.currentCount) < currentWorkoutUpdater.currentRep4Set {
                 currentWorkoutUpdater.currentCount += 1
             } else {
-                 currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].setDoneArray[currentWorkoutUpdater.currentSetIndex] = true
+                currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].setDoneArray[currentWorkoutUpdater.currentSetIndex] = true
                 if currentWorkoutUpdater.currentSetIndex + 1 < currentWorkoutUpdater.totalSet4Exercise {
                     currentWorkoutUpdater.currentSetIndex += 1
                     currentWorkoutUpdater.currentCount = 1
