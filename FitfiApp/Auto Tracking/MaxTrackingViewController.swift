@@ -11,8 +11,6 @@ import CoreData
 
 
 class MaxTrackingViewController: UIViewController {
-
-    var message: Int?
     
     var timer = Timer()
     
@@ -21,7 +19,51 @@ class MaxTrackingViewController: UIViewController {
         return false
     }
     
-    var whoIsOnTop = 0
+    lazy var currentUser = { () -> [String: Any] in
+        var pic = ""
+        if UserDefaults.standard.value(forKey: "user") as! Int == 1 {
+            pic = "Users/whiteguy"
+        } else {
+            pic = ""
+        }
+        
+        let user = ["userID" : UserDefaults.standard.value(forKey: "user"), "userPicture": pic]
+        return user as [String : Any]
+    }()
+    
+    var otherUser: [String: Any]?
+    
+    var whoIsOnTop = 0 {
+        didSet {
+            self.currentExerciseTotalExerciseCollectionView.reloadData()
+//            if whoIsOnTop == 1 {
+//
+//                applyButtonEffect(buttonOutlet: singleUserViewButton, imageName: otherUser?["userPicture"] as! String, flag: 1)
+//
+//                topView.backgroundColor = #colorLiteral(red: 0.2745098039, green: 0.08235294118, blue: 0.2745098039, alpha: 1)
+//                deviceView.backgroundColor = #colorLiteral(red: 0.2745098039, green: 0.08235294118, blue: 0.2745098039, alpha: 1)
+//                getOtherUsersExercise()
+//                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getOtherUsersExercise), userInfo: nil, repeats: true)
+//            }
+//            else
+            if whoIsOnTop == 0 {
+                timer.invalidate()
+                singleUserViewButton.isHidden = true
+                otherUserViewButton.isHidden = true
+                applyButtonEffect(buttonOutlet: singleUserViewButton, imageName: currentUser["userPicture"] as! String, flag: 1)
+                topView.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.1529411765, blue: 0.168627451, alpha: 1)
+                deviceView.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.1529411765, blue: 0.168627451, alpha: 1)
+                self.updateMaxiView(of: userFromSingleLabelGroup, with: self.currentWorkoutUpdater)
+            } else {
+                singleUserViewButton.isHidden = false
+                otherUserViewButton.isHidden = false
+
+                applyButtonEffect(buttonOutlet: singleUserViewButton, imageName: currentUser["userPicture"] as! String, flag: 1)
+                self.updateMaxiView(of: userFromDualLabelGroup, with: self.currentWorkoutUpdater)
+                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getOtherUsersExercise), userInfo: nil, repeats: true)
+            }
+        }
+    }
     
     lazy var screenWidth = {
         return self.view.frame.size.width
@@ -29,35 +71,74 @@ class MaxTrackingViewController: UIViewController {
     
     @IBOutlet weak var singleUserView: UIView!
     @IBOutlet weak var dualUserView: UIView!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var deviceView: UIView!
     
     
     @IBOutlet weak var currentExerciseTotalExerciseCollectionView: UICollectionView!
-    @IBOutlet weak var currentExerciseNameLabel: UILabel!
-    @IBOutlet weak var currentSetTotalSet: UILabel!
-    @IBOutlet weak var currentCountLabel: UILabel!
-    @IBOutlet weak var currentRep4Set: UILabel!
+    
+    
+    @IBOutlet var userFromSingleLabelGroup: [UILabel]!
+    
     
     
     @IBOutlet weak var singleUserViewButton: UIButton!
+    @IBOutlet weak var otherUserViewButton: UIButton!
     @IBOutlet weak var dualUserButton: UIButton!
+    
+    
+    @IBOutlet var userFromDualLabelGroup: [UILabel]!
+    
+    @IBOutlet var otherFromDualLabelGroup: [UILabel]!
+    
+    @IBOutlet weak var leftUserView: UIView!
+    @IBOutlet weak var rightUserView: UIView!
+    
+    
+    @IBOutlet weak var reactionUIImageView: UIImageView!
+    @IBOutlet weak var deviceWeightLabel: UILabel!
+    @IBOutlet weak var deviceWeightLabelDS: UILabel!
+    @IBOutlet weak var deviceWeightLabelDSO: UILabel!
+    
     
     var currentWorkoutUpdater = CurrentWorkoutUpdater() {
         didSet {
-            
-            print("MAX updater: ", currentWorkoutUpdater)
-            if currentCountLabel != nil {
-                DispatchQueue.main.async {
-                    //Update UI
-                    self.updateMaxiView(with: self.currentWorkoutUpdater)
 
+            print("MAX updater: ", currentWorkoutUpdater)
+            if userFromSingleLabelGroup != nil {
+                DispatchQueue.main.async {
+                    self.currentExerciseTotalExerciseCollectionView.reloadData()
+                    //Update UI
+                    if self.whoIsOnTop == 0 {
+                        self.updateMaxiView(of: self.userFromSingleLabelGroup, with: self.currentWorkoutUpdater)
+                    } else if self.whoIsOnTop == 2 {
+                        self.updateMaxiView(of: self.userFromDualLabelGroup, with: self.currentWorkoutUpdater)
+                    } else {
+                        print("")
+                    }
                 }
             }
         }
     }
     
+    var otherUserExerciseIndex = 0
+    var otherUserExerciseFinished = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Maxi Tracking VC Loaded")
+        
+        print(currentUser)
+        
+//        userFromDualLabelGroup[0].text = "testing"
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkMyReaction), userInfo: nil, repeats: true)
+
+        if currentUser["userID"] as! Int == 1 {
+            otherUser = ["userID" : 2, "userPicture": ""]
+        } else {
+            otherUser = ["userID" : 1, "userPicture": "Users/whiteguy"]
+        }
         
         currentExerciseTotalExerciseCollectionView.delegate = self
         currentExerciseTotalExerciseCollectionView.dataSource = self
@@ -74,29 +155,40 @@ class MaxTrackingViewController: UIViewController {
             currentExerciseTotalExerciseCollectionView.collectionViewLayout = flowLayout
         }
 
-        updateMaxiView(with: currentWorkoutUpdater)
+        updateMaxiView(of: userFromSingleLabelGroup, with: currentWorkoutUpdater)
         
-        //MARK: Testing Timer
-//        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(updateRandomInt), userInfo: nil, repeats: true)
-//        delegate.update(with: 2)
+        print("User: ", UserDefaults.standard.value(forKey: "user")!)
         
-        applyButtonEffect(buttonOutlet: singleUserViewButton, imageName: "Users/whiteguy", flag: 1)
+        //apply button
+        applyButtonEffect(buttonOutlet: singleUserViewButton, imageName: currentUser["userPicture"] as! String, flag: 1)
+        applyButtonEffect(buttonOutlet: otherUserViewButton, imageName: otherUser?["userPicture"] as! String, flag: 1)
+        singleUserViewButton.isHidden = true
+        otherUserViewButton.isHidden = true
+        
+        getOtherUsersExercise()
+        
+        leftUserView.addRightBorder(color: #colorLiteral(red: 0.1450980392, green: 0.1529411765, blue: 0.168627451, alpha: 1), width: 1)
+        rightUserView.addLeftBorder(color: #colorLiteral(red: 0.3488702476, green: 0.1221515611, blue: 0.2224545777, alpha: 1), width: 1)
+        
+        
+        
+
         applyButtonEffect(buttonOutlet: dualUserButton, imageName: "Glyphs/dual", flag: 0)
     }
     
-    func updateMaxiView(with workoutData: CurrentWorkoutUpdater) -> Void {
-        self.currentExerciseNameLabel.text = self.currentWorkoutUpdater.currentExerciseName
-        self.currentSetTotalSet.text = String(self.currentWorkoutUpdater.currentSetIndex + 1) + "/" + String(self.currentWorkoutUpdater.totalSet4Exercise)
-        self.currentCountLabel.text! = String(self.currentWorkoutUpdater.currentCount)
-        self.currentRep4Set.text = "/" + String(self.currentWorkoutUpdater.currentRep4Set)
-        
+    func updateMaxiView(of labelGroup: [UILabel]!, with workoutData: CurrentWorkoutUpdater) -> Void {
+        labelGroup[0].text = workoutData.currentExerciseName
+        labelGroup[1].text = String(workoutData.currentSetIndex + 1) + "/" + String(workoutData.totalSet4Exercise)
+        labelGroup[2].text! = String(workoutData.currentCount)
+        labelGroup[3].text = "/" + String(workoutData.currentRep4Set)
+        deviceWeightLabel.text = workoutData.deviceWeight
+        deviceWeightLabelDS.text = workoutData.deviceWeight
     }
     
     //MARK: Testing Function
     @objc func updateRandomInt() {
 //        print("MAX: ", delegate.message)
     }
-    
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -106,22 +198,19 @@ class MaxTrackingViewController: UIViewController {
         
     }
     
-    
-    
     @IBAction func switchSingleUserViewButtonPressed(_ sender: UIButton) {
-        if whoIsOnTop == 0 {
-            UIView.transition(from: singleUserView, to: singleUserView, duration: 1, options: [.transitionCurlUp, .showHideTransitionViews], completion: nil)
-            whoIsOnTop = 1
-        } else if whoIsOnTop == 1 {
-            UIView.transition(from: singleUserView, to: singleUserView, duration: 1, options: [.transitionCurlDown, .showHideTransitionViews], completion: nil)
-            whoIsOnTop = 0
-        } else {
-            UIView.transition(from: dualUserView, to: singleUserView, duration: 1, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
-            whoIsOnTop = 0
-        }
-        print("\(whoIsOnTop) is on top")
+//        if whoIsOnTop == 0 {
+//            UIView.transition(from: singleUserView, to: singleUserView, duration: 1, options: [.transitionCurlUp, .showHideTransitionViews], completion: nil)
+//            whoIsOnTop = 1
+//        } else if whoIsOnTop == 1 {
+//            UIView.transition(from: singleUserView, to: singleUserView, duration: 1, options: [.transitionCurlDown, .showHideTransitionViews], completion: nil)
+//            whoIsOnTop = 0
+//        } else {
+//            UIView.transition(from: dualUserView, to: singleUserView, duration: 1, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+//            whoIsOnTop = 0
+//        }
+//        print("\(whoIsOnTop) is on top")
     }
-    
     
     @IBAction func compareUserButtonPressed(_ sender: UIButton) {
         switch whoIsOnTop {
@@ -131,13 +220,39 @@ class MaxTrackingViewController: UIViewController {
         case 0:
             UIView.transition(from: singleUserView, to: dualUserView, duration: 1, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
             whoIsOnTop = 2
-        case 1:
-            UIView.transition(from: singleUserView, to: dualUserView, duration: 1, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
-            whoIsOnTop = 2
+//        case 1:
+//            UIView.transition(from: singleUserView, to: dualUserView, duration: 1, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
+//            whoIsOnTop = 2
         default:
             print("error")
         }
         print("\(whoIsOnTop) is on top")
+    }
+    
+    @IBAction func react2OtherUser(_ sender: UIButton) {
+        print("2 Other User")
+        let strURL =  "http://52.14.192.63:3000/reaction/\(otherUser?["userID"] as! Int)"
+        let requestURL = URL(string: strURL)
+        
+        var updateCounterURLRequest = URLRequest(url: requestURL!)
+        updateCounterURLRequest.httpMethod = "PUT"
+        
+        let updateReaction: [String : Any] = [ "action": 1 ]
+        
+        do {
+            let dataInJSON : Data = try JSONSerialization.data(withJSONObject: updateReaction, options: [])
+            updateCounterURLRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            updateCounterURLRequest.httpBody = dataInJSON
+        } catch {
+            print("Error: Can Not Create JSON Data")
+        }
+        
+        let defaultSessionConfiguration = URLSessionConfiguration.default
+        
+        let session = URLSession(configuration: defaultSessionConfiguration)
+        
+        let task = session.dataTask(with: updateCounterURLRequest) { (data, urlResponse, error) in }
+        task.resume()
     }
 }
 
@@ -150,12 +265,41 @@ extension MaxTrackingViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MaxTVCCurrentExerciseCollectionVCell", for: indexPath) as! MaxTVCCurrentExerciseCollectionVCell
+        
+        if whoIsOnTop == 0 {
+            if !currentWorkoutUpdater.workoutFinished {
+                if indexPath.row == currentWorkoutUpdater.currentExerciseIndex {
+                    cell.backgroundColor = UIColor.white
+                } else if indexPath.row > currentWorkoutUpdater.currentExerciseIndex {
+                    cell.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6117647059, blue: 0.6588235294, alpha: 1)
+                } else {
+                    cell.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.6980392157, blue: 0.09411764706, alpha: 1)
+                }
+            } else {
+                cell.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.6980392157, blue: 0.09411764706, alpha: 1)
+            }
+        }
+//        else if whoIsOnTop == 1 {
+//            if !otherUserExerciseFinished {
+//                if indexPath.row == otherUserExerciseIndex {
+//                    cell.backgroundColor = UIColor.white
+//                } else if indexPath.row > otherUserExerciseIndex {
+//                    cell.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6117647059, blue: 0.6588235294, alpha: 1)
+//                } else {
+//                    cell.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.6980392157, blue: 0.09411764706, alpha: 1)
+//                }
+//            } else {
+//                cell.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.6980392157, blue: 0.09411764706, alpha: 1)
+//            }
+//        }
+
         return cell
     }
 }
 
 
 extension MaxTrackingViewController {
+    
     func applyButtonEffect(buttonOutlet:UIButton,imageName:String,flag:Int){
         let gradient:CAGradientLayer = CAGradientLayer()
         let colorTop = UIColor(red: 250.0/255.0, green: 208.0/255.0, blue: 97.0/255.0, alpha: 1.0).cgColor
@@ -194,4 +338,172 @@ extension MaxTrackingViewController {
             
         }
     }
+}
+
+//MARK: Update other users data
+extension MaxTrackingViewController {
+    @objc func getOtherUsersExercise() {
+        
+        print("finished?: ", otherUserExerciseFinished)
+        var todoEndpoint: String!
+
+        todoEndpoint = "http://52.14.192.63:3000/user\(otherUser!["userID"] as! Int)"
+        // Set up the URL request
+        guard let url = URL(string: todoEndpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        let urlRequest = URLRequest(url: url)
+        
+        // set up the session
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        // make the request
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            // check for any errors
+            guard error == nil else {
+                print("error calling GET on /todos/1")
+                print(error!)
+                return
+            }
+            // make sure we got data
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            // parse the result as JSON, since that's what the API provides
+            do {
+                guard let jsonData = try JSONSerialization.jsonObject(with: responseData, options: [])
+                    as? [String: Any] else {
+                        print("error trying to convert data to JSON")
+                        return
+                }
+                
+                print("Other User: " + jsonData.description)
+                
+                DispatchQueue.main.async {
+//                    self.userFromSingleLabelGroup[0].text = jsonData["currentExerciseName"] as? String
+//                    self.userFromSingleLabelGroup[1].text = String((jsonData["currentSetIndex"] as? Int)! + 1) + "/" + String(jsonData["totalSet4Exercise"] as! Int)
+//                    self.userFromSingleLabelGroup[2].text! = String(jsonData["currentCount"] as! Int)
+//                    self.userFromSingleLabelGroup[3].text = "/" + String(jsonData["currentRep4Set"] as! Int)
+                    
+                    self.otherFromDualLabelGroup[0].text = jsonData["currentExerciseName"] as? String
+                    self.otherFromDualLabelGroup[1].text = String((jsonData["currentSetIndex"] as? Int)! + 1) + "/" + String(jsonData["totalSet4Exercise"] as! Int)
+                    self.otherFromDualLabelGroup[2].text! = String(jsonData["currentCount"] as! Int)
+                    self.otherFromDualLabelGroup[3].text = "/" + String(jsonData["currentRep4Set"] as! Int)
+                    self.deviceWeightLabelDSO.text = jsonData["deviceWeight"] as? String
+                    
+                    self.otherUserExerciseIndex = jsonData["currentExerciseIndex"] as! Int
+                    self.otherUserExerciseFinished = jsonData["exerciseFinished"] as! Bool
+                    self.currentExerciseTotalExerciseCollectionView.reloadData()
+                }
+            } catch  {
+                print("error trying to convert data to JSON")
+                return
+            }
+        }
+        task.resume()
+    }
+}
+
+//
+extension MaxTrackingViewController {
+    @objc func checkMyReaction() {
+        var todoEndpoint: String!
+        
+        todoEndpoint = "http://52.14.192.63:3000/reaction/\(currentUser["userID"] as! Int)"
+        // Set up the URL request
+        guard let url = URL(string: todoEndpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        let urlRequest = URLRequest(url: url)
+        
+        // set up the session
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        // make the request
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            // check for any errors
+            guard error == nil else {
+                print("error calling GET on /todos/1")
+                print(error!)
+                return
+            }
+            // make sure we got data
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            // parse the result as JSON, since that's what the API provides
+            do {
+                guard let jsonData = try JSONSerialization.jsonObject(with: responseData, options: [])
+                    as? [String: Any] else {
+                        print("error trying to convert data to JSON")
+                        return
+                }
+                
+                print("Other User: " + jsonData.description)
+                
+                DispatchQueue.main.async {
+                    //
+                    if jsonData["action"] as! Int == 1 {
+                        print("got reaction")
+                        UIView.animate(withDuration: 1, animations: {
+                            self.reactionUIImageView.isHidden = false
+                            self.reactionUIImageView.center.y -= 50
+                        }, completion: {
+                            (vale: Bool) in
+                            self.reactionUIImageView.isHidden = true
+                            self.reactionUIImageView.center.y += 50
+                        })
+                        
+                        self.resetReaction(of: self.currentUser["userID"] as! Int)
+                    }
+                }
+            } catch  {
+                print("error trying to convert data to JSON")
+                return
+            }
+        }
+        task.resume()
+    }
+
+    //
+    func resetReaction(of userID: Int){
+        let strURL =  "http://52.14.192.63:3000/reaction/\(userID)"
+        let requestURL = URL(string: strURL)
+        
+        var updateCounterURLRequest = URLRequest(url: requestURL!)
+        updateCounterURLRequest.httpMethod = "PUT"
+        
+        let updateExerciseData:[String : Any] =
+            [
+                "action": 0
+        ]
+        
+        do {
+            let dataInJSON : Data = try JSONSerialization.data(withJSONObject: updateExerciseData, options: [])
+            updateCounterURLRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            updateCounterURLRequest.httpBody = dataInJSON
+            
+        } catch {
+            print("Error: Can Not Create JSON Data")
+        }
+        
+        let defaultSessionConfiguration = URLSessionConfiguration.default
+        
+        let session = URLSession(configuration: defaultSessionConfiguration)
+        
+        let task = session.dataTask(with: updateCounterURLRequest) { (data, urlResponse, error) in
+            
+        }
+        task.resume()
+    }
+
+
 }

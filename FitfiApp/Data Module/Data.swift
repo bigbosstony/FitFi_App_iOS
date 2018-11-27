@@ -75,31 +75,31 @@ let Exercises = [
 //        "category": "Arms"
 //    ],
     [
-        "name" : "Bicep Curl (Dumbbell)",
+        "name" : "Bicep Curl",
         "instructions" : "",
         "image" : "1",
         "category": "Arms"
     ],
     [
-        "name" : "Triceps Extension (Dumbbell)",
+        "name" : "Triceps Extension",
         "instructions" : "",
         "image" : "1",
         "category": "Arms"
     ],
     [
-        "name" : "Triceps KickBack (Dumbbell)",
+        "name" : "Triceps KickBack",
         "instructions" : "",
         "image" : "1",
         "category": "Arms"
     ],
     [
-        "name" : "Lateral Raise (Dumbbell)",
+        "name" : "Lateral Raise",
         "instructions" : "",
         "image" : "1",
         "category": "Shoulders"
     ],
     [
-        "name" : "Stationary Lunge (Dumbbell)",
+        "name" : "Stationary Lunge",
         "instructions" : "",
         "image" : "1",
         "category": "Legs"
@@ -124,11 +124,11 @@ let exercise = [
 
 
 let devices = [
-    "97EDD176-7D5B-9EC9-2950-7D759A5D8C6C" : "Dumnbell 5lb",
+    "97EDD176-7D5B-9EC9-2950-7D759A5D8C6C" : "5",
     
-    "C436C684-9C69-BF4E-EFD6-789DB0BB8E2C": "Dumnbell 5lb",
+    "C436C684-9C69-BF4E-EFD6-789DB0BB8E2C" : "8",
     
-    "A7CFE275-B28D-7946-2ECB-CF77B016440C" : "Black Sticker",
+    "BED1094F-F7DF-DF99-AACD-331B411475CD" : "5",
     
-    "31F588FB-5E81-2261-FFC5-0887653932E3" : "Dumbbell 5lb",
+    "91986531-08C1-4BAB-029E-499B0768FE7F" : "8",
 ]

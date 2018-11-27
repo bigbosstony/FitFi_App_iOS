@@ -65,6 +65,12 @@ extension SignUpWithEnterOTPViewController: UITextFieldDelegate {
                             let newViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarViewController
                             UserDefaults.standard.setValue(true, forKey: "hasLoginKey")
                             UserDefaults.standard.setValue(phoneNumber, forKey: "phoneNumber")
+                            //TODO: Delete, check user
+                            if phoneNumber == "6476865007" {
+                                UserDefaults.standard.setValue(1, forKey: "user")
+                            } else {
+                                UserDefaults.standard.setValue(2, forKey: "user")
+                            }
                             //MARK: Delete
                             UserDefaults.standard.setValue(Date(), forKey: "date")
                             self.present(newViewController, animated: true, completion: nil)

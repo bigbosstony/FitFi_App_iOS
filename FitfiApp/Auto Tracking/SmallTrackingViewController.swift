@@ -17,8 +17,6 @@ class SmallTrackingViewController: UIViewController {
     
     var testingData = 0
     
-//    var maxTrackingVC: MaxTrackingViewController?
-    
     lazy var maxTrackingVC: MaxTrackingViewController = {
         return MaxTrackingViewController.init(nibName: "MaxTrackingViewController", bundle: nil)
     }()
@@ -83,9 +81,9 @@ class SmallTrackingViewController: UIViewController {
     var currentExercise = ""
     
     //MARK: URL
-//    let machineLearningURL : String = "http://35.173.192.211:5000"
-    let machineLearningURL : String = "http://192.168.2.37:5000"
-//    let machineLearningURL : String = "http://fitfi.vbjdqpfgmj.us-west-2.elasticbeanstalk.com"
+    let machineLearningURL : String = "http://192.168.2.37:5005"
+//    let machineLearningURL : String = "http://192.168.2.37:5000"
+//    let machineLearningURL : String = "http://3.17.1.124"
 
     
     lazy var requestURL = {
@@ -102,7 +100,16 @@ class SmallTrackingViewController: UIViewController {
 
     let fetchHelper = FetchDataHelper()
     var currentWorkoutExerciseArray = [CurrentWorkoutExercise]()
-    var currentWorkoutUpdater = CurrentWorkoutUpdater()
+    
+    var currentWorkoutUpdater = CurrentWorkoutUpdater() {
+        didSet {
+            updateCurrentExerciseData(of: UserDefaults.standard.value(forKey: "user") as! Int, with: currentWorkoutUpdater)
+            collectionView.reloadData()
+            print("didSet: ", currentWorkoutUpdater.currentCount)
+            self.exerciseCountingLabel.text = String(self.currentWorkoutUpdater.currentCount)
+            self.maxTrackingVC.currentWorkoutUpdater = self.currentWorkoutUpdater
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -276,7 +283,9 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         //MARK: IMPORTANT SERVICE UUID
 
         blePeripheral.discoverServices(nil) // CHANGE THIS VALUE IF NEEDED, nil == SEARCH FOR ALL SERVICES
-        exerciseDeviceLabel.text = devices[peripheral.identifier.uuidString]
+        exerciseDeviceLabel.text = "Dumbbell " + devices[peripheral.identifier.uuidString]! + "lb"
+        
+        currentWorkoutUpdater.deviceWeight = devices[peripheral.identifier.uuidString] ?? ""
         
         central.stopScan()
         print("+++++")
@@ -371,7 +380,7 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
     
     //MARK: Update Characteristic Value
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        print("Did Update Value For Characterristic")
+//        print("Did Update Value For Characterristic")
         
         let hasLoginKey = UserDefaults.standard.bool(forKey: "hasLoginKey")
         
@@ -385,8 +394,8 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                 for i in sensorData {
                     dataArrayString.append("\(i)")
                 }
-                
-                print(dataArrayString)
+                // Data Array
+//                print(dataArrayString)
                 
                 postRequest(request: machineLearningURL, sensor: dataArrayString)
 
@@ -415,14 +424,6 @@ extension SmallTrackingViewController: UICollectionViewDelegate, UICollectionVie
         cell.exerciseReps.text = String(exercise.setArray[indexPath.row])
         cell.bottomBackground.backgroundColor = exercise.setDoneArray[indexPath.row] ? #colorLiteral(red: 0.9921568627, green: 0.9647058824, blue: 0.9490196078, alpha: 1) : #colorLiteral(red: 0.9215686275, green: 0.9764705882, blue: 0.9764705882, alpha: 1)
         return cell
-        
-        
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "smallTrackingVCCVCell", for: indexPath) as! SmallTrackingVCCollectionViewCell
-//
-//        let exercise = currentWorkoutExerciseArray[currentExerciseIndex]
-//        cell.exerciseReps.text = String(exercise.setArray[indexPath.row])
-        
-//        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -443,7 +444,8 @@ extension SmallTrackingViewController {
         machineLearningURLRequest.httpMethod = "POST"
 
         let sensorData: [String : Any] = ["username": username ,"data": data]
-        print("Sensor Data: ", sensorData)
+        
+//        print("Sensor Data: ", sensorData)
         
         do {
             let sensorJSONData : Data = try JSONSerialization.data(withJSONObject: sensorData, options: [])
@@ -476,8 +478,7 @@ extension SmallTrackingViewController {
                     
                     //MARK: Send to Maxi View
                     self.testingData += 1
-//                    self.maxTrackingVC = MaxTrackingViewController.init(nibName: "MaxTrackingViewController", bundle: nil)
-                    self.maxTrackingVC.currentWorkoutUpdater = self.currentWorkoutUpdater
+                    print("Raw data of all reps: ", self.testingData)
                     
                     DispatchQueue.main.async {
 
@@ -565,45 +566,118 @@ extension SmallTrackingViewController {
         
         if exercise == currentWorkoutUpdater.currentExerciseName {
             print("Current: ", currentWorkoutUpdater.currentExerciseName, currentWorkoutUpdater.currentCount)
-//            DispatchQueue.main.async {
-                self.exerciseCountingLabel.text = String(self.currentWorkoutUpdater.currentCount)
+//                self.exerciseCountingLabel.text = String(self.currentWorkoutUpdater.currentCount)
                 self.collectionView.reloadData()
-//            }
-            
+
             if Int16(currentWorkoutUpdater.currentCount) < currentWorkoutUpdater.currentRep4Set {
                 currentWorkoutUpdater.currentCount += 1
-            } else {
-                currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].setDoneArray[currentWorkoutUpdater.currentSetIndex] = true
-                if currentWorkoutUpdater.currentSetIndex + 1 < currentWorkoutUpdater.totalSet4Exercise {
-                    currentWorkoutUpdater.currentSetIndex += 1
-                    currentWorkoutUpdater.currentCount = 1
-                    currentWorkoutUpdater.currentRep4Set = currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].setArray[currentWorkoutUpdater.currentSetIndex]
-                } else {
-                    currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].done = true
-                    //Next Exercise
-                    if currentWorkoutUpdater.currentExerciseIndex + 1 < currentWorkoutUpdater.totalCurrentExercise {
-                        currentWorkoutUpdater.currentExerciseIndex += 1
-                        //
-                        exerciseTypeLabel.text = currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].name
-                        
-                        currentWorkoutUpdater.currentExerciseName = currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].name
-                        currentWorkoutUpdater.currentSetIndex = 0
-                        currentWorkoutUpdater.currentRep4Set = currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].setArray[currentWorkoutUpdater.currentSetIndex]
-                        currentWorkoutUpdater.totalSet4Exercise = currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].setArray.count
-                        currentWorkoutUpdater.currentCount = 1
-                    } else {
+//                //checking reps for each set
+                if currentWorkoutUpdater.currentCount == currentWorkoutUpdater.currentRep4Set {
+                    //Set Current Set to done
+                    currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].setDoneArray[currentWorkoutUpdater.currentSetIndex] = true
+                    //Move to next set, set labels
+                    if currentWorkoutUpdater.currentSetIndex + 1 < currentWorkoutUpdater.totalSet4Exercise {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            self.currentWorkoutUpdater.currentSetIndex += 1
+                            self.currentWorkoutUpdater.currentCount = 0
+                        }
+                    }
+                        //set finish, exercise finish
+                    else {
+                        //exercise finishe
                         currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].done = true
-                        print("Finish")
-                        print(currentWorkoutExerciseArray)
+                        // check next exercise
+                        if currentWorkoutUpdater.currentExerciseIndex + 1 < currentWorkoutUpdater.totalCurrentExercise {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                self.currentWorkoutUpdater.currentExerciseIndex += 1
+                                self.currentWorkoutUpdater.currentExerciseName = self.currentWorkoutExerciseArray[self.currentWorkoutUpdater.currentExerciseIndex].name
+                                self.exerciseTypeLabel.text = self.currentWorkoutUpdater.currentExerciseName
+                                self.currentWorkoutUpdater.currentSetIndex = 0
+                                self.currentWorkoutUpdater.currentCount = 0
+                                self.currentWorkoutUpdater.totalSet4Exercise = self.currentWorkoutExerciseArray[self.currentWorkoutUpdater.currentExerciseIndex].setArray.count
+                                self.currentWorkoutUpdater.currentRep4Set = self.currentWorkoutExerciseArray[self.currentWorkoutUpdater.currentExerciseIndex].setArray.first!
+                            }
+                        }
+                        else {
+                            //workout finish
+                            print("U ve complete the workout.")
+                            self.currentWorkoutUpdater.workoutFinished = true
+                        }
                     }
                 }
             }
-        } else {
+        }
+        
+        else {
             print("Not Follow the Routine")
         }
     }
 }
 
-extension SmallTrackingViewController: URLSessionDelegate, URLSessionTaskDelegate {
-    
+//extension SmallTrackingViewController: URLSessionDelegate, URLSessionTaskDelegate {
+//
+//}
+
+extension SmallTrackingViewController {
+    //To Update counter to server
+    func updateCurrentExerciseData(of userID: Int, with currentWorkoutUpdater: CurrentWorkoutUpdater) {
+//        let strURL =  "http://52.14.192.63:3000/user\(userID)"
+        let strURL = "http://192.168.2.25/api/current_workout"
+        let requestURL = URL(string: strURL)
+        
+        var resp: Bool = false
+        
+        var recievedData: [String: String] = ["" : ""]
+        var updateCounterURLRequest = URLRequest(url: requestURL!)
+        updateCounterURLRequest.httpMethod = "POST"
+        
+        let updateExerciseData: [String : Any] =
+            [
+                "id": userID,
+                "currentExerciseName": currentWorkoutUpdater.currentExerciseName,
+                "currentExerciseIndex": currentWorkoutUpdater.currentExerciseIndex,
+                "totalCurrentExercise": currentWorkoutUpdater.totalCurrentExercise,
+                "currentSetIndex": currentWorkoutUpdater.currentSetIndex,
+                "totalSet4Exercise": currentWorkoutUpdater.totalSet4Exercise,
+                 "currentCount": currentWorkoutUpdater.currentCount,
+                 "currentRep4Set": currentWorkoutUpdater.currentRep4Set,
+                 "exerciseFinished": currentWorkoutUpdater.workoutFinished,
+                 "deviceWeight": currentWorkoutUpdater.deviceWeight
+            ]
+        
+        do {
+            let dataInJSON : Data = try JSONSerialization.data(withJSONObject: updateExerciseData, options: [])
+            updateCounterURLRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            updateCounterURLRequest.httpBody = dataInJSON
+            
+        } catch {
+            print("Error: Can Not Create JSON Data")
+        }
+        
+        let defaultSessionConfiguration = URLSessionConfiguration.default
+        
+        let session = URLSession(configuration: defaultSessionConfiguration)
+        
+        let task = session.dataTask(with: updateCounterURLRequest) { (data, urlResponse, error) in
+            guard error == nil else { print("Error Calling POST \(String(describing: error))") ; return }
+            
+            guard let responseData = data else { print("Error Response Data"); return}
+            print(responseData)
+            do {
+                guard let responseJSONData = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String : String] else { print("Can not get JSON as Dictionary") ; return }
+                recievedData = responseJSONData
+                
+                print("Recieved Data: ", recievedData)
+                if(recievedData["success"] == "true")
+                {
+                    resp = true
+                }
+                
+            } catch {
+                print("Error parsing response from PUT")
+                return
+            }
+        }
+        task.resume()
+    }
 }

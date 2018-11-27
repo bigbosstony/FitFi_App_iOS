@@ -20,6 +20,7 @@ struct CurrentWorkoutExercise {
 
 
 struct CurrentWorkoutUpdater {
+    var deviceWeight = ""
     var currentExerciseName = ""
     var currentExerciseIndex = 0
     var totalCurrentExercise = 0
@@ -29,4 +30,6 @@ struct CurrentWorkoutUpdater {
     
     var currentCount = 0
     var currentRep4Set: Int16 = 0
+    
+    var workoutFinished: Bool = false
 }
