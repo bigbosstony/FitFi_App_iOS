@@ -12,6 +12,7 @@ import CoreData
 
 
 class RoutineDetailsTableViewController: UITableViewController {
+    
     let FitFiColor = UIColor(red: 213, green: 95, blue: 31)
     //MARK: Properties
     @IBOutlet weak var favButton: UIBarButtonItem!
@@ -88,7 +89,33 @@ class RoutineDetailsTableViewController: UITableViewController {
     //Delete Me
     @IBAction func startWorkoutButtonPressed(_ sender: UIButton) {
         //Go To Manual TrackingVC
-        performSegue(withIdentifier: "goToManualTrackingVC", sender: self)
+        
+        let manualAction = UIAlertAction(title: "Manual", style: .default) { (action) in
+            // Respond to user selection of the action
+            self.performSegue(withIdentifier: "goToManualTrackingVC", sender: self)
+        }
+        
+        let autoAction = UIAlertAction(title: "Auto", style: .default) { (action) in
+            // Respond to user selection of the action
+            smallTrackingVC.autoTracking = true
+//            NotificationCenter.default.post(name: .user1, object: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in }
+        
+        let alert = UIAlertController(title: "Choose Your Workout Style",
+                                      message: "^≠^",
+                                      preferredStyle: .actionSheet)
+        alert.addAction(manualAction)
+        alert.addAction(autoAction)
+        alert.addAction(cancelAction)
+        
+        // On iPad, action sheets must be presented from a popover.
+//        alert.popoverPresentationController?.barButtonItem = self.trashButton
+        
+        self.present(alert, animated: true) {
+            // The alert was presented
+        }
     }
     
     

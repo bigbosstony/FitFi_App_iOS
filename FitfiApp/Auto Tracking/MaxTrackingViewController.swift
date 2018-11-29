@@ -12,7 +12,17 @@ import CoreData
 
 class MaxTrackingViewController: UIViewController {
     
+    var timerCount = 5
     var timer = Timer()
+    var restingTimer = Timer()
+    
+    var heartRate:Int = 75
+    var calorieBurned:Int = 2
+    var timerStr:String = ""
+    var hearRateFlag:Int = 0
+    //var workOutTimer:Date = Date()
+    var startDate:Date = Date()
+    var exTimer = Timer()
     
     //Hide status bar
     override var prefersStatusBarHidden: Bool {
@@ -22,9 +32,9 @@ class MaxTrackingViewController: UIViewController {
     lazy var currentUser = { () -> [String: Any] in
         var pic = ""
         if UserDefaults.standard.value(forKey: "user") as! Int == 1 {
-            pic = "Users/whiteguy"
+            pic = "Users/harsh"
         } else {
-            pic = ""
+            pic = "Users/nurelle"
         }
         
         let user = ["userID" : UserDefaults.standard.value(forKey: "user"), "userPicture": pic]
@@ -100,10 +110,35 @@ class MaxTrackingViewController: UIViewController {
     @IBOutlet weak var deviceWeightLabelDS: UILabel!
     @IBOutlet weak var deviceWeightLabelDSO: UILabel!
     
+    @IBOutlet weak var restView: UIView!
+    @IBOutlet weak var restTimerLabel: UILabel!
+    
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var heartRateLabel: UILabel!
+    @IBOutlet weak var calorieLabel: UILabel!
+    
+    //TODO: Image Demo
+    @IBOutlet weak var bigImage: UIImageView!
+    var imageCounter = 1
+    var flagg:Bool = false
+
+    
+    var isResting: Bool = false {
+        didSet {
+            if restView != nil {
+                if isResting {
+                    restingTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(resting), userInfo: nil, repeats: true)
+                    restView.isHidden = false
+                } else {
+                    restView.isHidden = true
+                }
+            }
+        }
+    }
     
     var currentWorkoutUpdater = CurrentWorkoutUpdater() {
         didSet {
-
+            calorieBurned += 1
             print("MAX updater: ", currentWorkoutUpdater)
             if userFromSingleLabelGroup != nil {
                 DispatchQueue.main.async {
@@ -132,12 +167,16 @@ class MaxTrackingViewController: UIViewController {
         
 //        userFromDualLabelGroup[0].text = "testing"
         
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkMyReaction), userInfo: nil, repeats: true)
+        
+        startDate = Date()
+        exTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateExTimer), userInfo: nil, repeats: true)
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(checkMyReaction), userInfo: nil, repeats: true)
 
         if currentUser["userID"] as! Int == 1 {
-            otherUser = ["userID" : 2, "userPicture": ""]
+            otherUser = ["userID" : 2, "userPicture": "Users/nurelle"]
         } else {
-            otherUser = ["userID" : 1, "userPicture": "Users/whiteguy"]
+            otherUser = ["userID" : 1, "userPicture": "Users/harsh"]
         }
         
         currentExerciseTotalExerciseCollectionView.delegate = self
@@ -170,10 +209,21 @@ class MaxTrackingViewController: UIViewController {
         leftUserView.addRightBorder(color: #colorLiteral(red: 0.1450980392, green: 0.1529411765, blue: 0.168627451, alpha: 1), width: 1)
         rightUserView.addLeftBorder(color: #colorLiteral(red: 0.3488702476, green: 0.1221515611, blue: 0.2224545777, alpha: 1), width: 1)
         
-        
-        
+        restTimerLabel.text = String(timerCount)
 
         applyButtonEffect(buttonOutlet: dualUserButton, imageName: "Glyphs/dual", flag: 0)
+        
+        //TODO: Image demo
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(changeImage(sender:)))
+        
+        view.addGestureRecognizer(rightSwipe)
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(changeImage(sender:)))
+        leftSwipe.direction = .left
+        view.addGestureRecognizer(leftSwipe)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        tap.numberOfTapsRequired = 2
+        view.addGestureRecognizer(tap)
     }
     
     func updateMaxiView(of labelGroup: [UILabel]!, with workoutData: CurrentWorkoutUpdater) -> Void {
@@ -195,7 +245,7 @@ class MaxTrackingViewController: UIViewController {
     }
     
     @IBAction func finishButtonPressed(_ sender: UIButton) {
-        
+        smallTrackingVC.autoTracking = false
     }
     
     @IBAction func switchSingleUserViewButtonPressed(_ sender: UIButton) {
@@ -253,6 +303,21 @@ class MaxTrackingViewController: UIViewController {
         
         let task = session.dataTask(with: updateCounterURLRequest) { (data, urlResponse, error) in }
         task.resume()
+    }
+    
+    @objc func resting() {
+        
+        if ( timerCount > 0 )
+        {
+            timerCount -= 1
+            restTimerLabel.text = String(timerCount)
+//            print("Resting: ", timerCount)
+        } else {
+            restingTimer.invalidate()
+            isResting = false
+            timerCount = 5
+            restTimerLabel.text = String(timerCount)
+        }
     }
 }
 
@@ -504,6 +569,142 @@ extension MaxTrackingViewController {
         }
         task.resume()
     }
+}
 
+extension MaxTrackingViewController {
+    func stringFromTimeInterval(interval: TimeInterval) -> String {
+        
+        let ti = NSInteger(interval)
+        
+        // let ms = Int((interval.truncatingRemainder(dividingBy: 1)) * 1000)
+        
+        let seconds = (ti % 60) * -1
+        let minutes = ((ti / 60) % 60) * -1
+        
+        return String(format: "%0.2d:%0.2d",minutes,seconds)
+    }
+    
+    
+    @objc func updateExTimer() {
+        // workOutTimer += 1
+        
+        if whoIsOnTop == 0
+        {
+            
+            if(heartRate == 147)
+            {
+                hearRateFlag = 1
+            }
+            if(heartRate == 75)
+            {
+                hearRateFlag = 0
+            }
+            if(hearRateFlag == 1)
+            {
+                heartRate -= 1
+            }
+            if(hearRateFlag == 0)
+            {
+                if(heartRate % 2 != 0)
+                {
+                    heartRate += 1
+                }
+                else{
+                    heartRate += 3
+                }
+            }
+            
+            timerStr = stringFromTimeInterval(interval: startDate.timeIntervalSinceNow)
+            timerLabel.text = timerStr
+            calorieLabel.text = String(calorieBurned)
+            heartRateLabel.text = String(heartRate)
+        }
+    }
 
+    
+    //Image Demo
+    @objc func doubleTapped(sender: UITapGestureRecognizer)
+    {
+        if sender.state == .ended
+        {
+            if (imageCounter == 100 ) {
+                flagg = true
+            }
+        }
+    }
+    @objc func changeImage(sender:UISwipeGestureRecognizer)
+    {
+        if sender.state == .ended
+        {
+            switch sender.direction{
+                
+            case .right:
+                if(flagg == false && imageCounter != 100)
+                {
+                    if(imageCounter > 0)
+                    {
+                        imageCounter -= 1
+                        DispatchQueue.main.async {
+                            self.bigImage.image = UIImage(named: "Demo/SIGN UP \(self.imageCounter).jpg")
+                        }
+                    }
+                }
+                else{
+                    if(imageCounter == 100)
+                    {
+                        imageCounter = 1
+                    }
+                    if(imageCounter > 0 && imageCounter != 100)
+                    {
+                        imageCounter -= 1
+                        DispatchQueue.main.async {
+                            self.bigImage.image = UIImage(named: "Demo/WORKOUT RESULTS \(self.imageCounter).jpg")
+                        }
+                    }
+                }
+            case .left:
+                if(flagg == false && imageCounter != 100)
+                {
+                    if(imageCounter == 16)
+                    {
+                        bigImage.isHidden = true
+                        imageCounter = 100
+                        
+                    }
+                    
+                    if(imageCounter < 16)
+                    {
+                        imageCounter += 1
+                        DispatchQueue.main.async {
+                            self.bigImage.image = UIImage(named: "Demo/SIGN UP \(self.imageCounter).jpg")
+                        }
+                    }
+                }
+                else{
+                    if(imageCounter == 100)
+                    {
+                        imageCounter = 1
+                        bigImage.isHidden = false
+                    }
+                    if(imageCounter == 9)
+                    {
+                        bigImage.isHidden = true
+                        imageCounter = 1
+                        flagg = false
+                    }
+                    if(imageCounter < 9)
+                    {
+                        imageCounter += 1
+                        self.bigImage.image = UIImage(named: "Demo/WORKOUT RESULTS \(self.imageCounter).jpg")
+                    }
+                }
+                
+            default:
+                break
+            }
+            
+            
+        }
+    }
+    
 }

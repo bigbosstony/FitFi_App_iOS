@@ -111,6 +111,46 @@ class SmallTrackingViewController: UIViewController {
         }
     }
     
+    var autoTracking = false {
+        didSet {
+            print("Auto Tracking Did Set")
+            if autoTracking {
+                if let demoRoutine = fetchHelper.loadDemoRoutine(with: "alpha").first {
+                    if let exerciseArray = demoRoutine.routineExercises?.array {
+                        for exercise in exerciseArray as! [Routine_Exercise] {
+                            let setArray = [Int16](repeating: exercise.reps, count: Int(exercise.sets))
+                            let setDoneArray = [Bool](repeating: false, count: Int(exercise.sets))
+                            let weightArray = [Int16](repeating: 0, count: Int(exercise.sets))
+
+                            let newCurrentWorkoutExercise = CurrentWorkoutExercise(name: exercise.name!, category: exercise.category!, calorie: 0, setArray: setArray, setDoneArray: setDoneArray, weightArray: weightArray, done: false)
+                            currentWorkoutExerciseArray.append(newCurrentWorkoutExercise)
+                        }
+                    }
+                    print("Demo")
+                    print(currentWorkoutExerciseArray)
+                    //
+                    currentWorkoutUpdater.currentExerciseName = currentWorkoutExerciseArray.first?.name ?? "none"
+                    currentWorkoutUpdater.currentRep4Set = currentWorkoutExerciseArray.first?.setArray.first ?? 0
+                    currentWorkoutUpdater.totalSet4Exercise = currentWorkoutExerciseArray.first?.setArray.count ?? 0
+                    currentWorkoutUpdater.totalCurrentExercise = currentWorkoutExerciseArray.count
+                    exerciseTypeLabel.text = currentWorkoutExerciseArray.first?.name
+                }
+            } else {
+                currentWorkoutExerciseArray.removeAll()
+                currentWorkoutUpdater = CurrentWorkoutUpdater()
+                collectionView.reloadData()
+                exerciseTypeLabel.text = ""
+                exerciseCountingLabel.text = "0"
+                //
+                counter = 0
+                currentExercise = ""
+                if blePeripheral != nil {
+                    centralManager.cancelPeripheralConnection(blePeripheral)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Small Tracking View Did Load")
@@ -119,31 +159,32 @@ class SmallTrackingViewController: UIViewController {
         //        dateFormatter.dateFormat = "yyyyMMddHHmmss"
         
         //MARK: Demo - Load CoreData to Struct
-        if let demoRoutine = fetchHelper.loadDemoRoutine(with: "alpha").first {
-            if let exerciseArray = demoRoutine.routineExercises?.array {
-                for exercise in exerciseArray as! [Routine_Exercise] {
-                    let setArray = [Int16](repeating: exercise.reps, count: Int(exercise.sets))
-                    let setDoneArray = [Bool](repeating: false, count: Int(exercise.sets))
-                    let weightArray = [Int16](repeating: 0, count: Int(exercise.sets))
-                    
-                    let newCurrentWorkoutExercise = CurrentWorkoutExercise(name: exercise.name!, category: exercise.category!, calorie: 0, setArray: setArray, setDoneArray: setDoneArray, weightArray: weightArray, done: false)
-                    currentWorkoutExerciseArray.append(newCurrentWorkoutExercise)
-                }
-            }
-            print("Demo")
-            print(currentWorkoutExerciseArray)
-            //
-            currentWorkoutUpdater.currentExerciseName = currentWorkoutExerciseArray.first?.name ?? "none"
-            currentWorkoutUpdater.currentRep4Set = currentWorkoutExerciseArray.first?.setArray.first ?? 0
-            currentWorkoutUpdater.totalSet4Exercise = currentWorkoutExerciseArray.first?.setArray.count ?? 0
-            currentWorkoutUpdater.totalCurrentExercise = currentWorkoutExerciseArray.count
-        }
+//        if let demoRoutine = fetchHelper.loadDemoRoutine(with: "alpha").first {
+//            if let exerciseArray = demoRoutine.routineExercises?.array {
+//                for exercise in exerciseArray as! [Routine_Exercise] {
+//                    let setArray = [Int16](repeating: exercise.reps, count: Int(exercise.sets))
+//                    let setDoneArray = [Bool](repeating: false, count: Int(exercise.sets))
+//                    let weightArray = [Int16](repeating: 0, count: Int(exercise.sets))
+//
+//                    let newCurrentWorkoutExercise = CurrentWorkoutExercise(name: exercise.name!, category: exercise.category!, calorie: 0, setArray: setArray, setDoneArray: setDoneArray, weightArray: weightArray, done: false)
+//                    currentWorkoutExerciseArray.append(newCurrentWorkoutExercise)
+//                }
+//            }
+//            print("Demo")
+//            print(currentWorkoutExerciseArray)
+//            //
+//            currentWorkoutUpdater.currentExerciseName = currentWorkoutExerciseArray.first?.name ?? "none"
+//            currentWorkoutUpdater.currentRep4Set = currentWorkoutExerciseArray.first?.setArray.first ?? 0
+//            currentWorkoutUpdater.totalSet4Exercise = currentWorkoutExerciseArray.first?.setArray.count ?? 0
+//            currentWorkoutUpdater.totalCurrentExercise = currentWorkoutExerciseArray.count
+//        }
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
         //Register nib file to collection view
         collectionView.register(UINib.init(nibName: "SmallTrackingVCCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "smallTrackingVCCVCell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         //        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         //        layout.minimumInteritemSpacing = 6
         //        collectionView.collectionViewLayout = layout
@@ -167,7 +208,7 @@ class SmallTrackingViewController: UIViewController {
 //        }
         
         //
-        exerciseTypeLabel.text = currentWorkoutExerciseArray.first?.name
+//        exerciseTypeLabel.text = currentWorkoutExerciseArray.first?.name
     }
     
     override func didReceiveMemoryWarning() {
@@ -179,15 +220,17 @@ class SmallTrackingViewController: UIViewController {
     @objc func expandTrackingSmallView() {
 //        maxTrackingVC = MaxTrackingViewController.init(nibName: "MaxTrackingViewController", bundle: nil)
 //        maxTrackingVC?.delegate = self
-        maxTrackingVC.currentWorkoutUpdater = currentWorkoutUpdater
-
-        present(maxTrackingVC, animated: true, completion: nil)
+        if autoTracking {
+            maxTrackingVC.currentWorkoutUpdater = currentWorkoutUpdater
+            present(maxTrackingVC, animated: true, completion: nil)
+        }
     }
 }
 
 //MARK: - Search and Connect to BLE Device
 //MARK: Central Manager
 extension SmallTrackingViewController: CBCentralManagerDelegate {
+    
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {          //TODO: Change View isHidden to true Later
         case .unknown:
@@ -303,17 +346,17 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Did Disconnected Peripheral")
         userLogout(from: machineLearningURL)
-        exerciseDeviceLabel.text = ""
         //MARK: Make Small TrackingVC Hidden
         //        smallTrackingVC.remove()
-        self.view.isHidden = true
+        
+//        self.view.isHidden = true
 //        userLogout(from: machineLearningURL)
 
         //MARK: Clean Counter and Exercise
         counter = 0
         exerciseCountingLabel.text = String(counter)
         exerciseTypeLabel.text = ""
-        exerciseDeviceLabel.text = ""
+        exerciseDeviceLabel.text = "Scanning..."
 
         switch central.state {
         case .poweredOn:
@@ -427,7 +470,11 @@ extension SmallTrackingViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].setArray.count
+        if currentWorkoutExerciseArray.count != 0 {
+            return currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].setArray.count
+        } else {
+            return 0
+        }
     }
 }
 
@@ -474,15 +521,30 @@ extension SmallTrackingViewController {
                 //Update Label
                 if let exercise = recievedData["exercise"] {
                     
-                    print("Current Updater: ", self.currentWorkoutUpdater)
+//                    print("Current Updater: ", self.currentWorkoutUpdater)
                     
                     //MARK: Send to Maxi View
-                    self.testingData += 1
-                    print("Raw data of all reps: ", self.testingData)
+//                    self.testingData += 1
+//                    print("Raw data of all reps: ", self.testingData)
                     
-                    DispatchQueue.main.async {
-
-                        self.updateCurrentWorkout(with: exercise)
+                    if self.autoTracking && !self.maxTrackingVC.isResting {
+                        DispatchQueue.main.async {
+                            self.updateCurrentWorkout(with: exercise)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            if self.currentExercise == exercise {
+                                self.exerciseTypeLabel.text = exercise
+                                self.counter += 1
+                                self.exerciseCountingLabel.text = String(self.counter)
+                            } else {
+                                self.currentExercise = exercise
+                                self.counter = 0
+                                self.exerciseTypeLabel.text = exercise
+                                self.counter += 1
+                                self.exerciseCountingLabel.text = String(self.counter)
+                            }
+                        }
                     }
                 }
             } catch {
@@ -575,9 +637,12 @@ extension SmallTrackingViewController {
                 if currentWorkoutUpdater.currentCount == currentWorkoutUpdater.currentRep4Set {
                     //Set Current Set to done
                     currentWorkoutExerciseArray[currentWorkoutUpdater.currentExerciseIndex].setDoneArray[currentWorkoutUpdater.currentSetIndex] = true
+                    
                     //Move to next set, set labels
                     if currentWorkoutUpdater.currentSetIndex + 1 < currentWorkoutUpdater.totalSet4Exercise {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            //30s Timer
+                            self.maxTrackingVC.isResting = true
                             self.currentWorkoutUpdater.currentSetIndex += 1
                             self.currentWorkoutUpdater.currentCount = 0
                         }
@@ -589,6 +654,7 @@ extension SmallTrackingViewController {
                         // check next exercise
                         if currentWorkoutUpdater.currentExerciseIndex + 1 < currentWorkoutUpdater.totalCurrentExercise {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                self.maxTrackingVC.isResting = true
                                 self.currentWorkoutUpdater.currentExerciseIndex += 1
                                 self.currentWorkoutUpdater.currentExerciseName = self.currentWorkoutExerciseArray[self.currentWorkoutUpdater.currentExerciseIndex].name
                                 self.exerciseTypeLabel.text = self.currentWorkoutUpdater.currentExerciseName
@@ -621,15 +687,15 @@ extension SmallTrackingViewController {
 extension SmallTrackingViewController {
     //To Update counter to server
     func updateCurrentExerciseData(of userID: Int, with currentWorkoutUpdater: CurrentWorkoutUpdater) {
-//        let strURL =  "http://52.14.192.63:3000/user\(userID)"
-        let strURL = "http://192.168.2.25/api/current_workout"
+        let strURL =  "http://52.14.192.63:3000/user\(userID)"
+//        let strURL = "http://192.168.2.25/api/current_workout"
         let requestURL = URL(string: strURL)
         
         var resp: Bool = false
         
         var recievedData: [String: String] = ["" : ""]
         var updateCounterURLRequest = URLRequest(url: requestURL!)
-        updateCounterURLRequest.httpMethod = "POST"
+        updateCounterURLRequest.httpMethod = "PUT"
         
         let updateExerciseData: [String : Any] =
             [
@@ -639,10 +705,10 @@ extension SmallTrackingViewController {
                 "totalCurrentExercise": currentWorkoutUpdater.totalCurrentExercise,
                 "currentSetIndex": currentWorkoutUpdater.currentSetIndex,
                 "totalSet4Exercise": currentWorkoutUpdater.totalSet4Exercise,
-                 "currentCount": currentWorkoutUpdater.currentCount,
-                 "currentRep4Set": currentWorkoutUpdater.currentRep4Set,
-                 "exerciseFinished": currentWorkoutUpdater.workoutFinished,
-                 "deviceWeight": currentWorkoutUpdater.deviceWeight
+                "currentCount": currentWorkoutUpdater.currentCount,
+                "currentRep4Set": currentWorkoutUpdater.currentRep4Set,
+                "exerciseFinished": currentWorkoutUpdater.workoutFinished,
+                "deviceWeight": currentWorkoutUpdater.deviceWeight
             ]
         
         do {

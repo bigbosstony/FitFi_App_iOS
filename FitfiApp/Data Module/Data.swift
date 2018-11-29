@@ -124,6 +124,7 @@ let exercise = [
 
 
 let devices = [
+    
     "97EDD176-7D5B-9EC9-2950-7D759A5D8C6C" : "5",
     
     "C436C684-9C69-BF4E-EFD6-789DB0BB8E2C" : "8",

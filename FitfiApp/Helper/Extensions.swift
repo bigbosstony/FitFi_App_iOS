@@ -260,3 +260,7 @@ extension UIView {
         return self
     }
 }
+
+//extension Notification.Name {
+//    static let user1 = Notification.Name("User 1")
+//}

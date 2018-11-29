@@ -60,8 +60,8 @@
                                         <color key="textColor" red="0.83529411760000005" green="0.37254901959999998" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1CC-fx-aWN">
-                                        <rect key="frame" x="358" y="90" width="0.0" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scanning..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1CC-fx-aWN">
+                                        <rect key="frame" x="268" y="90" width="90" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="fWh-wG-pjM"/>
                                         </constraints>

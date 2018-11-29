@@ -12,9 +12,12 @@ import CoreBluetooth
 import AudioToolbox
 import Intents
 
+
+var smallTrackingVC = SmallTrackingViewController()
+
 //It is first commit to harsh
 class TabBarViewController: UITabBarController {
-    var smallTrackingVC: UIViewController!
+//    var smallTrackingVC: UIViewController!
     var window: UIWindow!
     
     let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
@@ -30,6 +33,8 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
 //        print(UIDevice.modelName)
         print("Tab Bar Controller Loaded")
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotification(notification:)), name: .user1, object: nil)
         
         if !hasLaunchedBefore {
             print("First Time Launch The Application")
@@ -166,4 +171,11 @@ extension TabBarViewController {
         }
         save()
     }
+}
+
+extension TabBarViewController {
+    @objc func methodOfReceivedNotification(notification: Notification) {
+        print("Notification")
+    }
+
 }
