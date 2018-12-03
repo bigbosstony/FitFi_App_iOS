@@ -212,18 +212,6 @@ class MaxTrackingViewController: UIViewController {
         restTimerLabel.text = String(timerCount)
 
         applyButtonEffect(buttonOutlet: dualUserButton, imageName: "Glyphs/dual", flag: 0)
-        
-        //TODO: Image demo
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(changeImage(sender:)))
-        
-        view.addGestureRecognizer(rightSwipe)
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(changeImage(sender:)))
-        leftSwipe.direction = .left
-        view.addGestureRecognizer(leftSwipe)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
-        tap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(tap)
     }
     
     func updateMaxiView(of labelGroup: [UILabel]!, with workoutData: CurrentWorkoutUpdater) -> Void {
@@ -620,91 +608,4 @@ extension MaxTrackingViewController {
             heartRateLabel.text = String(heartRate)
         }
     }
-
-    
-    //Image Demo
-    @objc func doubleTapped(sender: UITapGestureRecognizer)
-    {
-        if sender.state == .ended
-        {
-            if (imageCounter == 100 ) {
-                flagg = true
-            }
-        }
-    }
-    @objc func changeImage(sender:UISwipeGestureRecognizer)
-    {
-        if sender.state == .ended
-        {
-            switch sender.direction{
-                
-            case .right:
-                if(flagg == false && imageCounter != 100)
-                {
-                    if(imageCounter > 0)
-                    {
-                        imageCounter -= 1
-                        DispatchQueue.main.async {
-                            self.bigImage.image = UIImage(named: "Demo/SIGN UP \(self.imageCounter).jpg")
-                        }
-                    }
-                }
-                else{
-                    if(imageCounter == 100)
-                    {
-                        imageCounter = 1
-                    }
-                    if(imageCounter > 0 && imageCounter != 100)
-                    {
-                        imageCounter -= 1
-                        DispatchQueue.main.async {
-                            self.bigImage.image = UIImage(named: "Demo/WORKOUT RESULTS \(self.imageCounter).jpg")
-                        }
-                    }
-                }
-            case .left:
-                if(flagg == false && imageCounter != 100)
-                {
-                    if(imageCounter == 16)
-                    {
-                        bigImage.isHidden = true
-                        imageCounter = 100
-                        
-                    }
-                    
-                    if(imageCounter < 16)
-                    {
-                        imageCounter += 1
-                        DispatchQueue.main.async {
-                            self.bigImage.image = UIImage(named: "Demo/SIGN UP \(self.imageCounter).jpg")
-                        }
-                    }
-                }
-                else{
-                    if(imageCounter == 100)
-                    {
-                        imageCounter = 1
-                        bigImage.isHidden = false
-                    }
-                    if(imageCounter == 9)
-                    {
-                        bigImage.isHidden = true
-                        imageCounter = 1
-                        flagg = false
-                    }
-                    if(imageCounter < 9)
-                    {
-                        imageCounter += 1
-                        self.bigImage.image = UIImage(named: "Demo/WORKOUT RESULTS \(self.imageCounter).jpg")
-                    }
-                }
-                
-            default:
-                break
-            }
-            
-            
-        }
-    }
-    
 }
