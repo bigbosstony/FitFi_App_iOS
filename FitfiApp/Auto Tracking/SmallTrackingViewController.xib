@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmallTrackingViewController" customModule="FitfiApp" customModuleProvider="target">
             <connections>
+                <outlet property="cancelConnectionButton" destination="17x-n9-ahp" id="iTi-cl-dI4"/>
                 <outlet property="collectionView" destination="Xtn-U8-vNM" id="ORk-26-qSZ"/>
                 <outlet property="exerciseCountingLabel" destination="heP-Pg-4fV" id="Rg9-Mh-Akc"/>
                 <outlet property="exerciseDeviceLabel" destination="1CC-fx-aWN" id="sQD-v1-PTg"/>
@@ -83,10 +84,31 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                     </collectionView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17x-n9-ahp">
+                                        <rect key="frame" x="16" y="75" width="142" height="30"/>
+                                        <color key="backgroundColor" red="0.1450980392" green="0.1529411765" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="DyQ-0y-Wg3"/>
+                                            <constraint firstAttribute="width" constant="142" id="y4Z-Mw-5tC"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel Connection">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelConnectionButtonPressed:" destination="-1" eventType="touchUpInside" id="IFj-eP-DSu"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="17x-n9-ahp" secondAttribute="bottom" constant="16" id="5Lp-KH-BBW"/>
                                     <constraint firstAttribute="trailing" secondItem="heP-Pg-4fV" secondAttribute="trailing" constant="13" id="5gH-dy-niF"/>
                                     <constraint firstItem="6LT-y7-z2h" firstAttribute="top" secondItem="sMJ-oJ-5oW" secondAttribute="top" constant="18" id="9Gx-a8-pZL"/>
+                                    <constraint firstItem="17x-n9-ahp" firstAttribute="leading" secondItem="sMJ-oJ-5oW" secondAttribute="leading" constant="16" id="DQo-BG-Kq3"/>
                                     <constraint firstItem="Xtn-U8-vNM" firstAttribute="top" secondItem="sMJ-oJ-5oW" secondAttribute="top" constant="55" id="EGf-vd-5M4"/>
                                     <constraint firstItem="bjl-f6-Jo5" firstAttribute="top" secondItem="sMJ-oJ-5oW" secondAttribute="top" constant="78" id="Hnk-Pg-X22"/>
                                     <constraint firstAttribute="trailing" secondItem="1CC-fx-aWN" secondAttribute="trailing" constant="17" id="Y1X-oc-Kyi"/>
@@ -144,7 +166,7 @@
                     <size key="value" width="0.0" height="1"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="35.5" y="40"/>
+            <point key="canvasLocation" x="34.399999999999999" y="38.23088455772114"/>
         </view>
     </objects>
 </document>

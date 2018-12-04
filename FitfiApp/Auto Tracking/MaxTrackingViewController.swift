@@ -64,6 +64,7 @@ class MaxTrackingViewController: UIViewController {
                 topView.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.1529411765, blue: 0.168627451, alpha: 1)
                 deviceView.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.1529411765, blue: 0.168627451, alpha: 1)
                 self.updateMaxiView(of: userFromSingleLabelGroup, with: self.currentWorkoutUpdater)
+                
             } else {
                 singleUserViewButton.isHidden = false
                 otherUserViewButton.isHidden = false
@@ -71,6 +72,7 @@ class MaxTrackingViewController: UIViewController {
                 applyButtonEffect(buttonOutlet: singleUserViewButton, imageName: currentUser["userPicture"] as! String, flag: 1)
                 self.updateMaxiView(of: userFromDualLabelGroup, with: self.currentWorkoutUpdater)
                 timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getOtherUsersExercise), userInfo: nil, repeats: true)
+                dualUserView.isHidden = false
             }
         }
     }
@@ -116,12 +118,6 @@ class MaxTrackingViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var heartRateLabel: UILabel!
     @IBOutlet weak var calorieLabel: UILabel!
-    
-    //TODO: Image Demo
-    @IBOutlet weak var bigImage: UIImageView!
-    var imageCounter = 1
-    var flagg:Bool = false
-
     
     var isResting: Bool = false {
         didSet {

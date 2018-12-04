@@ -26,6 +26,7 @@ class SmallTrackingViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var exerciseCountingLabel: UILabel!
     @IBOutlet weak var exerciseDeviceLabel: UILabel!
+    @IBOutlet weak var cancelConnectionButton: UIButton!
     
     let modelName = UIDevice.modelName
     lazy var bleVersion = {
@@ -134,6 +135,7 @@ class SmallTrackingViewController: UIViewController {
                     currentWorkoutUpdater.totalSet4Exercise = currentWorkoutExerciseArray.first?.setArray.count ?? 0
                     currentWorkoutUpdater.totalCurrentExercise = currentWorkoutExerciseArray.count
                     exerciseTypeLabel.text = currentWorkoutExerciseArray.first?.name
+                    cancelConnectionButton.isHidden = true
                 }
             } else {
                 currentWorkoutExerciseArray.removeAll()
@@ -225,6 +227,11 @@ class SmallTrackingViewController: UIViewController {
             present(maxTrackingVC, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func cancelConnectionButtonPressed(_ sender: UIButton) {
+        centralManager.cancelPeripheralConnection(blePeripheral)
+    }
+    
 }
 
 //MARK: - Search and Connect to BLE Device
@@ -329,6 +336,9 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         exerciseDeviceLabel.text = "Dumbbell " + devices[peripheral.identifier.uuidString]! + "lb"
         
         currentWorkoutUpdater.deviceWeight = devices[peripheral.identifier.uuidString] ?? ""
+        if !autoTracking {
+            cancelConnectionButton.isHidden = false
+        }
         
         central.stopScan()
         print("+++++")
@@ -357,7 +367,8 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         exerciseCountingLabel.text = String(counter)
         exerciseTypeLabel.text = ""
         exerciseDeviceLabel.text = "Scanning..."
-
+        cancelConnectionButton.isHidden = true
+        
         switch central.state {
         case .poweredOn:
             print("central.state is .poweredOn again")
