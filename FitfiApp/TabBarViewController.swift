@@ -12,8 +12,9 @@ import CoreBluetooth
 import AudioToolbox
 import Intents
 
-
 var smallTrackingVC = SmallTrackingViewController()
+let mainScreenWidth = UIScreen.main.bounds.width
+let mainScreenHeight = UIScreen.main.bounds.height
 
 //It is first commit to harsh
 class TabBarViewController: UITabBarController {

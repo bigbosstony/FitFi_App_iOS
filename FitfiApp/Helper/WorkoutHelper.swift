@@ -33,3 +33,9 @@ struct CurrentWorkoutUpdater {
     
     var workoutFinished: Bool = false
 }
+
+struct CurrentFreeFormUpdater {
+    var device = ""
+    var exercise = ""
+    var count = 0
+}

@@ -20,7 +20,10 @@ class SmallTrackingViewController: UIViewController {
     lazy var maxTrackingVC: MaxTrackingViewController = {
         return MaxTrackingViewController.init(nibName: "MaxTrackingViewController", bundle: nil)
     }()
-
+    
+    lazy var freeFormVC: FreeFormMaxViewController = {
+        return FreeFormMaxViewController.init(nibName: "FreeFormMaxViewController", bundle: nil)
+    }()
     
     @IBOutlet weak var exerciseTypeLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -49,6 +52,7 @@ class SmallTrackingViewController: UIViewController {
     //Setup Core Bluetooth Properties
     var centralManager: CBCentralManager!
     var blePeripheral: CBPeripheral!
+    var blePeripheral2: CBPeripheral!
     
     let bleMainServiceCBUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")  //6E400001-B5A3-F393-E0A9-E50E24DCCA9E
 
@@ -72,6 +76,8 @@ class SmallTrackingViewController: UIViewController {
     
     var username = ""
     
+    var deviceWeight = ""
+    
     //MARK: Create Core ML Model
     let countingModel = counting_model_0_4()
     let classifyModel = classify_model_0_4()
@@ -80,6 +86,8 @@ class SmallTrackingViewController: UIViewController {
 //    var currentExerciseArray = [CurrentExercise]()
     var counter = 0
     var currentExercise = ""
+    
+    
     
     //MARK: URL
     let machineLearningURL : String = "http://192.168.2.37:5005"
@@ -112,10 +120,18 @@ class SmallTrackingViewController: UIViewController {
         }
     }
     
+//    var freeFormUpdater = CurrentFreeFormUpdater() {
+//        didSet {
+//            print("free did set")
+//            self.freeFormVC.freeFormUpdater = self.freeFormUpdater
+//        }
+//    }
+    
     var autoTracking = false {
         didSet {
             print("Auto Tracking Did Set")
             if autoTracking {
+                //MARK: Demo - Load CoreData to Struct
                 if let demoRoutine = fetchHelper.loadDemoRoutine(with: "alpha").first {
                     if let exerciseArray = demoRoutine.routineExercises?.array {
                         for exercise in exerciseArray as! [Routine_Exercise] {
@@ -137,6 +153,7 @@ class SmallTrackingViewController: UIViewController {
                     exerciseTypeLabel.text = currentWorkoutExerciseArray.first?.name
                     cancelConnectionButton.isHidden = true
                 }
+                freeForm = false
             } else {
                 currentWorkoutExerciseArray.removeAll()
                 currentWorkoutUpdater = CurrentWorkoutUpdater()
@@ -153,6 +170,8 @@ class SmallTrackingViewController: UIViewController {
         }
     }
     
+    var freeForm: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Small Tracking View Did Load")
@@ -160,57 +179,20 @@ class SmallTrackingViewController: UIViewController {
         print("BLE Version: \(bleVersion)")
         //        dateFormatter.dateFormat = "yyyyMMddHHmmss"
         
-        //MARK: Demo - Load CoreData to Struct
-//        if let demoRoutine = fetchHelper.loadDemoRoutine(with: "alpha").first {
-//            if let exerciseArray = demoRoutine.routineExercises?.array {
-//                for exercise in exerciseArray as! [Routine_Exercise] {
-//                    let setArray = [Int16](repeating: exercise.reps, count: Int(exercise.sets))
-//                    let setDoneArray = [Bool](repeating: false, count: Int(exercise.sets))
-//                    let weightArray = [Int16](repeating: 0, count: Int(exercise.sets))
-//
-//                    let newCurrentWorkoutExercise = CurrentWorkoutExercise(name: exercise.name!, category: exercise.category!, calorie: 0, setArray: setArray, setDoneArray: setDoneArray, weightArray: weightArray, done: false)
-//                    currentWorkoutExerciseArray.append(newCurrentWorkoutExercise)
-//                }
-//            }
-//            print("Demo")
-//            print(currentWorkoutExerciseArray)
-//            //
-//            currentWorkoutUpdater.currentExerciseName = currentWorkoutExerciseArray.first?.name ?? "none"
-//            currentWorkoutUpdater.currentRep4Set = currentWorkoutExerciseArray.first?.setArray.first ?? 0
-//            currentWorkoutUpdater.totalSet4Exercise = currentWorkoutExerciseArray.first?.setArray.count ?? 0
-//            currentWorkoutUpdater.totalCurrentExercise = currentWorkoutExerciseArray.count
-//        }
-        
         centralManager = CBCentralManager(delegate: self, queue: nil)
         //Register nib file to collection view
         collectionView.register(UINib.init(nibName: "SmallTrackingVCCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "smallTrackingVCCVCell")
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        //        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        //        layout.minimumInteritemSpacing = 6
-        //        collectionView.collectionViewLayout = layout
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(expandTrackingSmallView)) //Change This If Needed
         self.view.addGestureRecognizer(tap)
         self.view.isUserInteractionEnabled = true
         
-        username = UserDefaults.standard.value(forKey: "phoneNumber") as! String
-//        print("ST", username)
-        //MARK: Testing
-
-//        var currentExercise = CurrentExercise(name: "Biceps")
-//        currentExercise.reps = 9
-//        currentExercise.sets = 2
-//        currentExerciseArray.append(currentExercise)
-//        for i in 0..<y.count {
-//            sleep(1)
-//
-//            postRequest(request: machineLearningURL, sensor: y[i])
-//        }
+//        let tap2FreeformExpand = UITapGestureRecognizer(target: self, action: #selector(smallViewTapped))
+//        self.view.addGestureRecognizer(tap2FreeformExpand)
         
-        //
-//        exerciseTypeLabel.text = currentWorkoutExerciseArray.first?.name
+        username = UserDefaults.standard.value(forKey: "phoneNumber") as! String
     }
     
     override func didReceiveMemoryWarning() {
@@ -225,6 +207,10 @@ class SmallTrackingViewController: UIViewController {
         if autoTracking {
             maxTrackingVC.currentWorkoutUpdater = currentWorkoutUpdater
             present(maxTrackingVC, animated: true, completion: nil)
+        } else if freeForm {
+            print("FreeForm")
+            freeFormVC.devicelWeight = deviceWeight
+            present(freeFormVC, animated: true, completion: nil)
         }
     }
     
@@ -265,16 +251,7 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
     //MARK: Did Discover Peipheral
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("\nDid Discover Peripheral")
-
-//        print("name: ", peripheral.name!)
-//        print("identifier: ", peripheral.identifier)
-//        print("state: ", peripheral.state.rawValue)
-//        print("Services: ", peripheral.services as Any)
         print("AdvertismentData: ", advertisementData)
-        
-//        print("AdvertisementData Description: ", advertisementData.description)
-        
-//        print("AdvertisementData Keys: ", advertisementData.keys)
 
         print("RSSI = \(RSSI)")
         print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n")
@@ -292,7 +269,6 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
 
                     blePeripheral = peripheral
                     blePeripheral.delegate = self
-                    //                centralManager.stopScan()
                     centralManager.connect(blePeripheral)
                 } else {
                     centralManager.scanForPeripherals(withServices: [bleMainServiceCBUUID], options: nil)
@@ -300,13 +276,27 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             case 5.0:
                 print("BLE: 5.0")
 
-                if -45...0 ~= RSSI.intValue {
+                if -50...0 ~= RSSI.intValue {
+                    if centralManager.retrieveConnectedPeripherals(withServices: [bleMainServiceCBUUID]).count == 0 {
+                        print("no connection")
+                        blePeripheral = peripheral
+                        blePeripheral.delegate = self
+                        
+                        centralManager.connect(blePeripheral)
+//                        central.stopScan()
+                    }
+//                    else {
+//                        print("one connection")
+//                        blePeripheral2 = peripheral
+//                        blePeripheral2.delegate = self
+//                        
+//                        centralManager.connect(blePeripheral2)
+//                    }
                     
-                    blePeripheral = peripheral
-                    blePeripheral.delegate = self
-                    
-    //                centralManager.stopScan()
-                    centralManager.connect(blePeripheral)
+//                    blePeripheral = peripheral
+//                    blePeripheral.delegate = self
+//
+//                    centralManager.connect(blePeripheral)
                 } else {
                     centralManager.scanForPeripherals(withServices: [bleMainServiceCBUUID], options: nil)
                 }
@@ -333,41 +323,55 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
         //MARK: IMPORTANT SERVICE UUID
 
         blePeripheral.discoverServices(nil) // CHANGE THIS VALUE IF NEEDED, nil == SEARCH FOR ALL SERVICES
-        exerciseDeviceLabel.text = "Dumbbell " + devices[peripheral.identifier.uuidString]! + "lb"
+        
+        if blePeripheral2 != nil {
+            blePeripheral2.discoverServices(nil)
+        }
+        
+        deviceWeight = devices[peripheral.identifier.uuidString]!
+        
+        exerciseDeviceLabel.text = "Dumbbell " + deviceWeight + "lb"
         
         currentWorkoutUpdater.deviceWeight = devices[peripheral.identifier.uuidString] ?? ""
+        
+        
         if !autoTracking {
             cancelConnectionButton.isHidden = false
         }
         
+        //Set FreeForm
+        freeForm = true
+        
+        //STOP SCANNING...
         central.stopScan()
-        print("+++++")
+        
+        print("+++++++++++++++ All Peripherals +++++++++++++++++")
+        
         print(centralManager.retrieveConnectedPeripherals(withServices: [bleMainServiceCBUUID]))
 
         print("«««««««««««««««««««««««««««««««««««")
         print("identifier: ", peripheral.identifier)
         print("Local Name: ", peripheral.name ?? "")
         print("State: ", peripheral.state.rawValue)
-//        print(peripheral.description)
-//        print("RSSI: ", peripheral.readRSSI())
+        print("Description: ", peripheral.description)
+        print("RSSI: ", peripheral.readRSSI())
     }
     
     //MARK: Did Disconnect Peripheral
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("Did Disconnected Peripheral")
+        //Logout User When Disconnect
         userLogout(from: machineLearningURL)
-        //MARK: Make Small TrackingVC Hidden
-        //        smallTrackingVC.remove()
         
-//        self.view.isHidden = true
-//        userLogout(from: machineLearningURL)
-
         //MARK: Clean Counter and Exercise
         counter = 0
         exerciseCountingLabel.text = String(counter)
         exerciseTypeLabel.text = ""
         exerciseDeviceLabel.text = "Scanning..."
         cancelConnectionButton.isHidden = true
+    
+        //
+        freeForm = false
         
         switch central.state {
         case .poweredOn:
@@ -382,8 +386,9 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
 //MARK: CB Peripheral
 extension SmallTrackingViewController: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        print("«««««««««««««««««««")
+        print("««««««««« Did Discover Services For Connected Peripheral ««««««««««")
         print(peripheral.services!)
+        print(peripheral.identifier)
         guard let services = peripheral.services else { return }
         for service in services {
             print("Did Discover Service: \(service)")
@@ -434,7 +439,8 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
     
     //MARK: Update Characteristic Value
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-//        print("Did Update Value For Characterristic")
+        print("Did Update Value For Characterristic")
+        print(peripheral.identifier)
         
         let hasLoginKey = UserDefaults.standard.bool(forKey: "hasLoginKey")
         
@@ -448,10 +454,19 @@ extension SmallTrackingViewController: CBPeripheralDelegate {
                 for i in sensorData {
                     dataArrayString.append("\(i)")
                 }
-                // Data Array
-//                print(dataArrayString)
                 
-                postRequest(request: machineLearningURL, sensor: dataArrayString)
+                print(dataArrayString)
+                if peripheral.identifier == blePeripheral.identifier {
+//                    print("Dumbbell 1 :", dataArrayString)
+                    postRequest(request: machineLearningURL, dumbbell: 1, sensor: dataArrayString)
+
+                } else {
+//                    print("Dumbbell 2 :", dataArrayString)
+                    postRequest(request: machineLearningURL, dumbbell: 2, sensor: dataArrayString)
+
+                }
+                
+//                postRequest(request: machineLearningURL, dumbbell: 1, sensor: dataArrayString)
 
     //        MARK: Battery Level
             case bleBattery:
@@ -492,7 +507,7 @@ extension SmallTrackingViewController: UICollectionViewDelegate, UICollectionVie
 
 extension SmallTrackingViewController {
     
-    func postRequest(request url: String, sensor data: [String]) {
+    func postRequest(request url: String, dumbbell number: Int, sensor data: [String]) {
         
         guard let requestURL = URL(string: url) else { print("URL Error"); return }
         
@@ -501,7 +516,7 @@ extension SmallTrackingViewController {
         var machineLearningURLRequest = URLRequest(url: requestURL)
         machineLearningURLRequest.httpMethod = "POST"
 
-        let sensorData: [String : Any] = ["username": username ,"data": data]
+        let sensorData: [String : Any] = ["username": username ,"dumbbell": number, "data": data]
         
 //        print("Sensor Data: ", sensorData)
         
@@ -532,6 +547,7 @@ extension SmallTrackingViewController {
                 //Update Label
                 if let exercise = recievedData["exercise"] {
                     
+                    print("Dumbbell \(number): ", exercise)
 //                    print("Current Updater: ", self.currentWorkoutUpdater)
                     
                     //MARK: Send to Maxi View
@@ -546,20 +562,25 @@ extension SmallTrackingViewController {
                         DispatchQueue.main.async {
                             if self.currentExercise == exercise {
                                 self.exerciseTypeLabel.text = exercise
+                                self.freeFormVC.freeFormUpdater.exercise = exercise
                                 self.counter += 1
                                 self.exerciseCountingLabel.text = String(self.counter)
+                                self.freeFormVC.freeFormUpdater.count = self.counter
+                                
                             } else {
                                 self.currentExercise = exercise
                                 self.counter = 0
                                 self.exerciseTypeLabel.text = exercise
+                                self.freeFormVC.freeFormUpdater.exercise = exercise
                                 self.counter += 1
                                 self.exerciseCountingLabel.text = String(self.counter)
+                                self.freeFormVC.freeFormUpdater.count = self.counter
                             }
                         }
                     }
                 }
             } catch {
-                print("Error parsing response from POST")
+//                print("Error parsing response from POST")
                 return
             }
         }
@@ -702,7 +723,7 @@ extension SmallTrackingViewController {
 //        let strURL = "http://192.168.2.25/api/current_workout"
         let requestURL = URL(string: strURL)
         
-        var resp: Bool = false
+//        var resp: Bool = false
         
         var recievedData: [String: String] = ["" : ""]
         var updateCounterURLRequest = URLRequest(url: requestURL!)
@@ -747,7 +768,7 @@ extension SmallTrackingViewController {
                 print("Recieved Data: ", recievedData)
                 if(recievedData["success"] == "true")
                 {
-                    resp = true
+//                    resp = true
                 }
                 
             } catch {
@@ -758,3 +779,17 @@ extension SmallTrackingViewController {
         task.resume()
     }
 }
+
+//extension SmallTrackingViewController {
+//    @objc func smallViewTapped() {
+//        let animator = UIViewPropertyAnimator(duration: 0.7, dampingRatio: 0.7) {
+//            self.view.frame = CGRect(x: 0, y: 0, width: mainScreenWidth, height: mainScreenHeight)
+//
+//
+//            self.exerciseCountingLabel.frame = CGRect(x: 0, y: mainScreenHeight/2, width: 100, height: 100)
+//            self.exerciseCountingLabel.font = UIFont.systemFont(ofSize: 120)
+//            self.exerciseCountingLabel.fitTextToBounds()
+//        }
+//        animator.startAnimation(afterDelay: 0.3)
+//    }
+//}
