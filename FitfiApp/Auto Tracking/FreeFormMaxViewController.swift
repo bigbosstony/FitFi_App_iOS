@@ -39,6 +39,14 @@ class FreeFormMaxViewController: UIViewController {
         deviceLabel.text = devicelWeight
         
         runTimer()
+        print("Freeform did Loaded")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Freeform will appear")
+        updateFreeFormView(with: freeFormUpdater)
+
     }
 
 
@@ -65,6 +73,8 @@ class FreeFormMaxViewController: UIViewController {
         if countingLabel != nil {
             countingLabel.text = String(data.count)
             exerciseLabel.text = data.exercise
+            deviceLabel.text = data.device
+
         }
     }
 }

@@ -91,6 +91,7 @@ class SmallTrackingViewController: UIViewController {
     
     //MARK: URL
     let machineLearningURL : String = "http://192.168.2.37:5005"
+//    let machineLearningURL : String = "54.198.157.136"
 //    let machineLearningURL : String = "http://192.168.2.37:5000"
 //    let machineLearningURL : String = "http://3.17.1.124"
 
@@ -170,7 +171,14 @@ class SmallTrackingViewController: UIViewController {
         }
     }
     
-    var freeForm: Bool = false
+    var freeForm: Bool = false {
+        didSet {
+            if freeForm {
+                freeFormVC.freeFormUpdater.count = 0
+                freeFormVC.freeFormUpdater.exercise = ""
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -208,8 +216,10 @@ class SmallTrackingViewController: UIViewController {
             maxTrackingVC.currentWorkoutUpdater = currentWorkoutUpdater
             present(maxTrackingVC, animated: true, completion: nil)
         } else if freeForm {
-            print("FreeForm")
-            freeFormVC.devicelWeight = deviceWeight
+//            freeFormVC.devicelWeight = deviceWeight
+            print("FreeForm+")
+            print(deviceWeight)
+            freeFormVC.freeFormUpdater.device = deviceWeight
             present(freeFormVC, animated: true, completion: nil)
         }
     }

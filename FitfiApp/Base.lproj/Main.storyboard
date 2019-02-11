@@ -1504,7 +1504,7 @@
             <objects>
                 <tableViewController id="Zqf-7B-v7Q" customClass="RecentWorkoutDetailsTableViewController" customModule="FitfiApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1z2-4C-P8S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="Oxe-VY-WlT">
@@ -2176,7 +2176,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngd-fJ-2V2">
-                                                            <rect key="frame" x="35" y="40.333333333333336" width="40" height="40.000000000000007"/>
+                                                            <rect key="frame" x="35" y="40" width="40" height="40"/>
                                                             <color key="backgroundColor" red="0.99215686274509807" green="0.96470588235294119" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="5hH-PZ-Wia"/>
@@ -2288,7 +2288,7 @@
                                                     </constraints>
                                                 </view>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="anW-ZJ-RMQ">
-                                                    <rect key="frame" x="68" y="12" width="290" height="56"/>
+                                                    <rect key="frame" x="68" y="12" width="329" height="56"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BdF-uw-rHk">
                                                         <size key="itemSize" width="290" height="53"/>
@@ -5054,6 +5054,6 @@ CgoKA
         <segue reference="H4T-rS-dYU"/>
         <segue reference="udI-Ha-zQT"/>
         <segue reference="14h-tr-23b"/>
-        <segue reference="avN-2A-2ct"/>
+        <segue reference="MUM-dk-kXR"/>
     </inferredMetricsTieBreakers>
 </document>
