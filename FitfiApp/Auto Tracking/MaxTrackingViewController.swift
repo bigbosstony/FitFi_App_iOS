@@ -34,7 +34,7 @@ class MaxTrackingViewController: UIViewController {
         if UserDefaults.standard.value(forKey: "user") as! Int == 1 {
             pic = "Users/harsh"
         } else {
-            pic = "Users/nurelle"
+            pic = "Users/devika"
         }
         
         let user = ["userID" : UserDefaults.standard.value(forKey: "user"), "userPicture": pic]
@@ -170,7 +170,7 @@ class MaxTrackingViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(checkMyReaction), userInfo: nil, repeats: true)
 
         if currentUser["userID"] as! Int == 1 {
-            otherUser = ["userID" : 2, "userPicture": "Users/nurelle"]
+            otherUser = ["userID" : 2, "userPicture": "Users/devika"]
         } else {
             otherUser = ["userID" : 1, "userPicture": "Users/harsh"]
         }

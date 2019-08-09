@@ -42,7 +42,7 @@ class SmallTrackingViewController: UIViewController {
             return 4.0
         case "iPhone 6", "iPhone 6 Plus", "iPhone 6s", "iPhone SE", "iPhone 6s Plus", "iPhone 7", "iPhone 7 Plus", "iPad 6":
             return 4.2
-        case "iPhone 8", "iPhone 8 Plus", "iPhone X":
+        case "iPhone 8", "iPhone 8 Plus", "iPhone X", "iPhone XS", "iPhone XS Max", "iPhone XR", "iPhone XS Max Global":
             return 5.0
         default:
             return 0.0
@@ -79,8 +79,8 @@ class SmallTrackingViewController: UIViewController {
     var deviceWeight = ""
     
     //MARK: Create Core ML Model
-    let countingModel = counting_model_0_4()
-    let classifyModel = classify_model_0_4()
+//    let countingModel = counting_model_0_4()
+//    let classifyModel = classify_model_0_4()
     
     //MARK: Testing
 //    var currentExerciseArray = [CurrentExercise]()
@@ -90,9 +90,9 @@ class SmallTrackingViewController: UIViewController {
     
     
     //MARK: URL
-    let machineLearningURL : String = "http://192.168.2.37:5005"
+//    let machineLearningURL : String = "http://www.fitfiant.tk/"
 //    let machineLearningURL : String = "54.198.157.136"
-//    let machineLearningURL : String = "http://192.168.2.37:5000"
+    let machineLearningURL : String = "http://collissionsensorv1-2.kai4478dfr.us-west-2.elasticbeanstalk.com/"
 //    let machineLearningURL : String = "http://3.17.1.124"
 
     
@@ -326,7 +326,6 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
 
         userLogin(with: username, url: machineLearningURL)
 
-        
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         //        MARK: Make Small TrackingVC Visable
         self.view.isHidden = false
@@ -338,7 +337,13 @@ extension SmallTrackingViewController: CBCentralManagerDelegate {
             blePeripheral2.discoverServices(nil)
         }
         
-        deviceWeight = devices[peripheral.identifier.uuidString]!
+        //Got weight
+        if let weight = devices[peripheral.identifier.uuidString] {
+            deviceWeight = weight
+        } else {
+            deviceWeight = "5"
+        }
+        
         
         exerciseDeviceLabel.text = "Dumbbell " + deviceWeight + "lb"
         
